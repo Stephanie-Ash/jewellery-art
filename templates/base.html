@@ -19,7 +19,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Roboto+Slab&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -51,7 +51,19 @@
 
 <body>
     <header class="container-fluid">
-        <div class="row"></div>
+        <div class="row">
+            <div class="col-6">
+                <a href="{% url 'home' %}" class="nav-link logo-container mb-2">
+                    <span class="logo-initial">J</span>
+                    <span class="logo-one logo-text">ewellery</span>
+                    <span class="logo-two logo-initial">A</span>
+                    <span class="logo-three logo-text">rt</span>
+                </a>
+            </div>
+            <div class="col-6 text-right">
+            
+            </div>
+        </div>
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main"

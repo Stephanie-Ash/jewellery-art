@@ -5,3 +5,33 @@ body {
 .nav-link {
     font-size: 18px;
 }
+
+.logo-container {
+    position: relative;
+    font-family: 'Roboto Slab', serif;
+}
+
+.logo-initial {
+    font-size: 40px;
+}
+
+.logo-text {
+    font-size: 20px;
+}
+
+.logo-one {
+    position: absolute;
+    top: 15px;
+}
+
+.logo-two {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+}
+
+.logo-three {
+    position: absolute;
+    top: 38px;
+    left: 48px;
+}
