@@ -19,7 +19,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -50,8 +50,53 @@
 </head>
 
 <body>
-
-    <h1>Test content Base</h1>
+    <header class="container-fluid">
+        <div class="row"></div>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main"
+                    aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-main">
+                    <ul class="navbar-nav w-auto mx-auto">
+                        <li class="nav-item dropdown position-static">
+                            <a class="nav-link dropdown-toggle mr-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Jewellery
+                            </a>
+                            <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                                <div class="row">
+                                    <div class="col-3 offset-2">
+                                        <p class="dropdown-item dropdown-title m-0"><strong>Category</strong></p>
+                                        <a class="dropdown-item" href="#">Necklaces</a>
+                                        <a class="dropdown-item" href="#">Earrings</a>
+                                        <a class="dropdown-item" href="#">Bracelets</a>
+                                        <a class="dropdown-item" href="#">Rings</a>
+                                        <a class="dropdown-item" href="#">Brooches</a>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="dropdown-item dropdown-title m-0"><strong>Collection</strong></p>
+                                        <a class="dropdown-item" href="#">The Black Collection</a>
+                                        <a class="dropdown-item" href="#">The White Collection</a>
+                                        <a class="dropdown-item" href="#">The Gold Collection</a>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="dropdown-item dropdown-title m-0"><strong>By Designer</strong></p>
+                                        <a class="dropdown-item" href="#">Rachel Clark</a>
+                                        <a class="dropdown-item" href="#">Rachel Clark</a>
+                                        <a class="dropdown-item" href="#">Rachel Clark</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mr-4" href="#">Designers</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
     {% block content %}
     {% endblock %}
 
