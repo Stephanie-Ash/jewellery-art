@@ -150,8 +150,57 @@
             </nav>
         </div>
     </header>
+
+    <main>
     {% block content %}
     {% endblock %}
+    </main>
+
+    <footer class="container-fluid txt-lgt bg-color-drk">
+        <div class="row">
+            <div class="col-4">
+                <div class="text-center footer-logo">
+                    <img class="logo-img" src="/media/jewellery-art-logo.png" alt="">
+                    <p>Handmade Art Jewellery</p>
+                </div>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="footer-link txt-lgt" target="_blank" rel="noopener" href="https://facebook.com"
+                            aria-label="Visit the Jewellery Art Facebook Page (opens in a new tab)">
+                            <i class="fab fa-facebook-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="footer-link txt-lgt" target="_blank" rel="noopener" href="https://twitter.com"
+                            aria-label="Visit the Jewellery Art Twitter Page (opens in a new tab)">
+                            <i class="fab fa-twitter-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="footer-link txt-lgt" target="_blank" rel="noopener" href="https://instagram.com"
+                            aria-label="Visit the Jewellery Art Instagram Page (opens in a new tab)">
+                            <i class="fab fa-instagram-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <p>Explore</p>
+                <ul class="list-unstyled">
+                    <li><a class="footer-link txt-lgt" href="">Jewellery</a></li>
+                    <li><a class="footer-link txt-lgt" href="">Designers</a></li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <p>Customer Info</p>
+                <ul class="list-unstyled">
+                    <li><a class="footer-link txt-lgt" href="">Contact Us</a></li>
+                    <li><a class="footer-link txt-lgt" href="">FAQs</a></li>
+                    <li><a class="footer-link txt-lgt" href="">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     {% block postloadjs %}
     {% endblock %}

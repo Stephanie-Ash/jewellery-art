@@ -1,10 +1,16 @@
 /* ------------------------General Styles------------------------ */
-
-/* Text */
 body {
     font-family: 'Open Sans', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
+main {
+    flex: 1 0 auto;
+}
+
+/* Text */
 .txt-lgt {
     color: #dce4e8;
 }
@@ -47,6 +53,32 @@ body {
 
 .dropdown-title:hover {
     background-color: transparent;
+}
+
+/* Footer */
+footer {
+    padding-top: 20px;
+}
+
+.footer-link:hover {
+    color: #dce4e8;
+    text-decoration: none;
+}
+
+.social {
+    font-size: 30px;
+    padding: 0px 20px 20px 20px;
+}
+
+.logo-img {
+    width: 100px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.footer-logo {
+    width: fit-content;
+    margin-left: 20px;
 }
 
 /* ------------------------Media Queries------------------------ */
