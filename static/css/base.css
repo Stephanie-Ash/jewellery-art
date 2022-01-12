@@ -1,13 +1,8 @@
+/* ------------------------General Styles------------------------ */
+
+/* Text */
 body {
     font-family: 'Open Sans', sans-serif;
-}
-
-.bg-color-drk {
-    background-color: #242d33;
-}
-
-.bg-color-lgt {
-    background-color: #dce4e8;
 }
 
 .txt-lgt {
@@ -18,8 +13,20 @@ body {
     color: #242d33;
 }
 
+/* Background Colours */
+.bg-color-drk {
+    background-color: #242d33;
+}
+
+.bg-color-lgt {
+    background-color: #dce4e8;
+}
+
+/* ------------------------General Styles------------------------ */
+
+/* Nav */
 .nav-link {
-    color: #dce4e8;
+    color: #dce4e8 !important;
 }
 
 .logo {
@@ -41,6 +48,8 @@ body {
 .dropdown-title:hover {
     background-color: transparent;
 }
+
+/* ------------------------Media Queries------------------------ */
 
 /* For screens 992px and up */
 @media screen and (min-width: 992px) {
