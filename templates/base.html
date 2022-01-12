@@ -52,15 +52,12 @@
 <body>
     <header class="container-fluid">
         <div class="row">
-            <nav class="navbar bg-color-drk navbar-expand-lg w-100">
+            <nav class="navbar bg-color-drk navbar-dark navbar-expand-lg w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main"
                     aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <li class="list-inline-item">
-                    <a class="logo my-2" href="{% url 'home' %}"></a>
-                </li>
-                <li class="list-inline-item">
+                <li class="list-inline-item order-lg-2">
                     <a class="nav-link" href="#" id="search" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <div class="text-center">
@@ -82,8 +79,37 @@
                             </div>
                         </form>
                     </div>
+                    <li class="list-inline-item order-lg-1">
+                        <a class="logo my-2" href="{% url 'home' %}"></a>
+                    </li>
                 </li>
-                <div class="collapse navbar-collapse" id="navbar-main">
+                <li class="list-inline-item order-lg-4 dropdown">
+                    <a class="nav-link" href="#" id="account-options" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <div class="text-center">
+                            <i class="fas fa-user-circle fa-lg"></i>
+                            <p class="m-0">My Account</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu bg-color-lgt" aria-labelledby="account-options">
+                        {% if user.is_authenticated %}
+                        <a class="dropdown-item" href="#" aria-label="Logout of your account">Logout</a>
+                        <a class="dropdown-item" href="#" aria-label="View your profile">My Profile</a>
+                        {% else %}
+                        <a class="dropdown-item" href="#" aria-label="Register for an account">Register</a>
+                        <a class="dropdown-item" href="#" aria-label="Login to your account">Login</a>
+                        {% endif %}
+                    </div>
+                </li>
+                <li class="list-inline-item order-lg-5">
+                    <a class="nav-link" href="#">
+                        <div class="text-center">
+                            <i class="fas fa-shopping-basket fa-lg"></i>
+                            <p class="m-0">0</p>
+                        </div>
+                    </a>
+                </li>
+                <div class="collapse navbar-collapse order-lg-3" id="navbar-main">
                     <ul class="navbar-nav w-auto mx-auto">
                         <li class="nav-item dropdown position-static">
                             <a class="nav-link dropdown-toggle mr-4" href="#" id="navbarDropdown" role="button"
@@ -121,32 +147,6 @@
                         </li>
                     </ul>
                 </div>
-                <li class="list-inline-item dropdown">
-                    <a class="nav-link" href="#" id="account-options" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <div class="text-center">
-                            <i class="fas fa-user-circle fa-lg"></i>
-                            <p class="m-0">My Account</p>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu bg-color-lgt" aria-labelledby="account-options">
-                        {% if user.is_authenticated %}
-                        <a class="dropdown-item" href="#" aria-label="Logout of your account">Logout</a>
-                        <a class="dropdown-item" href="#" aria-label="View your profile">My Profile</a>
-                        {% else %}
-                        <a class="dropdown-item" href="#" aria-label="Register for an account">Register</a>
-                        <a class="dropdown-item" href="#" aria-label="Login to your account">Login</a>
-                        {% endif %}
-                    </div>
-                </li>
-                <li class="list-inline-item">
-                    <a class="nav-link" href="#">
-                        <div class="text-center">
-                            <i class="fas fa-shopping-basket fa-lg"></i>
-                            <p class="m-0">0</p>
-                        </div>
-                    </a>
-                </li>
             </nav>
         </div>
     </header>
