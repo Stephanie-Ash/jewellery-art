@@ -14,6 +14,10 @@ body {
     color: #dce4e8;
 }
 
+.txt-drk {
+    color: #242d33;
+}
+
 .nav-link {
     color: #dce4e8;
 }
@@ -28,4 +32,12 @@ body {
 
 .search-dropdown {
     border: none;
+}
+
+.dropdown-title, .dropdown-item {
+    color: #242d33;
+}
+
+.dropdown-title:hover {
+    background-color: transparent;
 }

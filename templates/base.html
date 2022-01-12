@@ -90,10 +90,11 @@
                                 data-toggle="dropdown" aria-expanded="false">
                                 Jewellery
                             </a>
-                            <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu bg-color-lgt w-100" aria-labelledby="navbarDropdown">
                                 <div class="row">
                                     <div class="col-3 offset-2">
                                         <p class="dropdown-item dropdown-title m-0"><strong>Category</strong></p>
+                                        <a class="dropdown-item" href="#">All Jewellery</a>
                                         <a class="dropdown-item" href="#">Necklaces</a>
                                         <a class="dropdown-item" href="#">Earrings</a>
                                         <a class="dropdown-item" href="#">Bracelets</a>
@@ -128,7 +129,7 @@
                             <p class="m-0">My Account</p>
                         </div>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="account-options">
+                    <div class="dropdown-menu bg-color-lgt" aria-labelledby="account-options">
                         {% if user.is_authenticated %}
                         <a class="dropdown-item" href="#" aria-label="Logout of your account">Logout</a>
                         <a class="dropdown-item" href="#" aria-label="View your profile">My Profile</a>
