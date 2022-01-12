@@ -2,36 +2,30 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.bg-color-drk {
+    background-color: #242d33;
+}
+
+.bg-color-lgt {
+    background-color: #dce4e8;
+}
+
+.txt-lgt {
+    color: #dce4e8;
+}
+
 .nav-link {
-    font-size: 18px;
+    color: #dce4e8;
 }
 
-.logo-container {
-    position: relative;
-    font-family: 'Roboto Slab', serif;
+.logo {
+    background: url('/media/jewellery-art-logo.png') no-repeat center center;
+    background-size: cover;
+    width: 100px;
+    height: 50px;
+    display: block;
 }
 
-.logo-initial {
-    font-size: 40px;
-}
-
-.logo-text {
-    font-size: 20px;
-}
-
-.logo-one {
-    position: absolute;
-    top: 15px;
-}
-
-.logo-two {
-    position: absolute;
-    top: 30px;
-    left: 25px;
-}
-
-.logo-three {
-    position: absolute;
-    top: 38px;
-    left: 48px;
+.search-dropdown {
+    border: none;
 }
