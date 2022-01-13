@@ -24,11 +24,11 @@ main {
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 /* Background Colours */
@@ -94,7 +94,8 @@ footer {
 .home-hero {
     background: url('/media/gold-acrylic-cuff.jpg');
     background-size: cover;
-    padding: 50% 0 0 0;
+    padding: 100% 0 0 0;
+    position: relative;
 }
 
 .home-heading {
@@ -106,10 +107,9 @@ footer {
 
 .home-heading-txt {
     position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    background-color: rgba(109, 122, 130, 0.4);
+    bottom: 20px;
+    right: 15px;
+    background-color: rgba(220, 228, 232, 0.7);
     padding: 5px;
 }
 
@@ -120,6 +120,39 @@ footer {
     .logo {
         width: 100px;
         height: 50px;
+    }
+}
+
+/* For screens 768px and up */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .home-heading-txt {
+        left: 15px;
+    }
+}
+
+/* For screens 576px and up */
+@media screen and (min-width: 576px) {
+    .home-hero {
+        padding-top: 50%;
+    }
+
+    .home-heading-txt {
+        position: absolute;
+        top: 50%;
+        left: 8px;
+        bottom: auto;
+        right: auto;
+        transform: translateY(-50%);
+        background-color: rgba(109, 122, 130, 0.4);
+        padding: 5px;
     }
 }
 
