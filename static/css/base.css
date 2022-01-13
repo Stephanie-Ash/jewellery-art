@@ -31,6 +31,10 @@ h2 {
     font-size: 18px;
 }
 
+h3 {
+    font-size: 24px;
+}
+
 /* Background Colours */
 .bg-color-drk {
     background-color: #242d33;
@@ -38,6 +42,15 @@ h2 {
 
 .bg-color-lgt {
     background-color: #dce4e8;
+}
+
+.bg-color-lgter {
+    background-color: #eef2f4;
+}
+
+/* Buttons */
+.btn-drk {
+    background-color: #242d33;
 }
 
 /* ------------------------base.html------------------------ */
@@ -105,13 +118,17 @@ footer {
     position: relative;
 }
 
-.home-heading-txt {
+.home-heading-box {
     position: absolute;
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
+}
+
+.home-heading-txt {
     background-color: rgba(220, 228, 232, 0.7);
     padding: 5px;
+    margin-bottom: 10px;
 }
 
 /* ------------------------Media Queries------------------------ */
@@ -126,7 +143,7 @@ footer {
         display: none;
     }
 
-    .home-heading-txt {
+    .home-heading-box {
         left: 15px;
     }
 }
@@ -137,9 +154,12 @@ footer {
         padding-top: 50%;
     }
 
-    .home-heading-txt {
+    .home-heading-box {
         position: absolute;
         left: 8px;
+    }
+
+    .home-heading-txt {
         background-color: rgba(109, 122, 130, 0.4);
     }
 }
@@ -154,7 +174,7 @@ footer {
         font-size: 24px;
     }
 
-    .home-heading-txt {
+    .home-heading-box {
         left: 15px;
     }
 }
@@ -177,7 +197,7 @@ footer {
 
 /* For screens 1200px and up */
 @media screen and (min-width: 1200px) {
-    .home-heading-txt {
+    .home-heading-box {
         left: 40px;
     }
 }
