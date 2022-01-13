@@ -32,7 +32,7 @@ main {
     background-color: #dce4e8;
 }
 
-/* ------------------------General Styles------------------------ */
+/* ------------------------base.html------------------------ */
 
 /* Nav */
 .nav-link {
@@ -79,6 +79,23 @@ footer {
     height: 50px;
     margin-bottom: 5px;
 }
+
+/* ------------------------index.html------------------------ */
+
+/* Page Heading */
+.home-hero {
+    background: url('/media/gold-acrylic-cuff.jpg');
+    background-size: cover;
+    padding: 50% 0 0 0;
+}
+
+.home-heading {
+    background: url('/media/background-grey.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 50% 0 0 0;
+    position: relative;
+}
+
 
 /* ------------------------Media Queries------------------------ */
 
