@@ -111,6 +111,9 @@
                 </li>
                 <div class="collapse navbar-collapse order-lg-3" id="navbar-main">
                     <ul class="navbar-nav w-auto mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link mr-4 home-link" href="{% url 'home' %}">Home</a>
+                        </li>
                         <li class="nav-item dropdown position-static">
                             <a class="nav-link dropdown-toggle mr-4" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-expanded="false">
@@ -119,7 +122,7 @@
                             <div class="dropdown-menu bg-color-lgt w-100" aria-labelledby="navbarDropdown">
                                 <div class="row">
                                     <div class="col-sm-3 mb-2">
-                                        <p class="dropdown-item dropdown-title m-0"><strong>Category</strong></p>
+                                        <p class="dropdown-item dropdown-title m-0 list-heading">Category</p>
                                         <a class="dropdown-item" href="#">All Jewellery</a>
                                         <a class="dropdown-item" href="#">Necklaces</a>
                                         <a class="dropdown-item" href="#">Earrings</a>
@@ -128,13 +131,13 @@
                                         <a class="dropdown-item" href="#">Brooches</a>
                                     </div>
                                     <div class="col-sm-4 mb-2">
-                                        <p class="dropdown-item dropdown-title m-0"><strong>Collection</strong></p>
+                                        <p class="dropdown-item dropdown-title m-0 list-heading">Collection</p>
                                         <a class="dropdown-item" href="#">The Black Collection</a>
                                         <a class="dropdown-item" href="#">The White Collection</a>
                                         <a class="dropdown-item" href="#">The Gold Collection</a>
                                     </div>
                                     <div class="col-sm-3 mb-2">
-                                        <p class="dropdown-item dropdown-title m-0"><strong>By Designer</strong></p>
+                                        <p class="dropdown-item dropdown-title m-0 list-heading">By Designer</p>
                                         <a class="dropdown-item" href="#">Stephanie Ashdown</a>
                                         <a class="dropdown-item" href="#">Rachel Clark</a>
                                         <a class="dropdown-item" href="#">Rachel Clark</a>
@@ -157,12 +160,10 @@
     </main>
 
     <footer class="container-fluid txt-lgt bg-color-drk">
-        <div class="row">
-            <div class="col-4">
-                <div class="text-center footer-logo">
-                    <img class="logo-img" src="/media/jewellery-art-logo.png" alt="">
+        <div class="row justify-content-center">
+            <div class="col-md-auto px-lg-5 text-center text-md-left">
+                    <img class="logo-img" src="{{ MEDIA_URL }}jewellery-art-logo.png" alt="">
                     <p>Handmade Art Jewellery</p>
-                </div>
                 <ul class="list-inline">
                     <li class="list-inline-item">
                         <a class="footer-link txt-lgt" target="_blank" rel="noopener" href="https://facebook.com"
@@ -184,15 +185,28 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-4">
-                <p>Explore</p>
+            <div class="col-auto px-lg-5">
+                <p class="list-heading mb-1">Explore</p>
                 <ul class="list-unstyled">
                     <li><a class="footer-link txt-lgt" href="">Jewellery</a></li>
                     <li><a class="footer-link txt-lgt" href="">Designers</a></li>
                 </ul>
             </div>
-            <div class="col-4">
-                <p>Customer Info</p>
+            <div class="col-auto px-lg-5">
+                <p class="list-heading mb-1">Shop</p>
+                <ul class="list-unstyled">
+                    <li><a class="footer-link txt-lgt" href="">Basket</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="footer-link txt-lgt" href="#" aria-label="Logout of your account">Logout</a></li>
+                    <li><a class="footer-link txt-lgt" href="#" aria-label="View your profile">My Profile</a></li>
+                    {% else %}
+                    <li><a class="footer-link txt-lgt" href="#" aria-label="Register for an account">Register</a></li>
+                    <li><a class="footer-link txt-lgt" href="#" aria-label="Login to your account">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col-auto px-lg-5">
+                <p class="list-heading mb-1">Customer Info</p>
                 <ul class="list-unstyled">
                     <li><a class="footer-link txt-lgt" href="">Contact Us</a></li>
                     <li><a class="footer-link txt-lgt" href="">FAQs</a></li>
