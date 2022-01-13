@@ -23,6 +23,14 @@ main {
     font-weight: bold;
 }
 
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
 /* Background Colours */
 .bg-color-drk {
     background-color: #242d33;
@@ -90,12 +98,20 @@ footer {
 }
 
 .home-heading {
-    background: url('/media/background-grey.jpg') no-repeat center center;
+    background: url('/media/paint-on-canvas.jpg') no-repeat center center;
     background-size: cover;
     padding: 50% 0 0 0;
     position: relative;
 }
 
+.home-heading-txt {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    background-color: rgba(109, 122, 130, 0.4);
+    padding: 5px;
+}
 
 /* ------------------------Media Queries------------------------ */
 
