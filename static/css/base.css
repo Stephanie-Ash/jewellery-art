@@ -36,7 +36,7 @@ h2 {
 }
 
 h3 {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 /* Background Colours */
@@ -139,9 +139,16 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Store Ethos Section */
+/* Home page information sections */
+.home-info {
+    font-size: 16px;
+}
 
-/* Designer Focus Section */
+.home-info a {
+    color: #242d33;
+    font-style: italic;
+}
+
 .image-divider {
     height: 300px;
     background: url('/media/jewellery-making.jpg') center center / cover no-repeat fixed;
@@ -177,6 +184,14 @@ footer {
 
     .home-heading-txt {
         background-color: rgba(109, 122, 130, 0.4);
+    }
+
+    .home-info {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 24px;
     }
 }
 
