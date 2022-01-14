@@ -15,6 +15,10 @@ main {
     color: #dce4e8;
 }
 
+.txt-lgter {
+    color: #eef2f4;
+}
+
 .txt-drk {
     color: #242d33;
 }
@@ -51,6 +55,10 @@ h3 {
 /* Buttons */
 .btn-drk {
     background-color: #242d33;
+}
+
+.btn-grey {
+    background-color: #515c63;
 }
 
 /* ------------------------base.html------------------------ */
@@ -129,6 +137,14 @@ footer {
     background-color: rgba(220, 228, 232, 0.7);
     padding: 5px;
     margin-bottom: 10px;
+}
+
+/* Store Ethos Section */
+
+/* Designer Focus Section */
+.image-divider {
+    height: 300px;
+    background: url('/media/jewellery-making.jpg') center center / cover no-repeat fixed;
 }
 
 /* ------------------------Media Queries------------------------ */
