@@ -1,10 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="container">
+<section class="container-fluid">
     <div class="row">
-        <div class="col">
-            {{ products }}
+        <div class="col-10 mx-auto">
+            <div class="row">
+                <div class="col">
+                    <h3>All Jewellery <span>({{ products|length }} products)</span></h3>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                {% for product in products %}
+                <div class="col-4 col-xl-3">
+                    <div class="card h-100">
+                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        <div class="card-body">
+                            <p class="card-title text-center">{{ product.name }}</p>
+                        </div>
+                    </div> 
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>
