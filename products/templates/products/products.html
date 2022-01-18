@@ -2,28 +2,33 @@
 
 {% block content %}
 <section class="container-fluid bg-color-lgt">
-    <div class="row">
+    <div class="row products-container">
         <div class="col-10 mx-auto">
             <div class="row">
-                <div class="col">
-                    <h3>All Jewellery <span>({{ products|length }} products)</span></h3>
-                    <hr>
+                <div class="col mt-4">
+                    <h2 class="d-inline-block mb-0">All Jewellery</h2>
+                    <p class="d-inline-block mb-0">({{ products|length }} products)</p>
+                    <hr class="divide-rule">
                 </div>
             </div>
             <div class="row">
                 {% for product in products %}
-                <div class="col-4 col-xl-3">
-                    <div class="card h-100 border-0 bg-transparent">
-                        <a class="txt-drk" href="">
-                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                            <div class="card-body">
-                                <h4 class="card-title text-center">{{ product.name }}</h4>
-                            </div>
-                            <div class="card-footer bg-transparent border-0 text-center">
-                                <p>£{{ product.price }}</p>
-                            </div>
+                <div class="col-sm-6 col-md-4 col-xl-3">
+                    <div class="card h-100 pb-4">
+                        <a class="product-cards" href="">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                         </a>
-                    </div> 
+                        <div class="card-body pb-0">
+                            <a href="">
+                                <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
+                            </a>
+                        </div>
+                        <div class="card-footer pt-1 text-center">
+                            <a href="">
+                                <p class="mb-0">£{{ product.price }}</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
             </div>

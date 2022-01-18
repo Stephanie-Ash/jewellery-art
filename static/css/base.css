@@ -11,6 +11,10 @@ main {
 }
 
 /* Text */
+a {
+    color: #242d33;
+}
+
 .txt-lgt {
     color: #dce4e8;
 }
@@ -31,7 +35,7 @@ h1 {
     font-size: 24px;
 }
 
-h2 {
+.home-h2 {
     font-size: 18px;
 }
 
@@ -40,7 +44,7 @@ h3 {
 }
 
 h4 {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /* Background Colours */
@@ -149,7 +153,6 @@ footer {
 }
 
 .home-info a {
-    color: #242d33;
     font-style: italic;
 }
 
@@ -160,9 +163,27 @@ footer {
 
 /* ------------------------products.html------------------------ */
 
+.divide-rule {
+    border-color: #242d33;
+    border-width: 3px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+}
+
+/* Product Cards */
 .card-img-top {
-    margin: -1px;
-    border: 3px solid #242d33;
+    border-radius: 0;
+    outline: 3px solid #242d33;
+    outline-offset: 2px;
+}
+
+.card, .card-footer {
+    background-color: transparent;
+    border: none;
+}
+
+.card-title {
+    font-weight: bold;
 }
 
 /* ------------------------Media Queries------------------------ */
@@ -179,6 +200,27 @@ footer {
 
     .home-heading-box {
         left: 15px;
+    }
+
+    .products-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* For screens 400px and up */
+@media screen and (min-width: 400px) {
+    .products-container {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+/* For screens 500px and up */
+@media screen and (min-width: 500px) {
+    .products-container {
+        padding-left: 80px;
+        padding-right: 80px;
     }
 }
 
@@ -204,6 +246,11 @@ footer {
     h3 {
         font-size: 24px;
     }
+
+    .products-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 /* For screens 768px and up */
@@ -212,7 +259,7 @@ footer {
         font-size: 28px;
     }
 
-    h2 {
+    .home-h2 {
         font-size: 24px;
     }
 
@@ -232,7 +279,7 @@ footer {
         font-size: 34px;
     }
 
-    h2 {
+    .home-h2 {
         font-size: 28px;
     }
 }
@@ -250,7 +297,7 @@ footer {
         font-size: 38px;
     }
 
-    h2 {
+    .home-h2 {
         font-size: 32px;
     }
 }
