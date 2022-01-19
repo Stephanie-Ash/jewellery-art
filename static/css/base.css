@@ -78,6 +78,19 @@ h4 {
     color: #515c63;
 }
 
+.to-top-btn i {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border: 2px solid #dce4e8;
+    padding: 5px;
+}
+
+.to-top-btn i:hover {
+    cursor: pointer;
+    background-color: #515c63;
+}
+
 /* ------------------------base.html------------------------ */
 
 /* Nav */
