@@ -201,6 +201,10 @@ footer {
     margin-bottom: 40px;
 }
 
+#sorting-sel {
+    width: 100%;
+}
+
 /* Product Cards */
 .card-img-top {
     border-radius: 0;
@@ -281,6 +285,10 @@ footer {
     .products-container {
         padding-left: 0;
         padding-right: 0;
+    }
+
+    #sorting-sel {
+        width: 250px;
     }
 }
 

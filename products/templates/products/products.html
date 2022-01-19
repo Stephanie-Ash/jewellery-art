@@ -5,9 +5,32 @@
     <div class="row products-container">
         <div class="col-10 mx-auto">
             <div class="row">
-                <div class="col mt-4">
+                <div class="col my-4">
                     <h2 class="d-inline-block mb-0">All Jewellery</h2>
                     <p class="d-inline-block mb-0">({{ products|length }} products)</p>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 order-sm-2 text-center text-sm-right">
+                    <select class="txt-drk" id="sorting-sel">
+                        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort By</option>
+                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (Low to High)</option>
+                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (High to Low)</option>
+                        <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                        <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                        <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                        <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                        <option value="collection_asc" {% if current_sorting == 'collection_asc' %}selected{% endif %}>Collection (A-Z)</option>
+                        <option value="collection_desc" {% if current_sorting == 'collection_desc' %}selected{% endif %}>Collection (Z-A)</option>
+                        <option value="designer_asc" {% if current_sorting == 'designer_asc' %}selected{% endif %}>Designer (A-Z)</option>
+                        <option value="designer_desc" {% if current_sorting == 'designer_desc' %}selected{% endif %}>Designer (Z-A)</option>
+                    </select>
+                </div>
+                <div class="col-12 col-sm-6 order-sm-1">
+                    <p class="mb-0">Placeholder text</p>
+                </div>
+                <div class="col-12 order-3">
                     <hr class="divide-rule">
                 </div>
             </div>
