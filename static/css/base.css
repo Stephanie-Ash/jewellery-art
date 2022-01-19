@@ -114,13 +114,13 @@ h4 {
     color: #242d33;
 }
 
-.dropdown-title:hover {
-    background-color: transparent;
-}
-
 .dropdown-item:hover {
     color: #242d33;
     background-color: #eef2f4;
+}
+
+.dropdown-title:hover {
+    background-color: transparent;
 }
 
 .dropdown-item:active {

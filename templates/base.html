@@ -1,4 +1,5 @@
 {% load static %}
+{% load category_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,13 +127,12 @@
                             <div class="dropdown-menu bg-color-lgt w-100" aria-labelledby="navbarDropdown">
                                 <div class="row">
                                     <div class="col-sm-3 mb-2">
+                                        {% all_categories as categories %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Category</p>
                                         <a class="dropdown-item" href="{% url 'products' %}">All Jewellery</a>
-                                        <a class="dropdown-item" href="{% url 'products' %}?category=necklaces">Necklaces</a>
-                                        <a class="dropdown-item" href="{% url 'products' %}?category=earrings">Earrings</a>
-                                        <a class="dropdown-item" href="{% url 'products' %}?category=bracelets">Bracelets</a>
-                                        <a class="dropdown-item" href="{% url 'products' %}?category=rings">Rings</a>
-                                        <a class="dropdown-item" href="{% url 'products' %}?category=brooches">Brooches</a>
+                                        {% for category in categories %}
+                                        <a class="dropdown-item" href="{% url 'products' %}?category={{ category.programmatic_name }}">{{ category.name }}</a>
+                                        {% endfor %}
                                     </div>
                                     <div class="col-sm-4 mb-2">
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Collection</p>
