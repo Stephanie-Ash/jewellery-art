@@ -1,5 +1,6 @@
 {% load static %}
 {% load category_tags %}
+{% load designer_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -141,10 +142,11 @@
                                         <a class="dropdown-item" href="#">The Gold Collection</a>
                                     </div>
                                     <div class="col-sm-3 mb-2">
+                                        {% all_designers as designers %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">By Designer</p>
-                                        <a class="dropdown-item" href="#">Stephanie Ashdown</a>
-                                        <a class="dropdown-item" href="{% url 'products' %}?designer=rachel_clark">Rachel Clark</a>
-                                        <a class="dropdown-item" href="#">Rachel Clark</a>
+                                        {% for designer in designers %}
+                                        <a class="dropdown-item" href="{% url 'products' %}?designer={{ designer.programmatic_name }}">{{ designer.name }}</a>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
