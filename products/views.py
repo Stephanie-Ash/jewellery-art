@@ -10,6 +10,7 @@ def all_products(request):
     """
     products = Product.objects.all()
     category = None
+    designer = None
 
     if request.GET:
         if 'category' in request.GET:
