@@ -6,9 +6,16 @@
         <div class="col-10 mx-auto">
             <div class="row">
                 <div class="col my-4">
+                    {% if current_category %}
+                    <h2 class="d-inline-block mb-0">{{ current_category.first.name }}</h2>
+                    {% elif current_collection %}
+                    <h2 class="d-inline-block mb-0">{{ current_collection.first.name }}</h2>
+                    {% elif current_designer %}
+                    <h2 class="d-inline-block mb-0">By {{ current_designer.first.name }}</h2>
+                    {% else %}
                     <h2 class="d-inline-block mb-0">All Jewellery</h2>
+                    {% endif %}
                     <p class="d-inline-block mb-0">({{ products|length }} products)</p>
-                    
                 </div>
             </div>
             <div class="row">
