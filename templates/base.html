@@ -136,10 +136,11 @@
                                         {% endfor %}
                                     </div>
                                     <div class="col-sm-4 mb-2">
+                                        {% all_collections as collections %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Collection</p>
-                                        <a class="dropdown-item" href="#">The Black Collection</a>
-                                        <a class="dropdown-item" href="#">The White Collection</a>
-                                        <a class="dropdown-item" href="#">The Gold Collection</a>
+                                        {% for collection in collections %}
+                                        <a class="dropdown-item" href="{% url 'products' %}?collection={{ collection.programmatic_name }}">{{ collection.name }}</a>
+                                        {% endfor %}
                                     </div>
                                     <div class="col-sm-3 mb-2">
                                         {% all_designers as designers %}
