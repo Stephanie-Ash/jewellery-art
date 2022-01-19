@@ -11,10 +11,6 @@ main {
 }
 
 /* Text */
-a {
-    color: #242d33;
-}
-
 .txt-lgt {
     color: #dce4e8;
 }
@@ -60,13 +56,26 @@ h4 {
     background-color: #eef2f4;
 }
 
-/* Buttons */
+/* Buttons and links */
 .btn-drk {
     background-color: #242d33;
 }
 
 .btn-grey {
     background-color: #515c63;
+}
+
+.txt-link {
+    color: #242d33;
+}
+
+.txt-link:hover {
+    color: #242d33;
+    text-decoration: none;
+}
+
+.txt-link-home:hover {
+    color: #515c63;
 }
 
 /* ------------------------base.html------------------------ */
@@ -94,6 +103,15 @@ h4 {
 
 .dropdown-title:hover {
     background-color: transparent;
+}
+
+.dropdown-item:hover {
+    color: #242d33;
+    background-color: #eef2f4;
+}
+
+.dropdown-item:active {
+    background-color: #eef2f4;
 }
 
 /* Footer */

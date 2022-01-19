@@ -15,16 +15,16 @@
                 {% for product in products %}
                 <div class="col-sm-6 col-md-4 col-xl-3">
                     <div class="card h-100 pb-4">
-                        <a class="product-cards" href="">
+                        <a class="txt-link" href="">
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                         </a>
                         <div class="card-body pb-0">
-                            <a href="">
+                            <a class="txt-link" href="">
                                 <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
                             </a>
                         </div>
                         <div class="card-footer pt-1 text-center">
-                            <a href="">
+                            <a class="txt-link" href="">
                                 <p class="mb-0">£{{ product.price }}</p>
                             </a>
                         </div>
