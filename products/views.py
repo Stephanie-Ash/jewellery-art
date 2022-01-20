@@ -1,5 +1,7 @@
 """ Views for the products app. """
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
+from django.db.models import Q
 from django.db.models.functions import Lower
 
 from designers.models import Designer, Collection
@@ -17,8 +19,18 @@ def all_products(request):
     collection = None
     sort = None
     direction = None
+    query = None
 
     if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "Please enter some search criteria!")
+                return redirect(reverse('products'))
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            products = products.filter(queries)
+
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -62,6 +74,7 @@ def all_products(request):
         'current_designer': designer,
         'current_collection': collection,
         'current_sorting': current_sorting,
+        'search_term': query,
     }
 
     return render(request, 'products/products.html', context)
