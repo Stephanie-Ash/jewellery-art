@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-6 order-sm-2 text-center text-sm-right">
+                <div class="col-12 col-sm-4 order-sm-2 text-center text-sm-right">
                     <select class="txt-drk" id="sorting-sel">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort By</option>
                         <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (Low to High)</option>
@@ -36,8 +36,20 @@
                         <option value="designer_desc" {% if current_sorting == 'designer_desc' %}selected{% endif %}>Designer (Z-A)</option>
                     </select>
                 </div>
-                <div class="col-12 col-sm-6 order-sm-1">
-                    <p class="mb-0">Placeholder text</p>
+                <div class="col-12 col-sm-8 order-sm-1">
+                    {% if current_category or current_collection or current_designer or current_sorting != 'None_None' %}
+                    <p class="mb-0 pt-2">
+                        <a class="content-link txt-link" href="{% url 'products' %}">All Jewellery</a>
+                    </p>
+                    {% else %}
+                    <p class="mb-0 pt-2">
+                        {% for category in categories|slice:":6" %}
+                        <a class="content-link txt-link" href="{% url 'products' %}?category={{ category.programmatic_name }}">
+                            {{ category.name }}{% if not forloop.last %} | {% endif %}
+                        </a>
+                        {% endfor %}
+                    </p>
+                    {% endif %}
                 </div>
                 <div class="col-12 order-3">
                     <hr class="divide-rule">
@@ -47,7 +59,7 @@
                 {% for product in products %}
                 <div class="col-sm-6 col-md-4 col-xl-3">
                     <div class="card h-100 pb-4">
-                        <a class="txt-link" href="">
+                        <a class="content-link" href="">
                             {% if product.image %}
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                             {% else %}
@@ -55,12 +67,12 @@
                             {% endif %}
                         </a>
                         <div class="card-body pb-0">
-                            <a class="txt-link" href="">
+                            <a class="content-link" href="">
                                 <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
                             </a>
                         </div>
                         <div class="card-footer pt-1 text-center">
-                            <a class="txt-link" href="">
+                            <a class="content-link" href="">
                                 <p class="mb-0">£{{ product.price }}</p>
                             </a>
                         </div>

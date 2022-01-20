@@ -14,6 +14,7 @@ def all_products(request):
     This will include filtering, sorting and searching.
     """
     products = Product.objects.all()
+    all_categories = Category.objects.all()
     category = None
     designer = None
     collection = None
@@ -75,6 +76,7 @@ def all_products(request):
         'current_collection': collection,
         'current_sorting': current_sorting,
         'search_term': query,
+        'categories': all_categories
     }
 
     return render(request, 'products/products.html', context)
