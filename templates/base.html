@@ -71,12 +71,12 @@
                             <p class="m-0 d-none d-lg-block">Search</p>
                         </div>
                     </a>
-                    <div class="dropdown-menu bg-color-lgt search-dropdown w-100 px-4" aria-labelledby="search">
+                    <div class="dropdown-menu mt-0 bg-color-grey search-dropdown w-100 px-4" aria-labelledby="search">
                         <form class="form" method="GET" action="{% url 'products' %}">
                             <div class="input-group w-100">
-                                <input class="form-control" type="text" name="q" placeholder="Search our Jewellery">
+                                <input class="form-control search-box" type="text" name="q" placeholder="Search our Jewellery">
                                 <div class="input-group-append">
-                                    <button class="form-control form-control btn bg-color-drk" type="submit">
+                                    <button class="search-btn form-control form-control btn bg-color-drk" type="submit">
                                         <span>
                                             <i class="fas fa-search txt-lgt"></i>
                                         </span>
@@ -125,7 +125,7 @@
                                 data-toggle="dropdown" aria-expanded="false">
                                 Jewellery
                             </a>
-                            <div class="dropdown-menu bg-color-lgt w-100" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu rounded-0 bg-color-lgt mt-0 w-100" aria-labelledby="navbarDropdown">
                                 <div class="row">
                                     <div class="col-sm-3 mb-2">
                                         {% all_categories as categories %}

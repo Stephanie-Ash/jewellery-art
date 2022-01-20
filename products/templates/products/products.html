@@ -12,10 +12,12 @@
                     <h2 class="d-inline-block mb-0">{{ current_collection.first.name }}</h2>
                     {% elif current_designer %}
                     <h2 class="d-inline-block mb-0">By {{ current_designer.first.name }}</h2>
+                    {% elif search_term %}
+                    <h2 class="d-inline-block mb-0">Search</h2>
                     {% else %}
                     <h2 class="d-inline-block mb-0">All Jewellery</h2>
                     {% endif %}
-                    <p class="d-inline-block mb-0">({{ products|length }} products)</p>
+                    <p class="d-inline-block mb-0">({{ products|length }} products {% if search_term %}for "{{ search_term }}"{% endif %})</p>
                 </div>
             </div>
             <div class="row">
