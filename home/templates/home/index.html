@@ -81,9 +81,9 @@
             <h3 class="text-center">Our Top Picks</h3>
         </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
         {% for product in featured_products %}
-        <div class="d-none d-sm-flex col-sm-6 col-md-3">
+        <div class="d-none d-md-flex col-md-3 col-xl-auto">
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
                 <a class="content-link" href="">
                     {% if product.image %}
@@ -106,7 +106,7 @@
         </div>
         {% endfor %}
 
-        <div class="d-sm-none scrolling-wrapper">
+        <div class="d-md-none scrolling-wrapper">
             {% for product in featured_products %}
             <div class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
                 <a class="content-link" href="">
