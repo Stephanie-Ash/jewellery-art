@@ -74,5 +74,39 @@
     </div>
 </section>
 
+<!-- Featured Products Section -->
+<section class="container-fluid bg-color-grey">
+    <div class="row">
+        <div class="col py-4 txt-lgter">
+            <h3 class="text-center">Our Top Picks</h3>
+        </div>
+    </div>
+    <div class="row">
+        {% for product in featured_products %}
+        <div class="d-none d-sm-flex col-sm-6 col-md-3">
+            <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
+                <a class="content-link" href="">
+                    {% if product.image %}
+                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    {% endif %}
+                </a>
+                <div class="card-body pb-0">
+                    <a class="content-link-lgter" href="">
+                        <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
+                    </a>
+                </div>
+                <div class="card-footer pt-1 text-center">
+                    <a class="content-link-lgter" href="">
+                        <p class="mb-0">£{{ product.price }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
 
 {% endblock %}

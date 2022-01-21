@@ -82,6 +82,15 @@ h4 {
     text-decoration: none;
 }
 
+.content-link-lgter {
+    color: #eef2f4;
+}
+
+.content-link-lgter:hover {
+    color: #eef2f4;
+    text-decoration: none;
+}
+
 .txt-link {
     font-style: italic;
 }
@@ -206,6 +215,28 @@ footer {
     background: url('/media/jewellery-making.jpg') center center / cover no-repeat fixed;
 }
 
+/* Home page featured products section */
+.home-card {
+    max-width: 250px;
+}
+
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.scroll-card {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 250px;
+    background-color: red;
+}
+
+.scroll-card > img {
+    width: 250px;
+}
+
 /* ------------------------products.html------------------------ */
 
 .divide-rule {
@@ -231,7 +262,7 @@ footer {
     border: none;
 }
 
-.card {
+.product-card {
     max-width: 280px;
 }
 
