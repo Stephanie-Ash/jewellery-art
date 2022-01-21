@@ -85,7 +85,7 @@
         {% for product in featured_products %}
         <div class="d-none d-md-flex col-md-3 col-xl-auto">
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
-                <a class="content-link" href="">
+                <a class="content-link" href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
                     <img class="card-img-top home-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% else %}
@@ -93,12 +93,12 @@
                     {% endif %}
                 </a>
                 <div class="card-body pb-0">
-                    <a class="content-link-lgter" href="">
+                    <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
                         <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
                     </a>
                 </div>
                 <div class="card-footer pt-1 text-center">
-                    <a class="content-link-lgter" href="">
+                    <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
                         <p class="mb-0">£{{ product.price }}</p>
                     </a>
                 </div>
@@ -109,17 +109,17 @@
         <div class="d-md-none scrolling-wrapper">
             {% for product in featured_products %}
             <div class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
-                <a class="content-link" href="">
+                <a class="content-link" href="{% url 'product_detail' product.id %}">
                 {% if product.image %}
                 <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
                 <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                 {% endif %}
                 </a>
-                <a class="content-link-lgter" href="">
+                <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
                 <h4 class="mb-0 home-prod-title text-center">{{ product.name }}</h4>
                 </a>
-                <a class="content-link-lgter" href="">
+                <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
                 <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
                 </a>
             </div>
