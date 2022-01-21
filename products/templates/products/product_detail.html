@@ -1,15 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="container-fluid">
-    <div class="row">
-        <div class="col-10 mx-auto">
-            <div class="row">
-                <div class="col my-4 text-center text-sm-left txt-drk">
-                    <h2 class="d-inline-block mb-0">Product Detail</h2>
-                </div>
+<section class="container">
+    <div class="row justify-content-center mt-5 mb-5">
+        <div class="text-center col-auto col-sm-6 col-md-auto">
+            <div class="detail-img-cont">
+                {% if product.image %}
+                <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                {% endif %}
             </div>
-            
+        </div>
+        <div class="col-auto text-center col-sm-6 col-md-auto mt-4 my-sm-auto">
+            <h3>{{ product.name }}</h3>
+            {% if product.collection %}
+            <p class="mb-0">from {{ product.collection.name }}</p>
+            {% endif %}
+            <p class="mb-2">by {{ product.designer.name }}</p>
+            <p class="mb-0"><strong>£{{ product.price }}</strong></p>
         </div>
     </div>
 </section>

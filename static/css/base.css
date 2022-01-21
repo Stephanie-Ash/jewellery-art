@@ -294,6 +294,17 @@ footer {
     font-weight: bold;
 }
 
+/* ------------------------product_detail.html------------------------ */
+
+.detail-img-cont {
+    max-width: 300px;
+}
+
+.detail-img-cont > img {
+    outline: 3px solid #242d33;
+    outline-offset: 2px;
+}
+
 /* ------------------------Media Queries------------------------ */
 
 /* For screens 320px and up */
