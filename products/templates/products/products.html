@@ -2,7 +2,7 @@
 
 {% block content %}
 <section class="container-fluid">
-    <div class="row products-container">
+    <div class="row">
         <div class="col-10 mx-auto">
             <div class="row">
                 <div class="col my-4 text-center text-sm-left">
@@ -36,7 +36,7 @@
                         <option value="designer_desc" {% if current_sorting == 'designer_desc' %}selected{% endif %}>Designer (Z-A)</option>
                     </select>
                 </div>
-                <div class="col-12 col-sm-8 order-sm-1">
+                <div class="col-12 col-sm-8 order-sm-1 text-center text-sm-left">
                     {% if current_category or current_collection or current_designer or current_sorting != 'None_None' %}
                     <p class="mb-0 pt-2">
                         <a class="content-link txt-link" href="{% url 'products' %}">All Jewellery</a>
@@ -58,7 +58,7 @@
             <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-4 col-xl-3">
-                    <div class="card h-100 pb-4">
+                    <div class="card h-100 pb-4 mx-auto">
                         <a class="content-link" href="">
                             {% if product.image %}
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">

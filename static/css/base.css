@@ -231,6 +231,10 @@ footer {
     border: none;
 }
 
+.card {
+    max-width: 280px;
+}
+
 .card-title {
     font-weight: bold;
 }
@@ -249,27 +253,6 @@ footer {
 
     .home-heading-box {
         left: 15px;
-    }
-
-    .products-container {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-/* For screens 400px and up */
-@media screen and (min-width: 400px) {
-    .products-container {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-}
-
-/* For screens 500px and up */
-@media screen and (min-width: 500px) {
-    .products-container {
-        padding-left: 80px;
-        padding-right: 80px;
     }
 }
 
@@ -294,11 +277,6 @@ footer {
 
     h3 {
         font-size: 24px;
-    }
-
-    .products-container {
-        padding-left: 0;
-        padding-right: 0;
     }
 }
 
