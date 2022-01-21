@@ -220,6 +220,12 @@ footer {
     max-width: 250px;
 }
 
+.home-card-img {
+    border-radius: 0;
+    outline: 3px solid #eef2f4;
+    outline-offset: 2px;
+}
+
 .scrolling-wrapper {
     display: flex;
     flex-wrap: nowrap;
@@ -229,12 +235,30 @@ footer {
 .scroll-card {
     flex: 0 0 auto;
     width: 250px;
-    height: 250px;
-    background-color: red;
+    margin-left: 25px;
 }
 
-.scroll-card > img {
-    width: 250px;
+.scroll-card-1st {
+    margin-left: 30px;
+}
+
+.scroll-card-lst {
+    margin-right: 30px;
+}
+
+.scroll-card img {
+    width: 100%;
+    outline: 3px solid #eef2f4;
+    outline-offset: 2px;
+}
+
+.home-prod-title {
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+.home-prod-price {
+    padding-bottom: 20px;
 }
 
 /* ------------------------products.html------------------------ */
@@ -251,7 +275,7 @@ footer {
 }
 
 /* Product Cards */
-.card-img-top {
+.product-card-img {
     border-radius: 0;
     outline: 3px solid #242d33;
     outline-offset: 2px;

@@ -87,9 +87,9 @@
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
                 <a class="content-link" href="">
                     {% if product.image %}
-                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="card-img-top home-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% else %}
-                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    <img class="card-img-top home-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                     {% endif %}
                 </a>
                 <div class="card-body pb-0">
@@ -105,6 +105,26 @@
             </div>
         </div>
         {% endfor %}
+
+        <div class="d-sm-none scrolling-wrapper">
+            {% for product in featured_products %}
+            <div class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
+                <a class="content-link" href="">
+                {% if product.image %}
+                <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                {% endif %}
+                </a>
+                <a class="content-link-lgter" href="">
+                <h4 class="mb-0 home-prod-title text-center">{{ product.name }}</h4>
+                </a>
+                <a class="content-link-lgter" href="">
+                <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 

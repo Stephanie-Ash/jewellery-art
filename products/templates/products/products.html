@@ -61,9 +61,9 @@
                     <div class="card product-card h-100 pb-4 mx-auto">
                         <a class="content-link" href="">
                             {% if product.image %}
-                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                            <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                             {% else %}
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                            <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                             {% endif %}
                         </a>
                         <div class="card-body pb-0">
