@@ -87,9 +87,13 @@ def product_detail(request, product_id):
     Display the details of an individual product.
     """
     product = get_object_or_404(Product, id=product_id)
+    other_products = None
+    if product.designer:
+        other_products = Product.objects.filter(designer__id=product.designer.id)
 
     context = {
         'product': product,
+        'other_products': other_products,
     }
 
     return render(request, 'products/product_detail.html', context)
