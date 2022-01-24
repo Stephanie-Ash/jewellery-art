@@ -12,13 +12,59 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-auto text-center col-sm-6 col-md-auto mt-4 my-sm-auto">
+        <div class="col-auto text-center text-sm-left col-sm-6 col-md-auto mt-4 my-sm-auto">
             <h3>{{ product.name }}</h3>
             {% if product.collection %}
             <p class="mb-0">from {{ product.collection.name }}</p>
             {% endif %}
             <p class="mb-2">by {{ product.designer.name }}</p>
             <p class="mb-0"><strong>£{{ product.price }}</strong></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="accordion mb-5" id="prod-det-accordion">
+                <div class="card rounded-0 txt-drk">
+                    <div class="card-header det-acc-head bg-color-lgt" id="description-head">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block accord-btn text-left" type="button" data-toggle="collapse"
+                                data-target="#description" aria-expanded="true" aria-controls="description" id="description-btn">
+                                Description <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="description" class="collapse show" aria-labelledby="description-head"
+                        data-parent="#prod-det-accordion">
+                        <div class="card-body">
+                            <p class="mb-0">
+                                {{ product.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card rounded-0">
+                    <div class="card-header det-acc-head bg-color-lgt" id="details-head">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block accord-btn text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#details" aria-expanded="false"
+                                aria-controls="details" id="details-btn">
+                                Details <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="details" class="collapse" aria-labelledby="details-head"
+                        data-parent="#prod-det-accordion">
+                        <div class="card-body">
+                            <p class="mb-2">
+                                {{ product.sizing }}
+                            </p>
+                            <p class="mb-0">
+                                {{ product.material }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
