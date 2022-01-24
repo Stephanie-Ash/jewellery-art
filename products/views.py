@@ -89,7 +89,8 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     other_products = None
     if product.designer:
-        other_products = Product.objects.filter(designer__id=product.designer.id)
+        other_products = Product.objects.filter(
+            designer__id=product.designer.id)
 
     context = {
         'product': product,

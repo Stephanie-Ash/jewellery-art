@@ -79,13 +79,16 @@
             </div>
         </div>
     </div>
+
+    {% if other_products %}
     <div class="row">
         <div class="col-12">
-            <hr class="divide-rule">
+            <hr class="divide-rule-dets">
+            <h3 class="mb-4">Also by the Designer</h3>
         </div>
         <div class="scrolling-wrapper">
             {% for product in other_products %}
-            <div class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
+            <div class="scroll-card scroll-drk {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
                 {% if product.image %}
                 <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -93,16 +96,17 @@
                 <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                 {% endif %}
                 </a>
-                <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" href="{% url 'product_detail' product.id %}">
                 <h4 class="mb-0 home-prod-title text-center">{{ product.name }}</h4>
                 </a>
-                <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" href="{% url 'product_detail' product.id %}">
                 <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
                 </a>
             </div>
             {% endfor %}
         </div>
     </div>
+    {% endif %}
 </section>
 
 {% endblock %}
