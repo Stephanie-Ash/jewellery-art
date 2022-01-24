@@ -17,7 +17,9 @@
             {% if product.collection %}
             <p class="mb-0">from {{ product.collection.name }}</p>
             {% endif %}
+            {% if product.designer %}
             <p class="mb-2">by {{ product.designer.name }}</p>
+            {% endif %}
             <p class="mb-0"><strong>£{{ product.price }}</strong></p>
         </div>
     </div>
@@ -55,12 +57,22 @@
                     <div id="details" class="collapse" aria-labelledby="details-head"
                         data-parent="#prod-det-accordion">
                         <div class="card-body">
-                            <p class="mb-2">
+                            {% if not product.sizing and not product.material %}
+                            <p class="mb-0">
+                                None
+                            </p>
+                            {% else %}
+                            {% if product.sizing %}
+                            <p class="{% if product.sizing and product.material %}mb-2{% else %}mb-0{% endif %}">
                                 {{ product.sizing }}
                             </p>
+                            {% endif %}
+                            {% if product.material %}
                             <p class="mb-0">
                                 {{ product.material }}
                             </p>
+                            {% endif %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
