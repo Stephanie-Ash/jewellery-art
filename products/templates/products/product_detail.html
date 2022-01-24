@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="container">
+<section class="container-fluid">
     <div class="row justify-content-center mt-5 mb-3">
-        <div class="text-center col-auto col-sm-6 col-md-auto">
-            <div class="detail-img-cont">
+        <div class="text-center col-12 col-sm-5 offset-sm-1 offset-md-0 col-md-auto">
+            <div class="detail-img-cont mx-auto">
                 {% if product.image %}
                 <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                 {% endif %}
             </div>
         </div>
-        <div class="col-auto text-center text-sm-left col-sm-6 col-md-auto mt-4 my-sm-auto">
-            <h3>{{ product.name }}</h3>
+        <div class="col-12 text-center text-sm-left col-sm-5 col-md-auto mt-4 my-sm-auto">
+            <h3 class="det-product-name">{{ product.name }}</h3>
             {% if product.collection %}
             <p class="mb-0">from {{ product.collection.name }}</p>
             {% endif %}
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col col-lg-8 offset-lg-2">
+        <div class="col col-md-10 col-lg-8 offset-md-1 offset-lg-2">
             <div class="accordion mb-5" id="prod-det-accordion">
                 <div class="card rounded-0 txt-drk">
                     <div class="card-header mb-0 det-acc-head bg-color-lgt" id="description-head">
