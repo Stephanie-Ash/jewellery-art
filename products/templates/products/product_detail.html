@@ -28,8 +28,8 @@
                     <div class="card-header det-acc-head bg-color-lgt" id="description-head">
                         <h2 class="mb-0">
                             <button class="btn btn-block accord-btn text-left" type="button" data-toggle="collapse"
-                                data-target="#description" aria-expanded="true" aria-controls="description" id="description-btn">
-                                Description <i class="fas fa-chevron-up"></i>
+                                data-target="#description" aria-expanded="true" aria-controls="description">
+                                Description <i id="description-arrow" class="fas fa-chevron-up"></i>
                             </button>
                         </h2>
                     </div>
@@ -47,8 +47,8 @@
                         <h2 class="mb-0">
                             <button class="btn btn-block accord-btn text-left collapsed" type="button"
                                 data-toggle="collapse" data-target="#details" aria-expanded="false"
-                                aria-controls="details" id="details-btn">
-                                Details <i class="fas fa-chevron-down"></i>
+                                aria-controls="details">
+                                Details <i id="details-arrow" class="fas fa-chevron-down"></i>
                             </button>
                         </h2>
                     </div>
@@ -69,4 +69,41 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    $("#description").on('shown.bs.collapse', function() {
+        let iElement = document.getElementById("description-arrow");
+        if (iElement.classList.contains("fa-chevron-down")) {
+            iElement.classList.remove("fa-chevron-down");
+            iElement.classList.add("fa-chevron-up");
+        }
+    });
+
+    $("#details").on('shown.bs.collapse', function() {
+        let iElement = document.getElementById("details-arrow");
+        if (iElement.classList.contains("fa-chevron-down")) {
+            iElement.classList.remove("fa-chevron-down");
+            iElement.classList.add("fa-chevron-up");
+        }
+    });
+
+    $("#description").on('hidden.bs.collapse', function() {
+        let iElement = document.getElementById("description-arrow");
+        if (iElement.classList.contains("fa-chevron-up")) {
+            iElement.classList.remove("fa-chevron-up");
+            iElement.classList.add("fa-chevron-down");
+        }
+    });
+
+    $("#details").on('hidden.bs.collapse', function() {
+        let iElement = document.getElementById("details-arrow");
+        if (iElement.classList.contains("fa-chevron-up")) {
+            iElement.classList.remove("fa-chevron-up");
+            iElement.classList.add("fa-chevron-down");
+        }
+    });
+</script>
 {% endblock %}
