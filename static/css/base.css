@@ -65,8 +65,16 @@ h4 {
     background-color: #242d33;
 }
 
+.btn-drk:hover {
+    color: #515c63;
+}
+
 .btn-grey {
     background-color: #515c63;
+}
+
+.btn-grey:hover {
+    color: #242d33;
 }
 
 .btn-sqr {
