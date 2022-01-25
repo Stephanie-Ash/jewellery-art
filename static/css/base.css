@@ -421,6 +421,11 @@ footer {
     .det-product-name {
         max-width: 45rem;
     }
+
+    /* .test {
+        padding-left: 100px;
+        padding-right: 100px;
+    } */
 }
 
 /* For screens 1400px and up */
@@ -432,4 +437,9 @@ footer {
     .home-h2 {
         font-size: 32px;
     }
+
+    /* .test {
+        padding-left: 200px;
+        padding-right: 200px;
+    } */
 }
