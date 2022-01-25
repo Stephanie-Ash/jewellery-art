@@ -3,7 +3,7 @@
 {% block content %}
 <section class="container-fluid">
     <div class="row my-5">
-        <div class="col-10 mx-auto">
+        <div class="col-10 offset-1 col-sm-5 col-md-6 col-lg-5 col-xl-4 offset-sm-1 offset-md-0 offset-lg-1 offset-xl-2 text-center">
             <div class="designer-img-cont mb-4">
                 {% if designer.image %}
                 <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
@@ -11,10 +11,7 @@
                 <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
                 {% endif %}
             </div>
-        </div>
-        <div class="col-12 txt-drk text-center">
-            <h3 class="det-product-name">{{ designer.name }}</h3>
-            <ul class="list-inline">
+            <ul class="list-inline d-none d-md-block d-lg-none mb-0">
                 {% if designer.facebook_link %}
                 <li class="list-inline-item">
                     <a class="content-link" target="_blank" rel="noopener" href="{{ designer.facebook_link }}"
@@ -49,15 +46,81 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="col-12 mb-4 txt-drk text-justify">
+        <div class="col-12 col-sm-5 col-md-6 col-lg-5 col-xl-4 my-sm-auto txt-drk text-center text-md-left">
+            <h3 class="det-product-name d-lg-inline-block mr-lg-2">{{ designer.name }}</h3>
+            <ul class="list-inline d-md-none d-lg-inline">
+                {% if designer.facebook_link %}
+                <li class="list-inline-item">
+                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.facebook_link }}"
+                        aria-label="Visit {{ designer.name }}'s Facebook Page (opens in a new tab)">
+                        <i class="fab fa-facebook-square social" aria-hidden="true"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% if designer.twitter_link %}
+                <li class="list-inline-item">
+                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.twitter_link }}"
+                        aria-label="Visit {{ designer.name }}'s Twitter Page (opens in a new tab)">
+                        <i class="fab fa-twitter-square social" aria-hidden="true"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% if designer.instagram_link %}
+                <li class="list-inline-item">
+                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.instagram_link }}"
+                        aria-label="Visit {{ designer.name }}'s Instagram Page (opens in a new tab)">
+                        <i class="fab fa-instagram-square social" aria-hidden="true"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% if designer.website_link %}
+                <li class="list-inline-item">
+                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.website_link }}"
+                        aria-label="Visit {{ designer.name }}'s Website (opens in a new tab)">
+                        <i class="fas fa-globe social" aria-hidden="true"></i>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+            <p class="d-none d-md-block mb-3 text-justify">{{ designer.introduction }}</p>
+            <div class="d-none d-md-block text-left">
+                <a href="{% url 'designers' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Back to Designers</a>
+                <a href="{% url 'products' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
+            </div>
+        </div>
+        <div class="col-12 d-md-none mb-4 txt-drk text-justify">
             <p class="mb-0">{{ designer.introduction }}</p>
         </div>
-        <div class="col-12">
+        <div class="col-12 d-md-none">
             <a href="{% url 'designers' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Back to Designers</a>
             <a href="{% url 'products' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
         </div>
     </div>
-    
+
 </section>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    let designerImages = document.getElementsByClassName("designer-img");
+
+    for (let image of designerImages) {
+        let newImg = new Image();
+        
+        newImg.onload = function() {
+            let height = newImg.height;
+            let width = newImg.width;
+
+            if (height > width) {
+                image.classList.add("portrait")
+            }
+
+        }
+        newImg.src = image.src
+    }
+
+</script>
 
 {% endblock %}
