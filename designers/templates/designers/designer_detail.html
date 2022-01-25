@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row justify-content-center mt-5 mb-3">
+        <div class="text-center col-12 col-sm-5 offset-sm-1 offset-md-0 col-md-auto">
+            <div class="detail-img-cont mx-auto">
+                {% if designer.image %}
+                <img class="img-fluid" src="{{ designer.image.url }}" alt="{{ designer.name }}">
+                {% else %}
+                <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 text-center text-sm-left col-sm-5 col-md-auto mt-4 my-sm-auto">
+            <h3 class="det-product-name">{{ designer.name }}</h3>
+        </div>
+    </div>
+    
+</section>
+
+{% endblock %}

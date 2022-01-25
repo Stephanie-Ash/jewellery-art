@@ -1,5 +1,5 @@
 """ Views for the designers app. """
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Designer
 
@@ -15,3 +15,16 @@ def all_designers(request):
         }
 
     return render(request, 'designers/designers.html', context)
+
+
+def designer_detail(request, designer_id):
+    """
+    Display the details of an individual designer.
+    """
+    designer = get_object_or_404(Designer, id=designer_id)
+
+    context = {
+        'designer': designer,
+    }
+
+    return render(request, 'designers/designer_detail.html', context)

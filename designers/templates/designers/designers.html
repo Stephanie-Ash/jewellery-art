@@ -16,7 +16,7 @@
             <div class="row">
             {% for designer in designers %}
                 <div class="col-6 col-md-4 col-lg-3 text-center txt-drk">
-                    <a class="content-link" href="">
+                    <a class="content-link" href="{% url 'designer_detail' designer.id %}">
                         <div class="designer-img-cont mb-3">
                             {% if designer.image %}
                             <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
