@@ -17,6 +17,7 @@ class Designer(models.Model):
     facebook_link = models.URLField(max_length=1024, null=True, blank=True)
     instagram_link = models.URLField(max_length=1024, null=True, blank=True)
     website_link = models.URLField(max_length=1024, null=True, blank=True)
+    twitter_link = models.URLField(max_length=1024, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         """
