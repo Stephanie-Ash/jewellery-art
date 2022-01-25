@@ -3,10 +3,11 @@
 {% block content %}
 <section class="container-fluid">
     <div class="row">
-        <div class="col-10 mx-auto">
+        <div class="col-12 col-sm-10 mx-auto">
             <div class="row">
                 <div class="col-12 mt-4 my-2 text-center text-sm-left txt-drk">
-                    <h2 class="d-inline-block mb-0">Meet Our Designers</h2>
+                    <h2 class="d-none d-sm-block mb-0">Meet Our Designers</h2>
+                    <h2 class="d-sm-none mb-0">Designers</h2>
                 </div>
                 <div class="col-12">
                     <hr class="divide-rule">
@@ -14,14 +15,17 @@
             </div>
             <div class="row">
             {% for designer in designers %}
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="designer-img-cont">
-                        {% if designer.image %}
-                        <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
-                        {% else %}
-                        <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
-                        {% endif %}
-                    </div>
+                <div class="col-6 col-md-4 col-lg-3 text-center txt-drk">
+                    <a class="content-link" href="">
+                        <div class="designer-img-cont mb-3">
+                            {% if designer.image %}
+                            <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
+                            {% else %}
+                            <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
+                            {% endif %}
+                        </div>
+                        <h4 class="designer-title mb-5">{{ designer.name }}</h4>
+                    </a>
                 </div>
             {% endfor %}
             </div>
