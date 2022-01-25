@@ -19,7 +19,7 @@
                         {% if designer.image %}
                         <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
                         {% else %}
-                        <img class="portrait" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
+                        <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
                         {% endif %}
                     </div>
                 </div>
@@ -47,18 +47,20 @@
 
 <script>
     let designerImages = document.getElementsByClassName("designer-img");
-    console.log(designerImages)
 
     for (let image of designerImages) {
-        let imgWidth = image.clientWidth;
-        let imgHeight = image.clientHeight;
+        let newImg = new Image();
+        
+        newImg.onload = function() {
+            let height = newImg.height;
+            let width = newImg.width;
 
-        console.log(imgWidth)
-        console.log(imgHeight)
+            if (height > width) {
+                image.classList.add("portrait")
+            }
 
-        if (imgHeight > imgWidth) {
-            image.classList.add("portrait");
-        } 
+        }
+        newImg.src = image.src
     }
 
 </script>
