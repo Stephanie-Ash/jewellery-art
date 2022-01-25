@@ -5,16 +5,25 @@
     <div class="row">
         <div class="col-10 mx-auto">
             <div class="row">
-                <div class="col my-4 text-center text-sm-left txt-drk">
+                <div class="col-12 mt-4 my-2 text-center text-sm-left txt-drk">
                     <h2 class="d-inline-block mb-0">Meet Our Designers</h2>
                 </div>
                 <div class="col-12">
                     <hr class="divide-rule">
                 </div>
             </div>
-            </div>
             <div class="row">
-                
+            {% for designer in designers %}
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="designer-img-cont">
+                        {% if designer.image %}
+                        <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
+                        {% else %}
+                        <img class="portrait" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
             </div>
         </div>
     </div>
@@ -34,6 +43,24 @@
     toTopButton.addEventListener("click", function() {
         window.scrollTo(0,0)
     });
+</script>
+
+<script>
+    let designerImages = document.getElementsByClassName("designer-img");
+    console.log(designerImages)
+
+    for (let image of designerImages) {
+        let imgWidth = image.clientWidth;
+        let imgHeight = image.clientHeight;
+
+        console.log(imgWidth)
+        console.log(imgHeight)
+
+        if (imgHeight > imgWidth) {
+            image.classList.add("portrait");
+        } 
+    }
+
 </script>
 
 {% endblock %}
