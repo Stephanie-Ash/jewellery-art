@@ -108,7 +108,7 @@
                     </div>
                 </li>
                 <li class="list-inline-item order-lg-5">
-                    <a class="nav-link px-2" href="#">
+                    <a class="nav-link px-2" href="{% url 'view_basket' %}">
                         <div class="text-center">
                             <i class="fas fa-shopping-basket fa-lg"></i>
                             <p class="m-0 d-none d-lg-block">0</p>
@@ -203,7 +203,7 @@
             <div class="col-auto px-lg-5">
                 <p class="list-heading mb-1">Shop</p>
                 <ul class="list-unstyled">
-                    <li><a class="footer-link txt-lgt" href="">Basket</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'view_basket' %}">Basket</a></li>
                     {% if user.is_authenticated %}
                     <li><a class="footer-link txt-lgt" href="#" aria-label="Logout of your account">Logout</a></li>
                     <li><a class="footer-link txt-lgt" href="#" aria-label="View your profile">My Profile</a></li>
