@@ -35,12 +35,12 @@ h1 {
     font-size: 18px;
 }
 
-h3 {
+.detail-h2 {
     font-size: 20px;
 }
 
-h4 {
-    font-size: 16px;
+h3 {
+    font-size: 20px;
 }
 
 /* Background Colours */
@@ -415,6 +415,10 @@ footer {
     }
 
     h3 {
+        font-size: 24px;
+    }
+
+    .detail-h2 {
         font-size: 24px;
     }
 }

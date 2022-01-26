@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col-12 text-center text-sm-left col-sm-5 col-md-auto mt-4 my-sm-auto">
-            <h3 class="det-product-name">{{ product.name }}</h3>
+            <h2 class="det-product-name detail-h2">{{ product.name }}</h2>
             {% if product.collection %}
             <p class="mb-0">from {{ product.collection.name }}</p>
             {% endif %}
@@ -28,12 +28,12 @@
             <div class="accordion mb-5" id="prod-det-accordion">
                 <div class="card rounded-0 txt-drk">
                     <div class="card-header mb-0 det-acc-head bg-color-lgt" id="description-head">
-                        <h2 class="mb-0">
+                        <h3 class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button" data-toggle="collapse"
                                 data-target="#description" aria-expanded="true" aria-controls="description">
                                 Description <i id="description-arrow" class="fas fa-chevron-up"></i>
                             </button>
-                        </h2>
+                        </h3>
                     </div>
                     <div id="description" class="collapse show" aria-labelledby="description-head"
                         data-parent="#prod-det-accordion">
@@ -46,13 +46,13 @@
                 </div>
                 <div class="card rounded-0">
                     <div class="card-header mb-0 det-acc-head bg-color-lgt" id="details-head">
-                        <h2 class="mb-0">
+                        <h3 class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0 collapsed" type="button"
                                 data-toggle="collapse" data-target="#details" aria-expanded="false"
                                 aria-controls="details">
                                 Details <i id="details-arrow" class="fas fa-chevron-down"></i>
                             </button>
-                        </h2>
+                        </h3>
                     </div>
                     <div id="details" class="collapse" aria-labelledby="details-head"
                         data-parent="#prod-det-accordion">
@@ -79,9 +79,10 @@
             </div>
         </div>
     </div>
-
+</section>
+<section class="container-fluid">
     {% if other_products %}
-    <div class="row test">
+    <div class="row">
         <div class="col-12">
             <hr class="divide-rule-dets">
             <h3 class="mb-4">Also by the Designer</h3>
@@ -98,7 +99,7 @@
                 </a>
                 <div class="card-body pb-0">
                     <a class="content-link" href="{% url 'product_detail' product.id %}">
-                        <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
+                        <p class="mb-0 card-title text-center">{{ product.name }}</p>
                     </a>
                 </div>
                 <div class="card-footer pt-1 text-center">
@@ -120,7 +121,7 @@
                 {% endif %}
                 </a>
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
-                <h4 class="mb-0 home-prod-title text-center">{{ product.name }}</h4>
+                <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
                 </a>
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
                 <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
@@ -131,7 +132,6 @@
     </div>
     {% endif %}
 </section>
-
 {% endblock %}
 
 {% block postloadjs %}

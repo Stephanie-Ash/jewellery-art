@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <div class="col-12 col-sm-10 mx-auto">
             <div class="row">
@@ -24,7 +24,7 @@
                             <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
                             {% endif %}
                         </div>
-                        <h4 class="designer-title mb-5">{{ designer.name }}</h4>
+                        <p class="designer-title mb-5">{{ designer.name }}</p>
                     </a>
                 </div>
             {% endfor %}
@@ -36,7 +36,7 @@
             <i class="fas fa-arrow-up fa-2x txt-lgt bg-color-drk"></i>
         </a>
     </div>
-</section>
+</div>
 
 {% endblock %}
 

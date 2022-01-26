@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <div class="col-10 mx-auto">
             <div class="row">
@@ -68,7 +68,7 @@
                         </a>
                         <div class="card-body pb-0">
                             <a class="content-link" href="{% url 'product_detail' product.id %}">
-                                <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
+                                <p class="mb-0 card-title text-center">{{ product.name }}</p>
                             </a>
                         </div>
                         <div class="card-footer pt-1 text-center">
@@ -87,7 +87,7 @@
             <i class="fas fa-arrow-up fa-2x txt-lgt bg-color-drk"></i>
         </a>
     </div>
-</section>
+</div>
 
 {% endblock %}
 

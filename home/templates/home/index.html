@@ -94,7 +94,7 @@
                 </a>
                 <div class="card-body pb-0">
                     <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
-                        <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
+                        <p class="mb-0 card-title text-center">{{ product.name }}</p>
                     </a>
                 </div>
                 <div class="card-footer pt-1 text-center">
@@ -117,7 +117,7 @@
                 {% endif %}
                 </a>
                 <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
-                <h4 class="mb-0 home-prod-title text-center">{{ product.name }}</h4>
+                <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
                 </a>
                 <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
                 <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
