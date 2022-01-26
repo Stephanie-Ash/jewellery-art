@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Designer information section -->
 <section class="container-fluid">
     <div class="row my-5">
-        <div class="col-10 offset-1 col-sm-5 col-md-6 col-lg-5 col-xl-4 offset-sm-1 offset-md-0 offset-lg-1 offset-xl-2 text-center">
+        <!-- Designer Image -->
+        <div class="col-10 offset-1 col-sm-5 offset-sm-1 col-md-6 offset-md-0 col-lg-5 offset-lg-1 col-xl-4 offset-xl-2 text-center">
             <div class="designer-img-cont mb-4">
                 {% if designer.image %}
                 <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
@@ -11,6 +13,7 @@
                 <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
                 {% endif %}
             </div>
+            <!-- Designer social media links displayed in same column as the image on medium screens only -->
             <ul class="list-inline d-none d-md-block d-lg-none mb-0">
                 {% if designer.facebook_link %}
                 <li class="list-inline-item">
@@ -47,7 +50,9 @@
             </ul>
         </div>
         <div class="col-12 col-sm-5 col-md-6 col-lg-5 col-xl-4 my-sm-auto txt-drk text-center text-md-left">
+            <!-- Designer name -->
             <h3 class="det-product-name d-lg-inline-block mr-lg-2">{{ designer.name }}</h3>
+            <!-- Designer social media links displayed with the name on all but medium screens -->
             <ul class="list-inline d-md-none d-lg-inline">
                 {% if designer.facebook_link %}
                 <li class="list-inline-item">
@@ -82,12 +87,14 @@
                 </li>
                 {% endif %}
             </ul>
+            <!-- Designer information and buttons displayed under name and next to photo from medium screens up. -->
             <p class="d-none d-md-block mb-3 text-justify">{{ designer.introduction }}</p>
             <div class="d-none d-md-block text-left">
                 <a href="{% url 'designers' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Back to Designers</a>
                 <a href="{% url 'products' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
             </div>
         </div>
+        <!-- Designeer information and buttons displayed below name and photo for smallest screens -->
         <div class="col-12 d-md-none mb-4 txt-drk text-justify">
             <p class="mb-0">{{ designer.introduction }}</p>
         </div>
@@ -96,7 +103,68 @@
             <a href="{% url 'products' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
         </div>
     </div>
-
+</section>
+<!-- Designer products section -->
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <hr class="divide-rule-dets">
+        </div>
+        <div class="col-12 mb-3">
+            <h3>Pieces by {{ designer.name }}</h3>
+        </div>
+    </div>
+    <div class="row mx-2">
+        {% for collection in collections %}
+        {% for product in collection.products.all %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card product-card h-100 pb-4 mx-auto">
+                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                    {% if product.image %}
+                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    {% endif %}
+                </a>
+                <div class="card-body pb-0">
+                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                        <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
+                    </a>
+                </div>
+                <div class="card-footer pt-1 text-center">
+                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                        <p class="mb-0">{{ collection.name }}</p>
+                        <p class="mb-0">£{{ product.price }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% for product in products %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card product-card h-100 pb-4 mx-auto">
+                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                    {% if product.image %}
+                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    {% endif %}
+                </a>
+                <div class="card-body pb-0">
+                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                        <h4 class="mb-0 card-title text-center">{{ product.name }}</h4>
+                    </a>
+                </div>
+                <div class="card-footer pt-1 text-center">
+                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                        <p class="mb-0">£{{ product.price }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 
 {% endblock %}

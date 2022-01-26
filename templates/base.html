@@ -128,24 +128,24 @@
                             <div class="dropdown-menu rounded-0 bg-color-lgt mt-0 w-100" aria-labelledby="navbarDropdown">
                                 <div class="row">
                                     <div class="col-sm-3 mb-2">
-                                        {% all_categories as categories %}
+                                        {% all_categories as all_categories %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Category</p>
                                         <a class="dropdown-item" href="{% url 'products' %}">All Jewellery</a>
-                                        {% for category in categories %}
+                                        {% for category in all_categories %}
                                         <a class="dropdown-item" href="{% url 'products' %}?category={{ category.programmatic_name }}">{{ category.name }}</a>
                                         {% endfor %}
                                     </div>
                                     <div class="col-sm-4 mb-2">
-                                        {% all_collections as collections %}
+                                        {% all_collections as all_collections %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Collection</p>
-                                        {% for collection in collections %}
+                                        {% for collection in all_collections %}
                                         <a class="dropdown-item" href="{% url 'products' %}?collection={{ collection.programmatic_name }}">{{ collection.name }}</a>
                                         {% endfor %}
                                     </div>
                                     <div class="col-sm-3 mb-2">
-                                        {% all_designers as designers %}
+                                        {% all_designers as all_designers %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">By Designer</p>
-                                        {% for designer in designers %}
+                                        {% for designer in all_designers %}
                                         <a class="dropdown-item" href="{% url 'products' %}?designer={{ designer.programmatic_name }}">{{ designer.name }}</a>
                                         {% endfor %}
                                     </div>
