@@ -36,7 +36,7 @@
                         </td>
                         <td class="pb-3">
                             <a class="txt-sm update-link">Update</a>
-                            <form action="" method="POST">
+                            <form class="updade-form" action="" method="POST">
                                 {% csrf_token %}
                                 <div class="form-group mb-0">
                                     <input class="form-control form-control-sm rounded-0 qty-input" type="number" name="quantity"
@@ -44,7 +44,7 @@
                                         id="id_qty_{{ item.item_id }}">
                                 </div>
                             </form>
-                            <a class="txt-sm text-danger remove-link">Remove</a>
+                            <a class="txt-sm text-danger remove-item" id="remove_{{ item.item_id }}">Remove</a>
                         </td>
                         <td class="pb-3 pt-4">
                             <p class="mb-0">£{{ item.product.price }}</p>
@@ -70,5 +70,22 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<script>
+    $('.update-link').click(function(e) {
+        let form = $(this).prev('update.form');
+        form.submit();
+    })
 
+    $('.remove-item').click(function(e) {
+        let csrfToken = "{{ csrf_token }}"
+        let itemId = $(this).attr('id').split('remove_')[1];
+        let url = `/bag/remove/${itemId}`;
+        let data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+            .done(function() {
+                location.reload();
+            });
+    })
+</script>
 {% endblock %}

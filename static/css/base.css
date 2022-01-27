@@ -117,10 +117,10 @@ h3 {
     right: 10px;
     border: 2px solid #dce4e8;
     padding: 5px;
+    cursor: pointer;
 }
 
 .to-top-btn i:hover {
-    cursor: pointer;
     background-color: #515c63;
 }
 
@@ -416,6 +416,10 @@ footer {
 
 .basket-total {
     margin-left: 15px;
+}
+
+.update-link, .remove-item {
+    cursor: pointer;
 }
 
 /* ------------------------Media Queries------------------------ */
