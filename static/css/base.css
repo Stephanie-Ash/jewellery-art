@@ -387,6 +387,33 @@ footer {
     font-weight: bold;
 }
 
+/* ------------------------basket.html------------------------ */
+
+.basket-img-col {
+    width: 20%;
+}
+
+.basket-img-col > img {
+    outline: 2px solid #242d33;
+    outline-offset: 2px;
+}
+
+.basket-totals {
+    float: right;
+}
+
+.basket-grand-total {
+    margin-left: 19px;
+}
+
+.basket-delivery {
+    margin-left: 47px;
+}
+
+.basket-total {
+    margin-left: 15px;
+}
+
 /* ------------------------Media Queries------------------------ */
 
 /* For screens 320px and up */

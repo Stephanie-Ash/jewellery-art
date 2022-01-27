@@ -1,8 +1,55 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid">
-    
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4 my-2 text-center text-sm-left txt-drk">
+            <h2 class="d-none d-sm-block mb-0">Shopping Basket</h2>
+            <h2 class="d-sm-none mb-0">Basket</h2>
+        </div>
+        <div class="col-12">
+            <hr class="divide-rule">
+        </div>
+        <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 txt-drk">
+            {% if basket_items %}
+            <table class="table table-sm txt-drk mb-1">
+                <thead>
+                    <tr>
+                        <th colspan="2" scope="col">Basket Items</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in basket_items %}
+                    <tr>
+                        <td class="basket-img-col pb-3">
+                            {% if item.product.image %}
+                            <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            {% else %}
+                            <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                            {% endif %}
+                        </td>
+                        <td class="pb-3 pt-2">
+                            <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
+                            <p class="mb-0">£{{ item.product.price }}</p>
+                        </td>
+                        <td class="pb-3 pt-2">{{ item.quantity }}</td>
+                        <td class="pb-3 pt-2">£{{ item.product.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="basket-totals txt-drk">
+                <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
+                <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
+                <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong></p>
+                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Keep Shopping</a>
+                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Checkout</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 {% endblock %}
