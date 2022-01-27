@@ -23,6 +23,10 @@ main {
     color: #242d33;
 }
 
+.txt-sm {
+    font-size: 12px;
+}
+
 .list-heading {
     font-weight: bold;
 }

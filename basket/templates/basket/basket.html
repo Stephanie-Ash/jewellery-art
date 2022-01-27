@@ -30,12 +30,25 @@
                             <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
                             {% endif %}
                         </td>
-                        <td class="pb-3 pt-2">
+                        <td class="pb-3 pt-4">
                             <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
                             <p class="mb-0">£{{ item.product.price }}</p>
                         </td>
-                        <td class="pb-3 pt-2">{{ item.quantity }}</td>
-                        <td class="pb-3 pt-2">£{{ item.product.price }}</td>
+                        <td class="pb-3">
+                            <a class="txt-sm update-link">Update</a>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group mb-0">
+                                    <input class="form-control form-control-sm rounded-0 qty-input" type="number" name="quantity"
+                                        value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
+                                        id="id_qty_{{ item.item_id }}">
+                                </div>
+                            </form>
+                            <a class="txt-sm text-danger remove-link">Remove</a>
+                        </td>
+                        <td class="pb-3 pt-4">
+                            <p class="mb-0">£{{ item.product.price }}</p>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -43,7 +56,8 @@
             <div class="basket-totals txt-drk">
                 <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
                 <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
-                <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong></p>
+                <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
+                </p>
                 <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Keep Shopping</a>
                 <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Checkout</a>
             </div>
@@ -51,5 +65,10 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
 
 {% endblock %}

@@ -25,7 +25,8 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="id_qty_{{ product.id }}">Quantity</label>
-                    <input class="form-control rounded-0 qty-input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                    <input class="form-control rounded-0 qty-input" type="number" name="quantity" value="1" min="1"
+                        max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                 </div>
                 <div>
                     <button type="submit" class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Add to Basket</button>
@@ -41,8 +42,9 @@
                 <div class="card rounded-0 txt-drk">
                     <div class="card-header mb-0 det-acc-head bg-color-lgt" id="description-head">
                         <h3 class="mb-0">
-                            <button class="btn btn-block accord-btn text-left rounded-0" type="button" data-toggle="collapse"
-                                data-target="#description" aria-expanded="true" aria-controls="description">
+                            <button class="btn btn-block accord-btn text-left rounded-0" type="button"
+                                data-toggle="collapse" data-target="#description" aria-expanded="true"
+                                aria-controls="description">
                                 Description <i id="description-arrow" class="fas fa-chevron-up"></i>
                             </button>
                         </h3>
@@ -66,8 +68,7 @@
                             </button>
                         </h3>
                     </div>
-                    <div id="details" class="collapse" aria-labelledby="details-head"
-                        data-parent="#prod-det-accordion">
+                    <div id="details" class="collapse" aria-labelledby="details-head" data-parent="#prod-det-accordion">
                         <div class="card-body pb-0">
                             {% if not product.sizing and not product.material %}
                             <p class="mb-0">
@@ -104,9 +105,11 @@
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
                     {% else %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                        alt="{{ product.name }}">
                     {% endif %}
                 </a>
                 <div class="card-body pb-0">
@@ -124,19 +127,20 @@
         {% endfor %}
         <div class="scrolling-wrapper d-md-none">
             {% for product in other_products %}
-            <div class="scroll-card scroll-drk {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
+            <div
+                class="scroll-card scroll-drk {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
-                {% if product.image %}
-                <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
-                {% endif %}
+                    {% if product.image %}
+                    <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    {% endif %}
                 </a>
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
-                <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
+                    <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
                 </a>
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
-                <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
+                    <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
                 </a>
             </div>
             {% endfor %}
@@ -149,7 +153,7 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
-    $("#description").on('shown.bs.collapse', function() {
+    $("#description").on('shown.bs.collapse', function () {
         let iElement = document.getElementById("description-arrow");
         if (iElement.classList.contains("fa-chevron-down")) {
             iElement.classList.remove("fa-chevron-down");
@@ -157,7 +161,7 @@
         }
     });
 
-    $("#details").on('shown.bs.collapse', function() {
+    $("#details").on('shown.bs.collapse', function () {
         let iElement = document.getElementById("details-arrow");
         if (iElement.classList.contains("fa-chevron-down")) {
             iElement.classList.remove("fa-chevron-down");
@@ -165,7 +169,7 @@
         }
     });
 
-    $("#description").on('hidden.bs.collapse', function() {
+    $("#description").on('hidden.bs.collapse', function () {
         let iElement = document.getElementById("description-arrow");
         if (iElement.classList.contains("fa-chevron-up")) {
             iElement.classList.remove("fa-chevron-up");
@@ -173,7 +177,7 @@
         }
     });
 
-    $("#details").on('hidden.bs.collapse', function() {
+    $("#details").on('hidden.bs.collapse', function () {
         let iElement = document.getElementById("details-arrow");
         if (iElement.classList.contains("fa-chevron-up")) {
             iElement.classList.remove("fa-chevron-up");
