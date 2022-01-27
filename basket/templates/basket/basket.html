@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-12 mt-4 my-2 text-center text-sm-left txt-drk">
+        <div class="col-12 mt-4 mb-2 text-center text-sm-left txt-drk">
             <h2 class="d-none d-sm-block mb-0">Shopping Basket</h2>
             <h2 class="d-sm-none mb-0">Basket</h2>
         </div>
@@ -13,7 +13,8 @@
         </div>
         <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 txt-drk">
             {% if basket_items %}
-            <table class="table table-sm txt-drk mb-1">
+            {% include "basket/mobile-basket.html" %}
+            <table class="d-none d-sm-block table table-sm txt-drk mb-1">
                 <thead>
                     <tr>
                         <th colspan="2" scope="col">Basket Items</th>
@@ -26,14 +27,14 @@
                     <tr>
                         <td class="basket-img-col pb-3">
                             {% if item.product.image %}
-                            <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            <img class="basket-img img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                             {% else %}
-                            <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                            <img class="basket-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
                             {% endif %}
                         </td>
                         <td class="pb-3 pt-4">
                             <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="mb-0">£{{ item.product.price }}</p>
+                            <p class="mb-0">Price: £{{ item.product.price }}</p>
                         </td>
                         <td class="pb-3">
                             <a class="txt-sm update-link">Update</a>
@@ -54,7 +55,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <div class="basket-totals txt-drk">
+            <div class="d-none d-sm-block basket-totals txt-drk">
                 <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
                 <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
                 <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>

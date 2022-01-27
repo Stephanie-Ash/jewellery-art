@@ -397,7 +397,7 @@ footer {
     width: 20%;
 }
 
-.basket-img-col > img {
+.basket-img {
     outline: 2px solid #242d33;
     outline-offset: 2px;
 }
@@ -447,6 +447,13 @@ footer {
 @media screen and (min-width: 400px) {
     .det-product-info {
         padding-left: 18%;
+    }
+}
+
+/* For screens 405px and up */
+@media screen and (min-width: 405px) {
+    .mobile-basket-sub {
+        padding-top: 24px;
     }
 }
 

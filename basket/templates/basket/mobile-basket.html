@@ -1,0 +1,54 @@
+{% load basket_tools %}
+<div class="row d-sm-none">
+    <div class="col-11 offset-1 mb-3">
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Keep Shopping</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Checkout</a>
+    </div>
+</div>
+{% for item in basket_items %}
+<div class="row d-sm-none">
+    <div class="col-11 offset-1 text-left">
+        <p><strong>{{ item.product.name }}</strong></p>
+    </div>
+    <div class="col-6 offset-1">
+        {% if item.product.image %}
+        <img class="basket-img img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+        {% else %}
+        <img class="basket-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+        {% endif %}
+    </div>
+    <div class="col-5 my-auto">
+        <p class="mb-0">Price:</p>
+        <p class="mb-0">£{{ item.product.price }}</p>
+    </div>
+    <div class="col-6 offset-1 mt-3">
+        <a class="txt-sm update-link ml-5">Update</a>
+        <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group mb-0">
+                <label class="d-inline" for="id_qty_{{ item.item_id }}">Qty:</label>
+                <input class="d-inline form-control form-control-sm rounded-0 qty-input" type="number" name="quantity"
+                    value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
+                    id="id_qty_{{ item.item_id }}">
+            </div>
+        </form>
+        <a class="txt-sm text-danger remove-item ml-5" id="remove_{{ item.item_id }}">Remove</a>
+    </div>
+    <div class="col-5 mt-3">
+        <p class="mb-0 mobile-basket-sub">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>
+    </div>
+    <div class="col-12">
+        <hr>
+    </div>
+</div>
+{% endfor %}
+<div class="row d-sm-none">
+    <div class="col-12 txt-drk">
+        <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
+        <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
+        <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
+        </p>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Keep Shopping</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Checkout</a>
+    </div>
+</div>
