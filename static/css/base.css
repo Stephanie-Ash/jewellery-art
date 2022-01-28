@@ -148,6 +148,35 @@ h3 {
     z-index: 99999999999;
 }
 
+.custom-toast {
+    overflow: visible;
+    border: 2px solid #242d33;
+}
+
+.toast-header {
+    border-bottom: 2px solid #242d33;
+}
+
+.toast .close {
+    text-shadow: none;
+    opacity: 1;
+}
+
+.toast-divider {
+    border-color: #242d33;
+}
+
+.toast-img {
+    outline: 2px solid #242d33;
+    outline-offset: 1px;
+}
+
+.toast-basket {
+    height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 /* Nav */
 .nav-link {
     color: #dce4e8 !important;
