@@ -140,6 +140,14 @@ h3 {
 
 /* ------------------------base.html------------------------ */
 
+/* Message Toasts */
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
 /* Nav */
 .nav-link {
     color: #dce4e8 !important;
