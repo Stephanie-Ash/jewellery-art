@@ -107,9 +107,15 @@
                 </li>
                 <li class="list-inline-item order-lg-5">
                     <a class="nav-link px-2" href="{% url 'view_basket' %}">
-                        <div class="text-center">
+                        <div class="text-center base-basket-parent">
                             <i class="fas fa-shopping-basket fa-lg"></i>
-                            <p class="m-0 d-none d-lg-block">0</p>
+                            <p class="m-0 base-basket-items">
+                                {% if basket_items %}
+                                {{ product_count }}
+                                {% else %}
+                                0
+                                {% endif %}
+                            </p>
                         </div>
                     </a>
                 </li>

@@ -11,7 +11,7 @@
         <div class="col-12">
             <hr class="divide-rule">
         </div>
-        <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 txt-drk">
+        <div class="col-12 {% if basket_items %}col-lg-10 col-xl-8 offset-lg-1 offset-xl-2{% endif %} txt-drk">
             {% if basket_items %}
             {% include "basket/mobile-basket.html" %}
             <table class="d-none d-sm-block table table-sm txt-drk mb-1">
@@ -63,6 +63,9 @@
                 <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Keep Shopping</a>
                 <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Checkout</a>
             </div>
+            {% else %}
+            <p class="basket-empty">Your basket is currently empty.</p>
+            <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Shop Now!</a>
             {% endif %}
         </div>
     </div>
