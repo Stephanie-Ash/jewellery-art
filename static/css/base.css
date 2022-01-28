@@ -443,17 +443,17 @@ footer {
     }
 }
 
+/* For screens 360px and up */
+@media screen and (min-width: 360px) {
+    .mobile-basket-cols {
+        padding-left: 8% !important;
+    }
+}
+
 /* For screens 400px and up */
 @media screen and (min-width: 400px) {
     .det-product-info {
         padding-left: 18%;
-    }
-}
-
-/* For screens 405px and up */
-@media screen and (min-width: 405px) {
-    .mobile-basket-sub {
-        padding-top: 24px;
     }
 }
 
