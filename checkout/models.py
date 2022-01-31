@@ -30,6 +30,34 @@ class Order(models.Model):
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, default=0)
 
+    def _generate_order_number(self):
+        """
+        Generate random, unique order number.
+        """
+        return uuid.uuid4().hex.upper()
+
+    def update_total(self):
+        """
+        Update grand total whenever a line item is added,
+        accounting for delivery costs.
+        """
+        self.order_total = self.lineitems.aggregate(
+            Sum('lineitem_total'))['lineitem_total__sum']
+        self.delivery_cost = settings.STANDARD_DELIVERY
+        self.grand_total = self.order_total + self.delivery_cost
+        self.save()
+
+    def save(self, *args, **kwargs):
+        """
+        Override original save method if no order number set.
+        """
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.order_number
+
 
 class OrderLineItem(models.Model):
     """
@@ -42,3 +70,14 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(default=0)
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2, editable=False)
+
+    def save(self, *args, **kwargs):
+        """
+        Override original save method to set lineitem total
+        and so update order total.
+        """
+        self.lineitem_total = self.product.price * self.quantity
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'SKU {self.product.sku} on order {self.order.order_number}'
