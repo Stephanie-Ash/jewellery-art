@@ -10,7 +10,7 @@
         <div class="col-12">
             <hr class="divide-rule">
         </div>
-        <div class="col-12 col-lg-5 txt-drk">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-5 offset-lg-0 txt-drk mb-4">
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="order-fieldset">
@@ -33,17 +33,19 @@
                     <div id="card-element"></div>
                     <div id="card-errors" role="alert"></div>
                 </fieldset>
+                <button id="submit-button" class="btn btn-drk btn-sqr txt-lgt my-3"><i class="fas fa-lock mr-1"></i> Make Payment</button>
+                <p>Your card will be charged <strong>£{{ grand_total|floatformat:2}}.</strong></p>
             </form>
         </div>
-        <div class="col-12 col-lg-6 offset-lg-1 txt-drk">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-6 txt-drk mb-5">
             <p>Order Summary</p>
             {% for item in basket_items %}
             <div class="row">
-                <div class="col-3">
+                <div class="col-2">
                     {% if item.product.image %}
-                    <img class="basket-img img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    <img class="checkout-img img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                     {% else %}
-                    <img class="basket-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                    <img class="checkout-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
                     {% endif %}
                 </div>
                 <div class="col-5">
@@ -51,7 +53,7 @@
                     <p class="mb-0">Price: £{{ item.product.price }}</p>
                     <p class="mb-0">Qty: £{{ item.quantity }}</p>
                 </div>
-                <div class="col-4 mt-auto">
+                <div class="col-5 mt-auto text-right">
                     <p class="mb-0">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>
                 </div>
                 <div class="col-12">
@@ -60,11 +62,14 @@
             </div>
             {% endfor %}
             <div class="row">
-                <div class="col-12 txt-drk">
+                <div class="col-6 txt-drk">
                     <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
                     <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
-                    <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
+                    <p class="mb-0"><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
                     </p>
+                </div>
+                <div class="col-6 mt-auto text-right">
+                    <a class="btn btn-sm btn-drk btn-sqr txt-lgt" href="{% url 'view_basket' %}">Edit Basket</a>
                 </div>
             </div> 
         </div>

@@ -2,7 +2,7 @@
 <div class="row d-sm-none">
     <div class="col-12 mb-3 mobile-basket-cols">
         <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Keep Shopping</a>
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Checkout</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'checkout' %}">Checkout</a>
     </div>
 </div>
 {% for item in basket_items %}
@@ -46,6 +46,6 @@
         <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
         </p>
         <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Keep Shopping</a>
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Checkout</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'checkout' %}">Checkout</a>
     </div>
 </div>

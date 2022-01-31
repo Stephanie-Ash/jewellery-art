@@ -482,8 +482,17 @@ footer {
     background-color: #eef2f4;
 }
 
+.order-fieldset .form-control:focus {
+    box-shadow: none;
+}
+
 .order-fieldset legend {
     font-size: 20px;
+}
+
+.checkout-img {
+    outline: 1px solid #242d33;
+    outline-offset: 1px;
 }
 
 /* ------------------------Media Queries------------------------ */
