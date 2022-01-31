@@ -24,3 +24,19 @@ let style = {
 };
 let card = elements.create('card', {style: style});
 card.mount('#card-element');
+
+// Handle realtime validation errors on the card element
+card.addEventListener('change', function (event) {
+    let errorDiv = document.getElementById('card-errors');
+    if (event.error) {
+        let html = `
+        <span role="alert">
+            <i class="fas fa-times-circle mx-1"></i>
+        </span>
+        <span>${event.error.message}</span>
+        `;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = '';
+    }
+});
