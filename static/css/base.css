@@ -476,10 +476,15 @@ footer {
 
 /* ------------------------checkout.html------------------------ */
 
-.order-fieldset .form-control {
+.order-fieldset .form-control, #card-element {
     border-radius: 0;
     border: 1px solid #242d33;
     background-color: #eef2f4;
+    color: #242d33;
+}
+
+.order-fieldset .form-control::placeholder {
+    color: #515c63;
 }
 
 .order-fieldset .form-control:focus {
@@ -493,6 +498,21 @@ footer {
 .checkout-img {
     outline: 1px solid #242d33;
     outline-offset: 1px;
+}
+
+/* Stripe */
+.StripeElement {
+  box-sizing: border-box;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 10px 12px;
+}
+
+.StripeElement--focus {
+  box-shadow: none;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #eef2f4 !important;
 }
 
 /* ------------------------Media Queries------------------------ */

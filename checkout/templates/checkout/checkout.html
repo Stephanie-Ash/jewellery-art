@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load basket_tools %}
 
 {% block content %}
@@ -10,7 +11,7 @@
         <div class="col-12">
             <hr class="divide-rule">
         </div>
-        <div class="col-12 col-md-10 offset-md-1 col-lg-5 offset-lg-0 txt-drk mb-4">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-5 offset-lg-0 mb-4">
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="order-fieldset">
@@ -76,4 +77,11 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
