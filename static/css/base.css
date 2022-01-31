@@ -474,6 +474,18 @@ footer {
     font-size: 18px;
 }
 
+/* ------------------------checkout.html------------------------ */
+
+.order-fieldset .form-control {
+    border-radius: 0;
+    border: 1px solid #242d33;
+    background-color: #eef2f4;
+}
+
+.order-fieldset legend {
+    font-size: 20px;
+}
+
 /* ------------------------Media Queries------------------------ */
 
 /* For screens 320px and up */
