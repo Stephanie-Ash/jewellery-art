@@ -9,6 +9,7 @@ class OrderForm(forms.ModelForm):
     A form for buying jewellery and creating an order.
     """
     class Meta:
+        """ Select the model and define the fields. """
         model = Order
         fields = ('full_name', 'email', 'phone_number',
                   'address1', 'address2', 'town_or_city',
