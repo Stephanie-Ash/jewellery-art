@@ -29,7 +29,7 @@
                     {{ order_form.postcode | as_crispy_field }}
                     {{ order_form.country | as_crispy_field }}
                 </fieldset>
-                <fieldset>
+                <fieldset class="order-fieldset">
                     <legend>Payment Details</legend>
                     <div id="card-element"></div>
                     <div class="text-danger my-1" id="card-errors" role="alert"></div>
@@ -63,13 +63,13 @@
             </div>
             {% endfor %}
             <div class="row">
-                <div class="col-6 txt-drk">
+                <div class="col-12 col-sm-6 txt-drk">
                     <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
                     <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
                     <p class="mb-0"><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
                     </p>
                 </div>
-                <div class="col-6 mt-auto text-right">
+                <div class="col-12 col-sm-6 mt-1 mt-sm-auto text-right">
                     <a class="btn btn-sm btn-drk btn-sqr txt-lgt" href="{% url 'view_basket' %}">Edit Basket</a>
                 </div>
             </div> 
