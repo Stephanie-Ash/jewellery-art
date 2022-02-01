@@ -95,7 +95,7 @@ def checkout_success(request, order_number):
     """
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Good news, your order was successful. \
-        Your order number is {order_number}. A confirmation has been \
+        Your order number is: {order_number}. A confirmation has been \
         sent to {order.email}')
 
     if 'basket' in request.session:
