@@ -515,6 +515,12 @@ footer {
   background-color: #eef2f4 !important;
 }
 
+/* ---------------------checkout_success.html--------------------- */
+.order-number {
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
 /* ------------------------Media Queries------------------------ */
 
 /* For screens 320px and up */
@@ -540,6 +546,11 @@ footer {
 @media screen and (min-width: 360px) {
     .mobile-basket-cols {
         padding-left: 8% !important;
+    }
+
+    .order-number {
+        word-wrap: normal;
+        font-size: 16px;
     }
 }
 
