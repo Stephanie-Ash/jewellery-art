@@ -43,7 +43,10 @@ class Order(models.Model):
         """
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        self.delivery_cost = settings.STANDARD_DELIVERY
+        if self.order_total:
+            self.delivery_cost = settings.STANDARD_DELIVERY
+        else:
+            self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
 

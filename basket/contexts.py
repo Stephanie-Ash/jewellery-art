@@ -26,7 +26,11 @@ def basket_contents(request):
             'product': product,
         })
 
-    delivery = settings.STANDARD_DELIVERY
+    if total:
+        delivery = settings.STANDARD_DELIVERY
+    else:
+        delivery = 0
+
     grand_total = delivery + total
 
     context = {
