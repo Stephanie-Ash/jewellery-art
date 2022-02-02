@@ -61,7 +61,11 @@
                 <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
                 </p>
                 <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'products' %}">Keep Shopping</a>
+                {% if user.is_authenticated %}
                 <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'checkout' %}">Checkout</a>
+                {% else %}
+                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'login_or_guest' %}">Checkout</a>
+                {% endif %}
             </div>
             {% else %}
             <p class="basket-empty">Your basket is currently empty.</p>

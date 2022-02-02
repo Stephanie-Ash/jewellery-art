@@ -14,6 +14,14 @@ from .models import OrderLineItem, Order
 from .forms import OrderForm
 
 
+def login_or_guest(request):
+    """
+    Display sign in or guest page pre checkout.
+    """
+
+    return render(request, 'checkout/login_or_guest.html')
+
+
 @require_POST
 def cache_checkout_data(request):
     """
