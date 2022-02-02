@@ -42,12 +42,15 @@
         <div class="col-md-10 col-xl-8 mx-auto py-4 txt-drk">
             <h3 class="text-center">The Art Of Jewellery</h3>
             <p class="text-justify m-0">
-                We believe that jewellery does not have to be traditional, it can be an artwork in its own right.
-                We have scoured the UK to provide a curated collection of <strong>contemporary handmade jewellery</strong> 
-                all available to purchase at the click of a button. Whether you are interested in big statement pieces,
-                <strong>acrylic jewellery</strong> or <strong>unusual silver jewellery</strong> we have something for
-                everyone. <a class="content-link txt-link" href="{% url 'products' %}">Browse our jewellery</a> now to buy a beautifully crafted piece for yourself or
-                a <strong>gift of jewellery for an artist</strong> in your life.
+                As members of the <a class="content-link txt-link" href="https://www.acj.org.uk/" target="_blank"
+                rel="noopener" aria-label="Visit the Accociation for Contemporary Jewellery website (opens in a new tab)">
+                Association for Contemporary Jewellery</a> We believe that jewellery does not have to be traditional, 
+                it can be an artwork in its own right. We have scoured the UK to provide a curated collection of 
+                <strong>contemporary handmade jewellery</strong> all available to purchase at the click of a button. 
+                Whether you are interested in big statement pieces, <strong>acrylic jewellery</strong> or 
+                <strong>unusual silver jewellery</strong> we have something for everyone. 
+                <a class="content-link txt-link" href="{% url 'products' %}">Browse our jewellery</a> now to buy a beautifully 
+                crafted piece for yourself or a <strong>gift of jewellery for an artist</strong> in your life.
             </p>
         </div>
     </div>
@@ -60,15 +63,15 @@
         <div class="col-md-10 col-xl-8 py-4 mx-auto txt-drk">
             <h3 class="text-center">Modern Jewellery Designers</h3>
             <p class="text-justify m-0">
-                Our focus is on great <strong>innovative jewellery design</strong> We collaborate with exciting 
-                up-and-coming designers like acrylic jewellery designer Rachel Clark already featured in 
-                <a class="content-link txt-link" href="https://www.jewelleryfocus.co.uk/" target="_blank" rel="noopener" 
-                aria-label="Visit the Jewellery Focus website (opens in a new tab)">Jewellery Focus</a> and established 
-                designers such as Meredith Chambers who has designed jewellery collections for the  
-                <a class="content-link txt-link" href="https://shop.tate.org.uk/jewellery" target="_blank" rel="noopener" 
-                aria-label="Visit the Tate Jewellery Shop (opens in a new tab)">Tate</a>. Browse the list of our featured
-                <strong><a class="content-link txt-link" href="">independent UK jewellery designers</a></strong> to find out more about them and
-                the work they have created.
+                Our focus is on great <strong>innovative jewellery design</strong>. We collaborate with exciting
+                up-and-coming designers like acrylic jewellery designer Rachel Clark already featured in
+                <a class="content-link txt-link" href="https://www.jewelleryfocus.co.uk/" target="_blank" rel="noopener"
+                    aria-label="Visit the Jewellery Focus website (opens in a new tab)">Jewellery Focus</a> and
+                established designers such as Meredith Chambers who has designed jewellery collections for the
+                <a class="content-link txt-link" href="https://shop.tate.org.uk/jewellery" target="_blank"
+                    rel="noopener" aria-label="Visit the Tate Jewellery Shop (opens in a new tab)">Tate</a>. Browse the
+                list of our featured <strong><a class="content-link txt-link" href="">independent UK jewellery designers</a></strong> to find
+                out more about them and the work they have created.
             </p>
         </div>
     </div>
@@ -87,9 +90,11 @@
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
-                    <img class="card-img-top home-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="card-img-top home-card-img img-fluid" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
                     {% else %}
-                    <img class="card-img-top home-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    <img class="card-img-top home-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                        alt="{{ product.name }}">
                     {% endif %}
                 </a>
                 <div class="card-body pb-0">
@@ -108,19 +113,20 @@
 
         <div class="d-md-none scrolling-wrapper">
             {% for product in featured_products %}
-            <div class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
+            <div
+                class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
                 <a class="content-link" href="{% url 'product_detail' product.id %}">
-                {% if product.image %}
-                <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
-                {% endif %}
+                    {% if product.image %}
+                    <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    {% endif %}
                 </a>
                 <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
-                <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
+                    <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
                 </a>
                 <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
-                <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
+                    <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
                 </a>
             </div>
             {% endfor %}
