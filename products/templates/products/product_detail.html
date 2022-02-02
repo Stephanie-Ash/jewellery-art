@@ -153,32 +153,16 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
-    $("#description").on('shown.bs.collapse', function () {
-        let iElement = document.getElementById("description-arrow");
+    $(".collapse").on('shown.bs.collapse', function () {
+        let iElement = $(this).siblings(".card-header").find("i")[0];
         if (iElement.classList.contains("fa-chevron-down")) {
             iElement.classList.remove("fa-chevron-down");
             iElement.classList.add("fa-chevron-up");
         }
     });
 
-    $("#details").on('shown.bs.collapse', function () {
-        let iElement = document.getElementById("details-arrow");
-        if (iElement.classList.contains("fa-chevron-down")) {
-            iElement.classList.remove("fa-chevron-down");
-            iElement.classList.add("fa-chevron-up");
-        }
-    });
-
-    $("#description").on('hidden.bs.collapse', function () {
-        let iElement = document.getElementById("description-arrow");
-        if (iElement.classList.contains("fa-chevron-up")) {
-            iElement.classList.remove("fa-chevron-up");
-            iElement.classList.add("fa-chevron-down");
-        }
-    });
-
-    $("#details").on('hidden.bs.collapse', function () {
-        let iElement = document.getElementById("details-arrow");
+    $(".collapse").on('hidden.bs.collapse', function () {
+        let iElement = $(this).siblings(".card-header").find("i")[0];
         if (iElement.classList.contains("fa-chevron-up")) {
             iElement.classList.remove("fa-chevron-up");
             iElement.classList.add("fa-chevron-down");
