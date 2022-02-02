@@ -504,6 +504,14 @@ footer {
     margin-bottom: 10px;
 }
 
+select, select option {
+    color: #242d33;
+}
+
+select:invalid, select option[value=""] {
+    color: #6d7a82 !important;
+}
+
 /* Stripe */
 .StripeElement {
   box-sizing: border-box;

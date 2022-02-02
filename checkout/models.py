@@ -4,6 +4,7 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+from django_countries.fields import CountryField
 
 from products.models import Product
 
@@ -16,7 +17,7 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
     phone_number = models.CharField(max_length=20)
-    country = models.CharField(max_length=20)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     address1 = models.CharField(max_length=80)
     address2 = models.CharField(max_length=80, null=True, blank=True)
@@ -31,7 +32,6 @@ class Order(models.Model):
         max_digits=10, decimal_places=2, default=0)
     original_basket = models.TextField(default='')
     stripe_pid = models.CharField(max_length=254, default='')
-
 
     def _generate_order_number(self):
         """
