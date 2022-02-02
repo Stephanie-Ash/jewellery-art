@@ -17,7 +17,7 @@ from .forms import OrderForm
 @require_POST
 def cache_checkout_data(request):
     """
-    Cache checkout data to allow info to be saved when creating
+    Cache checkout data to allow order to be saved when creating
     and order from the webhook.
     """
     try:
