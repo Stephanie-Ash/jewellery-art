@@ -28,6 +28,15 @@
                     {{ order_form.county | as_crispy_field }}
                     {{ order_form.postcode | as_crispy_field }}
                     {{ order_form.country | as_crispy_field }}
+                    <div class="form-check form-check-inline mb-3 mr-0 txt-drk">
+                        {% if user.is_authenticated %}
+                        <label class="form-check-label mr-2" for="id-save-info">
+                            Save delivery information to my profile.
+                        </label>
+                        <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
+                        {% endif %}
+
+                    </div>
                 </fieldset>
                 <fieldset class="order-fieldset">
                     <legend>Payment Details</legend>

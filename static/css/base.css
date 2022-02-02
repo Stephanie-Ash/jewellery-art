@@ -500,6 +500,10 @@ footer {
     outline-offset: 1px;
 }
 
+#div_id_country {
+    margin-bottom: 10px;
+}
+
 /* Stripe */
 .StripeElement {
   box-sizing: border-box;
