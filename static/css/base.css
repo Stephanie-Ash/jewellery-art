@@ -253,10 +253,12 @@ footer {
 
 /* Page Heading */
 .home-hero {
-    background: url('/media/gold-acrylic-cuff.jpg');
-    background-size: cover;
-    padding: 100% 0 0 0;
+    padding: 0;
     position: relative;
+}
+
+.home-hero-img {
+    width: 100%;
 }
 
 .home-heading {
@@ -603,10 +605,6 @@ select:invalid, select option[value=""] {
 
 /* For screens 576px and up */
 @media screen and (min-width: 576px) {
-    .home-hero {
-        padding-top: 50%;
-    }
-
     .home-heading-box {
         position: absolute;
         left: 8px;
