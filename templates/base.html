@@ -87,7 +87,7 @@
                         </form>
                     </div>
                     <li class="list-inline-item order-lg-1 logo-cont d-none">
-                        <a class="logo my-2" href="{% url 'home' %}"></a>
+                        <a class="logo my-2" aria-label="Go to the Jewellery Art homepage" href="{% url 'home' %}"></a>
                     </li>
                 </li>
                 <li class="list-inline-item order-lg-4 dropdown">
@@ -109,7 +109,7 @@
                     </div>
                 </li>
                 <li class="list-inline-item order-lg-5">
-                    <a class="nav-link px-2" href="{% url 'view_basket' %}">
+                    <a class="nav-link px-2" aria-label="Go to your shopping basket" href="{% url 'view_basket' %}">
                         <div class="text-center base-basket-parent">
                             <i class="fas fa-shopping-basket fa-lg"></i>
                             <p class="m-0 base-basket-items">
@@ -125,7 +125,7 @@
                 <div class="collapse navbar-collapse order-lg-3" id="navbar-main">
                     <ul class="navbar-nav w-auto mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link mr-4 home-link" href="{% url 'home' %}">Home</a>
+                            <a class="nav-link mr-4 home-link" aria-label="Go to the Jewellery Art homepage" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item dropdown position-static">
                             <a class="nav-link dropdown-toggle mr-4" href="#" id="navbarDropdown" role="button"
@@ -137,30 +137,30 @@
                                     <div class="col-sm-3 mb-2">
                                         {% all_categories as all_categories %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Category</p>
-                                        <a class="dropdown-item" href="{% url 'products' %}">All Jewellery</a>
+                                        <a class="dropdown-item" aria-label="Go to the all jewellery products page" href="{% url 'products' %}">All Jewellery</a>
                                         {% for category in all_categories %}
-                                        <a class="dropdown-item" href="{% url 'products' %}?category={{ category.programmatic_name }}">{{ category.name }}</a>
+                                        <a class="dropdown-item" aria-label="View the {{ category.name }} jewellery products" href="{% url 'products' %}?category={{ category.programmatic_name }}">{{ category.name }}</a>
                                         {% endfor %}
                                     </div>
                                     <div class="col-sm-4 mb-2">
                                         {% all_collections as all_collections %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Collection</p>
                                         {% for collection in all_collections %}
-                                        <a class="dropdown-item" href="{% url 'products' %}?collection={{ collection.programmatic_name }}">{{ collection.name }}</a>
+                                        <a class="dropdown-item" aria-label="View the {{ collection.name }} jewellery products" href="{% url 'products' %}?collection={{ collection.programmatic_name }}">{{ collection.name }}</a>
                                         {% endfor %}
                                     </div>
                                     <div class="col-sm-3 mb-2">
                                         {% all_designers as all_designers %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">By Designer</p>
                                         {% for designer in all_designers %}
-                                        <a class="dropdown-item" href="{% url 'products' %}?designer={{ designer.programmatic_name }}">{{ designer.name }}</a>
+                                        <a class="dropdown-item" aria-label="View the jewellery products by {{ designer.name }}" href="{% url 'products' %}?designer={{ designer.programmatic_name }}">{{ designer.name }}</a>
                                         {% endfor %}
                                     </div>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mr-4" href="{% url 'designers' %}">Designers</a>
+                            <a class="nav-link mr-4" href="{% url 'designers' %}" aria-label="Go to the all jewellery designers page">Designers</a>
                         </li>
                     </ul>
                 </div>
@@ -195,7 +195,7 @@
     <footer class="container-fluid txt-lgt bg-color-drk">
         <div class="row justify-content-center">
             <div class="col-md-auto px-lg-5 text-center text-md-left">
-                    <img class="logo-img" src="{{ MEDIA_URL }}jewellery-art-logo.png" alt="">
+                    <img class="logo-img" src="{{ MEDIA_URL }}jewellery-art-logo.png" alt="Jewellery Art logo">
                     <p>Handmade Art Jewellery</p>
                 <ul class="list-inline">
                     <li class="list-inline-item">
@@ -221,14 +221,14 @@
             <div class="col-auto px-lg-5">
                 <p class="list-heading mb-1">Explore</p>
                 <ul class="list-unstyled">
-                    <li><a class="footer-link txt-lgt" href="{% url 'products' %}">Jewellery</a></li>
-                    <li><a class="footer-link txt-lgt" href="{% url 'designers' %}">Designers</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'products' %}" aria-label="Go to the all jewellery products page">Jewellery</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'designers' %}" aria-label="Go to the all jewellery designers page">Designers</a></li>
                 </ul>
             </div>
             <div class="col-auto px-lg-5">
                 <p class="list-heading mb-1">Shop</p>
                 <ul class="list-unstyled">
-                    <li><a class="footer-link txt-lgt" href="{% url 'view_basket' %}">Basket</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'view_basket' %}" aria-label="Go to your shopping basket">Basket</a></li>
                     {% if user.is_authenticated %}
                     <li><a class="footer-link txt-lgt" href="#" aria-label="Logout of your account">Logout</a></li>
                     <li><a class="footer-link txt-lgt" href="#" aria-label="View your profile">My Profile</a></li>
@@ -241,9 +241,9 @@
             <div class="col-auto px-lg-5">
                 <p class="list-heading mb-1">Customer Info</p>
                 <ul class="list-unstyled">
-                    <li><a class="footer-link txt-lgt" href="">Contact Us</a></li>
-                    <li><a class="footer-link txt-lgt" href="">FAQs</a></li>
-                    <li><a class="footer-link txt-lgt" href="">Privacy Policy</a></li>
+                    <li><a class="footer-link txt-lgt" href="" aria-label="Go to the contact us form">Contact Us</a></li>
+                    <li><a class="footer-link txt-lgt" href="" aria-label="Go to the Frequently Asked Questions page">FAQs</a></li>
+                    <li><a class="footer-link txt-lgt" href="" aria-label="View our privacy policy">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>

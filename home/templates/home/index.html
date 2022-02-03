@@ -13,7 +13,8 @@
                 </div>
                 <div>
                     <h3>
-                        <a href="{% url 'products' %}" class="btn btn-sm btn-grey btn-sqr txt-lgter">Shop Now</a>
+                        <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
+                            class="btn btn-sm btn-grey btn-sqr txt-lgter">Shop Now</a>
                     </h3>
                 </div>
             </div>
@@ -27,7 +28,8 @@
                 </div>
                 <div>
                     <h3>
-                        <a href="{% url 'products' %}" class="btn btn-grey btn-sqr txt-lgter">Shop Now</a>
+                        <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
+                            class="btn btn-grey btn-sqr txt-lgter">Shop Now</a>
                     </h3>
                 </div>
             </div>
@@ -37,27 +39,29 @@
 </section>
 
 <!-- Information Sections -->
-<!-- Store Ethos Section -->
+<!-- Store Ethos Information -->
 <section class="container-fluid home-info">
     <div class="row">
         <div class="col-md-10 col-xl-8 mx-auto py-4 txt-drk">
             <h3 class="text-center">The Art Of Jewellery</h3>
             <p class="text-justify m-0">
                 As members of the <a class="content-link txt-link" href="https://www.acj.org.uk/" target="_blank"
-                rel="noopener" aria-label="Visit the Accociation for Contemporary Jewellery website (opens in a new tab)">
-                Association for Contemporary Jewellery</a> We believe that jewellery does not have to be traditional, 
-                it can be an artwork in its own right. We have scoured the UK to provide a curated collection of 
-                <strong>contemporary handmade jewellery</strong> all available to purchase at the click of a button. 
-                Whether you are interested in big statement pieces, <strong>acrylic jewellery</strong> or 
-                <strong>unusual silver jewellery</strong> we have something for everyone. 
-                <a class="content-link txt-link" href="{% url 'products' %}">Browse our jewellery</a> now to buy a beautifully 
-                crafted piece for yourself or a <strong>gift of jewellery for an artist</strong> in your life.
+                    rel="noopener"
+                    aria-label="Visit the Accociation for Contemporary Jewellery website (opens in a new tab)">Association
+                    for Contemporary Jewellery</a> We believe that jewellery does not have to be traditional, it can be
+                an artwork in its own right. We have scoured the UK to provide a curated collection of
+                <strong>contemporary handmade jewellery</strong> all available to purchase at the click of a button.
+                Whether you are interested in big statement pieces, <strong>acrylic jewellery</strong> or
+                <strong>unusual silver jewellery</strong> we have something for everyone.
+                <a class="content-link txt-link" aria-label="Go to the all jewellery products page"
+                    href="{% url 'products' %}">Browse our jewellery</a> now to buy a beautifully crafted piece for
+                yourself or a <strong>gift of jewellery for an artist</strong> in your life.
             </p>
         </div>
     </div>
 </section>
 
-<!-- Designer Focus Section -->
+<!-- Designer Focus Information -->
 <section class="container-fluid home-info">
     <div class="row image-divider"></div>
     <div class="row">
@@ -65,14 +69,15 @@
             <h3 class="text-center">Modern Jewellery Designers</h3>
             <p class="text-justify m-0">
                 Our focus is on great <strong>innovative jewellery design</strong>. We collaborate with exciting
-                up-and-coming designers like acrylic jewellery designer Rachel Clark already featured in
-                <a class="content-link txt-link" href="https://www.jewelleryfocus.co.uk/" target="_blank" rel="noopener"
-                    aria-label="Visit the Jewellery Focus website (opens in a new tab)">Jewellery Focus</a> and
-                established designers such as Meredith Chambers who has designed jewellery collections for the
-                <a class="content-link txt-link" href="https://shop.tate.org.uk/jewellery" target="_blank"
+                up-and-coming designers like acrylic jewellery designer Rachel Clark already featured in <a
+                    class="content-link txt-link" href="https://www.jewelleryfocus.co.uk/" target="_blank"
+                    rel="noopener" aria-label="Visit the Jewellery Focus website (opens in a new tab)">Jewellery
+                    Focus</a> and established designers such as Meredith Chambers who has designed jewellery collections
+                for the <a class="content-link txt-link" href="https://shop.tate.org.uk/jewellery" target="_blank"
                     rel="noopener" aria-label="Visit the Tate Jewellery Shop (opens in a new tab)">Tate</a>. Browse the
-                list of our featured <strong><a class="content-link txt-link" href="">independent UK jewellery designers</a></strong> to find
-                out more about them and the work they have created.
+                list of our featured <strong><a class="content-link txt-link" href="{% url 'designers' %}"
+                        aria-label="Go to the all jewellery designers page">independent UK jewellery
+                        designers</a></strong> to find out more about them and the work they have created.
             </p>
         </div>
     </div>
@@ -89,7 +94,8 @@
         {% for product in featured_products %}
         <div class="d-none d-md-flex col-md-3 col-xl-auto">
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
-                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
                     <img class="card-img-top home-card-img img-fluid" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
@@ -99,12 +105,14 @@
                     {% endif %}
                 </a>
                 <div class="card-body pb-0">
-                    <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
+                    <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
                         <p class="mb-0 card-title text-center">{{ product.name }}</p>
                     </a>
                 </div>
                 <div class="card-footer pt-1 text-center">
-                    <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
+                    <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
                         <p class="mb-0">£{{ product.price }}</p>
                     </a>
                 </div>
@@ -116,17 +124,20 @@
             {% for product in featured_products %}
             <div
                 class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
-                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
                     <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% else %}
                     <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                     {% endif %}
                 </a>
-                <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
+                <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
                 </a>
-                <a class="content-link-lgter" href="{% url 'product_detail' product.id %}">
+                <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
                 </a>
             </div>
