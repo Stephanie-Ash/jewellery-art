@@ -13,20 +13,31 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-md-4">
             <h3>Existing Customer</h3>
-            <p>Login to your account to save the order to your profile.</p>
-            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="">Login</a>
+            <p>Login to your account using the button below to save the order to your profile or leave a review.</p>
+            <a class="d-md-none btn btn-sm btn-drk btn-sqr txt-lgt mb-4" href="">Login</a>
         </div>
-        <div class="col-4">
+        <div class="col-md-4 new-col">
             <h3>New Customer</h3>
-            <p>Register for an account to save order information and default delivery details.</p>
-            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="">Register</a>
+            <p>Use the button below to register for an account to leave reviews, save order information and save default delivery details.</p>
+            <a class="d-md-none btn btn-sm btn-drk btn-sqr txt-lgt mb-4" href="">Register</a>
         </div>
-        <div class="col-4">
+        <div class="col-md-4 guest-col">
             <h3>Guest Checkout</h3>
-            <p>Prefer not to register? Continue as a guest.</p>
-            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'checkout' %}">Continue</a>
+            <p>If you prefer not to register, use the button below to continue to checkout as a guest.</p>
+            <a class="d-md-none btn btn-sm btn-drk btn-sqr txt-lgt mb-5" href="{% url 'checkout' %}">Continue</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-none d-md-flex col-md-4">
+            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Login</a>
+        </div>
+        <div class="d-none d-md-flex col-md-4 new-col">
+            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="">Register</a>
+        </div>
+        <div class="d-none d-md-flex col-md-4 guest-col">
+            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'checkout' %}">Continue</a>
         </div>
     </div>
 </div>
