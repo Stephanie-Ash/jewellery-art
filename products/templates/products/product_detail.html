@@ -30,7 +30,7 @@
                 </div>
                 <div>
                     <button type="submit" class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Add to Basket</button>
-                    <a href="{% url 'products' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Keep Shopping</a>
+                    <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page" class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Keep Shopping</a>
                 </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </form>
@@ -103,7 +103,8 @@
         {% for product in other_products %}
         <div class="d-none d-md-flex col-md-3 col-xl-2">
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
-                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
                     <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
@@ -113,12 +114,14 @@
                     {% endif %}
                 </a>
                 <div class="card-body pb-0">
-                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
                         <p class="mb-0 card-title text-center">{{ product.name }}</p>
                     </a>
                 </div>
                 <div class="card-footer pt-1 text-center">
-                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
                         <p class="mb-0">£{{ product.price }}</p>
                     </a>
                 </div>
@@ -129,17 +132,20 @@
             {% for product in other_products %}
             <div
                 class="scroll-card scroll-drk {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
-                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
                     <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% else %}
                     <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                     {% endif %}
                 </a>
-                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
                 </a>
-                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
                 </a>
             </div>

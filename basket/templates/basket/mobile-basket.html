@@ -1,11 +1,14 @@
 {% load basket_tools %}
 <div class="row d-sm-none">
     <div class="col-12 mb-3 mobile-basket-cols">
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" href="{% url 'products' %}">Keep Shopping</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" aria-label="Go to the all jewellery products page"
+            href="{% url 'products' %}">Keep Shopping</a>
         {% if user.is_authenticated %}
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'checkout' %}">Checkout</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Proceed to checkout"
+            href="{% url 'checkout' %}">Checkout</a>
         {% else %}
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'login_or_guest' %}">Checkout</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Proceed to checkout"
+            href="{% url 'login_or_guest' %}">Checkout</a>
         {% endif %}
     </div>
 </div>
@@ -23,7 +26,7 @@
     </div>
     <div class="col-6 my-auto pl-1 mobile-basket-cols">
         <p class="mb-0">Price: £{{ item.product.price }}</p>
-        <a class="txt-sm update-link ml-5">Update</a>
+        <a class="txt-sm update-link ml-5" aria-label="Update the product quantity in your basket">Update</a>
         <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}" method="POST">
             {% csrf_token %}
             <div class="form-group mb-0">
@@ -33,7 +36,8 @@
                     id="id_qty_{{ item.item_id }}">
             </div>
         </form>
-        <a class="txt-sm text-danger remove-item ml-5" id="remove_{{ item.item_id }}">Remove</a>
+        <a class="txt-sm text-danger remove-item ml-5" aria-label="Remove the product from your basket"
+            id="remove_{{ item.item_id }}">Remove</a>
     </div>
     <div class="col-6 offset-6 pl-1 mt-3 mobile-basket-cols">
         <p class="mb-0">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -49,11 +53,14 @@
         <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
         <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
         </p>
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'products' %}">Keep Shopping</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"
+            href="{% url 'products' %}">Keep Shopping</a>
         {% if user.is_authenticated %}
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'checkout' %}">Checkout</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Proceed to checkout"
+            href="{% url 'checkout' %}">Checkout</a>
         {% else %}
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'login_or_guest' %}">Checkout</a>
+        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Proceed to checkout"
+            href="{% url 'login_or_guest' %}">Checkout</a>
         {% endif %}
     </div>
 </div>

@@ -27,9 +27,11 @@
                     <tr>
                         <td class="basket-img-col pb-3">
                             {% if item.product.image %}
-                            <img class="basket-img img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            <img class="basket-img img-fluid" src="{{ item.product.image.url }}"
+                                alt="{{ item.product.name }}">
                             {% else %}
-                            <img class="basket-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                            <img class="basket-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                                alt="{{ item.product.name }}">
                             {% endif %}
                         </td>
                         <td class="pb-3 pt-4">
@@ -37,16 +39,19 @@
                             <p class="mb-0">Price: £{{ item.product.price }}</p>
                         </td>
                         <td class="pb-3">
-                            <a class="txt-sm update-link">Update</a>
-                            <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}" method="POST">
+                            <a class="txt-sm update-link"
+                                aria-label="Update the product quantity in your basket">Update</a>
+                            <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}"
+                                method="POST">
                                 {% csrf_token %}
                                 <div class="form-group mb-0">
-                                    <input class="form-control form-control-sm rounded-0 qty-input" type="number" name="quantity"
-                                        value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
-                                        id="id_qty_{{ item.item_id }}">
+                                    <input class="form-control form-control-sm rounded-0 qty-input" type="number"
+                                        name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                        data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
                                 </div>
                             </form>
-                            <a class="txt-sm text-danger remove-item" id="remove_{{ item.item_id }}">Remove</a>
+                            <a class="txt-sm text-danger remove-item" aria-label="Remove the product from your basket"
+                                id="remove_{{ item.item_id }}">Remove</a>
                         </td>
                         <td class="pb-3 pt-4">
                             <p class="mb-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -60,16 +65,20 @@
                 <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
                 <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
                 </p>
-                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'products' %}">Keep Shopping</a>
+                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4"
+                    aria-label="Go to the all jewellery products page" href="{% url 'products' %}">Keep Shopping</a>
                 {% if user.is_authenticated %}
-                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'checkout' %}">Checkout</a>
+                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Proceed to checkout"
+                    href="{% url 'checkout' %}">Checkout</a>
                 {% else %}
-                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'login_or_guest' %}">Checkout</a>
+                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Proceed to checkout"
+                    href="{% url 'login_or_guest' %}">Checkout</a>
                 {% endif %}
             </div>
             {% else %}
             <p class="basket-empty">Your basket is currently empty.</p>
-            <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" href="{% url 'products' %}">Shop Now!</a>
+            <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"
+                href="{% url 'products' %}">Shop Now!</a>
             {% endif %}
         </div>
     </div>
@@ -80,19 +89,21 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
-    $('.update-link').click(function(e) {
+    $('.update-link').click(function (e) {
         let form = $(this).next('.update-form');
         form.submit();
     })
 
-    $('.remove-item').click(function(e) {
+    $('.remove-item').click(function (e) {
         let csrfToken = "{{ csrf_token }}"
         let itemId = $(this).attr('id').split('remove_')[1];
         let url = `/basket/remove/${itemId}/`;
-        let data = {'csrfmiddlewaretoken': csrfToken};
+        let data = {
+            'csrfmiddlewaretoken': csrfToken
+        };
 
         $.post(url, data)
-            .done(function() {
+            .done(function () {
                 location.reload();
             });
     })

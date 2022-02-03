@@ -37,7 +37,8 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/2891f43577.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
@@ -75,7 +76,8 @@
                     <div class="dropdown-menu mt-0 bg-color-grey search-dropdown w-100 px-4" aria-labelledby="search">
                         <form class="form" method="GET" action="{% url 'products' %}">
                             <div class="input-group w-100">
-                                <input class="form-control search-box" type="text" name="q" placeholder="Search our Jewellery">
+                                <input class="form-control search-box" type="text" name="q"
+                                    placeholder="Search our Jewellery">
                                 <div class="input-group-append">
                                     <button class="search-btn form-control form-control btn bg-color-drk" type="submit">
                                         <span>
@@ -86,9 +88,9 @@
                             </div>
                         </form>
                     </div>
-                    <li class="list-inline-item order-lg-1 logo-cont d-none">
-                        <a class="logo my-2" aria-label="Go to the Jewellery Art homepage" href="{% url 'home' %}"></a>
-                    </li>
+                <li class="list-inline-item order-lg-1 logo-cont d-none">
+                    <a class="logo my-2" aria-label="Go to the Jewellery Art homepage" href="{% url 'home' %}"></a>
+                </li>
                 </li>
                 <li class="list-inline-item order-lg-4 dropdown">
                     <a class="nav-link px-2" href="#" id="account-options" data-toggle="dropdown" aria-haspopup="true"
@@ -125,42 +127,52 @@
                 <div class="collapse navbar-collapse order-lg-3" id="navbar-main">
                     <ul class="navbar-nav w-auto mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link mr-4 home-link" aria-label="Go to the Jewellery Art homepage" href="{% url 'home' %}">Home</a>
+                            <a class="nav-link mr-4 home-link" aria-label="Go to the Jewellery Art homepage"
+                                href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item dropdown position-static">
                             <a class="nav-link dropdown-toggle mr-4" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-expanded="false">
                                 Jewellery
                             </a>
-                            <div class="dropdown-menu rounded-0 bg-color-lgt mt-0 w-100" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu rounded-0 bg-color-lgt mt-0 w-100"
+                                aria-labelledby="navbarDropdown">
                                 <div class="row">
                                     <div class="col-sm-3 mb-2">
                                         {% all_categories as all_categories %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Category</p>
-                                        <a class="dropdown-item" aria-label="Go to the all jewellery products page" href="{% url 'products' %}">All Jewellery</a>
+                                        <a class="dropdown-item" aria-label="Go to the all jewellery products page"
+                                            href="{% url 'products' %}">All Jewellery</a>
                                         {% for category in all_categories %}
-                                        <a class="dropdown-item" aria-label="View the {{ category.name }} jewellery products" href="{% url 'products' %}?category={{ category.programmatic_name }}">{{ category.name }}</a>
+                                        <a class="dropdown-item"
+                                            aria-label="View the {{ category.name }} jewellery products"
+                                            href="{% url 'products' %}?category={{ category.programmatic_name }}">{{ category.name }}</a>
                                         {% endfor %}
                                     </div>
                                     <div class="col-sm-4 mb-2">
                                         {% all_collections as all_collections %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">Collection</p>
                                         {% for collection in all_collections %}
-                                        <a class="dropdown-item" aria-label="View the {{ collection.name }} jewellery products" href="{% url 'products' %}?collection={{ collection.programmatic_name }}">{{ collection.name }}</a>
+                                        <a class="dropdown-item"
+                                            aria-label="View the {{ collection.name }} jewellery products"
+                                            href="{% url 'products' %}?collection={{ collection.programmatic_name }}">{{ collection.name }}</a>
                                         {% endfor %}
                                     </div>
                                     <div class="col-sm-3 mb-2">
                                         {% all_designers as all_designers %}
                                         <p class="dropdown-item dropdown-title m-0 list-heading">By Designer</p>
                                         {% for designer in all_designers %}
-                                        <a class="dropdown-item" aria-label="View the jewellery products by {{ designer.name }}" href="{% url 'products' %}?designer={{ designer.programmatic_name }}">{{ designer.name }}</a>
+                                        <a class="dropdown-item"
+                                            aria-label="View the jewellery products by {{ designer.name }}"
+                                            href="{% url 'products' %}?designer={{ designer.programmatic_name }}">{{ designer.name }}</a>
                                         {% endfor %}
                                     </div>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mr-4" href="{% url 'designers' %}" aria-label="Go to the all jewellery designers page">Designers</a>
+                            <a class="nav-link mr-4" href="{% url 'designers' %}"
+                                aria-label="Go to the all jewellery designers page">Designers</a>
                         </li>
                     </ul>
                 </div>
@@ -169,34 +181,34 @@
     </header>
 
     {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-            {% with message.level as level %}
-            {% if level == 40 %}
-            {% include 'includes/toasts/toast_error.html' %}
-            {% elif level == 30 %}
-            {% include 'includes/toasts/toast_warning.html' %}
-            {% elif level == 25 %}
-            {% include 'includes/toasts/toast_success.html' %}
-            {% else %}
-            {% include 'includes/toasts/toast_info.html' %}
-            {% endif %}
-            {% endwith %}
-            {% endfor %}
-        </div>
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     <main class="bg-color-lgt">
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
 
     <!-- Footer -->
     <footer class="container-fluid txt-lgt bg-color-drk">
         <div class="row justify-content-center">
             <div class="col-md-auto px-lg-5 text-center text-md-left">
-                    <img class="logo-img" src="{{ MEDIA_URL }}jewellery-art-logo.png" alt="Jewellery Art logo">
-                    <p>Handmade Art Jewellery</p>
+                <img class="logo-img" src="{{ MEDIA_URL }}jewellery-art-logo.png" alt="Jewellery Art logo">
+                <p>Handmade Art Jewellery</p>
                 <ul class="list-inline">
                     <li class="list-inline-item">
                         <a class="footer-link txt-lgt" target="_blank" rel="noopener" href="https://facebook.com"
@@ -221,14 +233,17 @@
             <div class="col-auto px-lg-5">
                 <p class="list-heading mb-1">Explore</p>
                 <ul class="list-unstyled">
-                    <li><a class="footer-link txt-lgt" href="{% url 'products' %}" aria-label="Go to the all jewellery products page">Jewellery</a></li>
-                    <li><a class="footer-link txt-lgt" href="{% url 'designers' %}" aria-label="Go to the all jewellery designers page">Designers</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'products' %}"
+                            aria-label="Go to the all jewellery products page">Jewellery</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'designers' %}"
+                            aria-label="Go to the all jewellery designers page">Designers</a></li>
                 </ul>
             </div>
             <div class="col-auto px-lg-5">
                 <p class="list-heading mb-1">Shop</p>
                 <ul class="list-unstyled">
-                    <li><a class="footer-link txt-lgt" href="{% url 'view_basket' %}" aria-label="Go to your shopping basket">Basket</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'view_basket' %}"
+                            aria-label="Go to your shopping basket">Basket</a></li>
                     {% if user.is_authenticated %}
                     <li><a class="footer-link txt-lgt" href="#" aria-label="Logout of your account">Logout</a></li>
                     <li><a class="footer-link txt-lgt" href="#" aria-label="View your profile">My Profile</a></li>
@@ -241,9 +256,12 @@
             <div class="col-auto px-lg-5">
                 <p class="list-heading mb-1">Customer Info</p>
                 <ul class="list-unstyled">
-                    <li><a class="footer-link txt-lgt" href="" aria-label="Go to the contact us form">Contact Us</a></li>
-                    <li><a class="footer-link txt-lgt" href="" aria-label="Go to the Frequently Asked Questions page">FAQs</a></li>
-                    <li><a class="footer-link txt-lgt" href="" aria-label="View our privacy policy">Privacy Policy</a></li>
+                    <li><a class="footer-link txt-lgt" href="" aria-label="Go to the contact us form">Contact Us</a>
+                    </li>
+                    <li><a class="footer-link txt-lgt" href=""
+                            aria-label="Go to the Frequently Asked Questions page">FAQs</a></li>
+                    <li><a class="footer-link txt-lgt" href="" aria-label="View our privacy policy">Privacy Policy</a>
+                    </li>
                 </ul>
             </div>
         </div>

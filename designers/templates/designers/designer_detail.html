@@ -5,7 +5,8 @@
 <section class="container-fluid">
     <div class="row my-5">
         <!-- Designer Image -->
-        <div class="col-10 offset-1 col-sm-5 offset-sm-1 col-md-6 offset-md-0 col-lg-5 offset-lg-1 col-xl-4 offset-xl-2 text-center">
+        <div
+            class="col-10 offset-1 col-sm-5 offset-sm-1 col-md-6 offset-md-0 col-lg-5 offset-lg-1 col-xl-4 offset-xl-2 text-center">
             <div class="designer-img-cont mb-4">
                 {% if designer.image %}
                 <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
@@ -90,8 +91,10 @@
             <!-- Designer information and buttons displayed under name and next to photo from medium screens up. -->
             <p class="d-none d-md-block mb-3 text-justify">{{ designer.introduction }}</p>
             <div class="d-none d-md-block text-left">
-                <a href="{% url 'designers' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Back to Designers</a>
-                <a href="{% url 'products' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
+                <a href="{% url 'designers' %}" aria-label="Go to the all jewellery designers page"
+                    class="btn btn-sm btn-drk btn-sqr txt-lgt">Back to Designers</a>
+                <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
+                    class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
             </div>
         </div>
         <!-- Designeer information and buttons displayed below name and photo for smallest screens -->
@@ -99,8 +102,10 @@
             <p class="mb-0">{{ designer.introduction }}</p>
         </div>
         <div class="col-12 d-md-none">
-            <a href="{% url 'designers' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Back to Designers</a>
-            <a href="{% url 'products' %}" class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
+            <a href="{% url 'designers' %}" aria-label="Go to the all jewellery designers page"
+                class="btn btn-sm btn-drk btn-sqr txt-lgt">Back to Designers</a>
+            <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
+                class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
         </div>
     </div>
 </section>
@@ -119,20 +124,25 @@
         {% for product in collection.products.all %}
         <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="card product-card h-100 pb-4 mx-auto">
-                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
                     {% else %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                        alt="{{ product.name }}">
                     {% endif %}
                 </a>
                 <div class="card-body pb-0">
-                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
                         <p class="mb-0 card-title text-center">{{ product.name }}</p>
                     </a>
                 </div>
                 <div class="card-footer pt-1 text-center">
-                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
                         <p class="mb-0">{{ collection.name }}</p>
                         <p class="mb-0">£{{ product.price }}</p>
                     </a>
@@ -144,20 +154,25 @@
         {% for product in products %}
         <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="card product-card h-100 pb-4 mx-auto">
-                <a class="content-link" href="{% url 'product_detail' product.id %}">
+                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                    href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
                     {% else %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                        alt="{{ product.name }}">
                     {% endif %}
                 </a>
                 <div class="card-body pb-0">
-                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
                         <p class="mb-0 card-title text-center">{{ product.name }}</p>
                     </a>
                 </div>
                 <div class="card-footer pt-1 text-center">
-                    <a class="content-link" href="{% url 'product_detail' product.id %}">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
                         <p class="mb-0">£{{ product.price }}</p>
                     </a>
                 </div>
@@ -166,7 +181,7 @@
         {% endfor %}
     </div>
     <div class="to-top-btn">
-        <a id="to-top-link">
+        <a id="to-top-link" aria-label="Go to the top of the page">
             <i class="fas fa-arrow-up fa-2x txt-lgt bg-color-drk"></i>
         </a>
     </div>
@@ -178,8 +193,8 @@
 {{ block.super }}
 <script>
     let toTopButton = document.getElementById("to-top-link");
-    toTopButton.addEventListener("click", function() {
-        window.scrollTo(0,0)
+    toTopButton.addEventListener("click", function () {
+        window.scrollTo(0, 0)
     });
 </script>
 
@@ -188,8 +203,8 @@
 
     for (let image of designerImages) {
         let newImg = new Image();
-        
-        newImg.onload = function() {
+
+        newImg.onload = function () {
             let height = newImg.height;
             let width = newImg.width;
 
@@ -200,7 +215,6 @@
         }
         newImg.src = image.src
     }
-
 </script>
 
 {% endblock %}
