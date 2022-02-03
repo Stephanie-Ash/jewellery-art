@@ -147,8 +147,8 @@ h3, .detail-h2 {
 /* Message Toasts */
 .message-container {
     position: fixed;
-    top: 72px;
-    right: 15px;
+    top: 60px;
+    right: 5px;
     z-index: 99999999999;
 }
 
