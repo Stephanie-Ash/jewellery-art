@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Product details section. -->
 <section class="container-fluid">
     <div class="row justify-content-center mt-5 mb-3">
         <div class="text-center col-12 col-sm-5 offset-sm-1 offset-md-0 col-md-auto">
@@ -13,7 +14,7 @@
             </div>
         </div>
         <div class="det-product-info col-12 col-sm-6 col-md-auto mt-4 my-sm-auto">
-            <h2 class="det-product-name detail-h2">{{ product.name }}</h2>
+            <h1 class="det-product-name detail-h1">{{ product.name }}</h1>
             {% if product.collection %}
             <p class="mb-0">from {{ product.collection.name }}</p>
             {% endif %}
@@ -21,6 +22,7 @@
             <p class="mb-2">by {{ product.designer.name }}</p>
             {% endif %}
             <p class="mb-3"><strong>£{{ product.price }}</strong></p>
+            <!-- Add to basket form. -->
             <form action="{% url 'add_to_basket' product.id %}" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
@@ -38,16 +40,17 @@
     </div>
     <div class="row">
         <div class="col col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+            <!-- Additional details accordian. -->
             <div class="accordion mb-5" id="prod-det-accordion">
                 <div class="card rounded-0 txt-drk">
                     <div class="card-header mb-0 det-acc-head bg-color-lgt" id="description-head">
-                        <h3 class="mb-0">
+                        <h2 class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#description" aria-expanded="true"
                                 aria-controls="description">
                                 Description <i id="description-arrow" class="fas fa-chevron-up"></i>
                             </button>
-                        </h3>
+                        </h2>
                     </div>
                     <div id="description" class="collapse show" aria-labelledby="description-head"
                         data-parent="#prod-det-accordion">
@@ -60,13 +63,13 @@
                 </div>
                 <div class="card rounded-0">
                     <div class="card-header mb-0 det-acc-head bg-color-lgt" id="details-head">
-                        <h3 class="mb-0">
+                        <h2 class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0 collapsed" type="button"
                                 data-toggle="collapse" data-target="#details" aria-expanded="false"
                                 aria-controls="details">
                                 Details <i id="details-arrow" class="fas fa-chevron-down"></i>
                             </button>
-                        </h3>
+                        </h2>
                     </div>
                     <div id="details" class="collapse" aria-labelledby="details-head" data-parent="#prod-det-accordion">
                         <div class="card-body pb-0">
@@ -93,12 +96,13 @@
         </div>
     </div>
 </section>
+<!-- Other products by designer section. Displayed side by side on large screens -->
 <section class="container-fluid">
     {% if other_products %}
     <div class="row">
         <div class="col-12">
             <hr class="divide-rule-dets">
-            <h3 class="mb-4">Also by the Designer</h3>
+            <h2 class="mb-4 detail-h2">Also by the Designer</h2>
         </div>
         {% for product in other_products %}
         <div class="d-none d-md-flex col-md-3 col-xl-2">
@@ -128,6 +132,7 @@
             </div>
         </div>
         {% endfor %}
+        <!-- Other products horizontally scrolled on small screens -->
         <div class="scrolling-wrapper d-md-none">
             {% for product in other_products %}
             <div
@@ -159,6 +164,7 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
+    // Change the arrow on the accordian button to up when the accordian is open
     $(".collapse").on('shown.bs.collapse', function () {
         let iElement = $(this).siblings(".card-header").find("i")[0];
         if (iElement.classList.contains("fa-chevron-down")) {
@@ -167,6 +173,7 @@
         }
     });
 
+    // Change the arrow on the accordian button to down when the accordian is closed
     $(".collapse").on('hidden.bs.collapse', function () {
         let iElement = $(this).siblings(".card-header").find("i")[0];
         if (iElement.classList.contains("fa-chevron-up")) {

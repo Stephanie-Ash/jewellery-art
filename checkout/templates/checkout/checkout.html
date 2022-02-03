@@ -6,12 +6,13 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-4 mb-2 text-center text-sm-left txt-drk">
-            <h2 class="mb-0">Checkout</h2>
+            <h1 class="mb-0">Checkout</h1>
         </div>
         <div class="col-12">
             <hr class="divide-rule">
         </div>
         <div class="col-12 col-md-10 offset-md-1 col-lg-5 offset-lg-0 mb-4">
+            <!-- Checkout form. -->
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="order-fieldset">
@@ -52,6 +53,7 @@
             </form>
         </div>
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 txt-drk mb-5">
+            <!-- Basket summary -->
             <p>Order Summary</p>
             {% for item in basket_items %}
             <div class="row">
@@ -92,6 +94,7 @@
         </div>
     </div>
 </div>
+<!-- Loading spinner overlays page while payment is going through. -->
 <div id="loading-overlay">
     <p class="loading-spinner txt-lgter">
         <i class=" fa-3x fa fa-spinner fa-spin mr-2"></i>
@@ -103,7 +106,9 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<!-- Provide variables to stripe_elements.js file -->
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
+<!-- Stripe payment processing -->
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

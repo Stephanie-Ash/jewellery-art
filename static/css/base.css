@@ -32,6 +32,10 @@ main {
 }
 
 h1 {
+    font-size: 32px;
+}
+
+.home-h1 {
     font-size: 24px;
 }
 
@@ -39,11 +43,11 @@ h1 {
     font-size: 18px;
 }
 
-.detail-h2 {
+.detail-h1 {
     font-size: 20px;
 }
 
-h3 {
+h3, .detail-h2 {
     font-size: 20px;
 }
 
@@ -618,11 +622,11 @@ select:invalid, select option[value=""] {
         font-size: 18px;
     }
 
-    h3 {
+    h3, .detail-h2 {
         font-size: 24px;
     }
 
-    .detail-h2 {
+    .detail-h1 {
         font-size: 24px;
     }
 
@@ -633,7 +637,7 @@ select:invalid, select option[value=""] {
 
 /* For screens 768px and up */
 @media screen and (min-width: 768px) {
-    h1 {
+    .home-h1 {
         font-size: 28px;
     }
 
@@ -661,7 +665,7 @@ select:invalid, select option[value=""] {
         height: 50px;
     }
 
-    h1 {
+    .home-h1 {
         font-size: 34px;
     }
 
@@ -690,7 +694,7 @@ select:invalid, select option[value=""] {
 
 /* For screens 1400px and up */
 @media screen and (min-width: 1400px) {
-    h1 {
+    .home-h1 {
         font-size: 38px;
     }
 

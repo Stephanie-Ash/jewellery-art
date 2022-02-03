@@ -6,16 +6,17 @@
         <div class="col-10 mx-auto">
             <div class="row">
                 <div class="col my-4 text-center text-sm-left txt-drk">
+                    <!-- Heading based on current filtering. -->
                     {% if current_category %}
-                    <h2 class="d-inline-block mb-0">{{ current_category.first.name }}</h2>
+                    <h1 class="d-inline-block mb-0">{{ current_category.first.name }}</h1>
                     {% elif current_collection %}
-                    <h2 class="d-inline-block mb-0">{{ current_collection.first.name }}</h2>
+                    <h1 class="d-inline-block mb-0">{{ current_collection.first.name }}</h1>
                     {% elif current_designer %}
-                    <h2 class="d-inline-block mb-0">By {{ current_designer.first.name }}</h2>
+                    <h1 class="d-inline-block mb-0">By {{ current_designer.first.name }}</h1>
                     {% elif search_term %}
-                    <h2 class="d-inline-block mb-0">Search</h2>
+                    <h1 class="d-inline-block mb-0">Search</h1>
                     {% else %}
-                    <h2 class="d-inline-block mb-0">All Jewellery</h2>
+                    <h1 class="d-inline-block mb-0">All Jewellery</h1>
                     {% endif %}
                     <p class="d-inline-block mb-0">({{ products|length }} products {% if search_term %}for
                         "{{ search_term }}"{% endif %})</p>
@@ -23,6 +24,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-sm-4 order-sm-2 text-center text-sm-right">
+                    <!-- Sorting options. -->
                     <select class="txt-drk" id="sorting-sel">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort By
                         </option>
@@ -50,12 +52,14 @@
                 </div>
                 <div class="col-12 col-sm-8 order-sm-1 text-center text-sm-left">
                     {% if current_category or current_collection or current_designer or current_sorting != 'None_None' %}
+                    <!-- Link to all jewellery if products filtered or sorted. -->
                     <p class="mb-0 pt-2">
                         <a class="content-link txt-link" aria-label="Go to the all jewellery products page"
                             href="{% url 'products' %}">All Jewellery</a>
                     </p>
                     {% else %}
                     <p class="mb-0 pt-2">
+                        <!-- Link to popular categories if all products shown. -->
                         {% for category in categories|slice:":6" %}
                         <a class="content-link txt-link" aria-label="View the {{ category.name }} jewellery products"
                             href="{% url 'products' %}?category={{ category.programmatic_name }}">
@@ -70,6 +74,7 @@
                 </div>
             </div>
             <div class="row">
+                <!-- Product Cards -->
                 {% for product in products %}
                 <div class="col-sm-6 col-md-4 col-xl-3">
                     <div class="card product-card h-100 pb-4 mx-auto">
@@ -103,6 +108,7 @@
             </div>
         </div>
     </div>
+    <!-- Back to top button. -->
     <div class="to-top-btn">
         <a id="to-top-link" aria-label="Go to the top of the page">
             <i class="fas fa-arrow-up fa-2x txt-lgt bg-color-drk"></i>
@@ -115,6 +121,7 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
+    // Scroll to top of page on back to top button click event.
     let toTopButton = document.getElementById("to-top-link");
     toTopButton.addEventListener("click", function () {
         window.scrollTo(0, 0)
@@ -122,6 +129,7 @@
 </script>
 
 <script>
+    // Set the sorting url on the sort box change event.
     $('#sorting-sel').change(function () {
         let selector = $(this);
         let currentUrl = new URL(window.location);

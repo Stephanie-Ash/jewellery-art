@@ -4,43 +4,35 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-4 mb-2 text-center text-sm-left txt-drk">
-            <h2 class="mb-0">Checkout</h2>
+            <h1 class="mb-0">Checkout</h1>
         </div>
         <div class="col-12">
             <hr class="divide-rule">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <h3>Existing Customer</h3>
+        <div class="col-md-4 order-md-1">
+            <h2 class="detail-h2">Existing Customer</h2>
             <p>Login to your account using the button below to save the order to your profile or leave a review.</p>
-            <a class="d-md-none btn btn-sm btn-drk btn-sqr txt-lgt mb-4" aria-label="Login to your account"
-                href="">Login</a>
         </div>
-        <div class="col-md-4 new-col">
-            <h3>New Customer</h3>
+        <div class="col-md-4 order-md-4">
+            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4 mt-md-1 mb-md-3" aria-label="Login to your account" href="">Login</a>
+        </div>
+        <div class="col-md-4 new-col order-md-2">
+            <h2 class="detail-h2">New Customer</h2>
             <p>Use the button below to register for an account to leave reviews, save order information and save default
                 delivery details.</p>
-            <a class="d-md-none btn btn-sm btn-drk btn-sqr txt-lgt mb-4" aria-label="Register for an account"
+        </div>
+        <div class="col-md-4 new-col order-md-5">
+            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4 mt-md-1 mb-md-3" aria-label="Register for an account"
                 href="">Register</a>
         </div>
-        <div class="col-md-4 guest-col">
-            <h3>Guest Checkout</h3>
+        <div class="col-md-4 guest-col order-md-3">
+            <h2 class="detail-h2">Guest Checkout</h2>
             <p>If you prefer not to register, use the button below to continue to checkout as a guest.</p>
-            <a class="d-md-none btn btn-sm btn-drk btn-sqr txt-lgt mb-5" aria-label="Proceed to checkout as a guest"
-                href="{% url 'checkout' %}">Continue</a>
         </div>
-    </div>
-    <div class="row">
-        <div class="d-none d-md-flex col-md-4">
-            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" aria-label="Login to your account" href="">Login</a>
-        </div>
-        <div class="d-none d-md-flex col-md-4 new-col">
-            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" aria-label="Register for an account"
-                href="">Register</a>
-        </div>
-        <div class="d-none d-md-flex col-md-4 guest-col">
-            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" aria-label="Proceed to checkout as a guest"
+        <div class="col-md-4 guest-col order-md-6">
+            <a class="btn btn-sm btn-drk btn-sqr txt-lgt mb-5 mt-md-1 mb-md-3" aria-label="Proceed to checkout as a guest"
                 href="{% url 'checkout' %}">Continue</a>
         </div>
     </div>

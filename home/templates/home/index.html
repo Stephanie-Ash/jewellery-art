@@ -8,7 +8,7 @@
             <img class="home-hero-img" src="{{ MEDIA_URL }}gold-acrylic-cuff.jpg" alt="Jewellery art gold acrylic cuff">
             <div class="d-sm-none home-heading-box txt-drk">
                 <div class="home-heading-txt">
-                    <h1>Jewellery Art</h1>
+                    <h1 class="home-h1">Jewellery Art</h1>
                     <h2 class="home-h2">Original Handmade Jewellery<br>by Artistic UK Based Designers</h2>
                 </div>
                 <div>
@@ -23,7 +23,7 @@
         <div class="d-none d-sm-flex col-sm-6 home-heading">
             <div class="home-heading-box txt-drk">
                 <div class="home-heading-txt">
-                    <h1>Jewellery Art</h1>
+                    <h1 class="home-h1">Jewellery Art</h1>
                     <h2 class="home-h2">Original Handmade Jewellery<br>by Artistic UK Based Designers</h2>
                 </div>
                 <div>
@@ -92,6 +92,7 @@
     </div>
     <div class="row justify-content-center">
         {% for product in featured_products %}
+        <!-- Displayed medium screens and up. Four products to a row. -->
         <div class="d-none d-md-flex col-md-3 col-xl-auto">
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
@@ -121,6 +122,7 @@
         {% endfor %}
 
         <div class="d-md-none scrolling-wrapper">
+            <!-- Displayed on small and below screens. Products horizontally scrolled. -->
             {% for product in featured_products %}
             <div
                 class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">

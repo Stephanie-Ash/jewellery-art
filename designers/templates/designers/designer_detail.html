@@ -14,7 +14,7 @@
                 <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
                 {% endif %}
             </div>
-            <!-- Designer social media links displayed in same column as the image on medium screens only -->
+            <!-- Designer social media links displayed below the image on medium screens only -->
             <ul class="list-inline d-none d-md-block d-lg-none mb-0">
                 {% if designer.facebook_link %}
                 <li class="list-inline-item">
@@ -52,7 +52,7 @@
         </div>
         <div class="col-12 col-sm-5 col-md-6 col-lg-5 col-xl-4 my-sm-auto txt-drk text-center text-md-left">
             <!-- Designer name -->
-            <h2 class="detail-h2 d-lg-inline-block mr-lg-2">{{ designer.name }}</h2>
+            <h1 class="detail-h1 d-lg-inline-block mr-lg-2">{{ designer.name }}</h1>
             <!-- Designer social media links displayed with the name on all but medium screens -->
             <ul class="list-inline d-md-none d-lg-inline">
                 {% if designer.facebook_link %}
@@ -97,7 +97,7 @@
                     class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
             </div>
         </div>
-        <!-- Designeer information and buttons displayed below name and photo for smallest screens -->
+        <!-- Designer information and buttons displayed below name and photo for smallest screens -->
         <div class="col-12 d-md-none mb-4 txt-drk text-justify">
             <p class="mb-0">{{ designer.introduction }}</p>
         </div>
@@ -116,10 +116,11 @@
             <hr class="divide-rule-dets">
         </div>
         <div class="col-12 mb-3">
-            <h3>Pieces by {{ designer.name }}</h3>
+            <h2 class="detail-h2">Pieces by {{ designer.name }}</h2>
         </div>
     </div>
     <div class="row mx-2">
+        <!-- Product cards displayed grouped into collections. -->
         {% for collection in collections %}
         {% for product in collection.products.all %}
         <div class="col-sm-6 col-md-4 col-lg-3">
@@ -151,6 +152,7 @@
         </div>
         {% endfor %}
         {% endfor %}
+        <!-- Product cards for products not in any collection. -->
         {% for product in products %}
         <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="card product-card h-100 pb-4 mx-auto">
@@ -180,6 +182,7 @@
         </div>
         {% endfor %}
     </div>
+    <!-- Back to top button. -->
     <div class="to-top-btn">
         <a id="to-top-link" aria-label="Go to the top of the page">
             <i class="fas fa-arrow-up fa-2x txt-lgt bg-color-drk"></i>
@@ -192,6 +195,7 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
+    // Scroll to top of page on back to top button click event.
     let toTopButton = document.getElementById("to-top-link");
     toTopButton.addEventListener("click", function () {
         window.scrollTo(0, 0)
@@ -199,6 +203,8 @@
 </script>
 
 <script>
+    // Check whether designer images are portrait and if so
+    // add portrait class to ensure they display correctly.
     let designerImages = document.getElementsByClassName("designer-img");
 
     for (let image of designerImages) {

@@ -5,15 +5,17 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-4 mb-2 text-center text-sm-left txt-drk">
-            <h2 class="d-none d-sm-block mb-0">Shopping Basket</h2>
-            <h2 class="d-sm-none mb-0">Basket</h2>
+            <h1 class="d-none d-sm-block mb-0">Shopping Basket</h1>
+            <h1 class="d-sm-none mb-0">Basket</h1>
         </div>
         <div class="col-12">
             <hr class="divide-rule">
         </div>
         <div class="col-12 {% if basket_items %}col-lg-10 col-xl-8 offset-lg-1 offset-xl-2{% endif %} txt-drk">
             {% if basket_items %}
+            <!-- Include html from mobile-basket file for xs screens -->
             {% include "basket/mobile-basket.html" %}
+            <!-- Table of basket items dispalyed on small screens and up. -->
             <table class="d-none d-sm-block table table-sm txt-drk mb-1">
                 <thead>
                     <tr>
@@ -43,6 +45,7 @@
                                 aria-label="Update the product quantity in your basket">Update</a>
                             <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}"
                                 method="POST">
+                                <!-- Adjust quantity form. -->
                                 {% csrf_token %}
                                 <div class="form-group mb-0">
                                     <input class="form-control form-control-sm rounded-0 qty-input" type="number"
@@ -60,6 +63,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <!-- Basket totals and checkout button. -->
             <div class="d-none d-sm-block basket-totals txt-drk">
                 <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
                 <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
@@ -76,6 +80,7 @@
                 {% endif %}
             </div>
             {% else %}
+            <!-- Empty basket message -->
             <p class="basket-empty">Your basket is currently empty.</p>
             <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"
                 href="{% url 'products' %}">Shop Now!</a>
@@ -89,11 +94,13 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
+    // Update the quantity of product in the basket
     $('.update-link').click(function (e) {
         let form = $(this).next('.update-form');
         form.submit();
     })
 
+    // Remove product form basket
     $('.remove-item').click(function (e) {
         let csrfToken = "{{ csrf_token }}"
         let itemId = $(this).attr('id').split('remove_')[1];
