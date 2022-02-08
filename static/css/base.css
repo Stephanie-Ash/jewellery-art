@@ -585,6 +585,16 @@ select:invalid, select option[value=""] {
     font-size: 14px;
 }
 
+/* ------------------------profile.html------------------------ */
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #242d33;
+}
+
+#id_default_country option:first-child {
+    color: #6d7a82;
+}
+
 /* ------------------------Media Queries------------------------ */
 
 /* For screens 320px and up */
