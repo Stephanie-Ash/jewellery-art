@@ -107,11 +107,11 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right bg-color-lgt" aria-labelledby="account-options">
                         {% if user.is_authenticated %}
-                        <a class="dropdown-item" href="#" aria-label="Logout of your account">Logout</a>
+                        <a class="dropdown-item" href="{% url 'account_logout' %}" aria-label="Logout of your account">Logout</a>
                         <a class="dropdown-item" href="#" aria-label="View your profile">My Profile</a>
                         {% else %}
-                        <a class="dropdown-item" href="#" aria-label="Register for an account">Register</a>
-                        <a class="dropdown-item" href="#" aria-label="Login to your account">Login</a>
+                        <a class="dropdown-item" href="{% url 'account_signup' %}" aria-label="Register for an account">Register</a>
+                        <a class="dropdown-item" href="{% url 'account_login' %}" aria-label="Login to your account">Login</a>
                         {% endif %}
                     </div>
                 </li>
@@ -254,11 +254,11 @@
                     <li><a class="footer-link txt-lgt" href="{% url 'view_basket' %}"
                             aria-label="Go to your shopping basket">Basket</a></li>
                     {% if user.is_authenticated %}
-                    <li><a class="footer-link txt-lgt" href="#" aria-label="Logout of your account">Logout</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'account_logout' %}" aria-label="Logout of your account">Logout</a></li>
                     <li><a class="footer-link txt-lgt" href="#" aria-label="View your profile">My Profile</a></li>
                     {% else %}
-                    <li><a class="footer-link txt-lgt" href="#" aria-label="Register for an account">Register</a></li>
-                    <li><a class="footer-link txt-lgt" href="#" aria-label="Login to your account">Login</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'account_signup' %}" aria-label="Register for an account">Register</a></li>
+                    <li><a class="footer-link txt-lgt" href="{% url 'account_login' %}" aria-label="Login to your account">Login</a></li>
                     {% endif %}
                 </ul>
             </div>
