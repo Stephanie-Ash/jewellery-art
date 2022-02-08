@@ -253,6 +253,26 @@ footer {
     margin-bottom: 5px;
 }
 
+/* -----------------------Allauth pages---------------------- */
+.account-forms input {
+    border-radius: 0;
+    border: 1px solid #242d33;
+    background-color: #eef2f4;
+    color: #242d33;
+}
+
+.account-forms input::placeholder {
+    color: #6d7a82;
+}
+
+.account-forms input:focus {
+    box-shadow: none;
+}
+
+.account-forms label:not([for='id_remember']) {
+    display: none;
+}
+
 /* ------------------------index.html------------------------ */
 
 /* Page Heading */
