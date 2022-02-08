@@ -10,6 +10,8 @@ from django.conf import settings
 
 from basket.contexts import basket_contents
 from products.models import Product
+from profiles.forms import UserProfileForm
+from profiles.models import UserProfile
 from .models import OrderLineItem, Order
 from .forms import OrderForm
 
@@ -133,6 +135,28 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+        # Attach user profile to the order.
+        profile = UserProfile.objects.get(user=request.user)
+        order.user_profile = profile
+        order.save()
+
+        # Save user delivery info
+        if save_info:
+            profile_data = {
+                'default_phone_number': order.phone_number,
+                'default_town_or_city': order.town_or_city,
+                'default_address1': order.address1,
+                'default_address2': order.address2,
+                'default_county': order.county,
+                'default_postcode': order.postcode,
+                'default_country': order.country,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+
     messages.success(request, f'Good news, your order was successful. \
         Your order number is: {order_number}. A confirmation has been \
         sent to {order.email}')

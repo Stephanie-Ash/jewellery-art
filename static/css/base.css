@@ -595,6 +595,19 @@ select:invalid, select option[value=""] {
     color: #6d7a82;
 }
 
+.profile-history {
+    max-height: 550px;
+    overflow-y: auto;
+}
+
+.profile-table {
+    font-size: 14px;
+}
+
+.profile-items {
+    font-size: 12.5px;
+}
+
 /* ------------------------Media Queries------------------------ */
 
 /* For screens 320px and up */

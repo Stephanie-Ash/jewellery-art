@@ -22,8 +22,8 @@
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 txt-drk mb-5">
             <h2 class="detail-h2 mb-3">Order History</h2>
             <!-- Previous order summary -->
-            <div class="table-responsive">
-                <table class="table table-sm txt-drk mb-1">
+            <div class="table-responsive profile-history">
+                <table class="profile-table table table-sm txt-drk mb-1">
                     <thead>
                         <tr>
                             <th scope="col">Number</th>
@@ -36,14 +36,14 @@
                         {% for order in orders %}
                         <tr>
                             <td>
-                                <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
+                                <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:5 }}</a>
                             </td>
                             <td>
-                                <p class="mb-0">{{ order.date }}</p>
+                                <p class="mb-0">{{ order.date|date:"d/m/Y" }}</p>
                             </td>
                             <td>
                                 {% for item in order.lineitems.all %}
-                                <p class="mb-0">{{ item.product.name}} x{{ item.quantity }}</p>
+                                <p class="mb-0 profile-items">{{ item.product.name}} x{{ item.quantity }}</p>
                                 {% endfor %}
                             </td>
                             <td>
