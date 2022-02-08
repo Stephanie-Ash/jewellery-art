@@ -5,12 +5,21 @@
 <div class="container txt-drk">
     <div class="row">
         <div class="col-12 mt-4 text-center text-sm-left">
+            {% if from_profile %}
+            <h1 class="mb-0">Order Details</h1>
+            {% else %}
             <h1 class="mb-0">Order Confirmed</h1>
+            {% endif %}
             <hr class="divide-rule">
         </div>
         <div class="col-12 col-md-10 offset-md-1 mb-3">
+            {% if from_profile %}
+            <p>A confirmation email was sent to <strong>{{ order.email }}</strong></p>
+            <p class="mb-0">Please find your order details below:</p>
+            {% else %}
             <p>Thank you for your order. We have sent a confirmation email to <strong>{{ order.email }}</strong></p>
             <p class="mb-0">Please find your order details below:</p>
+            {% endif %}
         </div>
     </div>
     <div class="row">
@@ -108,6 +117,13 @@
                 <div class="col-6 col-sm-8 col-lg-9 mb-5">
                     <p class="mb-0">£{{ order.grand_total }}</p>
                 </div>
+                {% if from_profile %}
+                <div class="col-12">
+                    <a class="btn btn-sm btn-drk btn-sqr txt-lgt" href="{% url 'profile' %}">
+                        Back to Proile
+                    </a>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
