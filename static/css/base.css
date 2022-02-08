@@ -273,6 +273,11 @@ footer {
     display: none;
 }
 
+.account-buttons {
+    background-color: #242d33 !important;
+    color: #dce4e8 !important;
+}
+
 /* ------------------------index.html------------------------ */
 
 /* Page Heading */
