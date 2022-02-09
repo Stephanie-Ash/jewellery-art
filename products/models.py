@@ -71,4 +71,4 @@ class Review(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Comment on {self.product.name} by {self.name}"
+        return f"Review on {self.product.name} by {self.name}"
