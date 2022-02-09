@@ -68,7 +68,7 @@
                     {% endfor %}
                     {% endfor %}
                 </select>
-                <a class="btn btn-sm btn-drk btn-sqr txt-lgt" href="" id="add-review">Add Review</a>
+                <a class="btn btn-sm btn-drk btn-sqr txt-lgt" aria-label="Go to the add review section of product detail page for the selected product." id="add-review">Add Review</a>
             </div>
             <div>
                 {% for review in reviews %}
@@ -90,14 +90,11 @@
 <script src="{% static 'profiles/js/countryfield.js' %}"></script>
 
 <script>
-    document.getElementById("review-sel").addEventListener("change", function() {
-        let selectedProduct = this.value
-        let button = document.getElementById("add-review")
+    document.getElementById("add-review").addEventListener("click", function() {
+        let selectedProduct = document.getElementById("review-sel").value
         if (selectedProduct) {
             let url = "{% url 'product_detail' 123 %}";
-            button.href = url.replace('123', selectedProduct) + '#reviews'
-        } else {
-            button.href = ""
+            window.location.href = url.replace('123', selectedProduct) + '#reviews'
         }
     })
 </script>
