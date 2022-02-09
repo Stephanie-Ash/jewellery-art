@@ -48,11 +48,11 @@
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#description" aria-expanded="true"
                                 aria-controls="description">
-                                Description <i id="description-arrow" class="fas fa-chevron-up"></i>
+                                Description <i id="description-arrow" class="{% if 'profile' in request.META.HTTP_REFERER %}fas fa-chevron-down{% else %}fas fa-chevron-up{% endif %}"></i>
                             </button>
                         </h2>
                     </div>
-                    <div id="description" class="collapse show" aria-labelledby="description-head"
+                    <div id="description" class="collapse {% if 'profile' not in request.META.HTTP_REFERER %}show{% endif %}" aria-labelledby="description-head"
                         data-parent="#prod-det-accordion">
                         <div class="card-body">
                             <p class="mb-0 text-justify">
@@ -98,11 +98,11 @@
                             <button class="btn btn-block accord-btn text-left rounded-0 collapsed" type="button"
                                 data-toggle="collapse" data-target="#reviews" aria-expanded="false"
                                 aria-controls="reviews">
-                                Reviews <i id="reviews-arrow" class="fas fa-chevron-down"></i>
+                                Reviews <i id="reviews-arrow" class="{% if 'profile' in request.META.HTTP_REFERER %}fas fa-chevron-up{% else %}fas fa-chevron-down{% endif %}"></i>
                             </button>
                         </h2>
                     </div>
-                    <div id="reviews" class="collapse" aria-labelledby="details-head" data-parent="#prod-det-accordion">
+                    <div id="reviews" class="collapse {% if 'profile' in request.META.HTTP_REFERER %}show{% endif %}" aria-labelledby="details-head" data-parent="#prod-det-accordion">
                         <div class="card-body review-body pb-0">
                             {% if user.is_authenticated and purchased %}
                             <form action="{% url 'product_detail' product.id %}" method="POST" id="review-form">

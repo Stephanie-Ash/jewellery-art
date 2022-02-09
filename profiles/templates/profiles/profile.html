@@ -59,14 +59,27 @@
     <div class="row">
         <div class="col-12">
             <h2 class="detail-h2 mb-4">Product Reviews</h2>
-            {% for review in reviews %}
-            <p class="d-inline-block mb-0 mr-2"><strong>Date:</strong> {{ review.created_on|date:"j F Y" }}</p>
-            <p class="d-inline-block mb-0 mb-2"><strong>Product:</strong> {{ review.product.name }}</p>
-            <p class="mb-4">{{ review.body }}</p>
-            {% if not forloop.last %}
-            <hr class="review-divider">
-            {% endif %}
-            {% endfor %}
+            <div class="mb-4">
+                <select class="txt-drk mr-2" id="review-sel">
+                    <option value="">Select Product</option>
+                    {% for order in orders %}
+                    {% for item in order.lineitems.all %}
+                    <option value="{{ item.product.id }}">{{ item.product.name }}</option>
+                    {% endfor %}
+                    {% endfor %}
+                </select>
+                <a class="btn btn-sm btn-drk btn-sqr txt-lgt" href="" id="add-review">Add Review</a>
+            </div>
+            <div>
+                {% for review in reviews %}
+                <p class="d-inline-block mb-0 mr-2"><strong>Date:</strong> {{ review.created_on|date:"j F Y" }}</p>
+                <p class="d-inline-block mb-0 mb-2"><strong>Product:</strong> {{ review.product.name }}</p>
+                <p class="mb-4">{{ review.body }}</p>
+                {% if not forloop.last %}
+                <hr class="review-divider">
+                {% endif %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
@@ -75,4 +88,17 @@
 {% block postloadjs %}
 {{ block.super }}
 <script src="{% static 'profiles/js/countryfield.js' %}"></script>
+
+<script>
+    document.getElementById("review-sel").addEventListener("change", function() {
+        let selectedProduct = this.value
+        let button = document.getElementById("add-review")
+        if (selectedProduct) {
+            let url = "{% url 'product_detail' 123 %}";
+            button.href = url.replace('123', selectedProduct) + '#reviews'
+        } else {
+            button.href = ""
+        }
+    })
+</script>
 {% endblock %}
