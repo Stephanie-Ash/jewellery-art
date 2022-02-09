@@ -104,6 +104,18 @@
                     </div>
                     <div id="reviews" class="collapse" aria-labelledby="details-head" data-parent="#prod-det-accordion">
                         <div class="card-body pb-0">
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'product_detail' product.id %}" method="POST" id="review-form">
+                                {% csrf_token %}
+                                <fieldset class="order-fieldset">
+                                    <legend class="review-legend">Leave a Review</legend>
+                                    {{ review_form.name | as_crispy_field }}
+                                    {{ review_form.body | as_crispy_field }}
+                                </fieldset>
+                                <button class="btn btn-sm btn-drk btn-sqr txt-lgt" type="submit">Add review</button>
+                            </form>
+                            <hr class="review-divider">
+                            {% endif %}
                             {% if not reviews %}
                             <p class="mb-0">
                                 There are currently no customer reviews.

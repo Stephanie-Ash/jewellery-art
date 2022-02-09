@@ -440,6 +440,15 @@ footer {
     border-color: #6d7a82;
 }
 
+textarea.form-control {
+    height: 100px;
+}
+
+.review-legend {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
 /* ------------------------designers.html------------------------ */
 
 /* circular images */

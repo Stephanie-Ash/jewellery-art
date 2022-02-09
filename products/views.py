@@ -6,6 +6,7 @@ from django.db.models.functions import Lower
 
 from designers.models import Designer, Collection
 from .models import Product, Category
+from .forms import ReviewForm
 
 
 def all_products(request):
@@ -93,10 +94,13 @@ def product_detail(request, product_id):
         other_products = Product.objects.filter(
             designer__id=product.designer.id)
 
+    review_form = ReviewForm()
+
     context = {
         'product': product,
         'reviews': reviews,
         'other_products': other_products,
+        'review_form': review_form,
     }
 
     return render(request, 'products/product_detail.html', context)
