@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card rounded-0">
+                <div class="card rounded-0 txt-drk">
                     <div class="card-header mb-0 det-acc-head bg-color-lgt" id="details-head">
                         <h2 class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0 collapsed" type="button"
@@ -88,6 +88,32 @@
                                 {{ product.material }}
                             </p>
                             {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card rounded-0 txt-drk">
+                    <div class="card-header mb-0 det-acc-head bg-color-lgt" id="reviews-head">
+                        <h2 class="mb-0">
+                            <button class="btn btn-block accord-btn text-left rounded-0 collapsed" type="button"
+                                data-toggle="collapse" data-target="#reviews" aria-expanded="false"
+                                aria-controls="reviews">
+                                Reviews <i id="reviews-arrow" class="fas fa-chevron-down"></i>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="reviews" class="collapse" aria-labelledby="details-head" data-parent="#prod-det-accordion">
+                        <div class="card-body pb-0">
+                            {% if not reviews %}
+                            <p class="mb-0">
+                                There are currently no customer reviews.
+                            </p>
+                            {% else %}
+                            {% for review in reviews %}
+                            <p class="mb-1"><strong>Review by {{ review.name }} on {{ review.created_on|date:"j F Y" }}:</strong></p>
+                            <p class="mb-0">{{ review.body }}</p>
+                            <hr class="review-divider">
+                            {% endfor %}
                             {% endif %}
                         </div>
                     </div>

@@ -87,6 +87,7 @@ def product_detail(request, product_id):
     Display the details of an individual product.
     """
     product = get_object_or_404(Product, id=product_id)
+    reviews = product.reviews.all()
     other_products = None
     if product.designer:
         other_products = Product.objects.filter(
@@ -94,6 +95,7 @@ def product_detail(request, product_id):
 
     context = {
         'product': product,
+        'reviews': reviews,
         'other_products': other_products,
     }
 
