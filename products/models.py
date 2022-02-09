@@ -2,6 +2,7 @@
 from django.db import models
 
 from designers.models import Designer, Collection
+from profiles.models import UserProfile
 
 
 class Category(models.Model):
@@ -37,7 +38,7 @@ class Product(models.Model):
     Product model for all the jewellery products sold.
     """
     category = models.ForeignKey(
-        'Category', null=True, blank=True, on_delete=models.SET_NULL)
+        Category, null=True, blank=True, on_delete=models.SET_NULL)
     designer = models.ForeignKey(
         Designer, null=True, blank=True, on_delete=models.SET_NULL,
         related_name='products')
@@ -55,3 +56,19 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    """
+    Review model for customer reviews of the jewellery products.
+    """
+    product = models.ForeignKey(
+        'Product', on_delete=models.CASCADE, related_name='reviews')
+    user_profile = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name='reviews')
+    name = models.CharField(max_length=50)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment on {self.product.name} by {self.name}"
