@@ -94,8 +94,6 @@ def product_detail(request, product_id):
     if product.designer:
         other_products = Product.objects.filter(
             designer__id=product.designer.id)
-
-    review_form = ReviewForm()
     purchased = False
 
     if request.user.is_authenticated:
@@ -105,6 +103,18 @@ def product_detail(request, product_id):
             for item in order.lineitems.all():
                 if item.product.id == product_id:
                     purchased = True
+
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+        if review_form.is_valid():
+            customer_review = review_form.save(commit=False)
+            customer_review.product = product
+            customer_review.user_profile = profile
+            customer_review.save()
+            messages.success(request, 'Review successfully added.')
+            return redirect(reverse('product_detail', args=[product_id]))
+    else:
+        review_form = ReviewForm()
 
     context = {
         'product': product,
