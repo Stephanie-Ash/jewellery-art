@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from designers.models import Designer, Collection
+from profiles.models import UserProfile
 from .models import Product, Category
 from .forms import ReviewForm
 
@@ -95,12 +96,22 @@ def product_detail(request, product_id):
             designer__id=product.designer.id)
 
     review_form = ReviewForm()
+    purchased = False
+
+    if request.user.is_authenticated:
+        profile = get_object_or_404(UserProfile, user=request.user)
+        orders = profile.orders.all()
+        for order in orders:
+            for item in order.lineitems.all():
+                if item.product.id == product_id:
+                    purchased = True
 
     context = {
         'product': product,
         'reviews': reviews,
         'other_products': other_products,
         'review_form': review_form,
+        'purchased': purchased,
     }
 
     return render(request, 'products/product_detail.html', context)
