@@ -1,5 +1,6 @@
 """ Views for the designers app. """
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
 
 from products.models import Product
 from .models import Designer, Collection
@@ -41,7 +42,18 @@ def add_designer(request):
     """
     Add a designer to the store.
     """
-    form = DesignerForm()
+    if request.method == 'POST':
+        form = DesignerForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Successfully added a designer to the store.')
+            return redirect(reverse('add_designer'))
+        else:
+            messages.error(
+               request, 'Failed to add designer. Please check the form.')
+    else:
+        form = DesignerForm()
 
     template = 'designers/add_designer.html'
     context = {
