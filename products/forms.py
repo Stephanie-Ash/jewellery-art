@@ -1,7 +1,7 @@
 """ Forms for the products app. """
 from django import forms
 
-from .models import Review
+from .models import Review, Product, Category
 
 
 class ReviewForm(forms.ModelForm):
@@ -21,3 +21,13 @@ class ReviewForm(forms.ModelForm):
             'Write your review here.')
         for field in self.fields:
             self.fields[field].label = False
+
+
+class ProductForm(forms.ModelForm):
+    """
+    A form to add or update products in the store.
+    """
+    class Meta:
+        """ Select the model and define the fields. """
+        model = Product
+        fields = '__all__'

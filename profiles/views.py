@@ -38,7 +38,7 @@ def profile(request):
         'form': form,
         'orders': orders,
         'reviews': reviews,
-        'purchased_products': purchased_products, 
+        'purchased_products': purchased_products,
         'on_profile_page': True
     }
 
