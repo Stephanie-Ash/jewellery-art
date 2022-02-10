@@ -96,11 +96,17 @@
                             </a>
                         </div>
                         <div class="card-footer pt-1 text-center">
-                            <a class="content-link"
-                                aria-label="Go to the product information page for {{ product.name }}"
-                                href="{% url 'product_detail' product.id %}">
                                 <p class="mb-0">£{{ product.price }}</p>
-                            </a>
+                            {% if request.user.is_superuser %}
+                            <small>
+                                <a class="txt-drk home-featured" aria-label="Set the homepage_featured status of the product." href="">
+                                    <input type="checkbox" id="home-featured" {% if product.homepage_featured%}checked{% endif %}>
+                                    <label class="mb-0" for="home-featured">Featured</label>
+                                </a> |
+                                <a href="{% url 'edit_product' product.id %}" aria-label="Edit product details.">Edit</a> |
+                                <a class="text-danger" href="" aria-label="Delete product.">Delete</a>
+                            </small>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

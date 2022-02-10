@@ -399,6 +399,14 @@ footer {
     font-weight: bold;
 }
 
+.home-featured:hover,
+.home-featured label:hover,
+.home-featured input:hover {
+    color: #242d33;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* ------------------------product_detail.html------------------------ */
 
 .detail-img-cont {
