@@ -147,7 +147,7 @@ def add_product(request):
     template = 'products/add_product.html'
     context = {
         'form': form,
-        'on_product_management': True
+        'on_management': True
     }
 
     return render(request, template, context)

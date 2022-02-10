@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 
 from products.models import Product
 from .models import Designer, Collection
+from .forms import DesignerForm
 
 
 def all_designers(request):
@@ -34,3 +35,18 @@ def designer_detail(request, designer_id):
     }
 
     return render(request, 'designers/designer_detail.html', context)
+
+
+def add_designer(request):
+    """
+    Add a designer to the store.
+    """
+    form = DesignerForm()
+
+    template = 'designers/add_designer.html'
+    context = {
+        'form': form,
+        'on_management': True
+    }
+
+    return render(request, template, context)
