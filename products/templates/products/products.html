@@ -99,10 +99,8 @@
                                 <p class="mb-0">£{{ product.price }}</p>
                             {% if request.user.is_superuser %}
                             <small>
-                                <a class="txt-drk home-featured" aria-label="Set the homepage_featured status of the product." href="">
-                                    <input type="checkbox" id="home-featured" {% if product.homepage_featured%}checked{% endif %}>
-                                    <label class="mb-0" for="home-featured">Featured</label>
-                                </a> |
+                                <input data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured" type="checkbox" id="home-featured{{ product.id }}" {% if product.homepage_featured%}checked{% endif %}>
+                                <label data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured-label mb-0" for="home-featured{{ product.id }}">Featured</label> |
                                 <a href="{% url 'edit_product' product.id %}" aria-label="Edit product details.">Edit</a> |
                                 <a class="text-danger" href="" aria-label="Delete product.">Delete</a>
                             </small>
@@ -156,5 +154,14 @@
             window.location.replace(currentUrl);
         }
     });
+</script>
+<script>
+    let checks = document.getElementsByClassName("home-featured")
+    for (let check of checks) {
+        check.addEventListener("click", function() {
+            let url = this.getAttribute("data-url")
+            window.location.href = url
+        })
+    } 
 </script>
 {% endblock %}

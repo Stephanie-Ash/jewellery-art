@@ -180,3 +180,13 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+def toggle_homepage_featured(request, product_id):
+    """
+    Toggle the homepage_featured field of an individual product.
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    product.homepage_featured = not product.homepage_featured
+    product.save()
+    return redirect(reverse('products'))
