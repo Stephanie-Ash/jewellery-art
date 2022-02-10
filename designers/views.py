@@ -45,10 +45,10 @@ def add_designer(request):
     if request.method == 'POST':
         form = DesignerForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            designer = form.save()
             messages.success(
                 request, 'Successfully added a designer to the store.')
-            return redirect(reverse('add_designer'))
+            return redirect(reverse('designer_detail', args=[designer.id]))
         else:
             messages.error(
                request, 'Failed to add designer. Please check the form.')
@@ -58,6 +58,35 @@ def add_designer(request):
     template = 'designers/add_designer.html'
     context = {
         'form': form,
+        'on_management': True
+    }
+
+    return render(request, template, context)
+
+
+def edit_designer(request, designer_id):
+    """
+    Edit the details of an individual designer.
+    """
+    designer = get_object_or_404(Designer, pk=designer_id)
+    if request.method == 'POST':
+        form = DesignerForm(request.POST, request.FILES, instance=designer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Successfully updated {designer.name}.')
+            return redirect(reverse('designer_detail', args=[designer.id]))
+        else:
+            messages.error(
+                request, f'Failed to update {designer.name}. \
+                    Please check the form.')
+    else:
+        form = DesignerForm(instance=designer)
+        messages.info(request, f'You are editing {designer.name}.')
+
+    template = 'designers/edit_designer.html'
+    context = {
+        'form': form,
+        'designer': designer,
         'on_management': True
     }
 
