@@ -26,12 +26,19 @@ def profile(request):
 
     orders = profile.orders.all()
     reviews = profile.reviews.all()
+    products = []
+
+    for order in orders:
+        for item in order.lineitems.all():
+            products.append(item.product)
+    purchased_products = list(dict.fromkeys(products))
 
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
         'reviews': reviews,
+        'purchased_products': purchased_products, 
         'on_profile_page': True
     }
 

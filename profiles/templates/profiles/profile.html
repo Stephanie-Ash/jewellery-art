@@ -62,10 +62,8 @@
             <div class="mb-4">
                 <select class="txt-drk mr-2" id="review-sel">
                     <option value="">Select Product</option>
-                    {% for order in orders %}
-                    {% for item in order.lineitems.all %}
-                    <option value="{{ item.product.id }}">{{ item.product.name }}</option>
-                    {% endfor %}
+                    {% for product in purchased_products %}
+                    <option value="{{ product.id }}">{{ product.name }}</option>
                     {% endfor %}
                 </select>
                 <a class="btn btn-sm btn-drk btn-sqr txt-lgt" aria-label="Go to the add review section of product detail page for the selected product." id="add-review">Add Review</a>
