@@ -1,7 +1,7 @@
 """ Forms for the products app. """
 from django import forms
 
-from .models import Review, Product, Category
+from .models import Review, Product
 
 
 class ReviewForm(forms.ModelForm):

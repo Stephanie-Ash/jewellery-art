@@ -106,7 +106,10 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right bg-color-lgt" aria-labelledby="account-options">
-                        {% if user.is_authenticated %}
+                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                        <a class="dropdown-item" href="{% url 'add_product' %}" aria-label="Logout of your account">Product Management</a>
+                        {% endif %}
                         <a class="dropdown-item" href="{% url 'account_logout' %}" aria-label="Logout of your account">Logout</a>
                         <a class="dropdown-item" href="{% url 'profile' %}" aria-label="View your profile">My Profile</a>
                         {% else %}
