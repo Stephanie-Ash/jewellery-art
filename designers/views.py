@@ -1,6 +1,7 @@
 """ Views for the designers app. """
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from products.models import Product
 from .models import Designer, Collection
@@ -38,10 +39,15 @@ def designer_detail(request, designer_id):
     return render(request, 'designers/designer_detail.html', context)
 
 
+@login_required
 def add_designer(request):
     """
     Add a designer to the store.
     """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+
     if request.method == 'POST':
         form = DesignerForm(request.POST, request.FILES)
         if form.is_valid():
@@ -63,10 +69,15 @@ def add_designer(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_designer(request, designer_id):
     """
     Edit the details of an individual designer.
     """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+
     designer = get_object_or_404(Designer, pk=designer_id)
     if request.method == 'POST':
         form = DesignerForm(request.POST, request.FILES, instance=designer)
@@ -91,10 +102,15 @@ def edit_designer(request, designer_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_designer(request, designer_id):
     """
     Delete a designer from the store.
     """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+
     designer = get_object_or_404(Designer, pk=designer_id)
     designer.delete()
     messages.success(request, 'Designer deleted.')

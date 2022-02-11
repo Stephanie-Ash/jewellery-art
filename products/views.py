@@ -2,6 +2,7 @@
 from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponseRedirect)
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
@@ -128,10 +129,15 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
+@login_required
 def add_product(request):
     """
     Add a product to the store.
     """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -153,10 +159,15 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_product(request, product_id):
     """
     Edit the details of an individual product.
     """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -181,10 +192,15 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+@login_required
 def toggle_homepage_featured(request, product_id):
     """
     Toggle the homepage_featured field of an individual product.
     """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+
     current_page = request.META.get('HTTP_REFERER')
     product = get_object_or_404(Product, pk=product_id)
     product.homepage_featured = not product.homepage_featured
@@ -193,10 +209,15 @@ def toggle_homepage_featured(request, product_id):
     return HttpResponseRedirect(current_page)
 
 
+@login_required
 def delete_product(request, product_id):
     """
     Delete a product from the store.
     """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted.')
