@@ -410,6 +410,9 @@ footer {
     width: 100%;
     outline: 3px solid #eef2f4;
     outline-offset: 2px;
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 .home-prod-title {
@@ -439,6 +442,9 @@ footer {
     border-radius: 0;
     outline: 3px solid #242d33;
     outline-offset: 2px;
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 .card, .card-footer {
@@ -468,6 +474,9 @@ footer {
 .detail-img-cont > img {
     outline: 3px solid #242d33;
     outline-offset: 2px;
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 .det-acc-head {

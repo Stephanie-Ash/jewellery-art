@@ -129,9 +129,9 @@
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
-                    <img class="" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% else %}
-                    <img class="" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    <img src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                     {% endif %}
                 </a>
                 <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
