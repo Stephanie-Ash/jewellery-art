@@ -89,3 +89,13 @@ def edit_designer(request, designer_id):
     }
 
     return render(request, template, context)
+
+
+def delete_designer(request, designer_id):
+    """
+    Delete a designer from the store.
+    """
+    designer = get_object_or_404(Designer, pk=designer_id)
+    designer.delete()
+    messages.success(request, 'Designer deleted.')
+    return redirect(reverse('designers'))

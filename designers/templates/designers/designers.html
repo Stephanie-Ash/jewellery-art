@@ -29,7 +29,8 @@
                         {% if request.user.is_superuser %}
                         <small>
                             <a class="txt-blue" href="{% url 'edit_designer' designer.id %}" aria-label="Edit designer details.">Edit</a> |
-                            <a class="text-danger" href="" aria-label="Delete designer.">Delete</a>
+                            <button class="delete-btn" type="button"
+                                data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
                         </small>
                         {% endif %}
                         <p class="designer-title mb-5">{{ designer.name }}</p>

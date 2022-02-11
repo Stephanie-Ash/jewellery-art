@@ -98,7 +98,8 @@
                 {% if request.user.is_superuser %}
                 <small class="ml-1">
                     <a class="txt-blue" href="{% url 'edit_designer' designer.id %}" aria-label="Edit designer details.">Edit</a> |
-                    <a class="text-danger" href="" aria-label="Delete designer.">Delete</a>
+                    <button class="delete-btn" type="button"
+                        data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
                 </small>
                 {% endif %}
             </div>
@@ -117,7 +118,8 @@
         <div class="col-12 d-md-none">
             <small>
                 <a class="txt-blue" href="{% url 'edit_designer' designer.id %}" aria-label="Edit designer details.">Edit</a> |
-                <a class="text-danger" href="" aria-label="Delete designer.">Delete</a>
+                <button class="delete-btn" type="button"
+                    data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
             </small>
         </div>
         {% endif %}

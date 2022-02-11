@@ -301,6 +301,27 @@
         </div>
     </div>
 
+    <!-- Designer delete modal -->
+    <div class="modal fade" id="designer-delete-modal" tabindex="-1" aria-labelledby="designer-delete-title" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content txt-drk">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="designer-delete-title">Delete Designer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this designer? 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-grey txt-lgter rounded-0" data-dismiss="modal">Cancel</button>
+                    <a href="#" id="designer-delete" aria-label="Delete designer." class="btn rounded-0 bg-color-red txt-lgter">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast launch. -->
     {% block postloadjs %}
     <script>
@@ -308,12 +329,15 @@
     </script>
 
     <script>
-        $(".delete-btn").click(function () {
+        $('.delete-btn').click(function () {
             let del_url = $(this).data('delete-url');
             if (del_url.includes('product')) {
-                $("#product-delete").attr("href", del_url);
-                $("#product-delete-modal").modal();
-            };
+                $('#product-delete').attr('href', del_url);
+                $('#product-delete-modal').modal();
+            } else if (del_url.includes('designer')) {
+                $('#designer-delete').attr('href', del_url);
+                $('#designer-delete-modal').modal();
+            }
         })
     </script>
     {% endblock %}
