@@ -26,10 +26,13 @@ def add_to_basket(request, item_id):
     if item_id in list(basket.keys()):
         basket[item_id] += quantity
         messages.success(
-            request, f'Updated the quantity of {product.name} in your basket.')
+            request, f'Updated the quantity of {product.name} in your basket.',
+            extra_tags='basket')
     else:
         basket[item_id] = quantity
-        messages.success(request, f'Added {product.name} to your basket.')
+        messages.success(
+            request, f'Added {product.name} to your basket.',
+            extra_tags='basket')
 
     request.session['basket'] = basket
     return redirect(redirect_url)
@@ -46,10 +49,13 @@ def adjust_basket(request, item_id):
     if quantity > 0:
         basket[item_id] = quantity
         messages.success(
-            request, f'Updated the quantity of {product.name} in your basket.')
+            request, f'Updated the quantity of {product.name} in your basket.',
+            extra_tags='basket')
     else:
         basket.pop(item_id)
-        messages.success(request, f'Removed {product.name} from your basket.')
+        messages.success(
+            request, f'Removed {product.name} from your basket.',
+            extra_tags='basket')
 
     request.session['basket'] = basket
     return redirect(reverse("view_basket"))
@@ -64,7 +70,9 @@ def remove_from_basket(request, item_id):
         basket = request.session.get('basket', {})
 
         basket.pop(item_id)
-        messages.success(request, f'Removed {product.name} from your basket.')
+        messages.success(
+            request, f'Removed {product.name} from your basket.',
+            extra_tags='basket')
 
         request.session['basket'] = basket
         return HttpResponse(status=200)

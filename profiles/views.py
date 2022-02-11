@@ -41,7 +41,6 @@ def profile(request):
         'orders': orders,
         'reviews': reviews,
         'purchased_products': purchased_products,
-        'on_profile_page': True
     }
 
     return render(request, template, context)
