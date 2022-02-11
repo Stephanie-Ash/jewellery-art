@@ -105,10 +105,10 @@
                                 <label data-url="{% url 'toggle_homepage_featured' product.id %}"
                                     class="home-featured-label mb-0"
                                     for="home-featured{{ product.id }}">Featured</label> |
-                                <a href="{% url 'edit_product' product.id %}"
+                                <a class="txt-blue" href="{% url 'edit_product' product.id %}"
                                     aria-label="Edit product details.">Edit</a> |
-                                <a class="text-danger" href="{% url 'delete_product' product.id %}"
-                                    aria-label="Delete product from the store.">Delete</a>
+                                <button class="delete-btn" type="button"
+                                    data-delete-url="{% url 'delete_product' product.id%}">Delete</button>
                             </small>
                             {% endif %}
                         </div>
