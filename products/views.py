@@ -1,5 +1,5 @@
 """ Views for the products app. """
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -186,7 +186,9 @@ def toggle_homepage_featured(request, product_id):
     """
     Toggle the homepage_featured field of an individual product.
     """
+    current_page = request.META.get('HTTP_REFERER')
     product = get_object_or_404(Product, pk=product_id)
     product.homepage_featured = not product.homepage_featured
     product.save()
-    return redirect(reverse('products'))
+
+    return HttpResponseRedirect(current_page)

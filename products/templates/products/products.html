@@ -96,12 +96,17 @@
                             </a>
                         </div>
                         <div class="card-footer pt-1 text-center">
-                                <p class="mb-0">£{{ product.price }}</p>
+                            <p class="mb-0">£{{ product.price }}</p>
                             {% if request.user.is_superuser %}
                             <small>
-                                <input data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured" type="checkbox" id="home-featured{{ product.id }}" {% if product.homepage_featured%}checked{% endif %}>
-                                <label data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured-label mb-0" for="home-featured{{ product.id }}">Featured</label> |
-                                <a href="{% url 'edit_product' product.id %}" aria-label="Edit product details.">Edit</a> |
+                                <input data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured"
+                                    type="checkbox" id="home-featured{{ product.id }}"
+                                    {% if product.homepage_featured%}checked{% endif %}>
+                                <label data-url="{% url 'toggle_homepage_featured' product.id %}"
+                                    class="home-featured-label mb-0"
+                                    for="home-featured{{ product.id }}">Featured</label> |
+                                <a href="{% url 'edit_product' product.id %}"
+                                    aria-label="Edit product details.">Edit</a> |
                                 <a class="text-danger" href="" aria-label="Delete product.">Delete</a>
                             </small>
                             {% endif %}
@@ -158,10 +163,10 @@
 <script>
     let checks = document.getElementsByClassName("home-featured")
     for (let check of checks) {
-        check.addEventListener("click", function() {
+        check.addEventListener("click", function () {
             let url = this.getAttribute("data-url")
             window.location.href = url
         })
-    } 
+    }
 </script>
 {% endblock %}

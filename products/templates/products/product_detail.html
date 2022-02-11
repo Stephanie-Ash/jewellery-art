@@ -21,7 +21,17 @@
             {% if product.designer %}
             <p class="mb-2">by {{ product.designer.name }}</p>
             {% endif %}
-            <p class="mb-3"><strong>£{{ product.price }}</strong></p>
+            <p class="mb-3 mr-2 d-inline-block"><strong>£{{ product.price }}</strong></p>
+            {% if request.user.is_superuser %}
+            <small>
+                <input data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured" type="checkbox"
+                    id="home-featured{{ product.id }}" {% if product.homepage_featured%}checked{% endif %}>
+                <label data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured-label mb-0"
+                    for="home-featured{{ product.id }}">Featured</label> |
+                <a href="{% url 'edit_product' product.id %}" aria-label="Edit product details.">Edit</a> |
+                <a class="text-danger" href="" aria-label="Delete product.">Delete</a>
+            </small>
+            {% endif %}
             <!-- Add to basket form. -->
             <form action="{% url 'add_to_basket' product.id %}" method="POST">
                 {% csrf_token %}
@@ -32,7 +42,8 @@
                 </div>
                 <div>
                     <button type="submit" class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Add to Basket</button>
-                    <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page" class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Keep Shopping</a>
+                    <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
+                        class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Keep Shopping</a>
                 </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </form>
@@ -48,12 +59,14 @@
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#description" aria-expanded="true"
                                 aria-controls="description">
-                                Description <i id="description-arrow" class="{% if 'profile' in request.META.HTTP_REFERER %}fas fa-chevron-down{% else %}fas fa-chevron-up{% endif %}"></i>
+                                Description <i id="description-arrow"
+                                    class="{% if 'profile' in request.META.HTTP_REFERER %}fas fa-chevron-down{% else %}fas fa-chevron-up{% endif %}"></i>
                             </button>
                         </h2>
                     </div>
-                    <div id="description" class="collapse {% if 'profile' not in request.META.HTTP_REFERER %}show{% endif %}" aria-labelledby="description-head"
-                        data-parent="#prod-det-accordion">
+                    <div id="description"
+                        class="collapse {% if 'profile' not in request.META.HTTP_REFERER %}show{% endif %}"
+                        aria-labelledby="description-head" data-parent="#prod-det-accordion">
                         <div class="card-body">
                             <p class="mb-0 text-justify">
                                 {{ product.description }}
@@ -98,11 +111,13 @@
                             <button class="btn btn-block accord-btn text-left rounded-0 collapsed" type="button"
                                 data-toggle="collapse" data-target="#reviews" aria-expanded="false"
                                 aria-controls="reviews">
-                                Reviews <i id="reviews-arrow" class="{% if 'profile' in request.META.HTTP_REFERER %}fas fa-chevron-up{% else %}fas fa-chevron-down{% endif %}"></i>
+                                Reviews <i id="reviews-arrow"
+                                    class="{% if 'profile' in request.META.HTTP_REFERER %}fas fa-chevron-up{% else %}fas fa-chevron-down{% endif %}"></i>
                             </button>
                         </h2>
                     </div>
-                    <div id="reviews" class="collapse {% if 'profile' in request.META.HTTP_REFERER %}show{% endif %}" aria-labelledby="details-head" data-parent="#prod-det-accordion">
+                    <div id="reviews" class="collapse {% if 'profile' in request.META.HTTP_REFERER %}show{% endif %}"
+                        aria-labelledby="details-head" data-parent="#prod-det-accordion">
                         <div class="card-body review-body pb-0">
                             {% if user.is_authenticated and purchased %}
                             <form action="{% url 'product_detail' product.id %}" method="POST" id="review-form">
@@ -122,7 +137,8 @@
                             </p>
                             {% else %}
                             {% for review in reviews %}
-                            <p class="mb-1"><strong>Review by {{ review.name }} on {{ review.created_on|date:"j F Y" }}:</strong></p>
+                            <p class="mb-1"><strong>Review by {{ review.name }} on
+                                    {{ review.created_on|date:"j F Y" }}:</strong></p>
                             <p class="mb-0">{{ review.body }}</p>
                             {% if not forloop.last %}
                             <hr class="review-divider">
@@ -221,5 +237,15 @@
             iElement.classList.add("fa-chevron-down");
         }
     });
+</script>
+
+<script>
+    let checks = document.getElementsByClassName("home-featured")
+    for (let check of checks) {
+        check.addEventListener("click", function () {
+            let url = this.getAttribute("data-url")
+            window.location.href = url
+        })
+    }
 </script>
 {% endblock %}
