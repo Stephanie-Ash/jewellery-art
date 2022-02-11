@@ -1,5 +1,6 @@
 """ Views for the products app. """
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponseRedirect)
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -147,7 +148,6 @@ def add_product(request):
     template = 'products/add_product.html'
     context = {
         'form': form,
-        'on_management': True
     }
 
     return render(request, template, context)
@@ -176,7 +176,6 @@ def edit_product(request, product_id):
     context = {
         'form': form,
         'product': product,
-        'on_management': True
     }
 
     return render(request, template, context)
@@ -192,3 +191,13 @@ def toggle_homepage_featured(request, product_id):
     product.save()
 
     return HttpResponseRedirect(current_page)
+
+
+def delete_product(request, product_id):
+    """
+    Delete a product from the store.
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product deleted.')
+    return redirect(reverse('products'))

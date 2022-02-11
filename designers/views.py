@@ -58,7 +58,6 @@ def add_designer(request):
     template = 'designers/add_designer.html'
     context = {
         'form': form,
-        'on_management': True
     }
 
     return render(request, template, context)
@@ -87,7 +86,6 @@ def edit_designer(request, designer_id):
     context = {
         'form': form,
         'designer': designer,
-        'on_management': True
     }
 
     return render(request, template, context)

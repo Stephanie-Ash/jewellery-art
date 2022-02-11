@@ -107,7 +107,8 @@
                                     for="home-featured{{ product.id }}">Featured</label> |
                                 <a href="{% url 'edit_product' product.id %}"
                                     aria-label="Edit product details.">Edit</a> |
-                                <a class="text-danger" href="" aria-label="Delete product.">Delete</a>
+                                <a class="text-danger" href="{% url 'delete_product' product.id %}"
+                                    aria-label="Delete product from the store.">Delete</a>
                             </small>
                             {% endif %}
                         </div>
