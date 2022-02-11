@@ -1,6 +1,7 @@
 """ Forms for the designers app. """
 from django import forms
 
+from products.widgets import CustomClearableFileInput
 from .models import Designer
 
 
@@ -14,3 +15,6 @@ class DesignerForm(forms.ModelForm):
         fields = ('name', 'introduction', 'phone_number',
                   'email', 'website_link', 'facebook_link',
                   'instagram_link', 'twitter_link', 'image')
+
+    image = forms.ImageField(
+        label='image', required=False, widget=CustomClearableFileInput)
