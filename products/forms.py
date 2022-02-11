@@ -1,6 +1,7 @@
 """ Forms for the products app. """
 from django import forms
 
+from .widgets import CustomClearableFileInput
 from .models import Review, Product
 
 
@@ -31,3 +32,6 @@ class ProductForm(forms.ModelForm):
         """ Select the model and define the fields. """
         model = Product
         fields = '__all__'
+
+    image = forms.ImageField(
+        label='image', required=False, widget=CustomClearableFileInput)

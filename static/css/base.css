@@ -165,6 +165,33 @@ h3, .detail-h2 {
     text-decoration: underline;
 }
 
+/* Image file input */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0;
+    border-color: #C20000;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #C20000;
+    border-color: #C20000;
+    border-radius: 0;
+}
+
 /* ------------------------base.html------------------------ */
 
 /* Message Toasts */
