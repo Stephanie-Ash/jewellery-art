@@ -95,6 +95,12 @@
                     class="btn btn-sm btn-drk btn-sqr txt-lgt">Back to Designers</a>
                 <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
                     class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
+                {% if request.user.is_superuser %}
+                <small class="ml-1">
+                    <a href="{% url 'edit_designer' designer.id %}" aria-label="Edit designer details.">Edit</a> |
+                    <a class="text-danger" href="" aria-label="Delete designer.">Delete</a>
+                </small>
+                {% endif %}
             </div>
         </div>
         <!-- Designer information and buttons displayed below name and photo for smallest screens -->
@@ -107,6 +113,14 @@
             <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
                 class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
         </div>
+        {% if request.user.is_superuser %}
+        <div class="col-12 d-md-none">
+            <small>
+                <a href="{% url 'edit_designer' designer.id %}" aria-label="Edit designer details.">Edit</a> |
+                <a class="text-danger" href="" aria-label="Delete designer.">Delete</a>
+            </small>
+        </div>
+        {% endif %}
     </div>
 </section>
 <!-- Designer products section -->
