@@ -1,22 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-12 mt-4 mb-2 text-center text-sm-left txt-drk">
-            <h1 class="mb-0">Contact Management</h1>
+            <h1 class="mb-0">Contact Form Management</h1>
         </div>
         <div class="col-12">
             <hr class="divide-rule">
         </div>
+    </div>
+    <div class="row">
         <div class="col-12 mb-4 txt-drk">
             {% for message in contact_messages %}
-            <p>{{ message.get_topic_display }}</p>
-            <p>{{ message.first_name }}</p>
-            <p>{{ message.last_name }}</p>
-            <p>{{ message.email }}</p>
-            <p>{{ message.phone_number}}</p>
+            <p class="mb-1"><i class="fas fa-exclamation-circle mr-2 txt-red"></i>Awaiting Response</p>
+            <p class="mb-0"><span class="font-weight-bold">From:</span> {{ message.first_name }} {{ message.last_name }}</p>
+            <p class="mb-0"><span class="font-weight-bold">Email:</span> {{ message.email }}</p>
+            {% if message.phone_number %}
+            <p class="mb-0"><span class="font-weight-bold">Phone Number:</span> {{ message.phone_number}}</p>
+            {% endif %}
+            <p class="font-weight-bold">On {{ message.date_created|date:"jS F Y"}} at {{ message.date_created|date:"H:i"}}</p>
+            <p><span class="font-weight-bold">Message Topic:</span> {{ message.get_topic_display }}</p>
+            <p class="font-weight-bold mb-0">Message Body:</p>
             <p>{{ message.message }}</p>
+            <a role="button" class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4" href="#">Mark as Responded</a>
+            {% if not forloop.last %}
+            <hr class="review-divider">
+            {% endif %}
             {% endfor %}
         </div>
     </div>
