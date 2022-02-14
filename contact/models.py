@@ -29,5 +29,11 @@ class ContactMessage(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     responded = models.BooleanField(default=False)
 
+    class Meta:
+        """
+        Set ordering to ensure newest messages are displayed first.
+        """
+        ordering = ['-date_created']
+
     def __str__(self):
         return f'Message from {self.first_name} {self.last_name}'

@@ -16,19 +16,25 @@
             {% if not message.responded %}
             <p class="mb-1"><i class="fas fa-exclamation-circle mr-2 txt-red"></i>Awaiting Response</p>
             {% endif %}
-            <p class="mb-0"><span class="font-weight-bold">From:</span> {{ message.first_name }} {{ message.last_name }}</p>
+            <p class="mb-0"><span class="font-weight-bold">From:</span> {{ message.first_name }} {{ message.last_name }}
+            </p>
             <p class="mb-0"><span class="font-weight-bold">Email:</span> {{ message.email }}</p>
             {% if message.phone_number %}
             <p class="mb-0"><span class="font-weight-bold">Phone Number:</span> {{ message.phone_number}}</p>
             {% endif %}
-            <p class="font-weight-bold">On {{ message.date_created|date:"jS F Y"}} at {{ message.date_created|date:"H:i"}}</p>
+            <p class="font-weight-bold">On {{ message.date_created|date:"jS F Y"}} at
+                {{ message.date_created|date:"H:i"}}</p>
             <p><span class="font-weight-bold">Message Topic:</span> {{ message.get_topic_display }}</p>
             <p class="font-weight-bold mb-0">Message Body:</p>
             <p>{{ message.message }}</p>
             {% if message.responded %}
-            <a role="button" class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4" href="{% url 'toggle_responded' message.id %}">Mark as Response Required</a>
+            <a role="button" class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4"
+                href="{% url 'toggle_responded' message.id %}" aria-label="Set as requiring a response">Mark as Response
+                Required</a>
             {% else %}
-            <a role="button" class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4" href="{% url 'toggle_responded' message.id %}">Mark as Responded</a>
+            <a role="button" class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4"
+                href="{% url 'toggle_responded' message.id %}" aria-label="Confirm a response has been sent">Mark as
+                Responded</a>
             {% endif %}
             {% if not forloop.last %}
             <hr class="review-divider">
