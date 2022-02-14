@@ -99,7 +99,7 @@
                 </li>
                 </li>
                 <!-- Account link dropdown. -->
-                <li class="list-inline-item order-lg-4 dropdown">
+                <li class="list-inline-item order-lg-4 dropdown account-dropdown">
                     <a class="nav-link px-2" href="#" id="account-options" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <div class="text-center">
@@ -107,11 +107,12 @@
                             <p class="m-0 d-none d-lg-block">My Account</p>
                         </div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right bg-color-lgt" aria-labelledby="account-options">
+                    <div class="dropdown-menu account-dropdown-menu bg-color-lgt" aria-labelledby="account-options">
                         {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
                         <a class="dropdown-item" href="{% url 'add_product' %}" aria-label="Go to the product management page">Product Management</a>
                         <a class="dropdown-item" href="{% url 'add_designer' %}" aria-label="Go to the designer management page">Designer Management</a>
+                        <a class="dropdown-item" href="{% url 'manage_contacts' %}" aria-label="Go to the designer management page">Contact Form Management</a>
                         {% endif %}
                         <a class="dropdown-item" href="{% url 'account_logout' %}" aria-label="Logout of your account">Logout</a>
                         <a class="dropdown-item" href="{% url 'profile' %}" aria-label="View your profile">My Profile</a>

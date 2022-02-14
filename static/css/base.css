@@ -282,6 +282,14 @@ h3, .detail-h2 {
     left: 18px;
 }
 
+.account-dropdown {
+    position: static;
+}
+
+.account-dropdown-menu {
+    width: 100%;
+}
+
 /* Footer */
 footer {
     padding-top: 20px;
@@ -750,6 +758,16 @@ select:invalid, select option[value=""] {
 
     .det-product-info {
         padding-left: 10%;
+    }
+
+    .account-dropdown {
+        position: relative;
+    }
+    
+    .account-dropdown-menu {
+        width: auto;
+        right: 0;
+        left: auto;
     }
 }
 
