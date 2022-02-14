@@ -15,7 +15,7 @@ class ReviewForm(forms.ModelForm):
         fields = ('name', 'body')
 
     def __init__(self, *args, **kwargs):
-        """ Add placeholder to body field. """
+        """ Add placeholders to fields. """
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['placeholder'] = 'Name'
         self.fields['body'].widget.attrs['placeholder'] = (
