@@ -759,16 +759,6 @@ select:invalid, select option[value=""] {
     .det-product-info {
         padding-left: 10%;
     }
-
-    .account-dropdown {
-        position: relative;
-    }
-    
-    .account-dropdown-menu {
-        width: auto;
-        right: 0;
-        left: auto;
-    }
 }
 
 /* For screens 360px and up */
@@ -780,6 +770,16 @@ select:invalid, select option[value=""] {
     .order-number {
         word-wrap: normal;
         font-size: 16px;
+    }
+
+    .account-dropdown {
+        position: relative;
+    }
+    
+    .account-dropdown-menu {
+        width: auto;
+        right: 0;
+        left: auto;
     }
 }
 
