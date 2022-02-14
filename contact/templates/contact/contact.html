@@ -9,15 +9,34 @@
         <div class="col-12">
             <hr class="divide-rule">
         </div>
-        <div class="col-12 col-md-8 col-lg-6 mx-auto mb-4 txt-drk">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto mb-4 txt-drk">
             <p>
                 If you have any comments or queries, fill out the form below and we will get back to you as soon as we
                 can.
             </p>
             <form class="order-fieldset" method="POST" action="{% url 'contact' %}">
                 {% csrf_token %}
-                {{ contact_form | crispy }}
-                <button class="btn btn-sm btn-drk btn-sqr txt-lgt mr-2" type="submit">Send Message</button>
+                <div class="row">
+                    <div class="col-12">
+                        {{ contact_form.topic | as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {{ contact_form.first_name | as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {{ contact_form.last_name | as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {{ contact_form.email | as_crispy_field}}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {{ contact_form.phone_number | as_crispy_field}}
+                    </div>
+                    <div class="col-12">
+                        {{ contact_form.message | as_crispy_field }}
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-drk btn-sqr txt-lgt" type="submit">Send Message</button>
             </form>
         </div>
     </div>
