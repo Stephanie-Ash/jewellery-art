@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-4 mb-2 text-center text-sm-left txt-drk">
+            <h1 class="mb-0">Contact Management</h1>
+        </div>
+        <div class="col-12">
+            <hr class="divide-rule">
+        </div>
+        <div class="col-12 mb-4 txt-drk">
+            {% for message in contact_messages %}
+            <p>{{ message.get_topic_display }}</p>
+            <p>{{ message.first_name }}</p>
+            <p>{{ message.last_name }}</p>
+            <p>{{ message.email }}</p>
+            <p>{{ message.phone_number}}</p>
+            <p>{{ message.message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

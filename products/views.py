@@ -137,6 +137,7 @@ def add_product(request):
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry, only store owners are authorised to do that.')
+        return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -200,6 +201,7 @@ def toggle_homepage_featured(request, product_id):
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry, only store owners are authorised to do that.')
+        return redirect(reverse('home'))
 
     current_page = request.META.get('HTTP_REFERER')
     product = get_object_or_404(Product, pk=product_id)
@@ -217,6 +219,7 @@ def delete_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry, only store owners are authorised to do that.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()

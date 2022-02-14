@@ -13,7 +13,7 @@ class ContactMessage(models.Model):
     OTHER = 'OT'
     TOPIC_CHOICES = [
         ('', 'Select Topic *'),
-        (ORDER, 'Your Order'),
+        (ORDER, 'Jewellery Order'),
         (PRODUCT, 'Jewellery Product'),
         (DESIGNER, 'Jewellery Designer'),
         (WEBSITE, 'Our Website'),
