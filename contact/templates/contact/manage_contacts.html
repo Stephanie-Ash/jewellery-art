@@ -13,7 +13,9 @@
     <div class="row">
         <div class="col-12 mb-4 txt-drk">
             {% for message in contact_messages %}
+            {% if not message.responded %}
             <p class="mb-1"><i class="fas fa-exclamation-circle mr-2 txt-red"></i>Awaiting Response</p>
+            {% endif %}
             <p class="mb-0"><span class="font-weight-bold">From:</span> {{ message.first_name }} {{ message.last_name }}</p>
             <p class="mb-0"><span class="font-weight-bold">Email:</span> {{ message.email }}</p>
             {% if message.phone_number %}
@@ -23,7 +25,11 @@
             <p><span class="font-weight-bold">Message Topic:</span> {{ message.get_topic_display }}</p>
             <p class="font-weight-bold mb-0">Message Body:</p>
             <p>{{ message.message }}</p>
-            <a role="button" class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4" href="#">Mark as Responded</a>
+            {% if message.responded %}
+            <a role="button" class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4" href="{% url 'toggle_responded' message.id %}">Mark as Response Required</a>
+            {% else %}
+            <a role="button" class="btn btn-sm btn-drk btn-sqr txt-lgt mb-4" href="{% url 'toggle_responded' message.id %}">Mark as Responded</a>
+            {% endif %}
             {% if not forloop.last %}
             <hr class="review-divider">
             {% endif %}

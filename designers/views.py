@@ -46,7 +46,7 @@ def add_designer(request):
     """
     if not request.user.is_superuser:
         messages.error(
-            request, 'Sorry, only store owners are authorised to do that.')
+            request, 'Sorry this area is for the store owner only.')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -77,7 +77,7 @@ def edit_designer(request, designer_id):
     """
     if not request.user.is_superuser:
         messages.error(
-            request, 'Sorry, only store owners are authorised to do that.')
+            request, 'Sorry this area is for the store owner only.')
         return redirect(reverse('home'))
 
     designer = get_object_or_404(Designer, pk=designer_id)

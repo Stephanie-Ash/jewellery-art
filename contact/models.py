@@ -27,6 +27,7 @@ class ContactMessage(models.Model):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     message = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
+    responded = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Message from {self.first_name} {self.last_name}'

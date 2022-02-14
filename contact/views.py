@@ -1,5 +1,5 @@
 """ Views for the contact app. """
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -40,7 +40,7 @@ def manage_contacts(request):
     """
     if not request.user.is_superuser:
         messages.error(
-            request, 'Sorry this area is for the store owner.')
+            request, 'Sorry this area is for the store owner only.')
         return redirect(reverse('home'))
 
     contact_messages = ContactMessage.objects.all()
@@ -50,3 +50,20 @@ def manage_contacts(request):
     }
 
     return render(request, 'contact/manage_contacts.html', context)
+
+
+@login_required
+def toggle_responded(request, contact_message_id):
+    """
+    Toggle the responded field of an individual contact message.
+    """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+        return redirect(reverse('home'))
+
+    contact_message = get_object_or_404(ContactMessage, pk=contact_message_id)
+    contact_message.responded = not contact_message.responded
+    contact_message.save()
+
+    return redirect(reverse('manage_contacts'))
