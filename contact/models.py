@@ -12,6 +12,7 @@ class ContactMessage(models.Model):
     WEBSITE = 'WB'
     OTHER = 'OT'
     TOPIC_CHOICES = [
+        ('', 'Select Topic *'),
         (ORDER, 'Your Order'),
         (PRODUCT, 'Jewellery Product'),
         (DESIGNER, 'Jewellery Designer'),
