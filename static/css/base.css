@@ -424,6 +424,43 @@ footer {
     padding-bottom: 20px;
 }
 
+.newsletter-signup {
+    background: url('/media/gold-cuff-background.jpg') center center / cover no-repeat;
+    min-height: 300px;
+}
+
+/* Mailchimp form */
+#mc_embed_signup form {
+    padding: 0;
+}
+
+#mc_embed_signup .mc-field-group {
+    width: 100%;
+}
+
+#mc_embed_signup input {
+    border-radius: 0;
+}
+
+#mc_embed_signup .foot {
+    width: 100%;
+}
+
+#mc_embed_signup .button {
+    background-color: #242d33;
+    color: #dce4e8;
+    border-radius: 0;
+}
+
+#mc_embed_signup div#mce-responses {
+    width: 100%;
+}
+
+#mc_embed_signup div.response {
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+
 /* ------------------------products.html------------------------ */
 
 .divide-rule {
