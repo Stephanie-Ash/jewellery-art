@@ -8,7 +8,7 @@ from django.db.models.functions import Lower
 
 from designers.models import Designer, Collection
 from profiles.models import UserProfile
-from .models import Product, Category
+from .models import Product, Category, Review
 from .forms import ReviewForm, ProductForm
 
 
@@ -127,6 +127,20 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+
+@login_required
+def edit_review(request, review_id):
+    """
+    Allow registered users to edit a review on their profile page.
+    """
+    review = get_object_or_404(Review, pk=review_id)
+    if request.method == 'POST':
+        review.name = request.POST['name']
+        review.body = request.POST['body']
+        review.save()
+        messages.success(request, 'Successfully updated review.')
+        return redirect(reverse('profile'))
 
 
 @login_required

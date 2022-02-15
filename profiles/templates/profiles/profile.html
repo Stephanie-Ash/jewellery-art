@@ -75,7 +75,7 @@
             <div>
                 <p class="d-inline-block mb-0 mr-2"><strong>Date:</strong> {{ review.created_on|date:"j F Y" }}</p>
                 <p class="d-inline-block mb-0 mb-2"><strong>Product:</strong> {{ review.product.name }}</p>
-                <form class="edit-review-form" action="" method="POST" id="review-form">
+                <form class="edit-review-form" action="{% url 'edit_review' review.id %}" method="POST" id="review-form">
                     {% csrf_token %}
                     <fieldset class="order-fieldset">
                         <legend class="review-legend">Update Review</legend>
