@@ -1,3 +1,11 @@
+""" Admin panel set-up for the faqs app. """
 from django.contrib import admin
+from .models import FAQ
 
-# Register your models here.
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    """
+    Admin options for the FAQ model.
+    """
+    list_display = ('question', 'answer')
