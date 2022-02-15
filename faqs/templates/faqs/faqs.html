@@ -12,17 +12,20 @@
     </div>
     <div class="row">
         <div class="col-12 txt-drk">
-            <p>Need some help? Browse our most frequently asked questions below.</p>
+            <p>
+                Need some help? Browse our frequently asked questions below. Still haven't found an answer? Visit our 
+                <a class="content-link txt-link" href="{% url 'contact' %}" aria-label="Go to the contact us form">Contact Page</a>.
+            </p>
         </div>
     </div>
     <div class="row">
         <div class="col-12 {% if 'OR' not in categories %}d-none{% endif %} txt-drk">
-            <h2 class="detail-h2">Orders</h2>
-            <div class="accordion mb-5" id="faq-order-accordion">
+            <h2 class="detail-h2 mb-0">Orders</h2>
+            <div class="accordion mb-4" id="faq-order-accordion">
             {% for faq in faqs %}
             {% if faq.category == 'OR' %}
                 <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 det-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
                         <p class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
@@ -32,7 +35,7 @@
                     <div id="faq-{{ faq.id }}"
                         class="collapse"
                         aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-order-accordion">
-                        <div class="card-body">
+                        <div class="card-body faq-acc-body">
                             <p class="mb-0 text-justify">
                                 {{ faq.answer }}
                             </p>
@@ -44,12 +47,12 @@
             </div>
         </div>
         <div class="col-12 {% if 'DE' not in categories %}d-none{% endif %} txt-drk">
-            <h2 class="detail-h2">Delivery</h2>
-            <div class="accordion mb-5" id="faq-delivery-accordion">
+            <h2 class="detail-h2 mb-0">Delivery</h2>
+            <div class="accordion mb-4" id="faq-delivery-accordion">
             {% for faq in faqs %}
             {% if faq.category == 'DE' %}
                 <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 det-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
                         <p class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
@@ -59,7 +62,7 @@
                     <div id="faq-{{ faq.id }}"
                         class="collapse"
                         aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-delivery-accordion">
-                        <div class="card-body">
+                        <div class="card-body faq-acc-body">
                             <p class="mb-0 text-justify">
                                 {{ faq.answer }}
                             </p>
@@ -71,12 +74,12 @@
             </div>
         </div>
         <div class="col-12 {% if 'WB' not in categories %}d-none{% endif %} txt-drk">
-            <h2 class="detail-h2">Account</h2>
-            <div class="accordion mb-5" id="faq-account-accordion">
+            <h2 class="detail-h2 mb-0">Account</h2>
+            <div class="accordion mb-4" id="faq-account-accordion">
             {% for faq in faqs %}
             {% if faq.category == 'WB' %}
                 <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 det-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
                         <p class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
@@ -86,7 +89,7 @@
                     <div id="faq-{{ faq.id }}"
                         class="collapse"
                         aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-account-accordion">
-                        <div class="card-body">
+                        <div class="card-body faq-acc-body">
                             <p class="mb-0 text-justify">
                                 {{ faq.answer }}
                             </p>
@@ -98,12 +101,12 @@
             </div>
         </div>
         <div class="col-12 {% if 'PR' not in categories %}d-none{% endif %} txt-drk">
-            <h2 class="detail-h2">Jewellery</h2>
-            <div class="accordion mb-5" id="faq-jewellery-accordion">
+            <h2 class="detail-h2 mb-0">Jewellery</h2>
+            <div class="accordion mb-4" id="faq-jewellery-accordion">
             {% for faq in faqs %}
             {% if faq.category == 'PR' %}
                 <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 det-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
                         <p class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
@@ -113,7 +116,7 @@
                     <div id="faq-{{ faq.id }}"
                         class="collapse"
                         aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-jewellery-accordion">
-                        <div class="card-body">
+                        <div class="card-body faq-acc-body">
                             <p class="mb-0 text-justify">
                                 {{ faq.answer }}
                             </p>
@@ -125,12 +128,12 @@
             </div>
         </div>
         <div class="col-12 {% if 'DS' not in categories %}d-none{% endif %} txt-drk">
-            <h2 class="detail-h2">Designers</h2>
-            <div class="accordion mb-5" id="faq-designer-accordion">
+            <h2 class="detail-h2 mb-0">Designers</h2>
+            <div class="accordion mb-4" id="faq-designer-accordion">
             {% for faq in faqs %}
             {% if faq.category == 'DS' %}
                 <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 det-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
                         <p class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
@@ -140,7 +143,7 @@
                     <div id="faq-{{ faq.id }}"
                         class="collapse"
                         aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-designer-accordion">
-                        <div class="card-body">
+                        <div class="card-body faq-acc-body">
                             <p class="mb-0 text-justify">
                                 {{ faq.answer }}
                             </p>
@@ -152,12 +155,12 @@
             </div>
         </div>
         <div class="col-12 {% if 'OT' not in categories %}d-none{% endif %} txt-drk">
-            <h2 class="detail-h2">Other</h2>
-            <div class="accordion mb-5" id="faq-other-accordion">
+            <h2 class="detail-h2 mb-0">Other</h2>
+            <div class="accordion mb-4" id="faq-other-accordion">
             {% for faq in faqs %}
             {% if faq.category == 'OT' %}
                 <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 det-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
                         <p class="mb-0">
                             <button class="btn btn-block accord-btn text-left rounded-0" type="button"
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
@@ -167,7 +170,7 @@
                     <div id="faq-{{ faq.id }}"
                         class="collapse"
                         aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-other-accordion">
-                        <div class="card-body">
+                        <div class="card-body faq-acc-body">
                             <p class="mb-0 text-justify">
                                 {{ faq.answer }}
                             </p>

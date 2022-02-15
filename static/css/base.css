@@ -143,6 +143,8 @@ h3, .detail-h2 {
 .accord-btn {
     color: #242d33;
     font-weight: bold;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .accord-btn:hover {
@@ -742,6 +744,20 @@ select:invalid, select option[value=""] {
 
 .edit-review-form {
     display: none;
+}
+
+
+/* ------------------------faqs.html------------------------ */
+.faq-acc-head {
+    border-bottom: 2px solid #242d33;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.faq-acc-body {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
 }
 
 /* ------------------------Media Queries------------------------ */
