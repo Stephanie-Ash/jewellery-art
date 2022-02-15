@@ -740,6 +740,10 @@ select:invalid, select option[value=""] {
     font-size: 12.5px;
 }
 
+.edit-review-form {
+    display: none;
+}
+
 /* ------------------------Media Queries------------------------ */
 
 /* For screens 320px and up */

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from checkout.models import Order
+from products.forms import ReviewForm
 from .models import UserProfile
 from .forms import UserProfileForm
 
@@ -29,6 +30,7 @@ def profile(request):
     orders = profile.orders.all()
     reviews = profile.reviews.all()
     products = []
+    review_form = ReviewForm()
 
     for order in orders:
         for item in order.lineitems.all():
@@ -41,6 +43,7 @@ def profile(request):
         'orders': orders,
         'reviews': reviews,
         'purchased_products': purchased_products,
+        'review_form': review_form,
     }
 
     return render(request, template, context)
