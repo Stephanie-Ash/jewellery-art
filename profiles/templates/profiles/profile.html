@@ -97,7 +97,7 @@
                 <a class="review-edit txt-blue {% if forloop.last %}mb-4{% else %}mb-2{% endif %}"
                     href="#" aria-label="Edit product details.">Edit</a>
                 <button class="delete-btn ml-1 {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" type="button"
-                    data-delete-url="#">Delete</button>
+                data-delete-url="{% url 'delete_review' review.id%}">Delete</button>
                 {% if not forloop.last %}
                 <hr class="review-divider">
                 {% endif %}

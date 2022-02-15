@@ -144,6 +144,17 @@ def edit_review(request, review_id):
 
 
 @login_required
+def delete_review(request, review_id):
+    """
+    Allow registered users to delete a review on their profile page.
+    """
+    review = get_object_or_404(Review, pk=review_id)
+    review.delete()
+    messages.success(request, 'Review deleted.')
+    return redirect(reverse('profile'))
+
+
+@login_required
 def add_product(request):
     """
     Add a product to the store.
