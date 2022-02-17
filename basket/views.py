@@ -39,6 +39,7 @@ def view_basket(request):
 
     context = {
         'form': order_form,
+        'country_code': country_code,
     }
 
     return render(request, 'basket/basket.html', context)
