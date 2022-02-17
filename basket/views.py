@@ -86,3 +86,17 @@ def remove_from_basket(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+
+def set_delivery_country(request, country_code):
+    """
+    Set the delivery country so that the delivery price can
+    be calculated
+    """
+    if country_code == 'no_country':
+        if 'country' in request.session:
+            del request.session['country']
+    else:
+        request.session['country'] = country_code
+
+    return HttpResponse(status=200)
