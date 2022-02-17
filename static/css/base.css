@@ -225,6 +225,8 @@ h3, .detail-h2 {
 .toast-img {
     outline: 2px solid #242d33;
     outline-offset: 1px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 .toast-basket {
@@ -394,6 +396,8 @@ footer {
     border-radius: 0;
     outline: 3px solid #eef2f4;
     outline-offset: 2px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 .scrolling-wrapper {
@@ -613,6 +617,8 @@ textarea.form-control {
 .basket-img {
     outline: 2px solid #242d33;
     outline-offset: 2px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 .basket-grand-total {
@@ -659,6 +665,8 @@ textarea.form-control {
 .checkout-img {
     outline: 1px solid #242d33;
     outline-offset: 1px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 #div_id_country {
