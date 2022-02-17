@@ -673,6 +673,11 @@ select:invalid, select option[value=""] {
     color: #6d7a82 !important;
 }
 
+.checkout-country-dis, .checkout-country-dis option {
+    color: #6d7a82 !important;
+    border-color: #6d7a82 !important;
+}
+
 /* Stripe */
 .StripeElement {
   box-sizing: border-box;

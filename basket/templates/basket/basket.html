@@ -132,6 +132,8 @@
 
     // Select delivery country
     let country = document.getElementById('id_country');
+    country.removeAttribute('disabled');
+    country.classList.remove('checkout-country-dis');
 
     country.addEventListener('change', function() {
         let csrfToken = "{{ csrf_token }}";

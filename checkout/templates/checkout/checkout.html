@@ -28,7 +28,14 @@
                     {{ order_form.town_or_city | as_crispy_field }}
                     {{ order_form.county | as_crispy_field }}
                     {{ order_form.postcode | as_crispy_field }}
-                    {{ order_form.country | as_crispy_field }}
+                    <div class="row">
+                        <div class="col-10">
+                            {{ order_form.country | as_crispy_field }}
+                        </div>
+                        <div class="col-2 pl-0 my-auto">
+                            <a class="txt-blue" href="{% url 'view_basket' %}" aria-label="Go to the basket page to select a different country">Edit</a>
+                        </div>
+                    </div>
                     <div class="form-check form-check-inline mb-3 mr-0 txt-drk">
                         {% if user.is_authenticated %}
                         <input class="form-check-input mr-2" type="checkbox" id="id-save-info" name="save-info" checked>
