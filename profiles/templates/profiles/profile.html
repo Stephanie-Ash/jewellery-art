@@ -37,6 +37,7 @@
                         <tr>
                             <td>
                                 <a href="{% url 'order_history' order.order_number %}"
+                                    aria-label="Go to the order confirmation page for {{ order.order_number }}"
                                     title="{{ order.order_number }}">{{ order.order_number|truncatechars:5 }}</a>
                             </td>
                             <td>
@@ -75,29 +76,35 @@
             <div>
                 <p class="d-inline-block mb-0 mr-2"><strong>Date:</strong> {{ review.created_on|date:"j F Y" }}</p>
                 <p class="d-inline-block mb-0 mb-2"><strong>Product:</strong> {{ review.product.name }}</p>
-                <form class="edit-review-form" action="{% url 'edit_review' review.id %}" method="POST" id="review-form">
+                <form class="edit-review-form" action="{% url 'edit_review' review.id %}" method="POST"
+                    id="review-form">
                     {% csrf_token %}
                     <fieldset class="order-fieldset">
                         <legend class="review-legend">Update Review</legend>
                         <div id="div_id_name" class="form-group">
                             <div>
-                                <input type="text" name="name" maxlength="50" value="{{ review.name }}" class="textinput textInput form-control" required id="id_name">
+                                <input type="text" name="name" maxlength="50" value="{{ review.name }}"
+                                    class="textinput textInput form-control" required id="id_name">
                             </div>
                         </div>
                         <div id="div_id_body" class="form-group">
                             <div>
-                                <textarea name="body" cols="40" rows="10" placeholder="Write your review here." class="textarea form-control" required id="id_body">{{ review.body }}</textarea>
+                                <textarea name="body" cols="40" rows="10" placeholder="Write your review here."
+                                    class="textarea form-control" required id="id_body">{{ review.body }}</textarea>
                             </div>
                         </div>
                     </fieldset>
-                    <button class="btn btn-sm btn-drk btn-sqr txt-lgt {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" type="submit">Update review</button>
-                    <a class="btn btn-sm btn-drk btn-sqr txt-lgt {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" href="{% url 'profile' %}">Cancel</a>
+                    <button
+                        class="btn btn-sm btn-drk btn-sqr txt-lgt {% if forloop.last %}mb-4{% else %}mb-2{% endif %}"
+                        type="submit">Update review</button>
+                    <a class="btn btn-sm btn-drk btn-sqr txt-lgt {% if forloop.last %}mb-4{% else %}mb-2{% endif %}"
+                        href="{% url 'profile' %}">Cancel</a>
                 </form>
                 <p class="mb-1">{{ review.body }}</p>
-                <a class="review-edit txt-blue {% if forloop.last %}mb-4{% else %}mb-2{% endif %}"
-                    href="#" aria-label="Edit product details.">Edit</a>
+                <a class="review-edit txt-blue {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" href="#"
+                    aria-label="Edit review.">Edit</a>
                 <button class="delete-btn ml-1 {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" type="button"
-                data-delete-url="{% url 'delete_review' review.id%}">Delete</button>
+                    data-delete-url="{% url 'delete_review' review.id%}">Delete</button>
                 {% if not forloop.last %}
                 <hr class="review-divider">
                 {% endif %}
@@ -126,7 +133,7 @@
     let edits = document.getElementsByClassName("review-edit");
 
     for (let edit of edits) {
-        edit.addEventListener("click", function() {
+        edit.addEventListener("click", function () {
             this.style.display = "none"
             let form = this.parentNode.getElementsByTagName('form')[0];
             let deleteBtn = this.nextElementSibling
