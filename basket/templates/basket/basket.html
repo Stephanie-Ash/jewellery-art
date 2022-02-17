@@ -11,12 +11,14 @@
         <div class="col-12">
             <hr class="divide-rule">
         </div>
+    </div>
+    <div class="row">
+        {% if basket_items %}
         <div class="col-12 {% if basket_items %}col-lg-10 col-xl-8 offset-lg-1 offset-xl-2{% endif %} txt-drk">
-            {% if basket_items %}
             <!-- Include html from mobile-basket file for xs screens -->
             {% include "basket/mobile-basket.html" %}
             <!-- Table of basket items dispalyed on small screens and up. -->
-            <table class="d-none d-sm-block table table-sm txt-drk mb-1">
+            <table class="d-none d-sm-block table table-sm txt-drk mb-2">
                 <thead>
                     <tr>
                         <th colspan="2" scope="col">Basket Items</th>
@@ -63,8 +65,19 @@
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+        <div class="d-none d-sm-block col-12 {% if basket_items %}col-lg-10 col-xl-8 offset-lg-1 offset-xl-2{% endif %}">
+            <hr>
+        </div>
+        <div class="col-12 {% if basket_items %}col-lg-10 col-xl-8 offset-lg-1 offset-xl-2{% endif %} mobile-basket-cols txt-drk">
+            <p class="mb-2" id="basket-select-country">
+                Select delivery country to calculate delivery cost and proceed to checkout.
+            </p>
+            <div class="order-fieldset mb-4 w-50">
+                {{ form.country | as_crispy_field }}
+            </div>
             <!-- Basket totals and checkout button. -->
-            <div class="d-none d-sm-block basket-totals txt-drk">
+            <div class="txt-drk">
                 <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
                 <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
                 <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
@@ -79,13 +92,15 @@
                     href="{% url 'login_or_guest' %}">Checkout</a>
                 {% endif %}
             </div>
+        </div>
+        <div class="col-12 txt-drk">
             {% else %}
             <!-- Empty basket message -->
             <p class="basket-empty">Your basket is currently empty.</p>
             <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"
                 href="{% url 'products' %}">Shop Now!</a>
-            {% endif %}
         </div>
+        {% endif %}
     </div>
 </div>
 

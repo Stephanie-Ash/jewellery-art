@@ -4,14 +4,20 @@ from django.shortcuts import (
 from django.contrib import messages
 
 from products.models import Product
+from checkout.forms import OrderForm
 
 
 def view_basket(request):
     """
     Display the shopping basket and its contents.
     """
+    order_form = OrderForm()
 
-    return render(request, 'basket/basket.html')
+    context = {
+        'form': order_form,
+    }
+
+    return render(request, 'basket/basket.html', context)
 
 
 def add_to_basket(request, item_id):

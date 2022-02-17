@@ -50,22 +50,3 @@
     </div>
 </div>
 {% endfor %}
-<div class="row d-sm-none">
-    <div class="col-12 txt-drk mobile-basket-cols">
-        <!-- Basket totals. -->
-        <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
-        <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
-        <p><strong>Grand Total:<span class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
-        </p>
-        <!-- Keep shopping and checkout buttons. -->
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"
-            href="{% url 'products' %}">Keep Shopping</a>
-        {% if user.is_authenticated %}
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Proceed to checkout"
-            href="{% url 'checkout' %}">Checkout</a>
-        {% else %}
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Proceed to checkout"
-            href="{% url 'login_or_guest' %}">Checkout</a>
-        {% endif %}
-    </div>
-</div>

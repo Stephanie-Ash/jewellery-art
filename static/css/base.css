@@ -615,10 +615,6 @@ textarea.form-control {
     outline-offset: 2px;
 }
 
-.basket-totals {
-    float: right;
-}
-
 .basket-grand-total {
     margin-left: 19px;
 }
@@ -842,6 +838,11 @@ select:invalid, select option[value=""] {
 
     .det-product-info {
         padding-left: 15px;
+    }
+
+    .mobile-basket-cols {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
     }
 }
 
