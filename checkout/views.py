@@ -51,6 +51,7 @@ def checkout(request):
     """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    country_code = request.session.get('country', '')
 
     if request.method == 'POST':
         basket = request.session.get('basket', {})
@@ -119,7 +120,7 @@ def checkout(request):
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
-                    'country': profile.default_country,
+                    'country': country_code,
                     'postcode': profile.default_postcode,
                     'town_or_city': profile.default_town_or_city,
                     'address1': profile.default_address1,
@@ -127,9 +128,13 @@ def checkout(request):
                     'county': profile.default_county,
                 })
             except UserProfile.DoesNotExist:
-                order_form = OrderForm()
+                order_form = OrderForm(initial={
+                    'country': country_code,
+                })
         else:
-            order_form = OrderForm()
+            order_form = OrderForm(initial={
+                'country': country_code,
+            })
 
     if not stripe_public_key:
         messages.warning(
