@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         {% if basket_items %}
-        <div class="col-12 {% if basket_items %}col-lg-10 col-xl-8 offset-lg-1 offset-xl-2{% endif %} txt-drk">
+        <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 txt-drk">
             <!-- Include html from mobile-basket file for xs screens -->
             {% include "basket/mobile-basket.html" %}
             <!-- Table of basket items dispalyed on small screens and up. -->
@@ -66,10 +66,10 @@
                 </tbody>
             </table>
         </div>
-        <div class="d-none d-sm-block col-12 {% if basket_items %}col-lg-10 col-xl-8 offset-lg-1 offset-xl-2{% endif %}">
+        <div class="d-none d-sm-block col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
             <hr>
         </div>
-        <div class="col-12 {% if basket_items %}col-lg-10 col-xl-8 offset-lg-1 offset-xl-2{% endif %} mobile-basket-cols txt-drk">
+        <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 mobile-basket-cols txt-drk">
             <p class="mb-2" id="basket-select-country">
                 Select delivery country to calculate delivery cost and proceed to checkout.
             </p>
@@ -93,8 +93,8 @@
                 {% endif %}
             </div>
         </div>
+        {% else %}
         <div class="col-12 txt-drk">
-            {% else %}
             <!-- Empty basket message -->
             <p class="basket-empty">Your basket is currently empty.</p>
             <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"

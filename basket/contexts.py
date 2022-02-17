@@ -15,6 +15,7 @@ def basket_contents(request):
     total = 0
     product_count = 0
     basket = request.session.get('basket', {})
+    country = request.session.get('country', '')
 
     for item_id, quantity in basket.items():
         product = get_object_or_404(Product, pk=item_id)
@@ -27,7 +28,13 @@ def basket_contents(request):
         })
 
     if total:
-        delivery = settings.STANDARD_DELIVERY
+        if country:
+            if country == 'GB':
+                delivery = 0
+            else:
+                delivery = settings.STANDARD_DELIVERY
+        else:
+            delivery = settings.STANDARD_DELIVERY
     else:
         delivery = 0
 
