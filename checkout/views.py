@@ -65,7 +65,7 @@ def checkout(request):
             'town_or_city': request.POST['town_or_city'],
             'county': request.POST['county'],
             'postcode': request.POST['postcode'],
-            'country': request.POST['country'],
+            'country': country_code,
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
