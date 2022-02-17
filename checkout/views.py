@@ -113,28 +113,73 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        if request.user.is_authenticated:
-            try:
-                profile = UserProfile.objects.get(user=request.user)
-                order_form = OrderForm(initial={
-                    'full_name': profile.user.get_full_name(),
-                    'email': profile.user.email,
-                    'phone_number': profile.default_phone_number,
-                    'country': country_code,
-                    'postcode': profile.default_postcode,
-                    'town_or_city': profile.default_town_or_city,
-                    'address1': profile.default_address1,
-                    'address2': profile.default_address2,
-                    'county': profile.default_county,
-                })
-            except UserProfile.DoesNotExist:
+        if country_code:
+            if request.user.is_authenticated:
+                try:
+                    profile = UserProfile.objects.get(user=request.user)
+                    order_form = OrderForm(initial={
+                        'full_name': profile.user.get_full_name(),
+                        'email': profile.user.email,
+                        'phone_number': profile.default_phone_number,
+                        'country': country_code,
+                        'postcode': profile.default_postcode,
+                        'town_or_city': profile.default_town_or_city,
+                        'address1': profile.default_address1,
+                        'address2': profile.default_address2,
+                        'county': profile.default_county,
+                    })
+                except UserProfile.DoesNotExist:
+                    order_form = OrderForm(initial={
+                        'country': country_code,
+                    })
+            else:
                 order_form = OrderForm(initial={
                     'country': country_code,
                 })
         else:
-            order_form = OrderForm(initial={
-                'country': country_code,
-            })
+            if request.user.is_authenticated:
+                try:
+                    profile = UserProfile.objects.get(user=request.user)
+                    if profile.default_country:
+                        order_form = OrderForm(initial={
+                            'full_name': profile.user.get_full_name(),
+                            'email': profile.user.email,
+                            'phone_number': profile.default_phone_number,
+                            'country': profile.default_country,
+                            'postcode': profile.default_postcode,
+                            'town_or_city': profile.default_town_or_city,
+                            'address1': profile.default_address1,
+                            'address2': profile.default_address2,
+                            'county': profile.default_county,
+                        })
+                        country_code = f'{profile.default_country}'
+                        request.session['country'] = country_code
+                    else:
+                        country_code = 'GB'
+                        request.session['country'] = country_code
+                        order_form = OrderForm(initial={
+                            'full_name': profile.user.get_full_name(),
+                            'email': profile.user.email,
+                            'phone_number': profile.default_phone_number,
+                            'country': country_code,
+                            'postcode': profile.default_postcode,
+                            'town_or_city': profile.default_town_or_city,
+                            'address1': profile.default_address1,
+                            'address2': profile.default_address2,
+                            'county': profile.default_county,
+                        })
+                except UserProfile.DoesNotExist:
+                    country_code = 'GB'
+                    request.session['country'] = country_code
+                    order_form = OrderForm(initial={
+                        'country': country_code,
+                    })
+            else:
+                country_code = 'GB'
+                request.session['country'] = country_code
+                order_form = OrderForm(initial={
+                    'country': country_code,
+                })
 
     if not stripe_public_key:
         messages.warning(
