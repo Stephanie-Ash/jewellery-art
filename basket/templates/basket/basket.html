@@ -129,5 +129,27 @@
                 location.reload();
             });
     })
+
+    // Select delivery country
+    let country = document.getElementById('id_country');
+
+    country.addEventListener('change', function() {
+        let csrfToken = "{{ csrf_token }}";
+        let countryCode = this.value;
+        let data = {
+            'csrfmiddlewaretoken': csrfToken
+        };
+        if (countryCode) {
+            let url = `/basket/set_delivery_country/${countryCode}/`;
+            $.post(url, data).done(function() {
+                location.reload();
+            });
+        } else {
+            let url = '/basket/select_country/no_country/';
+            $.post(url, data).done(function() {
+                location.reload();
+            });
+        }
+    })
 </script>
 {% endblock %}
