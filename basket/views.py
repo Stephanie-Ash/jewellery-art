@@ -4,6 +4,7 @@ from django.shortcuts import (
 from django.contrib import messages
 
 from products.models import Product
+from profiles.models import UserProfile
 from checkout.forms import OrderForm
 
 
@@ -11,7 +12,30 @@ def view_basket(request):
     """
     Display the shopping basket and its contents.
     """
-    order_form = OrderForm()
+    referring_page = request.META.get('HTTP_REFERER')
+
+    if 'basket' not in referring_page:
+        if 'country' in request.session:
+            del request.session['country']
+
+    country_code = request.session.get('country', '')
+
+    if country_code:
+        order_form = OrderForm(initial={
+            'country': country_code,
+        })
+    elif request.user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            order_form = OrderForm(initial={
+                'country': profile.default_country,
+            })
+            country_code = f'{profile.default_country}'
+            request.session['country'] = country_code
+        except UserProfile.DoesNotExist:
+            order_form = OrderForm()
+    else:
+        order_form = OrderForm()
 
     context = {
         'form': order_form,
