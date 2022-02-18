@@ -137,7 +137,7 @@
 
     country.addEventListener('change', function() {
         let csrfToken = "{{ csrf_token }}";
-        let countryCode = this.value;
+        let countryCode = this.value.trim();
         let data = {
             'csrfmiddlewaretoken': csrfToken
         };
