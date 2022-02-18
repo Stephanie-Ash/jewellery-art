@@ -1,0 +1,511 @@
+[{
+        "model": "products.product",
+        "pk": 2,
+        "fields": {
+            "category": 4,
+            "designer": 3,
+            "collection": 17,
+            "sku": "RC221701CG1",
+            "name": "Large Mottled Gold Cuff",
+            "description": "This large gold acrylic cuff with mottled detailing is perfect for a statement piece. It curves around the wrist for a close fit.",
+            "sizing": "L - 15cm, W - adjustable 5cm - 10cm.",
+            "material": "Acrylic with ribbon tie.",
+            "price": "120.00",
+            "image": "large-mottled-gold-cuff.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "category": 5,
+            "designer": 3,
+            "collection": 17,
+            "sku": "RC221701RGB1",
+            "name": "Circular Gold and Black Ring",
+            "description": "This striking large acrylic disc ring has black and gold textured detailing.",
+            "sizing": "L - 5cm, W - 5cm, Adjustable ring base.",
+            "material": "Acrylic with silver plated ring base.",
+            "price": "90.00",
+            "image": "circular-gold-and-black-ring.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 4,
+        "fields": {
+            "category": 5,
+            "designer": 3,
+            "collection": null,
+            "sku": "RC221701RBG1",
+            "name": "Circular Gold Fleck Ring",
+            "description": "This large black acrylic disc ring has gold fleck detailing and a high shine finish making it ideal evening wear.",
+            "sizing": "L - 5cm, W - 5cm, Adjustable ring base.",
+            "material": "Acrylic with silver plated ring base.",
+            "price": "90.00",
+            "image": "circular-gold-fleck-ring.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,
+        "fields": {
+            "category": 5,
+            "designer": 3,
+            "collection": null,
+            "sku": "RC221701RBG2",
+            "name": "Long Gold Fleck Ring",
+            "description": "This long black acrylic ring with strong gold fleck detailing and a high gloss finish would make a great evening accessory.",
+            "sizing": "L - 4cm, W - 2cm, Adjustable Ring Base",
+            "material": "Acrylic with silver plated ring base.",
+            "price": "90.00",
+            "image": "long-gold-fleck-ring.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 6,
+        "fields": {
+            "category": 5,
+            "designer": 3,
+            "collection": 19,
+            "sku": "RC221701RWB1",
+            "name": "Large White and Black Circular Ring",
+            "description": "This large white acrylic circular ring has black splatter detailing giving the impression of an artist's canvas.",
+            "sizing": "L - 5cm, W - 5cm, Adjustable ring base.",
+            "material": "Acrylic with silver plated ring base.",
+            "price": "80.00",
+            "image": "large-white-and-black-circular-ring.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 7,
+        "fields": {
+            "category": 4,
+            "designer": 3,
+            "collection": 19,
+            "sku": "RC221701CW1",
+            "name": "Large White Cuff",
+            "description": "This large white acrylic cuff with a high shine finish would make a striking accessory to darker clothing.",
+            "sizing": "L - 15cm, W - adjustable 5cm - 10cm.",
+            "material": "Acrylic with ribbon tie.",
+            "price": "100.00",
+            "image": "large-white-cuff.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 8,
+        "fields": {
+            "category": 5,
+            "designer": 3,
+            "collection": null,
+            "sku": "RC221701RB1",
+            "name": "Large Double Disc Ring",
+            "description": "This understated black acrylic double disc ring would be perfect for styling up everyday wear.",
+            "sizing": "L - 5cm, W - 3.5cm max, Adjustable ring base.",
+            "material": "Acrylic with silver plated ring base.",
+            "price": "70.00",
+            "image": "large-double-disc-ring.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 9,
+        "fields": {
+            "category": 4,
+            "designer": 3,
+            "collection": 18,
+            "sku": "RC221701CB1",
+            "name": "Large Leaf Cuff",
+            "description": "This black acrylic cuff is inspired nature with beautiful delicate leaf detailing.",
+            "sizing": "L - 15cm, W - adjustable 5cm - 10cm.",
+            "material": "Acrylic with ribbon tie.",
+            "price": "130.00",
+            "image": "large-leaf-cuff.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 10,
+        "fields": {
+            "category": 5,
+            "designer": 3,
+            "collection": 18,
+            "sku": "RC221701RB2",
+            "name": "Black Leaf Ring",
+            "description": "This black acrylic ring with leaf relief detailing is almost a wearable sculpture.",
+            "sizing": "L - 4cm, W - 3cm, Adjustable ring base.",
+            "material": "Acrylic with silver plated ring base.",
+            "price": "80.00",
+            "image": "black-leaf-ring.jpg",
+            "homepage_featured": true
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 11,
+        "fields": {
+            "category": 2,
+            "designer": 4,
+            "collection": 15,
+            "sku": "LF221701EBC1",
+            "name": "Blue Cloud Earrings",
+            "description": "These delightful earrings with stylishly designed acrylic and oxidised silver clouds complete with pearl raindrops are perfect to add a bit of fun to your wardrobe.",
+            "sizing": "W - 2.5cm, H - 2cm (at pearl)",
+            "material": "Oxidised silver, acrylic, pearl. Oxidised silver hooks.",
+            "price": "60.00",
+            "image": "blue-cloud-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 12,
+        "fields": {
+            "category": 3,
+            "designer": 4,
+            "collection": 15,
+            "sku": "LF221701NBC1",
+            "name": "Blue Cloud Necklace",
+            "description": "This delightful necklace with a stylishly designed acrylic and oxidised silver blue cloud complete with pearl raindrops is perfect to add a bit of fun to your wardrobe.",
+            "sizing": "W - 5cm, H - 3cm (at pearls). Chain 46cm",
+            "material": "Oxidised silver, acrylic, pearl.",
+            "price": "80.00",
+            "image": "blue-cloud-necklace.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 13,
+        "fields": {
+            "category": 2,
+            "designer": 4,
+            "collection": null,
+            "sku": "LF221701EF1",
+            "name": "Flower Laser Cut Earrings",
+            "description": "These delicate earrings are made of oxidised silver with laser cut abstract flower patterns. The coloured pearl details add some formality and make them perfect for a social or business occasion.",
+            "sizing": "W - 2cm, H - 2.5cm + 3cm chain.",
+            "material": "Dyed pearl, oxidised silver with oxidised silver posts.",
+            "price": "55.00",
+            "image": "flower-laser-cut-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 14,
+        "fields": {
+            "category": 4,
+            "designer": 6,
+            "collection": 14,
+            "sku": "ER221701BS1",
+            "name": "Silver Helix Bracelet",
+            "description": "This quirky silver bracelet stands out from the crowd with its interesting loose helix design.",
+            "sizing": "L - 9cm, W - 6.5cm.",
+            "material": "Silver",
+            "price": "75.00",
+            "image": "silver-helix-bracelet.jpg",
+            "homepage_featured": true
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 15,
+        "fields": {
+            "category": 2,
+            "designer": 6,
+            "collection": 14,
+            "sku": "ER221701ES1",
+            "name": "Silver Helix Earrings",
+            "description": "These quirky tight helix silver earrings provide that little special something extra over more traditional hooped earrings.",
+            "sizing": "2.5cm diameter",
+            "material": "Silver with silver hooks",
+            "price": "55.00",
+            "image": "silver-helix-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 16,
+        "fields": {
+            "category": 2,
+            "designer": 6,
+            "collection": null,
+            "sku": "ER221701ES2",
+            "name": "Silver Figure Earrings",
+            "description": "These dainty silver figure earrings would add a bit of fun to the day to day wardrobe.",
+            "sizing": "H - 4cm, W - 1cm",
+            "material": "Silver with silver hooks",
+            "price": "50.00",
+            "image": "silver-figure-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 17,
+        "fields": {
+            "category": 6,
+            "designer": 5,
+            "collection": null,
+            "sku": "MC221701BF1",
+            "name": "Fruit Bowl Brooch",
+            "description": "This fun polymer clay brooch in the shape of a fruit bowl almost looks good enough to eat.",
+            "sizing": "W - 3.5cm, H - 4.5cm",
+            "material": "Polymer clay",
+            "price": "25.00",
+            "image": "fruit-bowl-brooch.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 18,
+        "fields": {
+            "category": 6,
+            "designer": 5,
+            "collection": 16,
+            "sku": "MC221701BL1",
+            "name": "Zipped Lips Brooch",
+            "description": "This pop art style ceramic lips brooch gives a real retro seventies feel.",
+            "sizing": "W - 6cm, H - 3.5cm",
+            "material": "Ceramic",
+            "price": "30.00",
+            "image": "zipped-lips-brooch.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 19,
+        "fields": {
+            "category": 6,
+            "designer": 5,
+            "collection": null,
+            "sku": "MC221701BD1",
+            "name": "Domino Brooch",
+            "description": "This painted wood domino brooch would add a bit of fun to business attire.",
+            "sizing": "W - 2.5cm, H - 5cm",
+            "material": "Painted wood",
+            "price": "20.00",
+            "image": "domino-brooch.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 20,
+        "fields": {
+            "category": 3,
+            "designer": 7,
+            "collection": null,
+            "sku": "MG221701NBR1",
+            "name": "Bright Blue and Red Necklace",
+            "description": "With the bright blue and red colouring this oxidised silver and enamel necklace will really make you stand out in a crowd.",
+            "sizing": "W - 2.5cm H - 5cm, choker diameter 12.5cm",
+            "material": "Oxidised silver, enamel",
+            "price": "45.00",
+            "image": "bright-blue-and-red-necklace.jpg",
+            "homepage_featured": true
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 21,
+        "fields": {
+            "category": 2,
+            "designer": 7,
+            "collection": null,
+            "sku": "MG221701EBR1",
+            "name": "Bright Blue and Red Earrings",
+            "description": "With the bright blue and red colouring these oxidised silver and enamel earrings will really make you stand out in a crowd.",
+            "sizing": "W - 2.5cm, H - 3cm",
+            "material": "Oxidised silver, enamel, oxidised silver posts",
+            "price": "40.00",
+            "image": "bright-blue-and-red-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 22,
+        "fields": {
+            "category": 3,
+            "designer": 7,
+            "collection": null,
+            "sku": "MG221701NB1",
+            "name": "Cyan Pendant Necklace",
+            "description": "This ceramic pendant necklace with cyan colouring evokes thoughts holidays with bright sun and azure seas.",
+            "sizing": "w - 6cm, H - 3cm, Chain 45cm",
+            "material": "Ceramic, silver",
+            "price": "40.00",
+            "image": "cyan-pendant-necklace.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 23,
+        "fields": {
+            "category": 3,
+            "designer": 8,
+            "collection": 13,
+            "sku": "AB221701NCR1",
+            "name": "Circle and Rectangle Pendant",
+            "description": "This double shaped pendant of oxidised silver squashed circle over enamelled curved rectangle is perfect for a stylish everyday piece.",
+            "sizing": "W - 5cm, H - 6cm, chain 45cm",
+            "material": "Oxidised silver, enamel",
+            "price": "65.00",
+            "image": "circle-and-rectangle-pendant.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 24,
+        "fields": {
+            "category": 2,
+            "designer": 8,
+            "collection": 13,
+            "sku": "AB221701ER1",
+            "name": "Curved Rectangle Earrings",
+            "description": "These curved rectangular earrings of enamelled oxidised silver are in understated colours perfect for a stylish everyday piece.",
+            "sizing": "W - 1.5cm, H - 6cm",
+            "material": "Oxidised silver, enamel, silver hooks",
+            "price": "50.00",
+            "image": "curved-rectangle-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 25,
+        "fields": {
+            "category": 2,
+            "designer": 8,
+            "collection": null,
+            "sku": "AB221701ECR1",
+            "name": "Circle and Rectangle Earrings",
+            "description": "These earrings of a brushed silver curved rectangle over a brushed silver circle are a simple shape but striking geometry.",
+            "sizing": "W - 2cm, H - 5.5cm",
+            "material": "brushed silver, silver posts",
+            "price": "45.00",
+            "image": "circle-and-rectangle-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 26,
+        "fields": {
+            "category": 2,
+            "designer": 8,
+            "collection": null,
+            "sku": "AB221701ESR1",
+            "name": "Semicircle and Rectangle Earrings",
+            "description": "These brushed silver semicircle and curved rectangle earrings are simple and elegant.",
+            "sizing": "W - 3cm, H - 5.5cm",
+            "material": "brushed silver, silver hooks",
+            "price": "45.00",
+            "image": "semicircle-and-rectangle-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 27,
+        "fields": {
+            "category": 2,
+            "designer": 8,
+            "collection": 13,
+            "sku": "AB221701ECE1",
+            "name": "Curved Enamel Earrings",
+            "description": "These earrings are all about the curves, even the triangles are curved. Made of enamelled oxidised silver these are a great of contemporary design.",
+            "sizing": "W - 3cm, H - 6cm",
+            "material": "Oxidised silver, enamel, silver posts",
+            "price": "55.00",
+            "image": "curved-enamel-earrings.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 28,
+        "fields": {
+            "category": 2,
+            "designer": 9,
+            "collection": 20,
+            "sku": "GL221801ERB1",
+            "name": "Red and Black Rectangular Studs",
+            "description": "These red and black leather stud earrings and small but sculptural. Though simple in design they have a playful three dimensional effect as they sit on the ear.",
+            "sizing": "L - 1.3cm, W - 0.7cm, H - 0.4cm",
+            "material": "Leather, Silver posts",
+            "price": "40.00",
+            "image": "red-and-black-rectangular-studs.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 29,
+        "fields": {
+            "category": 3,
+            "designer": 9,
+            "collection": 12,
+            "sku": "GL221801NS1",
+            "name": "Three Piece Shard Necklace",
+            "description": "This acrylic necklace is all about the angles with pleasingly balanced asymmetric shapes strung on a silver choker.",
+            "sizing": "W - 8cm, H - 5cm, choker diameter 13cm",
+            "material": "Acrylic, silver",
+            "price": "85.00",
+            "image": "three-piece-shard-necklace.jpg",
+            "homepage_featured": false
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 30,
+        "fields": {
+            "category": 2,
+            "designer": 9,
+            "collection": 12,
+            "sku": "GL221801EBB1",
+            "name": "Blue and Black Mesh Earrings",
+            "description": "These acrylic earrings are inspired by the style of the Mid Century Modern designers. A clear acrylic shape with blue mesh pattern hangs from a pleasingly angular black stud top.",
+            "sizing": "W - 1cm, H - 5cm",
+            "material": "Acrylic, silver posts",
+            "price": "50.00",
+            "image": "blue-and-black-mesh-earrings.jpg",
+            "homepage_featured": true
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 31,
+        "fields": {
+            "category": 2,
+            "designer": 9,
+            "collection": 12,
+            "sku": "GL221801EB1",
+            "name": "Angular Blue Stud Earrings",
+            "description": "These small blue acrylic earrings show wonderfully asymmetric angular shapes giving the feel of a really modern design.",
+            "sizing": "W - 1.5cm, H - 1cm",
+            "material": "Acrylic, silver posts",
+            "price": "35.00",
+            "image": "angular-blue-stud-earrings.jpg",
+            "homepage_featured": false
+        }
+    }
+]

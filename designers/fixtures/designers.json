@@ -1,0 +1,113 @@
+[{
+        "model": "designers.designer",
+        "pk": 3,
+        "fields": {
+            "name": "Rachel Clark",
+            "programmatic_name": "rachel_clark",
+            "introduction": "Rachel Clark has been making and selling inspirational jewellery since 2019 and her tough statement pieces have been lauded by designers Manolo Blahnik and Betty Jackson. With her background in fashion and degree in fine art sculpture she seeks innovative ways of combining these disciplines to create miniature sculptures that mound around the body like works of art. Each piece is individually handcrafted from acrylic and set with its own unique detailing. The textured surfaces and abstract forms wrap around the wrist or hand like and extension of one's own form.",
+            "image": "rachel-clark.jpg",
+            "phone_number": "07700900669",
+            "email": "rachelclarkjewellery@gmail.com",
+            "facebook_link": "https://www.facebook.com/Rachel-Clark-Jewellery-174708965915493",
+            "instagram_link": "https://www.instagram.com/",
+            "website_link": null,
+            "twitter_link": null
+        }
+    },
+    {
+        "model": "designers.designer",
+        "pk": 4,
+        "fields": {
+            "name": "Lucas Finch",
+            "programmatic_name": "lucas_finch",
+            "introduction": "Working with a palette of oxidised silver, pearl, red garnet and the occasional acrylic detailing Lucas Finch creates luxurious wearable collections. Inspired by the natural world and traditional decorative ironwork Lucas combines both traditional and modern jewellery techniques to make intricate detailed pieces that are beautiful to wear.",
+            "image": "lucas-finch.jpg",
+            "phone_number": "07700900601",
+            "email": "lucas@finch.com",
+            "facebook_link": "https://www.facebook.com/",
+            "instagram_link": "https://www.instagram.com/",
+            "website_link": null,
+            "twitter_link": null
+        }
+    },
+    {
+        "model": "designers.designer",
+        "pk": 5,
+        "fields": {
+            "name": "Meredith Chambers",
+            "programmatic_name": "meredith_chambers",
+            "introduction": "With over 40 years experience of jewellery design Meredith Chambers has carved out a niche for herself as the go to designer for quirky art brooches. With past collections designed exclusively for the Tate and never one to avoid controversy you can always rely on Meredith to produce pieces that are real talking points. Working with clay, ceramic or wood Meredith loves making fun, colourful and quirky pieces.",
+            "image": "meredith-chambers.jpg",
+            "phone_number": "01614960500",
+            "email": "chambers.jewellery@email.com",
+            "facebook_link": null,
+            "instagram_link": null,
+            "website_link": null,
+            "twitter_link": null
+        }
+    },
+    {
+        "model": "designers.designer",
+        "pk": 6,
+        "fields": {
+            "name": "Emily Richardson",
+            "programmatic_name": "emily_richardson",
+            "introduction": "Whilst studying fashion Emily Richardson spent her free time taking lessons from a master silversmith. She quickly realised that this was where her true passion lay and upon completion of her studies she immersed herself in the world of silver jewellery. Working out of Bristol and using traditional silversmithing techniques Emily is known producing silver jewellery with a unique contemporary twist.",
+            "image": "emily-richardson.jpg",
+            "phone_number": "07700900367",
+            "email": "emily_richardson@email.com",
+            "facebook_link": "https://www.facebook.com/",
+            "instagram_link": "https://www.instagram.com/",
+            "website_link": null,
+            "twitter_link": "https://twitter.com"
+        }
+    },
+    {
+        "model": "designers.designer",
+        "pk": 7,
+        "fields": {
+            "name": "Monique Godfrey",
+            "programmatic_name": "monique_godfrey",
+            "introduction": "Monique Godfrey is a real up-and-coming talent in contemporary jewellery. Working mainly with enamel she creates bright, bold and colourful pieces.",
+            "image": "monique-godfrey.jpg",
+            "phone_number": "0770900655",
+            "email": "godfrey-jewellery@email.com",
+            "facebook_link": null,
+            "instagram_link": "https://www.instagram.com/",
+            "website_link": null,
+            "twitter_link": "https://twitter.com"
+        }
+    },
+    {
+        "model": "designers.designer",
+        "pk": 8,
+        "fields": {
+            "name": "Antonne Brooks",
+            "programmatic_name": "antonne_brooks",
+            "introduction": "Antonne Brooks spent the early part of his career making large abstract metallic sculptures. This created a skill in metalwork and an interest in slightly distorted geometric shapes. He has now employed this interest and skill to jewellery making with spectacular results. His unusual pieces of curved rectangles and off centre circles have a real contemporary feel and provide a subtle style that makes them perfect for everyday use.",
+            "image": "antonne-brooks.jpg",
+            "phone_number": "07700900571",
+            "email": "abrooks@email.co.uk",
+            "facebook_link": "https://www.facebook.com/",
+            "instagram_link": "https://www.instagram.com/",
+            "website_link": null,
+            "twitter_link": "https://twitter.com"
+        }
+    },
+    {
+        "model": "designers.designer",
+        "pk": 9,
+        "fields": {
+            "name": "Gabriela Lopez",
+            "programmatic_name": "gabriela_lopez",
+            "introduction": "Originally hailing from Spain, Gabriela Lopez has recently settled in London. She specialises in bold acrylic jewellery based around angular geometric shapes. She has recently started studying leatherwork result in new innovative pieces.",
+            "image": "gabriela-lopez.jpg",
+            "phone_number": "0770900629",
+            "email": "g-lopez@email.com",
+            "facebook_link": "https://www.facebook.com/",
+            "instagram_link": "https://www.instagram.com/",
+            "website_link": null,
+            "twitter_link": null
+        }
+    }
+]

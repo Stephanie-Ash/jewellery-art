@@ -1,0 +1,82 @@
+[{
+        "model": "designers.collection",
+        "pk": 12,
+        "fields": {
+            "designer": 9,
+            "name": "Blue Acrylics",
+            "programmatic_name": "blue_acrylics"
+        }
+    },
+    {
+        "model": "designers.collection",
+        "pk": 13,
+        "fields": {
+            "designer": 8,
+            "name": "Enamel Hints",
+            "programmatic_name": "enamel_hints"
+        }
+    },
+    {
+        "model": "designers.collection",
+        "pk": 14,
+        "fields": {
+            "designer": 6,
+            "name": "Helix",
+            "programmatic_name": "helix"
+        }
+    },
+    {
+        "model": "designers.collection",
+        "pk": 15,
+        "fields": {
+            "designer": 4,
+            "name": "Inspired by Weather",
+            "programmatic_name": "inspired_by_weather"
+        }
+    },
+    {
+        "model": "designers.collection",
+        "pk": 16,
+        "fields": {
+            "designer": 5,
+            "name": "Pop Art Bolds",
+            "programmatic_name": "pop_art_bolds"
+        }
+    },
+    {
+        "model": "designers.collection",
+        "pk": 17,
+        "fields": {
+            "designer": 3,
+            "name": "The Gold Collection",
+            "programmatic_name": "the_gold_collection"
+        }
+    },
+    {
+        "model": "designers.collection",
+        "pk": 18,
+        "fields": {
+            "designer": 3,
+            "name": "The Leaf Collection",
+            "programmatic_name": "the_leaf_collection"
+        }
+    },
+    {
+        "model": "designers.collection",
+        "pk": 19,
+        "fields": {
+            "designer": 3,
+            "name": "The White Collection",
+            "programmatic_name": "the_white_collection"
+        }
+    },
+    {
+        "model": "designers.collection",
+        "pk": 20,
+        "fields": {
+            "designer": 9,
+            "name": "The Leather Set",
+            "programmatic_name": "the_leather_set"
+        }
+    }
+]

@@ -1,0 +1,41 @@
+[{
+        "model": "products.category",
+        "pk": 2,
+        "fields": {
+            "name": "Earrings",
+            "programmatic_name": "earrings"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 3,
+        "fields": {
+            "name": "Necklaces",
+            "programmatic_name": "necklaces"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 4,
+        "fields": {
+            "name": "Bracelets",
+            "programmatic_name": "bracelets"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 5,
+        "fields": {
+            "name": "Rings",
+            "programmatic_name": "rings"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 6,
+        "fields": {
+            "name": "Brooches",
+            "programmatic_name": "brooches"
+        }
+    }
+]
