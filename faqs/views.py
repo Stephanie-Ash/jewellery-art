@@ -1,7 +1,10 @@
 """ Views for the faqs app. """
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import FAQ
+from .forms import FAQForm
 
 
 def faqs(request):
@@ -17,3 +20,23 @@ def faqs(request):
     }
 
     return render(request, 'faqs/faqs.html', context)
+
+
+@login_required
+def add_faq(request):
+    """
+    Add a FAQ to the store.
+    """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry this area is for the store owner only.')
+        return redirect(reverse('home'))
+
+    form = FAQForm()
+
+    template = 'faqs/add_faq.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
