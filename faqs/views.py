@@ -1,5 +1,5 @@
 """ Views for the faqs app. """
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -48,6 +48,39 @@ def add_faq(request):
     template = 'faqs/add_faq.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_faq(request, faq_id):
+    """
+    Edit the details of an individual FAQ.
+    """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry this area is for the store owner only.')
+
+    faq = get_object_or_404(FAQ, pk=faq_id)
+    if request.method == 'POST':
+        form = FAQForm(request.POST, instance=faq)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated FAQ.')
+            return redirect(reverse('faqs'))
+        else:
+            messages.error(
+                request, 'Failed to update FAQ. Please check the form.')
+    else:
+        form = FAQForm(instance=faq)
+        messages.info(request, f'You are editing the following question: \
+            {faq.question}')
+
+    template = 'faqs/edit_faq.html'
+    context = {
+        'form': form,
+        'faq': faq,
     }
 
     return render(request, template, context)

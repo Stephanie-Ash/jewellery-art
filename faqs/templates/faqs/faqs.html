@@ -31,8 +31,8 @@
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
                                 aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
                             {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="#"
-                                aria-label="Edit product details.">Edit</a> |
+                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                aria-label="Edit FAQ.">Edit</a> |
                             <button class="delete-btn" type="button"
                                 data-delete-url="#">Delete</button>
                             {% endif %}
@@ -64,8 +64,8 @@
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
                                 aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
                             {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="#"
-                                aria-label="Edit product details.">Edit</a> |
+                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                aria-label="Edit FAQ.">Edit</a> |
                             <button class="delete-btn" type="button"
                                 data-delete-url="#">Delete</button>
                             {% endif %}
@@ -97,8 +97,8 @@
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
                                 aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
                             {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="#"
-                                aria-label="Edit product details.">Edit</a> |
+                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                aria-label="Edit FAQ.">Edit</a> |
                             <button class="delete-btn" type="button"
                                 data-delete-url="#">Delete</button>
                             {% endif %}
@@ -130,8 +130,8 @@
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
                                 aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
                             {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="#"
-                                aria-label="Edit product details.">Edit</a> |
+                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                aria-label="Edit FAQ.">Edit</a> |
                             <button class="delete-btn" type="button"
                                 data-delete-url="#">Delete</button>
                             {% endif %}
@@ -163,8 +163,8 @@
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
                                 aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
                             {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="#"
-                                aria-label="Edit product details.">Edit</a> |
+                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                aria-label="Edit FAQ.">Edit</a> |
                             <button class="delete-btn" type="button"
                                 data-delete-url="#">Delete</button>
                             {% endif %}
@@ -196,8 +196,8 @@
                                 data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
                                 aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
                             {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="#"
-                                aria-label="Edit product details.">Edit</a> |
+                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                aria-label="Edit FAQ.">Edit</a> |
                             <button class="delete-btn" type="button"
                                 data-delete-url="#">Delete</button>
                             {% endif %}
