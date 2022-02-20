@@ -25,7 +25,7 @@ def faqs(request):
 @login_required
 def add_faq(request):
     """
-    Add a FAQ to the store.
+    Add a FAQ to the site.
     """
     if not request.user.is_superuser:
         messages.error(
@@ -84,3 +84,19 @@ def edit_faq(request, faq_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_faq(request, faq_id):
+    """
+    Delete a FAQ from the site.
+    """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, only store owners are authorised to do that.')
+        return redirect(reverse('home'))
+
+    faq = get_object_or_404(FAQ, pk=faq_id)
+    faq.delete()
+    messages.success(request, 'FAQ deleted.')
+    return redirect(reverse('faqs'))
