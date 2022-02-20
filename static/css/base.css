@@ -439,11 +439,17 @@ footer {
 }
 
 .newsletter-signup {
-    background: url('/media/selection-of-jewellery-art-jewellery.jpg') center center / cover no-repeat;
+    background: url('/media/selection-of-jewellery-art-jewellery.jpg') left top / cover no-repeat;
     min-height: 350px;
 }
 
 /* Mailchimp form */
+#mc_embed_signup {
+    background-color: rgba(220, 228, 232, 0.7);
+    padding: 5px;
+    margin: 5px;
+}
+
 #mc_embed_signup form {
     padding: 0;
 }
