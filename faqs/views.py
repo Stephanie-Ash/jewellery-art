@@ -32,7 +32,18 @@ def add_faq(request):
             request, 'Sorry this area is for the store owner only.')
         return redirect(reverse('home'))
 
-    form = FAQForm()
+    if request.method == 'POST':
+        form = FAQForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Successfully added a FAQ to the FAQs page.')
+            return redirect(reverse('faqs'))
+        else:
+            messages.error(
+               request, 'Failed to add FAQ. Please check the form.')
+    else:
+        form = FAQForm()
 
     template = 'faqs/add_faq.html'
     context = {
