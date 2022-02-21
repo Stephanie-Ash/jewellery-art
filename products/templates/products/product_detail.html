@@ -45,6 +45,7 @@
                     <input class="form-control rounded-0 qty-input" type="number" name="quantity" value="1" min="1"
                         max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                 </div>
+                <p class="mb-0 txt-red" id="stock-notification"></p>
                 <div>
                     <button id="add-to-basket-btn" type="submit" {% if product.num_available == 0 %}aria-disabled="true"
                         {% endif %} class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Add to Basket</button>
@@ -252,14 +253,27 @@
 </script>
 
 <script>
-    document.getElementById("id_qty_{{ product.id }}").addEventListener('keydown', function (event) {
-        let addButton = document.getElementById("add-to-basket-btn")
+    let addQuantity = document.getElementById("id_qty_{{ product.id }}");
+    let addButton = document.getElementById("add-to-basket-btn");
+    let stock = parseInt('{{ product.num_available}}');
+    addQuantity.addEventListener('change', function () {
+        if (stock > 0 && this.value > stock) {
+            addButton.setAttribute("aria-disabled", "true");
+            document.getElementById("stock-notification").innerHTML = `Only ${stock} left in stock.`;
+        } else if (stock > 0 && this.value <= stock) {
+            addButton.removeAttribute("aria-disabled");
+            document.getElementById("stock-notification").innerHTML = ''
+        }
+    })
+
+    addQuantity.addEventListener('keydown', function (event) {
         if (event.key === "Enter") {
             if (addButton.hasAttribute("aria-disabled")) {
                 event.preventDefault();
             }
         }
     })
+
 </script>
 
 <script>
