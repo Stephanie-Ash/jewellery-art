@@ -275,6 +275,12 @@ h3, .detail-h2 {
     background-color: #eef2f4;
 }
 
+.jewellery-dropdown {
+    position: absolute !important;
+    width: 100%;
+    overflow: hidden;
+}
+
 .base-basket-parent {
     position: relative;
 }
