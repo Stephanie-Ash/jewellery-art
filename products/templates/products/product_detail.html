@@ -121,7 +121,7 @@
                         aria-labelledby="details-head" data-parent="#prod-det-accordion">
                         <div class="card-body review-body pb-0">
                             {% if user.is_authenticated and purchased %}
-                            <form action="{% url 'product_detail' product.id %}" method="POST" id="review-form">
+                            <form action="{% url 'add_review' product.id %}" method="POST" id="review-form">
                                 {% csrf_token %}
                                 <fieldset class="order-fieldset">
                                     <legend class="review-legend">Leave a Review</legend>

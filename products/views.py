@@ -130,6 +130,27 @@ def product_detail(request, product_id):
 
 
 @login_required
+def add_review(request, product_id):
+    """
+    Allow registered users to add a review of a product.
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    profile = get_object_or_404(UserProfile, user=request.user)
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+        if review_form.is_valid():
+            customer_review = review_form.save(commit=False)
+            customer_review.product = product
+            customer_review.user_profile = profile
+            customer_review.save()
+            messages.success(request, 'Review successfully added.')
+            return redirect(reverse('product_detail', args=[product_id]))
+    else:
+        messages.error(request, 'Sorry a form is required to do that')
+        return redirect(reverse('product_detail', args=[product_id]))
+
+
+@login_required
 def edit_review(request, review_id):
     """
     Allow registered users to edit a review on their profile page.
@@ -140,6 +161,9 @@ def edit_review(request, review_id):
         review.body = request.POST['body']
         review.save()
         messages.success(request, 'Successfully updated review.')
+        return redirect(reverse('profile'))
+    else:
+        messages.error(request, 'Sorry a form is required to do that')
         return redirect(reverse('profile'))
 
 
