@@ -757,6 +757,10 @@ select:invalid, select option[value=""] {
     font-size: 12.5px;
 }
 
+#add-review-button {
+    display: none;
+}
+
 .edit-review-form {
     display: none;
 }
