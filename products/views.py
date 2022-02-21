@@ -233,7 +233,10 @@ def toggle_homepage_featured(request, product_id):
     product.homepage_featured = not product.homepage_featured
     product.save()
 
-    return HttpResponseRedirect(current_page)
+    if current_page:
+        return HttpResponseRedirect(current_page)
+    else:
+        return redirect(reverse('products'))
 
 
 @login_required

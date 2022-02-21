@@ -14,9 +14,10 @@ def view_basket(request):
     """
     referring_page = request.META.get('HTTP_REFERER')
 
-    if 'basket' not in referring_page:
-        if 'country' in request.session:
-            del request.session['country']
+    if referring_page:
+        if 'basket' not in referring_page:
+            if 'country' in request.session:
+                del request.session['country']
 
     country_code = request.session.get('country', '')
 
