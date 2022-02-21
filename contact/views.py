@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import ContactForm
 from .models import ContactMessage
+from .summary_email import send_summary_email
 
 
 def contact(request):
@@ -14,10 +15,12 @@ def contact(request):
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
-            contact_form.save()
+            contact_message = contact_form.save()
+            send_summary_email(contact_message)
             messages.success(
-                request, 'Thank you for your message. We will get back to you \
-                    as soon as we can.')
+                request, f'Thank you for your message. \
+                    A summary has been sent to {contact_message.email} \
+                    We will get back to you as soon as we can.')
             return redirect(reverse('home'))
         else:
             messages.error(

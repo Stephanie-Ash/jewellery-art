@@ -1,0 +1,19 @@
+Dear {{ contact_message.first_name}} {{ contact_message.last_name}},
+
+Thank you for your message, we have provided a summary below.
+
+We will try to get back to you as soon as we can.
+
+Message summary:
+Topic: {{ contact_message.get_topic_display }}
+First Name: {{ contact_message.first_name }}
+Last Name: {{ contact_message.last_name }}
+Email Address: {{ contact_message.Email }}
+{% if contact_message.phone_number %}Phone Number: {{ contact_message.phone_number }}{% endif %}
+
+Message:
+{{ contact_message.message }}
+
+Thank you,
+
+Jewellery Art
