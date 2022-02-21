@@ -167,6 +167,16 @@ h3, .detail-h2 {
     text-decoration: underline;
 }
 
+[aria-disabled="true"] {
+    background-color: #515c63;
+    pointer-events: none;
+}
+
+[aria-disabled="true"]:hover {
+    color: #dce4e8;
+    cursor: auto !important;
+}
+
 /* Image file input */
 .btn-file {
     position: relative;
