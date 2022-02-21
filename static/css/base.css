@@ -501,6 +501,17 @@ footer {
 }
 
 /* Product Cards */
+.product-image-cont {
+    position: relative;
+}
+
+.out-of-stock {
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    background-color: #242d33;
+}
+
 .product-card-img {
     border-radius: 0;
     outline: 3px solid #242d33;
