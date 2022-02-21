@@ -50,6 +50,7 @@ class Product(models.Model):
     description = models.TextField()
     sizing = models.CharField(max_length=254, null=True, blank=True)
     material = models.CharField(max_length=254, null=True, blank=True)
+    num_available = models.IntegerField(default=0)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
     homepage_featured = models.BooleanField(default=False)
