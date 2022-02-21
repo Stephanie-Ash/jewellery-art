@@ -542,6 +542,7 @@ footer {
 /* ------------------------product_detail.html------------------------ */
 
 .detail-img-cont {
+    position: relative;
     max-width: 300px;
 }
 

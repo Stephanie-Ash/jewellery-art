@@ -11,6 +11,9 @@
                 {% else %}
                 <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                 {% endif %}
+                {% if product.num_available == 0 %}
+                <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                {% endif %}
             </div>
         </div>
         <div class="det-product-info col-12 col-sm-6 col-md-auto mt-4 my-sm-auto">
@@ -166,6 +169,7 @@
             <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
+                    <div class="product-image-cont">
                     {% if product.image %}
                     <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
@@ -173,6 +177,10 @@
                     <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                         alt="{{ product.name }}">
                     {% endif %}
+                    {% if product.num_available == 0 %}
+                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                    {% endif %}
+                    </div>
                 </a>
                 <div class="card-body pb-0">
                     <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
@@ -196,11 +204,16 @@
                 class="scroll-card scroll-drk {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
+                    <div class="product-image-cont">
                     {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% else %}
                     <img src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                     {% endif %}
+                    {% if product.num_available == 0 %}
+                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                    {% endif %}
+                    </div>
                 </a>
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
