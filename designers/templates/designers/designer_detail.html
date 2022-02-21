@@ -143,6 +143,7 @@
             <div class="card product-card h-100 pb-4 mx-auto">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
+                    <div class="product-image-cont">
                     {% if product.image %}
                     <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
@@ -150,6 +151,10 @@
                     <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                         alt="{{ product.name }}">
                     {% endif %}
+                    {% if product.num_available == 0 %}
+                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                    {% endif %}
+                    </div>
                 </a>
                 <div class="card-body pb-0">
                     <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
@@ -175,12 +180,17 @@
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
+                    <div class="product-image-cont">
                     <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
                     {% else %}
                     <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                         alt="{{ product.name }}">
                     {% endif %}
+                    {% if product.num_available == 0 %}
+                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                    {% endif %}
+                    </div>
                 </a>
                 <div class="card-body pb-0">
                     <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
