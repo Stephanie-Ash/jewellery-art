@@ -1,0 +1,25 @@
+Dear {{ order.full_name }},
+
+Thank you for your order with Jewellery Art. We hope you love your jewellery as much as we do.
+
+Please see below for a summary of your order information:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Total: £{{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Grand Total: £{{ order.grand_total }}
+
+You have purchaced the following items:
+{% for item in order.lineitems.all %}
+{{ item.product.name }}
+{% endfor %}
+
+Your order will be delivered to {{ order.address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+
+If you have any questions about your oder, please feel free to contact us by replying to this email.
+
+Thank you,
+
+Jewellery Art

@@ -1,0 +1,1 @@
+Confirmation of your Jewellery Art Order Number {{ order.order_number }}
