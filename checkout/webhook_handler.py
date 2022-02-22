@@ -108,6 +108,7 @@ class StripeWH_Handler:
                 status=200)
         else:
             order = None
+            problem_items = []
             try:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
@@ -125,12 +126,20 @@ class StripeWH_Handler:
                 )
                 for item_id, quantity in json.loads(basket).items():
                     product = Product.objects.get(id=item_id)
+                    new_inventory = product.inventory - quantity
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
                         quantity=quantity,
                     )
                     order_line_item.save()
+                    if new_inventory < 0:
+                        problem_items.append(product)
+                        product.inventory = 0
+                        product.save()
+                    else:
+                        product.inventory = new_inventory
+                        product.save()
             except Exception as e:
                 if order:
                     order.delete()
