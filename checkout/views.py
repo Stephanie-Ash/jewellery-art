@@ -25,17 +25,6 @@ def login_or_guest(request):
     return render(request, 'checkout/login_or_guest.html')
 
 
-def final_inventory_check(request):
-    initial_basket = basket_contents(request)
-    basket = request.session.get('basket')
-    problem_items = []
-    for item in initial_basket['basket_items']:
-        if item['quantity'] > item['product'].inventory:
-            problem_items.append(item['product'].name)
-
-    return problem_items
-
-
 @require_POST
 def cache_checkout_data(request):
     """
@@ -82,7 +71,6 @@ def checkout(request):
 
     if request.method == 'POST':
         basket = request.session.get('basket', {})
-
         form_data = {
             'full_name': request.POST['full_name'],
             'phone_number': request.POST['phone_number'],
@@ -94,8 +82,10 @@ def checkout(request):
             'postcode': request.POST['postcode'],
             'country': country_code,
         }
+
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            problem_items = []
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
@@ -104,12 +94,20 @@ def checkout(request):
             for item_id, quantity in basket.items():
                 try:
                     product = Product.objects.get(id=item_id)
+                    new_inventory = product.inventory - quantity
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
                         quantity=quantity,
                     )
                     order_line_item.save()
+                    if new_inventory < 0:
+                        problem_items.append(product)
+                        product.inventory = 0
+                        product.save()
+                    else:
+                        product.inventory = new_inventory
+                        product.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "A product in your basket wasn't found \
@@ -118,7 +116,6 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('view_basket'))
-
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]))

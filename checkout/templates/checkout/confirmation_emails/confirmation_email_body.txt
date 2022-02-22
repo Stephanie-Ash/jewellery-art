@@ -16,7 +16,7 @@ You have purchaced the following items:
 {{ item.product.name }}
 {% endfor %}
 
-Your order will be delivered to {{ order.address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+Your order will be delivered to {{ order.address1 }} in {{ order.town_or_city }}, {{ order.country.name }}.
 
 If you have any questions about your oder, please feel free to contact us by replying to this email.
 
