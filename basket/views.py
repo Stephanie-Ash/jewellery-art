@@ -6,14 +6,21 @@ from django.contrib import messages
 from products.models import Product
 from profiles.models import UserProfile
 from checkout.forms import OrderForm
+from .inventory_check import check_inventory
 
 
 def view_basket(request):
     """
     Display the shopping basket and its contents.
     """
-    referring_page = request.META.get('HTTP_REFERER')
+    out_of_stock = check_inventory(request)
+    if out_of_stock:
+        messages.warning(
+            request, f'There are no longer enough of the following item(s) in \
+                stock and they have been removed from your basket: \
+                    {", ".join([str(x) for x in [*out_of_stock]])}')
 
+    referring_page = request.META.get('HTTP_REFERER')
     if referring_page:
         if 'basket' not in referring_page:
             if 'country' in request.session:
