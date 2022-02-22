@@ -270,6 +270,8 @@
         if (event.key === "Enter") {
             if (addButton.hasAttribute("aria-disabled")) {
                 event.preventDefault();
+            } else if (stock > 0 && this.value > stock) {
+                event.preventDefault();
             }
         }
     })

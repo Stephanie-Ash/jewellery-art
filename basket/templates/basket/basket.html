@@ -41,8 +41,10 @@
                         <td class="pb-3 pt-4">
                             <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
                             <p class="mb-0">Price: £{{ item.product.price }}</p>
+                            <p class="mb-0">{{ item.product.inventory }} in stock</p>
                         </td>
                         <td class="pb-3">
+                            <p class="d-none">{{ item.product.inventory }}</p>
                             <a class="txt-sm update-link txt-blue"
                                 aria-label="Update the product quantity in your basket">Update</a>
                             <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}"
@@ -129,6 +131,34 @@
                 location.reload();
             });
     })
+
+    // Check stock on quantity update
+    let quantityInputs = document.getElementsByClassName("qty-input")
+    for (let input of quantityInputs) {
+        input.addEventListener('change', function () {
+            let form = this.parentNode.parentNode;
+            let updateLink = form.previousElementSibling;
+            let inventory = parseInt(updateLink.previousElementSibling.innerHTML);
+            if (this.value > inventory) {
+                updateLink.setAttribute("aria-disabled", "true");
+            } else {
+                updateLink.removeAttribute("aria-disabled");
+            }
+        })
+
+        input.addEventListener('keydown', function(event) {
+            if (event.key === "Enter") {
+                let form = this.parentNode.parentNode;
+                let updateLink = form.previousElementSibling;
+                let inventory = parseInt(updateLink.previousElementSibling.innerHTML);
+                if (updateLink.hasAttribute("aria-disabled")) {
+                    event.preventDefault();
+                } else if (this.value > inventory) {
+                    event.preventDefault();
+                }
+            }
+        })
+    }
 
     // Select delivery country
     let country = document.getElementById('id_country');

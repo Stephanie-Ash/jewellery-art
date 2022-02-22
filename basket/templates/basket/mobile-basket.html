@@ -21,6 +21,7 @@
     </div>
     <div class="col-6 my-auto pl-1 mobile-basket-cols">
         <p class="mb-0">Price: £{{ item.product.price }}</p>
+        <p class="mb-0">{{ item.product.inventory }} in stock</p>
         <a class="txt-sm update-link ml-5 txt-blue" aria-label="Update the product quantity in your basket">Update</a>
         <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}" method="POST">
             <!-- Update quantity form. -->
