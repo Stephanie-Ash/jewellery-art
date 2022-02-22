@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.conf import settings
 
 from basket.contexts import basket_contents
+from basket.inventory_check import check_inventory
 from products.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
@@ -24,31 +25,57 @@ def login_or_guest(request):
     return render(request, 'checkout/login_or_guest.html')
 
 
+def final_inventory_check(request):
+    initial_basket = basket_contents(request)
+    basket = request.session.get('basket')
+    problem_items = []
+    for item in initial_basket['basket_items']:
+        if item['quantity'] > item['product'].inventory:
+            problem_items.append(item['product'].name)
+
+    return problem_items
+
+
 @require_POST
 def cache_checkout_data(request):
     """
     Cache checkout data to allow order to be saved when creating
-    and order from the webhook.
+    an order from the webhook.
     """
-    try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'basket': json.dumps(request.session.get('basket', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': request.user,
-        })
-        return HttpResponse(status=200)
-    except Exception as e:
-        messages.error(request, 'Sorry, your payment could not be processed. \
-            Please try again.')
-        return HttpResponse(content=e, status=400)
+    out_of_stock = check_inventory(request)
+    if out_of_stock:
+        messages.warning(
+            request, f'There are no longer enough of the following item(s) in \
+                stock and they have been removed from your basket: \
+                    {", ".join([str(x) for x in [*out_of_stock]])}.')
+        return HttpResponse(status=400)
+    else:
+        try:
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            stripe.PaymentIntent.modify(pid, metadata={
+                'basket': json.dumps(request.session.get('basket', {})),
+                'save_info': request.POST.get('save_info'),
+                'username': request.user,
+            })
+            return HttpResponse(status=200)
+        except Exception as e:
+            messages.error(request, 'Sorry, your payment could not be processed. \
+                Please try again.')
+            return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
     """
     Display order form and checkout.
     """
+    out_of_stock = check_inventory(request)
+    if out_of_stock:
+        messages.warning(
+            request, f'There are no longer enough of the following item(s) in \
+                stock and they have been removed from your basket: \
+                    {", ".join([str(x) for x in [*out_of_stock]])}')
+
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     country_code = request.session.get('country', '')

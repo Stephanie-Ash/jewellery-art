@@ -75,7 +75,7 @@
                 <div class="col-5">
                     <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
                     <p class="mb-0">Price: £{{ item.product.price }}</p>
-                    <p class="mb-0">Qty: £{{ item.quantity }}</p>
+                    <p class="mb-0">Qty: {{ item.quantity }}</p>
                 </div>
                 <div class="col-5 mt-auto text-right">
                     <p class="mb-0">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>

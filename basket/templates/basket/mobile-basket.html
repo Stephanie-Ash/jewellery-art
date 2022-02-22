@@ -1,11 +1,4 @@
 {% load basket_tools %}
-<div class="row d-sm-none">
-    <div class="col-12 mb-3 mobile-basket-cols">
-        <!-- Checkout and keep shopping buttons. -->
-        <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-3" aria-label="Go to the all jewellery products page"
-            href="{% url 'products' %}">Keep Shopping</a>
-    </div>
-</div>
 {% for item in basket_items %}
 <!-- Basket items. -->
 <div class="row d-sm-none">
