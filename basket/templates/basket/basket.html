@@ -162,26 +162,28 @@
 
     // Select delivery country
     let country = document.getElementById('id_country');
-    country.removeAttribute('disabled');
-    country.classList.remove('checkout-country-dis');
+    if (country) {
+        country.removeAttribute('disabled');
+        country.classList.remove('checkout-country-dis');
 
-    country.addEventListener('change', function() {
-        let csrfToken = "{{ csrf_token }}";
-        let countryCode = this.value.trim();
-        let data = {
-            'csrfmiddlewaretoken': csrfToken
-        };
-        if (countryCode) {
-            let url = `/basket/set_delivery_country/${countryCode}/`;
-            $.post(url, data).done(function() {
-                location.reload();
-            });
-        } else {
-            let url = '/basket/set_delivery_country/no_country/';
-            $.post(url, data).done(function() {
-                location.reload();
-            });
-        }
-    })
+        country.addEventListener('change', function() {
+            let csrfToken = "{{ csrf_token }}";
+            let countryCode = this.value.trim();
+            let data = {
+                'csrfmiddlewaretoken': csrfToken
+            };
+            if (countryCode) {
+                let url = `/basket/set_delivery_country/${countryCode}/`;
+                $.post(url, data).done(function() {
+                    location.reload();
+                });
+            } else {
+                let url = '/basket/set_delivery_country/no_country/';
+                $.post(url, data).done(function() {
+                    location.reload();
+                });
+            }
+        })
+    }
 </script>
 {% endblock %}
