@@ -4,7 +4,7 @@ from basket.contexts import basket_contents
 
 def check_inventory(request):
     """
-    Compare the basket items with the num_available field
+    Compare the basket items with the inventory field
     for each product and remove from basket if there are
     not enough available.
     """
@@ -12,7 +12,7 @@ def check_inventory(request):
     basket = request.session.get('basket')
     problem_items = []
     for item in initial_basket['basket_items']:
-        if item['quantity'] > item['product'].num_available:
+        if item['quantity'] > item['product'].inventory:
             basket.pop(item['item_id'])
             problem_items.append(item['product'].name)
 

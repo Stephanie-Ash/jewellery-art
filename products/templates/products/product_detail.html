@@ -11,7 +11,7 @@
                 {% else %}
                 <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                 {% endif %}
-                {% if product.num_available == 0 %}
+                {% if product.inventory == 0 %}
                 <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
                 {% endif %}
             </div>
@@ -47,7 +47,7 @@
                 </div>
                 <p class="mb-0 txt-red" id="stock-notification"></p>
                 <div>
-                    <button id="add-to-basket-btn" type="submit" {% if product.num_available == 0 %}aria-disabled="true"
+                    <button id="add-to-basket-btn" type="submit" {% if product.inventory == 0 %}aria-disabled="true"
                         {% endif %} class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Add to Basket</button>
                     <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
                         class="btn btn-sm btn-drk btn-sqr txt-lgt mt-2">Keep Shopping</a>
@@ -176,7 +176,7 @@
                         <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                             alt="{{ product.name }}">
                         {% endif %}
-                        {% if product.num_available == 0 %}
+                        {% if product.inventory == 0 %}
                         <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
                         {% endif %}
                     </div>
@@ -209,7 +209,7 @@
                         {% else %}
                         <img src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                         {% endif %}
-                        {% if product.num_available == 0 %}
+                        {% if product.inventory == 0 %}
                         <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
                         {% endif %}
                     </div>
@@ -255,7 +255,7 @@
 <script>
     let addQuantity = document.getElementById("id_qty_{{ product.id }}");
     let addButton = document.getElementById("add-to-basket-btn");
-    let stock = parseInt('{{ product.num_available}}');
+    let stock = parseInt('{{ product.inventory }}');
     addQuantity.addEventListener('change', function () {
         if (stock > 0 && this.value > stock) {
             addButton.setAttribute("aria-disabled", "true");

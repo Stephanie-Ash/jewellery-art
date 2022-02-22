@@ -151,7 +151,7 @@
                     <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                         alt="{{ product.name }}">
                     {% endif %}
-                    {% if product.num_available == 0 %}
+                    {% if product.inventory == 0 %}
                     <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
                     {% endif %}
                     </div>
@@ -187,7 +187,7 @@
                     <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                         alt="{{ product.name }}">
                     {% endif %}
-                    {% if product.num_available == 0 %}
+                    {% if product.inventory == 0 %}
                     <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
                     {% endif %}
                     </div>
