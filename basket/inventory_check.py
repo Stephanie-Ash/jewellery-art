@@ -8,9 +8,9 @@ def check_inventory(request):
     for each product and remove from basket if there are
     not enough available.
     """
-    initial_basket = basket_contents(request)
-    basket = request.session.get('basket')
+    basket = request.session.get('basket', {})
     problem_items = []
+    initial_basket = basket_contents(request)
     for item in initial_basket['basket_items']:
         if item['quantity'] > item['product'].inventory:
             basket.pop(item['item_id'])
