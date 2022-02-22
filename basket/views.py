@@ -74,7 +74,7 @@ def add_to_basket(request, item_id):
                 request, f'There are not enough in stock to add more of \
                     this item to your basket. Quantity in basket: \
                     {current_quantity}, \
-                    Quantity in stock: {product.inventory}')
+                    Quantity in stock: {product.inventory}.')
     else:
         if quantity <= product.inventory:
             basket[item_id] = quantity
@@ -85,7 +85,7 @@ def add_to_basket(request, item_id):
             messages.error(
                 request, f'There are only {product.inventory} of {product.name} \
                     in stock and so not enough to add this item \
-                    to your basket')
+                    to your basket.')
 
     request.session['basket'] = basket
     return redirect(redirect_url)
@@ -100,10 +100,16 @@ def adjust_basket(request, item_id):
     basket = request.session.get('basket', {})
 
     if quantity > 0:
-        basket[item_id] = quantity
-        messages.success(
-            request, f'Updated the quantity of {product.name} in your basket.',
-            extra_tags='basket')
+        if quantity <= product.inventory:
+            basket[item_id] = quantity
+            messages.success(
+                request, f'Updated the quantity of {product.name} in your \
+                basket.', extra_tags='basket')
+        else:
+            messages.error(
+                request, f'There are only {product.inventory} of {product.name} \
+                    in stock and so not enough for this quantity of the item \
+                    in your basket.')
     else:
         basket.pop(item_id)
         messages.success(
