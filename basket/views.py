@@ -63,15 +63,29 @@ def add_to_basket(request, item_id):
     basket = request.session.get('basket', {})
 
     if item_id in list(basket.keys()):
-        basket[item_id] += quantity
-        messages.success(
-            request, f'Updated the quantity of {product.name} in your basket.',
-            extra_tags='basket')
+        current_quantity = basket[item_id]
+        if current_quantity + quantity <= product.inventory:
+            basket[item_id] += quantity
+            messages.success(
+                request, f'Updated the quantity of {product.name} in your \
+                    basket.', extra_tags='basket')
+        else:
+            messages.error(
+                request, f'There are not enough in stock to add more of \
+                    this item to your basket. Quantity in basket: \
+                    {current_quantity}, \
+                    Quantity in stock: {product.inventory}')
     else:
-        basket[item_id] = quantity
-        messages.success(
-            request, f'Added {product.name} to your basket.',
-            extra_tags='basket')
+        if quantity <= product.inventory:
+            basket[item_id] = quantity
+            messages.success(
+                request, f'Added {product.name} to your basket.',
+                extra_tags='basket')
+        else:
+            messages.error(
+                request, f'There are only {product.inventory} of {product.name} \
+                    in stock and so not enough to add this item \
+                    to your basket')
 
     request.session['basket'] = basket
     return redirect(redirect_url)
