@@ -1,0 +1,19 @@
+Dear Jewellery Art Admin,
+
+The following customer order created on {{ order.date }} may contain items that are out of stock.
+Please check the order and liaise with your customer if required.
+
+Order Number: {{ order.order_number }}
+Customer Name: {{ order.full_name }}
+Customer Email: {{ order.email }}
+Customer Phone Number: {{ order.phone_number }}
+Order Total: £{{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Grand Total: £{{ order.grand_total }}
+
+Order items:
+{% for item in order.lineitems.all %}
+{{ item.product.name }}
+{% endfor %}
+
+Thank you.

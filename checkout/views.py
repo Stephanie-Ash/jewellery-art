@@ -15,6 +15,7 @@ from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from .models import OrderLineItem, Order
 from .forms import OrderForm
+from .admin_alert_email import send_alert_email
 
 
 def login_or_guest(request):
@@ -117,6 +118,8 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_basket'))
             request.session['save_info'] = 'save-info' in request.POST
+            if problem_items:
+                send_alert_email(order)
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]))
         else:

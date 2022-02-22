@@ -10,6 +10,7 @@ from django.conf import settings
 from products.models import Product
 from profiles.models import UserProfile
 from .models import Order, OrderLineItem
+from .admin_alert_email import send_alert_email
 
 
 class StripeWH_Handler:
@@ -146,6 +147,8 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
+        if problem_items:
+            send_alert_email(order)
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: \
