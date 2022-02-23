@@ -243,6 +243,27 @@ def edit_product(request, product_id):
 
 
 @login_required
+def update_inventory(request, product_id):
+    """
+    Update the inventory of an individual product.
+    """
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry only a store owner can do this.')
+
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        inventory = request.POST.get('inventory')
+        product.inventory = inventory
+        product.save()
+        messages.success(
+            request, f'The inventory of {product.name} has been updated')
+        return redirect('products')
+    else:
+        messages.error(request, 'Sorry that action is not possible.')
+
+
+@login_required
 def toggle_homepage_featured(request, product_id):
     """
     Toggle the homepage_featured field of an individual product.

@@ -20,4 +20,7 @@ urlpatterns = [
     path(
         'toggle/<int:product_id>/',
         views.toggle_homepage_featured, name='toggle_homepage_featured'),
+    path(
+        'update_inventory/<int:product_id>/',
+        views.update_inventory, name='update_inventory'),
 ]
