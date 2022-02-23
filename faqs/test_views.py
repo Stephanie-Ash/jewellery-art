@@ -5,7 +5,7 @@ from .models import FAQ
 
 
 class TestViews(TestCase):
-    """ Tests for the views"""
+    """ Tests for the views. """
     def setUp(self):
         self.superuser = User.objects.create_superuser(
             'admin', 'admin@email.com', 'adminpassword'
@@ -111,3 +111,33 @@ class TestViews(TestCase):
         self.assertEqual(
             msg_delete.message,
             'Sorry, only store owners are authorised to do that.')
+
+    def test_error_messages_when_faq_form_not_valid(self):
+        """
+        Test add and update faq post views to ensure error message
+        is generated when faq form is not valid.
+        """
+        # Add faq
+        self.client.login(username='admin', password='adminpassword')
+        add_response = self.client.post(
+            '/faqs/add/',
+            {
+                'category': 'AR',
+                'question': 'Test question?',
+                'answer': 'Answer'
+            }, follow=True)
+        add_message = list(add_response.context.get('messages'))[0]
+        self.assertEqual(
+            add_message.message, 'Failed to add FAQ. Please check the form.')
+
+        # Edit faq
+        edit_response = self.client.post(
+            f'/faqs/edit/{self.faq.id}/',
+            {
+                'category': 'AR',
+                'question': self.faq.question,
+                'answer': self.faq.answer
+            }, follow=True)
+        edit_message = list(edit_response.context.get('messages'))[0]
+        self.assertEqual(
+            edit_message.message, 'Failed to update FAQ. Please check the form.')

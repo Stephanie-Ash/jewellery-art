@@ -4,7 +4,7 @@ from products.models import Product
 
 
 class TestViews(TestCase):
-    """ Tests for the views"""
+    """ Tests for the views. """
 
     def test_get_index_page(self):
         """ Test the index page loads. """
