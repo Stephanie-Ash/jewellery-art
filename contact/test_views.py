@@ -51,3 +51,15 @@ class TestViews(TestCase):
             message.message, f'Thank you for your message. \
                     A summary has been sent to {contact_message.email}. \
                     We will get back to you as soon as we can.')
+
+    def test_can_toggle_responded(self):
+        """
+        Test that the toggle responded view changes the value of
+        the responded field.
+        """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(
+            f'/contact/toggle/{self.contact_msg.id}/')
+        self.assertRedirects(response, '/contact/manage/')
+        updated_msg = ContactMessage.objects.get(id=self.contact_msg.id)
+        self.assertTrue(updated_msg.responded)
