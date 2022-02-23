@@ -61,6 +61,7 @@ def edit_faq(request, faq_id):
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry this area is for the store owner only.')
+        return redirect(reverse('home'))
 
     faq = get_object_or_404(FAQ, pk=faq_id)
     if request.method == 'POST':

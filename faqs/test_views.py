@@ -11,6 +11,10 @@ class TestViews(TestCase):
             'admin', 'admin@email.com', 'adminpassword'
         )
 
+        self.user = User.objects.create_user(
+            'john', 'john@email.com', 'johnpassword'
+        )
+
         self.faq = FAQ.objects.create(
             category='OR', question='Test question',
             answer='Test answer'
@@ -75,3 +79,35 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/faqs/')
         existing_faqs = FAQ.objects.filter(id=self.faq.id)
         self.assertEqual(len(existing_faqs), 0)
+
+    def test_superuser_only_areas_redirect_other_users(self):
+        """
+        Test that views that only allow access by a superuser redirect
+        a logged in user to the homepage.
+        """
+        # Add faq page
+        self.client.login(username='john', password='johnpassword')
+        add_response = self.client.get('/faqs/add/', follow=True)
+        self.assertRedirects(add_response, '/')
+        msg_add = list(add_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_add.message, 'Sorry this area is for the store owner only.')
+
+        # Edit faq page
+        self.client.login(username='john', password='johnpassword')
+        edit_response = self.client.get(
+            f'/faqs/edit/{self.faq.id}/', follow=True)
+        self.assertRedirects(edit_response, '/')
+        msg_edit = list(edit_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_edit.message, 'Sorry this area is for the store owner only.')
+
+        # Delete faq view
+        self.client.login(username='john', password='johnpassword')
+        delete_response = self.client.get(
+            f'/faqs/delete/{self.faq.id}/', follow=True)
+        self.assertRedirects(delete_response, '/')
+        msg_delete = list(delete_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_delete.message,
+            'Sorry, only store owners are authorised to do that.')
