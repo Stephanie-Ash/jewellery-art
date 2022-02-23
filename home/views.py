@@ -10,10 +10,13 @@ def index(request):
     A view to return the homepage.
     """
     all_featured = list(Product.objects.filter(homepage_featured=True))
-    if len(all_featured) > 4:
-        featured_products = random.sample(all_featured, 4)
+    if all_featured:
+        if len(all_featured) > 4:
+            featured_products = random.sample(all_featured, 4)
+        else:
+            featured_products = all_featured
     else:
-        featured_products = all_featured
+        featured_products = Product.objects.all()[:4]
 
     context = {
         'featured_products': featured_products,
