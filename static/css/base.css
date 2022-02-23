@@ -575,6 +575,10 @@ footer {
     height: 30px !important;
 }
 
+.inv-form {
+    border-top: 1px solid #515c63;
+}
+
 /* ------------------------product_detail.html------------------------ */
 
 .detail-img-cont {
