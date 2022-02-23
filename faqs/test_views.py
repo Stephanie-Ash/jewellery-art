@@ -35,3 +35,15 @@ class TestViews(TestCase):
         response = self.client.get(f'/faqs/edit/{self.faq.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'faqs/edit_faq.html')
+
+    def test_can_add_faq(self):
+        """ Test that the add faq view creates an faq. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            '/faqs/add/',
+            {
+                'category': 'OR',
+                'question': 'Test question?',
+                'answer': 'Answer'
+            })
+        self.assertRedirects(response, '/faqs/')
