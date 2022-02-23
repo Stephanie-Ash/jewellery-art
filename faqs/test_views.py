@@ -45,5 +45,8 @@ class TestViews(TestCase):
                 'category': 'OR',
                 'question': 'Test question?',
                 'answer': 'Answer'
-            })
+            }, follow=True)
         self.assertRedirects(response, '/faqs/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Successfully added a FAQ to the FAQs page.')
