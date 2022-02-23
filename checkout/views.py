@@ -59,13 +59,6 @@ def checkout(request):
     """
     Display order form and checkout.
     """
-    out_of_stock = check_inventory(request)
-    if out_of_stock:
-        messages.warning(
-            request, f'There are no longer enough of the following item(s) in \
-                stock and they have been removed from your basket: \
-                    {", ".join([str(x) for x in [*out_of_stock]])}')
-
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     country_code = request.session.get('country', '')
@@ -130,6 +123,13 @@ def checkout(request):
         if not basket:
             messages.error(request, "Your basket is currently empty.")
             return redirect(reverse('products'))
+
+        out_of_stock = check_inventory(request)
+        if out_of_stock:
+            messages.warning(
+                request, f'There are no longer enough of the following item(s) in \
+                    stock and they have been removed from your basket: \
+                        {", ".join([str(x) for x in [*out_of_stock]])}')
 
         current_basket = basket_contents(request)
         total = current_basket['grand_total']
