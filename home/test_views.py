@@ -7,7 +7,7 @@ class TestViews(TestCase):
     """ Tests for the views"""
 
     def test_get_index_page(self):
-        """ Test the index page view loads. """
+        """ Test the index page loads. """
         Product.objects.create(
             name='Test Name', description='Test description',
             price=10.00
