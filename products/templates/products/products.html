@@ -115,6 +115,14 @@
                                 <button class="delete-btn" type="button"
                                     data-delete-url="{% url 'delete_product' product.id%}">Delete</button>
                             </small>
+                            <small>
+                                <form class="form-inline mt-2 order-fieldset" action="#" method="POST">
+                                    {% csrf_token %}
+                                    <label for="id_inventory">Inventory</label>
+                                    <input type="number" name="inventory" value="{{ product.inventory }}" min="0" class="number input form-control inv-input ml-1" id="id_inventory">
+                                    <button class="inv-btn ml-1" type="submit">Update</button>
+                                </form>
+                            </small>
                             {% endif %}
                         </div>
                     </div>

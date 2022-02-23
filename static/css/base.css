@@ -167,6 +167,17 @@ h3, .detail-h2 {
     text-decoration: underline;
 }
 
+.inv-btn {
+    color: #005ec2;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.inv-btn:hover {
+    text-decoration: underline;
+}
+
 button[aria-disabled="true"] {
     background-color: #515c63;
     pointer-events: none;
@@ -557,6 +568,11 @@ footer {
 .home-featured:hover,
 .home-featured-label:hover {
     cursor: pointer;
+}
+
+.inv-input {
+    width: 35% !important;
+    height: 30px !important;
 }
 
 /* ------------------------product_detail.html------------------------ */
