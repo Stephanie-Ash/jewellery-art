@@ -19,7 +19,7 @@ def contact(request):
             send_summary_email(contact_message)
             messages.success(
                 request, f'Thank you for your message. \
-                    A summary has been sent to {contact_message.email} \
+                    A summary has been sent to {contact_message.email}. \
                     We will get back to you as soon as we can.')
             return redirect(reverse('home'))
         else:

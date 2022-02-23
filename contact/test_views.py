@@ -32,3 +32,22 @@ class TestViews(TestCase):
         response = self.client.get('/contact/manage/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact/manage_contacts.html')
+
+    def test_can_add_contact_message(self):
+        """ Test that the contact view creates a contact message. """
+        response = self.client.post(
+            '/contact/',
+            {
+                'topic': 'OR',
+                'first_name': 'Test',
+                'last_name': 'Name',
+                'email': 'test@test.com',
+                'message': 'Some message'
+            }, follow=True)
+        self.assertRedirects(response, '/')
+        contact_message = ContactMessage.objects.get(first_name='Test')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, f'Thank you for your message. \
+                    A summary has been sent to {contact_message.email}. \
+                    We will get back to you as soon as we can.')

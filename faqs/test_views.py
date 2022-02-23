@@ -140,4 +140,5 @@ class TestViews(TestCase):
             }, follow=True)
         edit_message = list(edit_response.context.get('messages'))[0]
         self.assertEqual(
-            edit_message.message, 'Failed to update FAQ. Please check the form.')
+            edit_message.message,
+            'Failed to update FAQ. Please check the form.')
