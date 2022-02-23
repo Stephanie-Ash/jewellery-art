@@ -52,7 +52,7 @@ class TestViews(TestCase):
             message.message, 'Successfully added a FAQ to the FAQs page.')
 
     def test_can_edit_faq(self):
-        """ Test that the an faq can be edited in the edit faq view. """
+        """ Test that an faq can be edited in the edit faq view. """
         self.client.login(username='admin', password='adminpassword')
         response = self.client.post(
             f'/faqs/edit/{self.faq.id}/',
@@ -67,3 +67,11 @@ class TestViews(TestCase):
             message.message, 'Successfully updated FAQ.')
         updated_faq = FAQ.objects.get(id=self.faq.id)
         self.assertEqual(updated_faq.answer, 'New answer')
+
+    def test_can_delete_faq(self):
+        """ Test that an faq can be deleted. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(f'/faqs/delete/{self.faq.id}/')
+        self.assertRedirects(response, '/faqs/')
+        existing_faqs = FAQ.objects.filter(id=self.faq.id)
+        self.assertEqual(len(existing_faqs), 0)
