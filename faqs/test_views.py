@@ -50,3 +50,20 @@ class TestViews(TestCase):
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
             message.message, 'Successfully added a FAQ to the FAQs page.')
+
+    def test_can_edit_faq(self):
+        """ Test that the an faq can be edited in the edit faq view. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            f'/faqs/edit/{self.faq.id}/',
+            {
+                'category': self.faq.category,
+                'question': self.faq.question,
+                'answer': 'New answer'
+            }, follow=True)
+        self.assertRedirects(response, '/faqs/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Successfully updated FAQ.')
+        updated_faq = FAQ.objects.get(id=self.faq.id)
+        self.assertEqual(updated_faq.answer, 'New answer')
