@@ -112,3 +112,27 @@ class TestViews(TestCase):
         self.assertEqual(
             msg_delete.message,
             'Sorry, only store owners are authorised to do that.')
+
+    def test_error_messages_when_designer_form_not_valid(self):
+        """
+        Test add and update designer post views to ensure error message
+        is generated when designer form is not valid.
+        """
+        # Add designer
+        self.client.login(username='admin', password='adminpassword')
+        add_response = self.client.post(
+            '/designers/add/',
+            {'name': '', 'introduction': 'Some words'}, follow=True)
+        add_message = list(add_response.context.get('messages'))[0]
+        self.assertEqual(
+            add_message.message,
+            'Failed to add designer. Please check the form.')
+
+        # Edit designer
+        edit_response = self.client.post(
+            f'/designers/edit/{self.designer.id}/',
+            {'name': self.designer.name, 'introduction': ''}, follow=True)
+        edit_message = list(edit_response.context.get('messages'))[0]
+        self.assertEqual(
+            edit_message.message, f'Failed to update {self.designer.name}. \
+                    Please check the form.')
