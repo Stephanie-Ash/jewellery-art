@@ -45,3 +45,11 @@ class TestForms(TestCase):
                 'message': 'Message'
             })
         self.assertTrue(form.is_valid())
+
+    def test_only_user_editable_fields_in_form_metaclass(self):
+        """ Test that only the fields the user can edit are on the form """
+        form = ContactForm()
+        self.assertEqual(
+            form.Meta.fields,
+            ('topic', 'first_name', 'last_name', 'email', 'phone_number',
+             'message'))
