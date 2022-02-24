@@ -59,3 +59,19 @@ class TestViews(TestCase):
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
             message.message, 'Successfully added a product to the store.')
+
+    def test_can_edit_product(self):
+        """ Test that a product can be edited in the edit product view. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            f'/products/edit/{self.product.id}/',
+            {'name': self.product.name,
+             'description': self.product.description,
+             'inventory': self.product.inventory,
+             'price': 5.00}, follow=True)
+        self.assertRedirects(response, f'/products/{self.product.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, f'Successfully updated {self.product.name}.')
+        updated_product = Product.objects.get(id=self.product.id)
+        self.assertEqual(updated_product.price, 5.00)
