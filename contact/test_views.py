@@ -82,3 +82,26 @@ class TestViews(TestCase):
         self.assertEqual(
             message.message, 'It has not been possible to submit your message. \
                     Please check the form.')
+
+    def test_superuser_only_areas_redirect_other_users(self):
+        """
+        Test that views that only allow access by a superuser redirect
+        a logged in user to the homepage.
+        """
+        # Manage contacts page
+        self.client.login(username='john', password='johnpassword')
+        manage_response = self.client.get('/contact/manage/', follow=True)
+        self.assertRedirects(manage_response, '/')
+        msg_manage = list(manage_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_manage.message, 'Sorry this area is for the store owner only.')
+
+        # Toggle responded view
+        self.client.login(username='john', password='johnpassword')
+        toggle_response = self.client.get(
+            f'/contact/toggle/{self.contact_msg.id}/', follow=True)
+        self.assertRedirects(toggle_response, '/')
+        msg_toggle = list(toggle_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_toggle.message,
+            'Sorry, only store owners are authorised to do that.')
