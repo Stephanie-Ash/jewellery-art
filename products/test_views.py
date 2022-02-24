@@ -1,7 +1,6 @@
 """ Testcases for the products app views. """
 from django.test import TestCase
 from django.contrib.auth.models import User
-from profiles.models import UserProfile
 from .models import Product, Review
 
 
@@ -19,8 +18,6 @@ class TestViews(TestCase):
         self.product = Product.objects.create(
             name='Test Product', description='Test description.', price=50.00
         )
-
-        self.profile = UserProfile.objects.get(user=self.user)
 
     def test_get_products_page(self):
         """ Test the products page loads. """
@@ -86,3 +83,17 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/products/')
         existing_products = Product.objects.filter(id=self.product.id)
         self.assertEqual(len(existing_products), 0)
+
+    def test_can_add_review(self):
+        """ Test that the add review view creates a review. """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.post(
+            f'/products/add_review/{self.product.id}/',
+            {'name': 'Some Name',
+             'body': 'A review.'}, follow=True)
+        reviews = Review.objects.all()
+        self.assertEqual(len(reviews), 1)
+        self.assertRedirects(response, f'/products/{self.product.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Review successfully added.')
