@@ -41,3 +41,7 @@ class TestModels(TestCase):
         Category name separated by _.
         """
         self.assertEqual(self.category.programmatic_name, 'some_jewellery')
+
+    def test_homepage_featured_defaults_to_false(self):
+        """ Test the Product homepage featured field defaults to false. """
+        self.assertFalse(self.product.homepage_featured)
