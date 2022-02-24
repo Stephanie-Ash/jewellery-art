@@ -193,3 +193,16 @@ class TestViews(TestCase):
         self.assertEqual(
             edit_message.message, f'Failed to update {self.product.name}. \
                     Please check the form.')
+
+    def test_error_messages_for_get_on_post_only_view(self):
+        """
+        Test to ensure redirect and error messages when a get request is
+        sent to the update inventory view.
+        """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(
+            f'/products/update_inventory/{self.product.id}/', follow=True)
+        self.assertRedirects(response, '/products/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Sorry that action is not possible.')

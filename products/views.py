@@ -261,6 +261,7 @@ def update_inventory(request, product_id):
         return redirect('products')
     else:
         messages.error(request, 'Sorry that action is not possible.')
+        return redirect('products')
 
 
 @login_required
