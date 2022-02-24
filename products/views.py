@@ -213,6 +213,7 @@ def edit_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry this area is for the store owner only.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
@@ -246,6 +247,7 @@ def update_inventory(request, product_id):
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry only a store owner can do this.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':

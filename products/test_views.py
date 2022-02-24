@@ -156,3 +156,55 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/profile/')
         existing_reviews = Review.objects.filter(id=self.review.id)
         self.assertEqual(len(existing_reviews), 0)
+
+    def test_superuser_only_areas_redirect_other_users(self):
+        """
+        Test that views that only allow access by a superuser redirect
+        a logged in user to the homepage.
+        """
+        # Add product page
+        self.client.login(username='john', password='johnpassword')
+        add_response = self.client.get('/products/add/', follow=True)
+        self.assertRedirects(add_response, '/')
+        msg_add = list(add_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_add.message, 'Sorry this area is for the store owner only.')
+
+        # Edit product page
+        self.client.login(username='john', password='johnpassword')
+        edit_response = self.client.get(
+            f'/products/edit/{self.product.id}/', follow=True)
+        self.assertRedirects(edit_response, '/')
+        msg_edit = list(edit_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_edit.message, 'Sorry this area is for the store owner only.')
+
+        # Delete product view
+        self.client.login(username='john', password='johnpassword')
+        delete_response = self.client.get(
+            f'/products/delete/{self.product.id}/', follow=True)
+        self.assertRedirects(delete_response, '/')
+        msg_delete = list(delete_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_delete.message,
+            'Sorry, only store owners are authorised to do that.')
+
+        # Update inventory view
+        self.client.login(username='john', password='johnpassword')
+        update_response = self.client.get(
+            f'/products/update_inventory/{self.product.id}/', follow=True)
+        self.assertRedirects(update_response, '/')
+        msg_update = list(update_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_update.message, 'Sorry only a store owner can do this.')
+
+        # Toggle homepage featured view
+        self.client.login(username='john', password='johnpassword')
+        toggle_response = self.client.get(
+            f'/products/toggle/{self.product.id}/',
+            follow=True)
+        self.assertRedirects(toggle_response, '/')
+        msg_toggle = list(toggle_response.context.get('messages'))[0]
+        self.assertEqual(
+            msg_toggle.message,
+            'Sorry, only store owners are authorised to do that.')
