@@ -208,3 +208,33 @@ class TestViews(TestCase):
         self.assertEqual(
             msg_toggle.message,
             'Sorry, only store owners are authorised to do that.')
+
+    def test_error_messages_when_product_form_not_valid(self):
+        """
+        Test add and edit product post views to ensure error
+        messages are generated when forms are not valid.
+        """
+        # Add designer
+        self.client.login(username='admin', password='adminpassword')
+        add_response = self.client.post(
+            '/products/add/',
+            {'name': '',
+             'description': 'Described.',
+             'inventory': 0,
+             'price': 10.00}, follow=True)
+        add_message = list(add_response.context.get('messages'))[0]
+        self.assertEqual(
+            add_message.message,
+            'Failed to add product. Please check the form.')
+
+        # Edit product
+        edit_response = self.client.post(
+            f'/products/edit/{self.product.id}/',
+            {'name': '',
+             'description': self.product.description,
+             'inventory': self.product.inventory,
+             'price': self.product.price}, follow=True)
+        edit_message = list(edit_response.context.get('messages'))[0]
+        self.assertEqual(
+            edit_message.message, f'Failed to update {self.product.name}. \
+                    Please check the form.')
