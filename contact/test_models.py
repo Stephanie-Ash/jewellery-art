@@ -11,3 +11,10 @@ class TestModels(TestCase):
             topic='OR', first_name='John', last_name='Doe',
             email='email@email.com', message='Test message.')
         self.assertEqual(str(contact_msg), 'Message from John Doe')
+
+    def test_responded_defaults_to_false(self):
+        """ Test the ContactMessage responded field defaults to false. """
+        contact_msg = ContactMessage.objects.create(
+            topic='OR', first_name='John', last_name='Doe',
+            email='email@email.com', message='Test message.')
+        self.assertFalse(contact_msg.responded)
