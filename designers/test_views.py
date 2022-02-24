@@ -72,3 +72,11 @@ class TestViews(TestCase):
             message.message, f'Successfully updated {self.designer.name}.')
         updated_designer = Designer.objects.get(id=self.designer.id)
         self.assertEqual(updated_designer.introduction, 'New introduction')
+
+    def test_can_delete_designer(self):
+        """ Test that a designer can be deleted. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(f'/designers/delete/{self.designer.id}/')
+        self.assertRedirects(response, '/designers/')
+        existing_designers = Designer.objects.filter(id=self.designer.id)
+        self.assertEqual(len(existing_designers), 0)
