@@ -119,7 +119,7 @@
                                 <form class="pt-2 order-fieldset inv-form mx-auto" action="{% url 'update_inventory' product.id %}" method="POST">
                                     {% csrf_token %}
                                     <label class="d-inline" for="id_inventory">Inventory</label>
-                                    <input type="number" name="inventory" value="{{ product.inventory }}" min="0" class="d-inline number input form-control inv-input ml-1" id="id_inventory">
+                                    <input type="number" name="inventory" value="{{ product.inventory }}" min="0" class="d-inline number input form-control inv-input ml-1" id="id_inventory" required>
                                     <button class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 py-0" type="submit">Update Inventory</button>
                                 </form>
                             </small>

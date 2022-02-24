@@ -250,16 +250,11 @@ def update_inventory(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         inventory = request.POST.get('inventory')
-        if inventory == '':
-            messages.error(
-                request, 'Could not update inventory please enter a value.')
-            return redirect('products')
-        else:
-            product.inventory = inventory
-            product.save()
-            messages.success(
-                request, f'The inventory of {product.name} has been updated')
-            return redirect('products')
+        product.inventory = inventory
+        product.save()
+        messages.success(
+            request, f'The inventory of {product.name} has been updated')
+        return redirect('products')
     else:
         messages.error(request, 'Sorry that action is not possible.')
 
