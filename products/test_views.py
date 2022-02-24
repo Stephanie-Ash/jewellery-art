@@ -104,6 +104,21 @@ class TestViews(TestCase):
         updated_product = Product.objects.get(id=self.product.id)
         self.assertTrue(updated_product.homepage_featured)
 
+    # def test_can_update_inventory(self):
+    #     """
+    #     Test that the update inventory view updates the product inventory.
+    #     """
+    #     self.client.login(username='admin', password='adminpassword')
+    #     response = self.client.post(
+    #         f'/products/edit/{self.product.id}/',
+    #         {'name': self.product.name,
+    #          'description': self.product.description,
+    #          'inventory': self.product.inventory,
+    #          'price': 5.00}, follow=True)
+    #     self.assertRedirects(response, '/products/')
+    #     updated_product = Product.objects.get(id=self.product.id)
+    #     self.assertTrue(updated_product.homepage_featured)
+
     def test_can_add_review(self):
         """ Test that the add review view creates a review. """
         self.client.login(username='john', password='johnpassword')
