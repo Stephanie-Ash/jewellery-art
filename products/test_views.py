@@ -1,7 +1,8 @@
 """ Testcases for the products app views. """
 from django.test import TestCase
 from django.contrib.auth.models import User
-from .models import Product
+from profiles.models import UserProfile
+from .models import Product, Review
 
 
 class TestViews(TestCase):
@@ -18,6 +19,8 @@ class TestViews(TestCase):
         self.product = Product.objects.create(
             name='Test Product', description='Test description.', price=50.00
         )
+
+        self.profile = UserProfile.objects.get(user=self.user)
 
     def test_get_products_page(self):
         """ Test the products page loads. """

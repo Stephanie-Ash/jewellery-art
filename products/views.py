@@ -106,17 +106,7 @@ def product_detail(request, product_id):
                 if item.product.id == product_id:
                     purchased = True
 
-    if request.method == 'POST':
-        review_form = ReviewForm(request.POST)
-        if review_form.is_valid():
-            customer_review = review_form.save(commit=False)
-            customer_review.product = product
-            customer_review.user_profile = profile
-            customer_review.save()
-            messages.success(request, 'Review successfully added.')
-            return redirect(reverse('product_detail', args=[product_id]))
-    else:
-        review_form = ReviewForm()
+    review_form = ReviewForm()
 
     context = {
         'product': product,
@@ -145,6 +135,9 @@ def add_review(request, product_id):
             customer_review.save()
             messages.success(request, 'Review successfully added.')
             return redirect(reverse('product_detail', args=[product_id]))
+        else:
+            messages.error(
+               request, 'Failed to add review. Please check the form.')
     else:
         messages.error(request, 'Sorry a form is required to do that')
         return redirect(reverse('product_detail', args=[product_id]))
