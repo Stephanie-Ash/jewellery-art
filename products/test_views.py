@@ -1,6 +1,7 @@
 """ Testcases for the products app views. """
 from django.test import TestCase
 from django.contrib.auth.models import User
+from profiles.models import UserProfile
 from .models import Product, Review
 
 
@@ -17,6 +18,13 @@ class TestViews(TestCase):
 
         self.product = Product.objects.create(
             name='Test Product', description='Test description.', price=50.00
+        )
+
+        self.profile = UserProfile.objects.get(user=self.user)
+
+        self.review = Review.objects.create(
+            product=self.product, user_profile=self.profile, name='Some Name',
+            body='Review text.'
         )
 
     def test_get_products_page(self):
@@ -92,7 +100,7 @@ class TestViews(TestCase):
             {'name': 'Some Name',
              'body': 'A review.'}, follow=True)
         reviews = Review.objects.all()
-        self.assertEqual(len(reviews), 1)
+        self.assertEqual(len(reviews), 2)
         self.assertRedirects(response, f'/products/{self.product.id}/')
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
@@ -102,12 +110,12 @@ class TestViews(TestCase):
         """ Test that a review can be edited in the edit review view. """
         self.client.login(username='john', password='johnpassword')
         response = self.client.post(
-            f'/products/add_review/{self.product.id}/',
-            {'name': 'Some Name',
-             'body': 'A review.'}, follow=True)
-        reviews = Review.objects.all()
-        self.assertEqual(len(reviews), 1)
-        self.assertRedirects(response, f'/products/{self.product.id}/')
+            f'/products/edit_review/{self.review.id}/',
+            {'name': 'New Name',
+             'body': self.review.body}, follow=True)
+        self.assertRedirects(response, '/profile/')
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
-            message.message, 'Review successfully added.')
+            message.message, 'Successfully updated review.')
+        updated_review = Review.objects.get(id=self.review.id)
+        self.assertEqual(updated_review.name, 'New Name')
