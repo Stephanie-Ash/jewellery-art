@@ -44,3 +44,15 @@ class TestViews(TestCase):
         response = self.client.get(f'/designers/edit/{self.designer.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'designers/edit_designer.html')
+
+    def test_can_add_designer(self):
+        """ Test that the add designer view creates a designer. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            '/designers/add/',
+            {'name': 'Test', 'introduction': 'Introduced'}, follow=True)
+        designer = Designer.objects.get(name='Test')
+        self.assertRedirects(response, f'/designers/{designer.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Successfully added a designer to the store.')
