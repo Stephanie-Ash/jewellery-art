@@ -63,3 +63,22 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/contact/manage/')
         updated_msg = ContactMessage.objects.get(id=self.contact_msg.id)
         self.assertTrue(updated_msg.responded)
+
+    def test_error_messages_when_contact_form_not_valid(self):
+        """
+        Test contact post view to ensure error message
+        is generated when contact form is not valid.
+        """
+        response = self.client.post(
+            '/contact/',
+            {
+                'topic': 'AR',
+                'first_name': 'Test',
+                'last_name': 'Name',
+                'email': 'test@test.com',
+                'message': 'Some message'
+            }, follow=True)
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'It has not been possible to submit your message. \
+                    Please check the form.')
