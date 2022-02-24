@@ -17,3 +17,11 @@ class TestForms(TestCase):
         self.assertEqual(form.errors['name'][0], 'This field is required.')
         self.assertEqual(
             form.errors['introduction'][0], 'This field is required.')
+
+    def test_unrequired_fields_not_required(self):
+        """
+        Test that the fields not required in the Designer model
+        objects are not required on the form.
+        """
+        form = DesignerForm({'name': 'Some Name', 'introduction': 'Intro'})
+        self.assertTrue(form.is_valid())
