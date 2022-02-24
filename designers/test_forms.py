@@ -25,3 +25,8 @@ class TestForms(TestCase):
         """
         form = DesignerForm({'name': 'Some Name', 'introduction': 'Intro'})
         self.assertTrue(form.is_valid())
+
+    def test_non_editable_fields_not_in_form_metaclass(self):
+        """ Test that the programmatice name field is not on the form. """
+        form = DesignerForm()
+        self.assertNotIn('programmatic_name', form.Meta.fields)
