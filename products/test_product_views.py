@@ -194,7 +194,7 @@ class TestViews(TestCase):
             edit_message.message, f'Failed to update {self.product.name}. \
                     Please check the form.')
 
-    def test_error_messages_for_get_on_post_only_view(self):
+    def test_error_messages_for_get_update_inventory_view(self):
         """
         Test to ensure redirect and error messages when a get request is
         sent to the update inventory view.
