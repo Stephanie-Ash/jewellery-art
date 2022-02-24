@@ -91,3 +91,27 @@ class TestViews(TestCase):
         self.assertEqual(
             edit_message.message,
             'Failed to update review. Please try again.')
+
+    def test_error_messages_for_get_on_post_only_views(self):
+        """
+        Test to ensure redirect and error messages when a get request is
+        sent to the add and edit review views.
+        """
+        # Add review
+        self.client.login(username='john', password='johnpassword')
+        add_response = self.client.get(
+            f'/products/add_review/{self.product.id}/', follow=True)
+        self.assertRedirects(add_response, f'/products/{self.product.id}/')
+        add_message = list(add_response.context.get('messages'))[0]
+        self.assertEqual(
+            add_message.message,
+            'Sorry a form is required to do that.')
+
+        # Edit review
+        edit_response = self.client.get(
+            f'/products/edit_review/{self.review.id}/', follow=True)
+        self.assertRedirects(edit_response, '/profile/')
+        edit_message = list(edit_response.context.get('messages'))[0]
+        self.assertEqual(
+            edit_message.message,
+            'Sorry a form is required to do that.')
