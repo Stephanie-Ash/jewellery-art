@@ -56,3 +56,19 @@ class TestViews(TestCase):
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
             message.message, 'Successfully added a designer to the store.')
+
+    def test_can_edit_designer(self):
+        """ Test that a designer can be edited in the edit designer view. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            f'/designers/edit/{self.designer.id}/',
+            {
+                'name': self.designer.name,
+                'introduction': 'New introduction'
+            }, follow=True)
+        self.assertRedirects(response, f'/designers/{self.designer.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, f'Successfully updated {self.designer.name}.')
+        updated_designer = Designer.objects.get(id=self.designer.id)
+        self.assertEqual(updated_designer.introduction, 'New introduction')
