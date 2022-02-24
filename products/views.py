@@ -137,7 +137,8 @@ def add_review(request, product_id):
             return redirect(reverse('product_detail', args=[product_id]))
         else:
             messages.error(
-               request, 'Failed to add review. Please check the form.')
+               request, 'Failed to add review. Please try again.')
+            return redirect(reverse('product_detail', args=[product_id])) 
     else:
         messages.error(request, 'Sorry a form is required to do that')
         return redirect(reverse('product_detail', args=[product_id]))
@@ -157,7 +158,8 @@ def edit_review(request, review_id):
             return redirect(reverse('profile'))
         else:
             messages.error(
-                request, 'Failed to update review. Please check the form.')
+                request, 'Failed to update review. Please try again.')
+            return redirect(reverse('profile'))
     else:
         messages.error(request, 'Sorry a form is required to do that')
         return redirect(reverse('profile'))
