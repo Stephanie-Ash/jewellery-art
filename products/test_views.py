@@ -44,3 +44,18 @@ class TestViews(TestCase):
         response = self.client.get(f'/products/edit/{self.product.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/edit_product.html')
+
+    def test_can_add_product(self):
+        """ Test that the add product view creates a product. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.post(
+            '/products/add/',
+            {'name': 'Some Name',
+             'description': 'Described.',
+             'inventory': 0,
+             'price': 10.00}, follow=True)
+        product = Product.objects.get(name='Some Name')
+        self.assertRedirects(response, f'/products/{product.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Successfully added a product to the store.')
