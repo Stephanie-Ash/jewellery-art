@@ -92,6 +92,18 @@ class TestViews(TestCase):
         existing_products = Product.objects.filter(id=self.product.id)
         self.assertEqual(len(existing_products), 0)
 
+    def test_can_toggle_homepage_featured(self):
+        """
+        Test that the toggle homepage featured view changes the value of
+        the homepage featured field.
+        """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(
+            f'/products/toggle/{self.product.id}/')
+        self.assertRedirects(response, '/products/')
+        updated_product = Product.objects.get(id=self.product.id)
+        self.assertTrue(updated_product.homepage_featured)
+
     def test_can_add_review(self):
         """ Test that the add review view creates a review. """
         self.client.login(username='john', password='johnpassword')
