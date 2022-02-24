@@ -150,11 +150,14 @@ def edit_review(request, review_id):
     """
     review = get_object_or_404(Review, pk=review_id)
     if request.method == 'POST':
-        review.name = request.POST['name']
-        review.body = request.POST['body']
-        review.save()
-        messages.success(request, 'Successfully updated review.')
-        return redirect(reverse('profile'))
+        review_form = ReviewForm(request.POST, instance=review)
+        if review_form.is_valid():
+            review_form.save()
+            messages.success(request, 'Successfully updated review.')
+            return redirect(reverse('profile'))
+        else:
+            messages.error(
+                request, 'Failed to update review. Please check the form.')
     else:
         messages.error(request, 'Sorry a form is required to do that')
         return redirect(reverse('profile'))

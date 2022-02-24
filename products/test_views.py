@@ -97,3 +97,17 @@ class TestViews(TestCase):
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
             message.message, 'Review successfully added.')
+
+    def test_can_edit_review(self):
+        """ Test that a review can be edited in the edit review view. """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.post(
+            f'/products/add_review/{self.product.id}/',
+            {'name': 'Some Name',
+             'body': 'A review.'}, follow=True)
+        reviews = Review.objects.all()
+        self.assertEqual(len(reviews), 1)
+        self.assertRedirects(response, f'/products/{self.product.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Review successfully added.')
