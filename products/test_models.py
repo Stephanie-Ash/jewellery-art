@@ -33,3 +33,11 @@ class TestModels(TestCase):
         """ Test the Review model string method. """
         self.assertEqual(
             str(self.review), 'Review on Test Product by Some Name')
+
+    def test_category_programmatic_name_generated(self):
+        """
+        Test that a programmatic name for Category model objects
+        is generated on save and that it is the lowercase
+        Category name separated by _.
+        """
+        self.assertEqual(self.category.programmatic_name, 'some_jewellery')
