@@ -119,3 +119,12 @@ class TestViews(TestCase):
             message.message, 'Successfully updated review.')
         updated_review = Review.objects.get(id=self.review.id)
         self.assertEqual(updated_review.name, 'New Name')
+
+    def test_can_delete_review(self):
+        """ Test that a review can be deleted. """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get(
+            f'/products/delete_review/{self.review.id}/')
+        self.assertRedirects(response, '/profile/')
+        existing_reviews = Review.objects.filter(id=self.review.id)
+        self.assertEqual(len(existing_reviews), 0)
