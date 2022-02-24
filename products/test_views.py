@@ -75,3 +75,11 @@ class TestViews(TestCase):
             message.message, f'Successfully updated {self.product.name}.')
         updated_product = Product.objects.get(id=self.product.id)
         self.assertEqual(updated_product.price, 5.00)
+
+    def test_can_delete_product(self):
+        """ Test that a product can be deleted. """
+        self.client.login(username='admin', password='adminpassword')
+        response = self.client.get(f'/products/delete/{self.product.id}/')
+        self.assertRedirects(response, '/products/')
+        existing_products = Product.objects.filter(id=self.product.id)
+        self.assertEqual(len(existing_products), 0)
