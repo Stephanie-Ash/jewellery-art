@@ -1,5 +1,6 @@
 """ Testcases for the products app views. """
 from django.test import TestCase
+from django.test.client import Client
 from django.contrib.auth.models import User
 from designers.models import Designer, Collection
 from profiles.models import UserProfile
@@ -10,6 +11,7 @@ from .models import Product, Category
 class TestViews(TestCase):
     """ Tests for the views. """
     def setUp(self):
+        self.client = Client(HTTP_REFERER='/products/')
         self.superuser = User.objects.create_superuser(
             'admin', 'admin@email.com', 'adminpassword'
         )
@@ -244,6 +246,13 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/products/')
         updated_product = Product.objects.get(id=self.product_one.id)
         self.assertTrue(updated_product.homepage_featured)
+
+        # Test redirect when no current page value
+        self.client = Client()
+        self.client.login(username='admin', password='adminpassword')
+        response_two = self.client.get(
+            f'/products/toggle/{self.product_one.id}/')
+        self.assertRedirects(response_two, '/products/')
 
     def test_can_update_inventory(self):
         """
