@@ -65,3 +65,14 @@ class TestViews(TestCase):
             message.message, 'Profile successfully updated.')
         updated_profile = UserProfile.objects.get(id=self.profile.id)
         self.assertEqual(updated_profile.default_town_or_city, 'New Town')
+
+    def test_error_message_when__user_profile_form_not_valid(self):
+        """
+        Test profile post view to ensure error message is generated when form
+        is not valid.
+        """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.post('/profile/', {'default_country': 'test'})
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Profile update failed. Please check the form.')
