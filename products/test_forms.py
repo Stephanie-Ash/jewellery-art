@@ -23,3 +23,15 @@ class TestForms(TestCase):
         self.assertEqual(
             form.errors['inventory'][0], 'This field is required.')
         self.assertEqual(form.errors['price'][0], 'This field is required.')
+
+    def test_ensure_fields_are_required_on_review_form(self):
+        """
+        Test that the Review name and body fields are required on the
+        Review form.
+        """
+        form = ReviewForm({'name': '', 'body': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('name', form.errors.keys())
+        self.assertIn('body', form.errors.keys())
+        self.assertEqual(form.errors['name'][0], 'This field is required.')
+        self.assertEqual(form.errors['body'][0], 'This field is required.')
