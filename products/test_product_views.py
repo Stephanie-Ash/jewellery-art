@@ -48,13 +48,13 @@ class TestViews(TestCase):
         self.product_two = Product.objects.create(
             category=self.category_one, designer=self.designer_one,
             collection=self.collection_one, name='Test Product Two',
-            description='Test description.', price=50.00
+            description='Test description.', price=20.00
         )
 
         self.product_three = Product.objects.create(
             category=self.category_two, designer=self.designer_two,
             collection=self.collection_two, name='Test Product Three',
-            description='Test description.', price=50.00
+            description='Test description.', price=10.00
         )
 
     def test_get_products_page(self):
@@ -113,6 +113,32 @@ class TestViews(TestCase):
         self.assertIn(
             self.collection_one, response.context['current_collection'])
         self.assertEqual(len(response.context['products']), 1)
+
+    def test_products_sort_provides_correct_order(self):
+        """
+        Test that the products are displayed in the correct order when
+        the products page sort option is used.
+        """
+        self.product_one.category = self.category_two
+        self.product_one.designer = self.designer_two
+        self.product_one.collection = self.collection_two
+        self.product_one.save()
+
+        response_p = self.client.get('/products/?sort=price&direction=desc')
+        self.assertEqual(self.product_one, response_p.context['products'][0])
+
+        response_n = self.client.get('/products/?sort=name&direction=asc')
+        self.assertEqual(self.product_one, response_n.context['products'][0])
+
+        response_c = self.client.get('/products/?sort=category&direction=asc')
+        self.assertEqual(self.product_two, response_c.context['products'][0])
+
+        response_d = self.client.get('/products/?sort=designer&direction=asc')
+        self.assertEqual(self.product_two, response_d.context['products'][0])
+
+        response_cn = self.client.get(
+            '/products/?sort=collection&direction=asc')
+        self.assertEqual(self.product_two, response_cn.context['products'][0])
 
     def test_can_add_product(self):
         """ Test that the add product view creates a product. """
