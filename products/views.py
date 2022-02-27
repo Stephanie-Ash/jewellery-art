@@ -95,7 +95,7 @@ def product_detail(request, product_id):
     other_products = None
     if product.designer:
         other_products = Product.objects.filter(
-            designer__id=product.designer.id)
+            designer__id=product.designer.id).exclude(id=product_id)
     purchased = False
 
     if request.user.is_authenticated:
