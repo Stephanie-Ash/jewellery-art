@@ -1,6 +1,7 @@
 """ Testcases for the products app views. """
 from django.test import TestCase
 from django.contrib.auth.models import User
+from designers.models import Designer, Collection
 from .models import Product, Category
 
 
@@ -15,6 +16,14 @@ class TestViews(TestCase):
             'john', 'john@email.com', 'johnpassword'
         )
 
+        self.designer_one = Designer.objects.create(
+            name='Jane Doe', introduction='Test introduction.'
+        )
+
+        self.designer_two = Designer.objects.create(
+            name='John Doe', introduction='Test introduction two.'
+        )
+
         self.category_one = Category.objects.create(
             name='Test Category One'
         )
@@ -24,17 +33,20 @@ class TestViews(TestCase):
         )
 
         self.product_one = Product.objects.create(
-            name='Test Product One', description='Test description.', price=50.00
+            name='Test Product One', description='Test description.',
+            price=50.00
         )
 
         self.product_two = Product.objects.create(
-            category=self.category_one, name='Test Product Two',
-            description='Test description.', price=50.00
+            category=self.category_one, designer=self.designer_one,
+            name='Test Product Two', description='Test description.',
+            price=50.00
         )
 
         self.product_three = Product.objects.create(
-            category=self.category_two, name='Test Product Three',
-            description='Test description.', price=50.00
+            category=self.category_two, designer=self.designer_two,
+            name='Test Product Three', description='Test description.',
+            price=50.00
         )
 
     def test_get_products_page(self):
@@ -71,6 +83,16 @@ class TestViews(TestCase):
         response = self.client.get('/products/?category=test_category_one')
         self.assertIn(self.product_two, response.context['products'])
         self.assertIn(self.category_one, response.context['current_category'])
+        self.assertEqual(len(response.context['products']), 1)
+    
+    def test_products_designer_filter_displays_correct_products(self):
+        """
+        Test the products page only displays the products with the selected
+        designer when the designer filter is selected.
+        """
+        response = self.client.get('/products/?designer=jane_doe')
+        self.assertIn(self.product_two, response.context['products'])
+        self.assertIn(self.designer_one, response.context['current_designer'])
         self.assertEqual(len(response.context['products']), 1)
 
     def test_can_add_product(self):
