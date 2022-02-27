@@ -39,6 +39,16 @@ class TestViews(TestCase):
             order=self.order, product=self.product_two, quantity=1
         )
 
+        self.order_two = Order.objects.create(
+            user_profile=self.profile, full_name='John Doe',
+            email='john@email.com', phone_number='01234567890', county='GB',
+            address1='1 Road', town_or_city='Town'
+        )
+
+        self.order_line_item_three = OrderLineItem.objects.create(
+            order=self.order_two, product=self.product_one, quantity=1
+        )
+
     def test_get_profile_page(self):
         """ Test the profile page loads. """
         self.client.login(username='john', password='johnpassword')
@@ -76,3 +86,12 @@ class TestViews(TestCase):
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
             message.message, 'Profile update failed. Please check the form.')
+
+    def test_only_one_of_each_product_in_profile_purchased_products(self):
+        """
+        Test that products only appear once in the profile purchased_products
+        context.
+        """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get('/profile/')
+        self.assertEqual(len(response.context['purchased_products']), 2)
