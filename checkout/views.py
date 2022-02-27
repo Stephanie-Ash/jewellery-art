@@ -7,6 +7,7 @@ from django.shortcuts import (
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.db import IntegrityError
 
 from basket.contexts import basket_contents
 from basket.inventory_check import check_inventory
@@ -15,7 +16,6 @@ from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from .models import OrderLineItem, Order
 from .forms import OrderForm
-from .admin_alert_email import send_alert_email
 
 
 def login_or_guest(request):
@@ -27,32 +27,53 @@ def login_or_guest(request):
 
 
 @require_POST
+def update_inventory(request):
+    """
+    Update the inventory of the basket products on checkout form
+    submission. If not enough inventory reset inventory and refresh page.
+    """
+    basket = request.session.get('basket', {})
+    original_inventory = {}
+    for item_id, quantity in basket.items():
+        product = Product.objects.get(id=item_id)
+        original_inventory[item_id] = product.inventory
+
+    try:
+        for item_id, quantity in basket.items():
+            product = Product.objects.get(id=item_id)
+            product.inventory -= quantity
+            product.save()
+        return HttpResponse(status=200)
+    except IntegrityError as e:
+        for item_id, quantity in basket.items():
+            product = Product.objects.get(id=item_id)
+            product.inventory = original_inventory[item_id]
+            product.save()
+        messages.error(
+            request, 'Sorry your payment could not be processed due to \
+                out of stock items.')
+        return HttpResponse(content=e, status=400)
+
+
+@require_POST
 def cache_checkout_data(request):
     """
     Cache checkout data to allow order to be saved when creating
     an order from the webhook.
     """
-    out_of_stock = check_inventory(request)
-    if out_of_stock:
-        messages.warning(
-            request, f'There are no longer enough of the following item(s) in \
-                stock and they have been removed from your basket: \
-                    {", ".join([str(x) for x in [*out_of_stock]])}.')
-        return HttpResponse(status=400)
-    else:
-        try:
-            pid = request.POST.get('client_secret').split('_secret')[0]
-            stripe.api_key = settings.STRIPE_SECRET_KEY
-            stripe.PaymentIntent.modify(pid, metadata={
-                'basket': json.dumps(request.session.get('basket', {})),
-                'save_info': request.POST.get('save_info'),
-                'username': request.user,
-            })
-            return HttpResponse(status=200)
-        except Exception as e:
-            messages.error(request, 'Sorry, your payment could not be processed. \
-                Please try again.')
-            return HttpResponse(content=e, status=400)
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'basket': json.dumps(request.session.get('basket', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment could not be processed. \
+            Please try again.')
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -79,7 +100,6 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            problem_items = []
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
@@ -88,20 +108,12 @@ def checkout(request):
             for item_id, quantity in basket.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    new_inventory = product.inventory - quantity
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
                         quantity=quantity,
                     )
                     order_line_item.save()
-                    if new_inventory < 0:
-                        problem_items.append(product)
-                        product.inventory = 0
-                        product.save()
-                    else:
-                        product.inventory = new_inventory
-                        product.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "A product in your basket wasn't found \
@@ -111,8 +123,6 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_basket'))
             request.session['save_info'] = 'save-info' in request.POST
-            if problem_items:
-                send_alert_email(order)
             return redirect(reverse(
                 'checkout_success', args=[order.order_number]))
         else:
