@@ -35,3 +35,13 @@ class TestForms(TestCase):
         self.assertIn('body', form.errors.keys())
         self.assertEqual(form.errors['name'][0], 'This field is required.')
         self.assertEqual(form.errors['body'][0], 'This field is required.')
+
+    def test_unrequired_fields_not_required_product_form(self):
+        """
+        Test that the fields not required in the Product model
+        objects are not required on the form.
+        """
+        form = ProductForm(
+            {'name': 'Some Name', 'description': 'Describe.',
+             'inventory': 1, 'price': 10.00})
+        self.assertTrue(form.is_valid())
