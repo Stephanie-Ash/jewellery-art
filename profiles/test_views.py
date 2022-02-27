@@ -53,3 +53,15 @@ class TestViews(TestCase):
             f'/profile/order_history/{self.order.order_number}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkout/checkout_success.html')
+
+    def test_can_update_profile_address_information(self):
+        """ Test that the profile address information can be updated. """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.post(
+            '/profile/',
+            {'default_town_or_city': 'New Town'})
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Profile successfully updated.')
+        updated_profile = UserProfile.objects.get(id=self.profile.id)
+        self.assertEqual(updated_profile.default_town_or_city, 'New Town')
