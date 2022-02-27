@@ -2,6 +2,8 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from designers.models import Designer, Collection
+from profiles.models import UserProfile
+from checkout.models import Order, OrderLineItem
 from .models import Product, Category
 
 
@@ -15,6 +17,8 @@ class TestViews(TestCase):
         self.user = User.objects.create_user(
             'john', 'john@email.com', 'johnpassword'
         )
+
+        self.profile = UserProfile.objects.get(user=self.user)
 
         self.designer_one = Designer.objects.create(
             name='Jane Doe', introduction='Test introduction.'
@@ -55,6 +59,20 @@ class TestViews(TestCase):
             category=self.category_two, designer=self.designer_two,
             collection=self.collection_two, name='Test Product Three',
             description='Test description.', price=10.00
+        )
+
+        self.order = Order.objects.create(
+            user_profile=self.profile, full_name='John Doe',
+            email='john@email.com', phone_number='01234567890', county='GB',
+            address1='1 Road', town_or_city='Town'
+        )
+
+        self.order_line_item_one = OrderLineItem.objects.create(
+            order=self.order, product=self.product_one, quantity=1
+        )
+
+        self.order_line_item_two = OrderLineItem.objects.create(
+            order=self.order, product=self.product_two, quantity=1
         )
 
     def test_get_products_page(self):
@@ -166,6 +184,15 @@ class TestViews(TestCase):
         response = self.client.get(f'/products/{self.product_two.id}/')
         self.assertEqual(response.context['other_products'][0], product)
         self.assertEqual(len(response.context['other_products']), 1)
+
+    def test_product_detail_purchased_is_correct_value(self):
+        """
+        Test that the purchased context of the product detail page us true
+        if the user has previously bought the product.
+        """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.get(f'/products/{self.product_one.id}/')
+        self.assertTrue(response.context['purchased'])
 
     def test_can_add_product(self):
         """ Test that the add product view creates a product. """
