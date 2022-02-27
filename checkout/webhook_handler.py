@@ -10,7 +10,6 @@ from django.conf import settings
 from products.models import Product
 from profiles.models import UserProfile
 from .models import Order, OrderLineItem
-from .admin_alert_email import send_alert_email
 
 
 class StripeWH_Handler:
@@ -109,7 +108,6 @@ class StripeWH_Handler:
                 status=200)
         else:
             order = None
-            problem_items = []
             try:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
@@ -127,28 +125,18 @@ class StripeWH_Handler:
                 )
                 for item_id, quantity in json.loads(basket).items():
                     product = Product.objects.get(id=item_id)
-                    new_inventory = product.inventory - quantity
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
                         quantity=quantity,
                     )
                     order_line_item.save()
-                    if new_inventory < 0:
-                        problem_items.append(product)
-                        product.inventory = 0
-                        product.save()
-                    else:
-                        product.inventory = new_inventory
-                        product.save()
             except Exception as e:
                 if order:
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-        if problem_items:
-            send_alert_email(order)
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: \
@@ -159,6 +147,12 @@ class StripeWH_Handler:
         """
         Handle payment_intent.payment_failed webhook from Sripe.
         """
+        intent = event.data.object
+        basket = intent.metadata.basket
+        for item_id, quantity in json.loads(basket).items():
+            product = Product.objects.get(id=item_id)
+            product.inventory += quantity
+            product.save()
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
