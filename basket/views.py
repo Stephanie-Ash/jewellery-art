@@ -18,7 +18,7 @@ def view_basket(request):
         messages.warning(
             request, f'There are no longer enough of the following item(s) in \
                 stock and they have been removed from your basket: \
-                    {", ".join([str(x) for x in [*out_of_stock]])}')
+                    {", ".join([str(x) for x in [*out_of_stock]])}.')
 
     referring_page = request.META.get('HTTP_REFERER')
     if referring_page:
