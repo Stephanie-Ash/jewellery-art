@@ -1,7 +1,7 @@
 """ Testcases for the products app views. """
 from django.test import TestCase
 from django.contrib.auth.models import User
-from .models import Product
+from .models import Product, Category
 
 
 class TestViews(TestCase):
@@ -15,8 +15,26 @@ class TestViews(TestCase):
             'john', 'john@email.com', 'johnpassword'
         )
 
-        self.product = Product.objects.create(
-            name='Test Product', description='Test description.', price=50.00
+        self.category_one = Category.objects.create(
+            name='Test Category One'
+        )
+
+        self.category_two = Category.objects.create(
+            name='Test Category Two'
+        )
+
+        self.product_one = Product.objects.create(
+            name='Test Product One', description='Test description.', price=50.00
+        )
+
+        self.product_two = Product.objects.create(
+            category=self.category_one, name='Test Product Two',
+            description='Test description.', price=50.00
+        )
+
+        self.product_three = Product.objects.create(
+            category=self.category_two, name='Test Product Three',
+            description='Test description.', price=50.00
         )
 
     def test_get_products_page(self):
@@ -27,7 +45,7 @@ class TestViews(TestCase):
 
     def test_get_product_detail_page(self):
         """ Test the product detail page loads. """
-        response = self.client.get(f'/products/{self.product.id}/')
+        response = self.client.get(f'/products/{self.product_one.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/product_detail.html')
 
@@ -41,9 +59,19 @@ class TestViews(TestCase):
     def test_get_edit_product_page(self):
         """ Test the edit product page loads. """
         self.client.login(username='admin', password='adminpassword')
-        response = self.client.get(f'/products/edit/{self.product.id}/')
+        response = self.client.get(f'/products/edit/{self.product_one.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/edit_product.html')
+
+    def test_products_category_filter_displays_correct_products(self):
+        """
+        Test the products page only displays the products with the selected
+        category when the category filter is selected.
+        """
+        response = self.client.get('/products/?category=test_category_one')
+        self.assertIn(self.product_two, response.context['products'])
+        self.assertIn(self.category_one, response.context['current_category'])
+        self.assertEqual(len(response.context['products']), 1)
 
     def test_can_add_product(self):
         """ Test that the add product view creates a product. """
@@ -64,24 +92,24 @@ class TestViews(TestCase):
         """ Test that a product can be edited in the edit product view. """
         self.client.login(username='admin', password='adminpassword')
         response = self.client.post(
-            f'/products/edit/{self.product.id}/',
-            {'name': self.product.name,
-             'description': self.product.description,
-             'inventory': self.product.inventory,
+            f'/products/edit/{self.product_one.id}/',
+            {'name': self.product_one.name,
+             'description': self.product_one.description,
+             'inventory': self.product_one.inventory,
              'price': 5.00}, follow=True)
-        self.assertRedirects(response, f'/products/{self.product.id}/')
+        self.assertRedirects(response, f'/products/{self.product_one.id}/')
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
-            message.message, f'Successfully updated {self.product.name}.')
-        updated_product = Product.objects.get(id=self.product.id)
+            message.message, f'Successfully updated {self.product_one.name}.')
+        updated_product = Product.objects.get(id=self.product_one.id)
         self.assertEqual(updated_product.price, 5.00)
 
     def test_can_delete_product(self):
         """ Test that a product can be deleted. """
         self.client.login(username='admin', password='adminpassword')
-        response = self.client.get(f'/products/delete/{self.product.id}/')
+        response = self.client.get(f'/products/delete/{self.product_one.id}/')
         self.assertRedirects(response, '/products/')
-        existing_products = Product.objects.filter(id=self.product.id)
+        existing_products = Product.objects.filter(id=self.product_one.id)
         self.assertEqual(len(existing_products), 0)
 
     def test_can_toggle_homepage_featured(self):
@@ -91,9 +119,9 @@ class TestViews(TestCase):
         """
         self.client.login(username='admin', password='adminpassword')
         response = self.client.get(
-            f'/products/toggle/{self.product.id}/')
+            f'/products/toggle/{self.product_one.id}/')
         self.assertRedirects(response, '/products/')
-        updated_product = Product.objects.get(id=self.product.id)
+        updated_product = Product.objects.get(id=self.product_one.id)
         self.assertTrue(updated_product.homepage_featured)
 
     def test_can_update_inventory(self):
@@ -102,14 +130,14 @@ class TestViews(TestCase):
         """
         self.client.login(username='admin', password='adminpassword')
         response = self.client.post(
-            f'/products/update_inventory/{self.product.id}/',
+            f'/products/update_inventory/{self.product_one.id}/',
             {'inventory': 5}, follow=True)
         self.assertRedirects(response, '/products/')
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
             message.message,
-            f'The inventory of {self.product.name} has been updated')
-        updated_product = Product.objects.get(id=self.product.id)
+            f'The inventory of {self.product_one.name} has been updated')
+        updated_product = Product.objects.get(id=self.product_one.id)
         self.assertEqual(updated_product.inventory, 5)
 
     def test_superuser_only_areas_redirect_other_users(self):
@@ -128,7 +156,7 @@ class TestViews(TestCase):
         # Edit product page
         self.client.login(username='john', password='johnpassword')
         edit_response = self.client.get(
-            f'/products/edit/{self.product.id}/', follow=True)
+            f'/products/edit/{self.product_one.id}/', follow=True)
         self.assertRedirects(edit_response, '/')
         msg_edit = list(edit_response.context.get('messages'))[0]
         self.assertEqual(
@@ -137,7 +165,7 @@ class TestViews(TestCase):
         # Delete product view
         self.client.login(username='john', password='johnpassword')
         delete_response = self.client.get(
-            f'/products/delete/{self.product.id}/', follow=True)
+            f'/products/delete/{self.product_one.id}/', follow=True)
         self.assertRedirects(delete_response, '/')
         msg_delete = list(delete_response.context.get('messages'))[0]
         self.assertEqual(
@@ -147,7 +175,7 @@ class TestViews(TestCase):
         # Update inventory view
         self.client.login(username='john', password='johnpassword')
         update_response = self.client.get(
-            f'/products/update_inventory/{self.product.id}/', follow=True)
+            f'/products/update_inventory/{self.product_one.id}/', follow=True)
         self.assertRedirects(update_response, '/')
         msg_update = list(update_response.context.get('messages'))[0]
         self.assertEqual(
@@ -156,7 +184,7 @@ class TestViews(TestCase):
         # Toggle homepage featured view
         self.client.login(username='john', password='johnpassword')
         toggle_response = self.client.get(
-            f'/products/toggle/{self.product.id}/',
+            f'/products/toggle/{self.product_one.id}/',
             follow=True)
         self.assertRedirects(toggle_response, '/')
         msg_toggle = list(toggle_response.context.get('messages'))[0]
@@ -184,14 +212,14 @@ class TestViews(TestCase):
 
         # Edit product
         edit_response = self.client.post(
-            f'/products/edit/{self.product.id}/',
+            f'/products/edit/{self.product_one.id}/',
             {'name': '',
-             'description': self.product.description,
-             'inventory': self.product.inventory,
-             'price': self.product.price}, follow=True)
+             'description': self.product_one.description,
+             'inventory': self.product_one.inventory,
+             'price': self.product_one.price}, follow=True)
         edit_message = list(edit_response.context.get('messages'))[0]
         self.assertEqual(
-            edit_message.message, f'Failed to update {self.product.name}. \
+            edit_message.message, f'Failed to update {self.product_one.name}. \
                     Please check the form.')
 
     def test_error_messages_for_get_update_inventory_view(self):
@@ -201,7 +229,7 @@ class TestViews(TestCase):
         """
         self.client.login(username='admin', password='adminpassword')
         response = self.client.get(
-            f'/products/update_inventory/{self.product.id}/', follow=True)
+            f'/products/update_inventory/{self.product_one.id}/', follow=True)
         self.assertRedirects(response, '/products/')
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
