@@ -154,6 +154,19 @@ class TestViews(TestCase):
         message = list(response_none.context.get('messages'))[0]
         self.assertEqual(message.message, 'Please enter some search criteria!')
 
+    def test_contents_of_product_detail_other_products(self):
+        """
+        Test that the product detail page other products context only
+        contains products by the product designer.
+        """
+        product = Product.objects.create(
+            designer=self.designer_one, name='Extra Product',
+            description='Test description.', price=20.00)
+
+        response = self.client.get(f'/products/{self.product_two.id}/')
+        self.assertEqual(response.context['other_products'][0], product)
+        self.assertEqual(len(response.context['other_products']), 1)
+
     def test_can_add_product(self):
         """ Test that the add product view creates a product. """
         self.client.login(username='admin', password='adminpassword')
