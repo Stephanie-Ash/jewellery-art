@@ -140,6 +140,20 @@ class TestViews(TestCase):
             '/products/?sort=collection&direction=asc')
         self.assertEqual(self.product_two, response_cn.context['products'][0])
 
+    def test_products_search_provides_correct_products(self):
+        """
+        Test that the products page search option filters out the correct
+        products.
+        """
+        response = self.client.get('/products/?q=three')
+        self.assertEqual(self.product_three, response.context['products'][0])
+        self.assertEqual(len(response.context['products']), 1)
+
+        response_none = self.client.get('/products/?q=', follow=True)
+        self.assertRedirects(response_none, '/products/')
+        message = list(response_none.context.get('messages'))[0]
+        self.assertEqual(message.message, 'Please enter some search criteria!')
+
     def test_can_add_product(self):
         """ Test that the add product view creates a product. """
         self.client.login(username='admin', password='adminpassword')
