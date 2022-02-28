@@ -25,7 +25,7 @@ class TestModels(TestCase):
 
         self.order_two = Order.objects.create(
             full_name='John Doe', email='john@email.com',
-            phone_number='01234567890', country='GB',
+            phone_number='01234567890', country='US',
             address1='1 Road', town_or_city='Town'
         )
 
@@ -57,9 +57,30 @@ class TestModels(TestCase):
         Test that an order number is generated on save.
         """
         self.assertIsNotNone(self.order_two.order_number)
-    
+
     def test_order_line_item_lineitem_total_generated(self):
         """
         Test that an OrderLineItem lineitem_total is generated on save.
         """
         self.assertEqual(self.order_line_item_one.lineitem_total, 50.00)
+
+    def test_order_total_calculated(self):
+        """
+        Test that the Order totals is updated when the OrderLineItems
+        are added.
+        """
+        self.assertEqual(self.order_two.order_total, 20.00)
+        self.assertEqual(self.order_two.delivery_cost, 5.00)
+        self.assertEqual(self.order_two.grand_total, 25.00)
+
+    def test_order_delivery_cost_zero_when_no_order_total(self):
+        """
+        Test that the order delivery cost is zero when there are
+        no lineitems and so no total.
+        """
+        order = Order.objects.create(
+            full_name='John Doe', email='john@email.com',
+            phone_number='01234567890', country='US',
+            address1='1 Road', town_or_city='Town'
+        )
+        self.assertEqual(order.delivery_cost, 0)
