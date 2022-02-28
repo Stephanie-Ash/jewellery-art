@@ -46,6 +46,19 @@ class TestViews(TestCase):
         session = self.client.session
         self.assertNotIn('country', session.keys())
 
+    def test_session_country_preserved_when_reloading_basket(self):
+        """
+        Test that the country session variable is preserved when reloading
+        the basket page.
+        """
+        self.client = Client(HTTP_REFERER='/basket/')
+        session = self.client.session
+        session['country'] = 'GB'
+        session.save()
+        response = self.client.get('/basket/')
+        self.assertEqual(session['country'], 'GB')
+        self.assertEqual(response.context['form']['country'].value(), 'GB')
+
     def test_country_set_as_profile_default_country(self):
         """
         Test that the session country is set to the profile default country
