@@ -8,6 +8,7 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.db import IntegrityError
+from django.db import transaction
 
 from basket.contexts import basket_contents
 from basket.inventory_check import check_inventory
@@ -41,11 +42,12 @@ def update_inventory(request):
         products[item_id] = product
 
     try:
-        for item_id, quantity in basket.items():
-            product = products[item_id]
-            product.inventory -= quantity
-            product.save()
-        return HttpResponse(status=200)
+        with transaction.atomic():
+            for item_id, quantity in basket.items():
+                product = products[item_id]
+                product.inventory -= quantity
+                product.save()
+            return HttpResponse(status=200)
     except IntegrityError as e:
         for item_id, quantity in basket.items():
             product = products[item_id]

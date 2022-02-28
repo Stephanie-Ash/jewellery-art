@@ -1,6 +1,7 @@
 """ Testcases for the checkout app views. """
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.contrib.messages import get_messages
 from products.models import Product
 from profiles.models import UserProfile
 from .models import Order, OrderLineItem
@@ -226,3 +227,20 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         product = Product.objects.get(id=self.product_two.id)
         self.assertEqual(product.inventory, 1)
+
+    def test_update_inventory_error_when_product_out_of_stock(self):
+        """
+        Test the update inventory view generates an error message and returns
+        status 400 when product out of stock
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_one.id: 1
+        }
+        session.save()
+        response = self.client.post('/checkout/update_inventory/')
+        self.assertEqual(response.status_code, 400)
+        messages = [msg for msg in get_messages(response.wsgi_request)]
+        self.assertEqual(
+            messages[0].message, 'Sorry your payment could not be processed due to \
+                out of stock items.')
