@@ -9,7 +9,7 @@ class TestModels(TestCase):
     def setUp(self):
         self.product_one = Product.objects.create(
             name='Test Product One', description='Test description.',
-            price=50.00
+            price=50.00, sku='123test'
         )
 
         self.product_two = Product.objects.create(
@@ -34,3 +34,10 @@ class TestModels(TestCase):
     def test_order_string_method_returns_order_number(self):
         """ Test the Order model string method. """
         self.assertEqual(str(self.order), 'test1234')
+
+    def test_orderlineitem_string_method_includes_sku_and_order_number(self):
+        """ Test the OrderLineItem model string method includes the product
+        sku and order number.
+        """
+        self.assertEqual(
+            str(self.order_line_item_one), 'SKU 123test on order test1234')
