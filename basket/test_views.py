@@ -63,3 +63,26 @@ class TestViews(TestCase):
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
             message.message, f'Added {self.product_two.name} to your basket.')
+
+    def test_can_add_item_already_in_basket_to_basket(self):
+        """
+        Test that the add to basket view updates the quantity when a product
+        already in the basket is added.
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 1,
+        }
+        session.save()
+        response = self.client.post(
+            f'/basket/add/{self.product_two.id}/',
+            {'quantity': 1,
+             'redirect_url': f'/products/{self.product_two.id}/'}, follow=True)
+        basket = self.client.session['basket']
+        self.assertEqual(basket[f'{self.product_two.id}'], 2)
+        self.assertRedirects(response, f'/products/{self.product_two.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message,
+            f'Updated the quantity of {self.product_two.name} in your \
+                    basket.')
