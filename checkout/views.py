@@ -34,19 +34,21 @@ def update_inventory(request):
     """
     basket = request.session.get('basket', {})
     original_inventory = {}
+    products = {}
     for item_id, quantity in basket.items():
         product = Product.objects.get(id=item_id)
         original_inventory[item_id] = product.inventory
+        products[item_id] = product
 
     try:
         for item_id, quantity in basket.items():
-            product = Product.objects.get(id=item_id)
+            product = products[item_id]
             product.inventory -= quantity
             product.save()
         return HttpResponse(status=200)
     except IntegrityError as e:
         for item_id, quantity in basket.items():
-            product = Product.objects.get(id=item_id)
+            product = products[item_id]
             product.inventory = original_inventory[item_id]
             product.save()
         messages.error(
