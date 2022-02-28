@@ -160,3 +160,23 @@ class TestViews(TestCase):
         self.assertEqual(
             message.message,
             f'Removed {self.product_two.name} from your basket.')
+
+    def test_error_message_when_adjust_basket_with_out_of_stock_product(self):
+        """
+        Test that the adjust basket view generates an error message when the
+        quantity of a basket product is adjusted to more than available stock
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 2,
+        }
+        session.save()
+        response = self.client.post(
+            f'/basket/adjust/{self.product_two.id}/',
+            {'quantity': 3}, follow=True)
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message,
+            f'There are only 2 of {self.product_two.name} \
+                    in stock and so not enough for this quantity of the item \
+                    in your basket.')
