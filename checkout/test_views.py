@@ -144,3 +144,46 @@ class TestViews(TestCase):
         response = self.client.get('/checkout/')
         self.assertEqual(
             response.context['order_form']['country'].value(), 'US')
+
+    def test_correct_country_selected_on_checkout_form_registered_users(self):
+        """
+        Test that the session country value is displayed on the checkout
+        form when available, otherwise the profile default country or GB.
+        """
+        self.client.login(username='john', password='johnpassword')
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 1
+        }
+        session['country'] = ''
+        session.save()
+
+        response = self.client.get('/checkout/')
+        self.assertEqual(
+            response.context['order_form']['country'].value(), 'GB')
+
+        session['country'] = ''
+        session.save()
+        profile = UserProfile.objects.get(user=self.user)
+        profile.default_country = 'US'
+        profile.save()
+        response_2 = self.client.get('/checkout/')
+        self.assertEqual(
+            response_2.context['order_form']['country'].value(), 'US')
+
+        session['country'] = 'AL'
+        session.save()
+        response_3 = self.client.get('/checkout/')
+        self.assertEqual(
+            response_3.context['order_form']['country'].value(), 'AL')
+
+        profile.delete()
+        response_4 = self.client.get('/checkout/')
+        self.assertEqual(
+            response_4.context['order_form']['country'].value(), 'AL')
+
+        session['country'] = ''
+        session.save()
+        response_5 = self.client.get('/checkout/')
+        self.assertEqual(
+            response_5.context['order_form']['country'].value(), 'GB')
