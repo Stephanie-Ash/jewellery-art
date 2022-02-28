@@ -200,3 +200,19 @@ class TestViews(TestCase):
         self.assertEqual(
             messages[0].message,
             f'Removed {self.product_two.name} from your basket.')
+
+    def test_can_set_delivery_country(self):
+        """
+        Test that the set delivery country view adds the delivery country
+        to the session.
+        """
+        response = self.client.get('/basket/set_delivery_country/GB/')
+        self.assertEqual(response.status_code, 200)
+        delivery_country = self.client.session['country']
+        self.assertEqual(delivery_country, 'GB')
+
+        response_none = self.client.get(
+            '/basket/set_delivery_country/no_country/')
+        self.assertEqual(response_none.status_code, 200)
+        session = self.client.session
+        self.assertNotIn('country', session.keys())
