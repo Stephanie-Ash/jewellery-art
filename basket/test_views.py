@@ -139,3 +139,24 @@ class TestViews(TestCase):
             message.message,
             f'Updated the quantity of {self.product_two.name} in your \
                 basket.')
+
+    def test_adjust_basket_view_can_remove_from_basket(self):
+        """
+        Test that the adjust basket view removes a product from the basket
+        when the quantity is set to 0.
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 2,
+        }
+        session.save()
+        response = self.client.post(
+            f'/basket/adjust/{self.product_two.id}/',
+            {'quantity': 0}, follow=True)
+        basket = self.client.session['basket']
+        self.assertNotIn(f'{self.product_two.id}', basket.keys())
+        self.assertRedirects(response, '/basket/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message,
+            f'Removed {self.product_two.name} from your basket.')
