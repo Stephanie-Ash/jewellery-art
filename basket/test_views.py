@@ -86,3 +86,34 @@ class TestViews(TestCase):
             message.message,
             f'Updated the quantity of {self.product_two.name} in your \
                     basket.')
+
+    def test_error_messages_when_add_item_with_no_stock_to_basket(self):
+        """
+        Test that error messages are generated when an item with not enough
+        stock is added to the basket.
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 2,
+        }
+        session.save()
+        response = self.client.post(
+            f'/basket/add/{self.product_two.id}/',
+            {'quantity': 1,
+             'redirect_url': f'/products/{self.product_two.id}/'}, follow=True)
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'There are not enough in stock to add more of \
+                    this item to your basket. Quantity in basket: \
+                    2, \
+                    Quantity in stock: 2.')
+
+        response = self.client.post(
+            f'/basket/add/{self.product_one.id}/',
+            {'quantity': 1,
+             'redirect_url': f'/products/{self.product_one.id}/'}, follow=True)
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, f'There are only 0 of {self.product_one.name} \
+                    in stock and so not enough to add this item \
+                    to your basket.')
