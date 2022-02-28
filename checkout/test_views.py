@@ -2,6 +2,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from products.models import Product
+from profiles.models import UserProfile
 from .models import Order, OrderLineItem
 
 
@@ -64,3 +65,19 @@ class TestViews(TestCase):
             message.message, f'Good news, your order was successful. \
         Your order number is: {order.order_number}. A confirmation has been \
         sent to {order.email}')
+        session = self.client.session
+        self.assertNotIn('basket', session.keys())
+
+    def test_profile_information_saved_in_checkout_success_view(self):
+        """
+        Test that the default delivery informaion is saved to the user
+        profile when the save info box is ticked.
+        """
+        self.client.login(username='john', password='johnpassword')
+        session = self.client.session
+        session['save_info'] = True
+        session.save()
+        self.client.get(
+            f'/checkout/checkout_success/{self.order.order_number}/')
+        profile = UserProfile.objects.get(user=self.user)
+        self.assertEqual(profile.default_address1, self.order.address1)
