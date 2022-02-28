@@ -27,13 +27,21 @@ class TestViews(TestCase):
 
     def test_get_basket_page(self):
         """ Test the basket page loads. """
-        self.client.login(username='john', password='johnpassword')
-        session = self.client.session
-        session['country'] = 'GB'
-        session.save()
         response = self.client.get('/basket/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'basket/basket.html')
+
+    def test_country_deleted_from_session_on_basket_page(self):
+        """
+        Test that the country session variable is deleted arriving at the
+        basket page from another page.
+        """
+        session = self.client.session
+        session['country'] = 'GB'
+        session.save()
+        self.client.get('/basket/')
+        session = self.client.session
+        self.assertNotIn('country', session.keys())
 
     def test_warning_message_on_get_basket_page_if_item_out_of_stock(self):
         """
