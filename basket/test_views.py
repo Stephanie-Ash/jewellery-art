@@ -26,6 +26,7 @@ class TestViews(TestCase):
 
     def test_get_basket_page(self):
         """ Test the basket page loads. """
+        self.client.login(username='john', password='johnpassword')
         session = self.client.session
         session['country'] = 'GB'
         session.save()
@@ -49,3 +50,16 @@ class TestViews(TestCase):
         self.assertEqual(message.message, f'There are no longer enough of the following item(s) in \
                 stock and they have been removed from your basket: \
                     {self.product_one.name}.')
+
+    def test_can_add_to_basket(self):
+        """ Test that the add to basket view adds a product to the basket. """
+        response = self.client.post(
+            f'/basket/add/{self.product_two.id}/',
+            {'quantity': 1,
+             'redirect_url': f'/products/{self.product_two.id}/'}, follow=True)
+        basket = self.client.session['basket']
+        self.assertIn(f'{self.product_two.id}', basket.keys())
+        self.assertRedirects(response, f'/products/{self.product_two.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, f'Added {self.product_two.name} to your basket.')
