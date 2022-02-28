@@ -92,3 +92,23 @@ class TestViews(TestCase):
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
             message.message, 'Your basket is currently empty.')
+
+    def test_warning_message_in_checkout_when_basket_item_out_of_stock(self):
+        """
+        Test that the checout view redirects and an error message is genetated
+        when basket items are out of stock.
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_one.id: 1,
+            self.product_two.id: 1
+        }
+        session.save()
+        response = self.client.get('/checkout/', follow=True)
+        self.assertRedirects(response, '/checkout/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message,
+            'There are no longer enough of the following item(s) in \
+                    stock and they have been removed from your basket: \
+                        Test Product One.')
