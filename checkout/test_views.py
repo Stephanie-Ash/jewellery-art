@@ -123,3 +123,24 @@ class TestViews(TestCase):
             'There are no longer enough of the following item(s) in \
                     stock and they have been removed from your basket: \
                         Test Product One.')
+
+    def test_correct_country_selected_on_checkout_form(self):
+        """
+        Test that the session country value is displayed on the checkout
+        form when available, otherwise GB.
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 1
+        }
+        session['country'] = ''
+        session.save()
+        response = self.client.get('/checkout/')
+        self.assertEqual(
+            response.context['order_form']['country'].value(), 'GB')
+
+        session['country'] = 'US'
+        session.save()
+        response = self.client.get('/checkout/')
+        self.assertEqual(
+            response.context['order_form']['country'].value(), 'US')
