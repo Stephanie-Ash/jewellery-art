@@ -187,3 +187,27 @@ class TestViews(TestCase):
         response_5 = self.client.get('/checkout/')
         self.assertEqual(
             response_5.context['order_form']['country'].value(), 'GB')
+
+    def test_can_create_order(self):
+        """ Test that the checkout view can create and order. """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 1
+        }
+        session.save()
+        self.client.get('/checkout/')
+        response = self.client.post(
+            '/checkout/',
+            {'full_name': 'Test Name',
+             'phone_number': '01234567890',
+             'email': 'email@email.com',
+             'address1': '1 Road',
+             'address2': '',
+             'town_or_city': 'Town',
+             'county': '',
+             'postcode': 'ST1 1AA',
+             'country': 'GB',
+             'client_secret': 'test_secret_test'})
+        order = Order.objects.get(full_name='Test Name')
+        self.assertRedirects(
+            response, f'/checkout/checkout_success/{order.order_number}/')
