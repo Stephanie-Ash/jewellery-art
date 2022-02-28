@@ -57,3 +57,9 @@ class TestModels(TestCase):
         Test that an order number is generated on save.
         """
         self.assertIsNotNone(self.order_two.order_number)
+    
+    def test_order_line_item_lineitem_total_generated(self):
+        """
+        Test that an OrderLineItem lineitem_total is generated on save.
+        """
+        self.assertEqual(self.order_line_item_one.lineitem_total, 50.00)
