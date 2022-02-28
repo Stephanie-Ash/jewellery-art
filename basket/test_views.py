@@ -117,3 +117,25 @@ class TestViews(TestCase):
             message.message, f'There are only 0 of {self.product_one.name} \
                     in stock and so not enough to add this item \
                     to your basket.')
+
+    def test_can_adjust_basket(self):
+        """
+        Test that the adjust basket view adjusts the quantity of a product
+        in the basket.
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 2,
+        }
+        session.save()
+        response = self.client.post(
+            f'/basket/adjust/{self.product_two.id}/',
+            {'quantity': 1}, follow=True)
+        basket = self.client.session['basket']
+        self.assertEqual(basket[f'{self.product_two.id}'], 1)
+        self.assertRedirects(response, '/basket/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message,
+            f'Updated the quantity of {self.product_two.name} in your \
+                basket.')
