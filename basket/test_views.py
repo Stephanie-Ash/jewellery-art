@@ -1,16 +1,20 @@
 """ Testcases for the basket app views. """
 from django.test import TestCase
 from django.test.client import Client
+from django.test.client import RequestFactory
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from products.models import Product
 from profiles.models import UserProfile
+from .contexts import basket_contents
 
 
 class TestViews(TestCase):
     """ Tests for the views. """
     def setUp(self):
         self.client = Client(HTTP_REFERER='/products/')
+
+        self.factory = RequestFactory()
 
         self.user = User.objects.create_user(
             'john', 'john@email.com', 'johnpassword'
@@ -257,3 +261,27 @@ class TestViews(TestCase):
         self.assertEqual(response_none.status_code, 200)
         session = self.client.session
         self.assertNotIn('country', session.keys())
+
+    def test_delivery_price_when_country_is_set(self):
+        """
+        Test that the delivery cost is set to zero when the country selected
+        is GB and standard delivery otherwise.
+        """
+        self.client = Client(HTTP_REFERER='/basket/')
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 2,
+        }
+        session['country'] = 'GB'
+        session.save()
+        request = self.factory.get('/basket/')
+        request.session = session
+        basket = basket_contents(request)
+        self.assertEqual(basket['delivery'], 0)
+
+        session['country'] = 'US'
+        session.save()
+        request = self.factory.get('/basket/')
+        request.session = session
+        basket = basket_contents(request)
+        self.assertEqual(basket['delivery'], 5)
