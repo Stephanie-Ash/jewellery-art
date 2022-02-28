@@ -37,6 +37,17 @@ class TestViews(TestCase):
             order=self.order, product=self.product_two, quantity=1
         )
 
+    def test_get_login_or_guest_page(self):
+        """ Test the login or guest page loads. """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 1,
+        }
+        session.save()
+        response = self.client.get('/checkout/login_or_guest/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'checkout/login_or_guest.html')
+
     def test_get_checkout_page(self):
         """ Test the checkout page loads. """
         session = self.client.session
