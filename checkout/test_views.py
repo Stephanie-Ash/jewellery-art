@@ -81,3 +81,14 @@ class TestViews(TestCase):
             f'/checkout/checkout_success/{self.order.order_number}/')
         profile = UserProfile.objects.get(user=self.user)
         self.assertEqual(profile.default_address1, self.order.address1)
+
+    def test_error_message_generated_by_checkout_when_basket_empty(self):
+        """
+        Test that the checout view redirects and an error message is genetated
+        when navigating there with an empty basket.
+        """
+        response = self.client.get('/checkout/', follow=True)
+        self.assertRedirects(response, '/products/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Your basket is currently empty.')
