@@ -4,6 +4,7 @@ from django.test.client import Client
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from products.models import Product
+from profiles.models import UserProfile
 
 
 class TestViews(TestCase):
@@ -14,6 +15,8 @@ class TestViews(TestCase):
         self.user = User.objects.create_user(
             'john', 'john@email.com', 'johnpassword'
         )
+
+        self.profile = UserProfile.objects.get(user=self.user)
 
         self.product_one = Product.objects.create(
             name='Test Product One', description='Test description.',
@@ -33,7 +36,7 @@ class TestViews(TestCase):
 
     def test_country_deleted_from_session_on_basket_page(self):
         """
-        Test that the country session variable is deleted arriving at the
+        Test that the country session variable is deleted on arriving at the
         basket page from another page.
         """
         session = self.client.session
@@ -42,6 +45,18 @@ class TestViews(TestCase):
         self.client.get('/basket/')
         session = self.client.session
         self.assertNotIn('country', session.keys())
+
+    def test_country_set_as_profile_default_country(self):
+        """
+        Test that the session country is set to the profile default country
+        on arrival at the basket page.
+        """
+        self.client.login(username='john', password='johnpassword')
+        self.profile.default_country = 'GB'
+        self.profile.save()
+        self.client.get('/basket/')
+        country = self.client.session['country']
+        self.assertEqual(country, 'GB')
 
     def test_warning_message_on_get_basket_page_if_item_out_of_stock(self):
         """
