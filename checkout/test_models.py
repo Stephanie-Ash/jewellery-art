@@ -23,12 +23,22 @@ class TestModels(TestCase):
             address1='1 Road', town_or_city='Town'
         )
 
+        self.order_two = Order.objects.create(
+            full_name='John Doe', email='john@email.com',
+            phone_number='01234567890', country='GB',
+            address1='1 Road', town_or_city='Town'
+        )
+
         self.order_line_item_one = OrderLineItem.objects.create(
             order=self.order, product=self.product_one, quantity=1
         )
 
         self.order_line_item_two = OrderLineItem.objects.create(
             order=self.order, product=self.product_two, quantity=1
+        )
+
+        self.order_line_item_three = OrderLineItem.objects.create(
+            order=self.order_two, product=self.product_two, quantity=1
         )
 
     def test_order_string_method_returns_order_number(self):
@@ -41,3 +51,9 @@ class TestModels(TestCase):
         """
         self.assertEqual(
             str(self.order_line_item_one), 'SKU 123test on order test1234')
+
+    def test_order_number_generated(self):
+        """
+        Test that an order number is generated on save.
+        """
+        self.assertIsNotNone(self.order_two.order_number)
