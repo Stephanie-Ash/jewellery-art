@@ -65,7 +65,7 @@ class TestViews(TestCase):
 
         self.order = Order.objects.create(
             user_profile=self.profile, full_name='John Doe',
-            email='john@email.com', phone_number='01234567890', county='GB',
+            email='john@email.com', phone_number='01234567890', country='GB',
             address1='1 Road', town_or_city='Town'
         )
 
