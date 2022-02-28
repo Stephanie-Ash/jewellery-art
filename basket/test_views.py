@@ -62,7 +62,7 @@ class TestViews(TestCase):
     def test_country_set_as_profile_default_country(self):
         """
         Test that the session country is set to the profile default country
-        on arrival at the basket page.
+        on arrival at the basket page if profile available.
         """
         self.client.login(username='john', password='johnpassword')
         self.profile.default_country = 'GB'
@@ -70,6 +70,11 @@ class TestViews(TestCase):
         self.client.get('/basket/')
         country = self.client.session['country']
         self.assertEqual(country, 'GB')
+
+        self.profile.delete()
+        self.client.get('/basket/')
+        session = self.client.session
+        self.assertNotIn('country', session.keys())
 
     def test_warning_message_on_get_basket_page_if_item_out_of_stock(self):
         """
