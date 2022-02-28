@@ -142,6 +142,7 @@ def checkout(request):
                 request, f'There are no longer enough of the following item(s) in \
                     stock and they have been removed from your basket: \
                         {", ".join([str(x) for x in [*out_of_stock]])}')
+            return redirect(reverse('checkout'))
 
         current_basket = basket_contents(request)
         total = current_basket['grand_total']
