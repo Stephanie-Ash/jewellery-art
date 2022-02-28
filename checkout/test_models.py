@@ -83,4 +83,9 @@ class TestModels(TestCase):
             phone_number='01234567890', country='US',
             address1='1 Road', town_or_city='Town'
         )
+
+        order_line_item = OrderLineItem.objects.create(
+            order=order, product=self.product_two, quantity=1
+        )
+        order_line_item.delete()
         self.assertEqual(order.delivery_cost, 0)
