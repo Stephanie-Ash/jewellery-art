@@ -117,11 +117,9 @@ def checkout(request):
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
-                    messages.error(request, (
-                        "A product in your basket wasn't found \
-                            in our database. "
-                        "Please call us for assistance!")
-                    )
+                    messages.error(
+                        request, "A product in your basket wasn't found in \
+                            our database. Please call us for assistance!")
                     order.delete()
                     return redirect(reverse('view_basket'))
             request.session['save_info'] = 'save-info' in request.POST

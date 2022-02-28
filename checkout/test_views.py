@@ -189,13 +189,13 @@ class TestViews(TestCase):
             response_5.context['order_form']['country'].value(), 'GB')
 
     def test_can_create_order(self):
-        """ Test that the checkout view can create and order. """
+        """ Test that the checkout view can create an order. """
         session = self.client.session
         session['basket'] = {
             self.product_two.id: 1
         }
+        session['country'] = 'GB'
         session.save()
-        self.client.get('/checkout/')
         response = self.client.post(
             '/checkout/',
             {'full_name': 'Test Name',
@@ -206,8 +206,23 @@ class TestViews(TestCase):
              'town_or_city': 'Town',
              'county': '',
              'postcode': 'ST1 1AA',
-             'country': 'GB',
              'client_secret': 'test_secret_test'})
         order = Order.objects.get(full_name='Test Name')
         self.assertRedirects(
             response, f'/checkout/checkout_success/{order.order_number}/')
+
+    def test_update_inventory_view_updates_product_inventory(self):
+        """
+        Test that the update inventory review updates the product
+        inventory and returns a status 200 when the basket products are
+        in stock.
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 1
+        }
+        session.save()
+        response = self.client.post('/checkout/update_inventory/')
+        self.assertEqual(response.status_code, 200)
+        product = Product.objects.get(id=self.product_two.id)
+        self.assertEqual(product.inventory, 1)
