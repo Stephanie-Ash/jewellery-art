@@ -2,6 +2,7 @@
 from django.test import TestCase
 from django.test.client import Client
 from django.contrib.auth.models import User
+from django.contrib.messages import get_messages
 from products.models import Product
 
 
@@ -180,3 +181,22 @@ class TestViews(TestCase):
             f'There are only 2 of {self.product_two.name} \
                     in stock and so not enough for this quantity of the item \
                     in your basket.')
+
+    def test_can_remove_from_basket(self):
+        """
+        Test the remove from basket view removes an item from the basket.
+        """
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 2,
+        }
+        session.save()
+        response = self.client.get(
+            f'/basket/remove/{self.product_two.id}/')
+        self.assertEqual(response.status_code, 200)
+        basket = self.client.session['basket']
+        self.assertNotIn(f'{self.product_two.id}', basket.keys())
+        messages = [msg for msg in get_messages(response.wsgi_request)]
+        self.assertEqual(
+            messages[0].message,
+            f'Removed {self.product_two.name} from your basket.')
