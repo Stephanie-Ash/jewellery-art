@@ -38,22 +38,34 @@
                         </option>
                         <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)
                         </option>
+                        {% if not current_category %}
                         <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>
                             Category (A-Z)</option>
                         <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>
                             Category (Z-A)</option>
+                        {% endif %}
+                        {% if not current_collection %}
                         <option value="collection_asc" {% if current_sorting == 'collection_asc' %}selected{% endif %}>
                             Collection (A-Z)</option>
                         <option value="collection_desc"
                             {% if current_sorting == 'collection_desc' %}selected{% endif %}>Collection (Z-A)</option>
+                        {% endif %}
+                        {% if not current_designer %}
                         <option value="designer_asc" {% if current_sorting == 'designer_asc' %}selected{% endif %}>
                             Designer (A-Z)</option>
                         <option value="designer_desc" {% if current_sorting == 'designer_desc' %}selected{% endif %}>
                             Designer (Z-A)</option>
+                        {% endif %}
                     </select>
                 </div>
                 <div class="col-12 col-sm-8 order-sm-1 text-center text-sm-left">
-                    {% if current_category == None and current_collection == None and current_designer == None %}
+                    {% if current_category or current_collection or current_designer or search_term %}
+                    <!-- Link to all jewellery if products filtered or sorted. -->
+                    <p class="mb-0 pt-2">
+                        <a class="content-link txt-link" aria-label="Go to the all jewellery products page"
+                            href="{% url 'products' %}">Go to All Jewellery</a>
+                    </p>
+                    {% else %}
                     <p class="mb-0 pt-2">
                         <!-- Link to popular categories if all products shown. -->
                         {% for category in categories|slice:":6" %}
@@ -62,12 +74,6 @@
                             {{ category.name }}{% if not forloop.last %} | {% endif %}
                         </a>
                         {% endfor %}
-                    </p>
-                    {% else %}
-                    <!-- Link to all jewellery if products filtered or sorted. -->
-                    <p class="mb-0 pt-2">
-                        <a class="content-link txt-link" aria-label="Go to the all jewellery products page"
-                            href="{% url 'products' %}">Go to All Jewellery</a>
                     </p>
                     {% endif %}
                 </div>
