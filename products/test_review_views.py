@@ -27,6 +27,8 @@ class TestViews(TestCase):
 
         self.profile = UserProfile.objects.get(user=self.user)
 
+        self.profile_one = UserProfile.objects.get(user=self.superuser)
+
         self.order = Order.objects.create(
             user_profile=self.profile, full_name='John Doe',
             email='john@email.com', phone_number='01234567890', county='GB',
@@ -42,6 +44,11 @@ class TestViews(TestCase):
             body='Review text.'
         )
 
+        self.review_one = Review.objects.create(
+            product=self.product, user_profile=self.profile_one,
+            name='New Name', body='Review text.'
+        )
+
     def test_can_add_review(self):
         """ Test that the add review view creates a review. """
         self.client.login(username='john', password='johnpassword')
@@ -50,7 +57,7 @@ class TestViews(TestCase):
             {'name': 'Some Name',
              'body': 'A review.'}, follow=True)
         reviews = Review.objects.all()
-        self.assertEqual(len(reviews), 2)
+        self.assertEqual(len(reviews), 3)
         self.assertRedirects(response, f'/products/{self.product.id}/')
         message = list(response.context.get('messages'))[0]
         self.assertEqual(
@@ -107,7 +114,7 @@ class TestViews(TestCase):
             edit_message.message,
             'Failed to update review. Please try again.')
 
-    def test_error_message_when_adding_reviw_of_unpurchased_product(self):
+    def test_error_message_when_adding_review_of_unpurchased_product(self):
         """
         Test add review post view redirects and generages error message when
         user adds a review of an unpurchased product.
@@ -122,6 +129,21 @@ class TestViews(TestCase):
         self.assertEqual(
             message.message, 'Sorry you can only review products you have \
                     purchased!')
+
+    def test_error_message_when_editing_someone_elses_review(self):
+        """
+        Test edit review post view redirects and generages error message when
+        user edits a review created by someone else.
+        """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.post(
+            f'/products/edit_review/{self.review_one.id}/',
+            {'name': 'Other Name',
+             'body': self.review_one.body}, follow=True)
+        self.assertRedirects(response, '/profile/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Sorry you can only edit your own reviews!')
 
     def test_error_messages_for_get_on_post_only_views(self):
         """
