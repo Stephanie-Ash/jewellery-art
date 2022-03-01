@@ -163,16 +163,23 @@ def edit_review(request, review_id):
     Allow registered users to edit a review on their profile page.
     """
     review = get_object_or_404(Review, pk=review_id)
+    profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
-        review_form = ReviewForm(request.POST, instance=review)
-        if review_form.is_valid():
-            review_form.save()
-            messages.success(request, 'Successfully updated review.')
+        if review.user_profile != profile:
+            messages.error(
+                request, 'Sorry you can only edit your own reviews!'
+            )
             return redirect(reverse('profile'))
         else:
-            messages.error(
-                request, 'Failed to update review. Please try again.')
-            return redirect(reverse('profile'))
+            review_form = ReviewForm(request.POST, instance=review)
+            if review_form.is_valid():
+                review_form.save()
+                messages.success(request, 'Successfully updated review.')
+                return redirect(reverse('profile'))
+            else:
+                messages.error(
+                    request, 'Failed to update review. Please try again.')
+                return redirect(reverse('profile'))
     else:
         messages.error(request, 'Sorry a form is required to do that.')
         return redirect(reverse('profile'))
