@@ -284,4 +284,4 @@ class TestViews(TestCase):
         request = self.factory.get('/basket/')
         request.session = session
         basket = basket_contents(request)
-        self.assertEqual(basket['delivery'], 5)
+        self.assertEqual(basket['delivery'], 10)

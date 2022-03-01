@@ -70,7 +70,7 @@ class TestModels(TestCase):
         are added.
         """
         self.assertEqual(self.order_two.order_total, 20.00)
-        self.assertEqual(self.order_two.delivery_cost, 5.00)
+        self.assertEqual(self.order_two.delivery_cost, 10.00)
         self.assertEqual(self.order_two.grand_total, 25.00)
 
     def test_order_delivery_cost_zero_when_no_order_total(self):

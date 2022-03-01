@@ -43,6 +43,11 @@ main {
     font-size: 18px;
 }
 
+.banner-txt {
+    font-size: 25px;
+    font-weight: 500;
+}
+
 h1 {
     font-size: 32px;
 }
@@ -333,6 +338,10 @@ a[aria-disabled="true"]:hover {
 
 .account-dropdown-menu {
     width: 100%;
+}
+
+.delivery-banner {
+    background-color: #515c63;
 }
 
 /* Footer */
