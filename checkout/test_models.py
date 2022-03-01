@@ -66,7 +66,7 @@ class TestModels(TestCase):
 
     def test_order_total_calculated(self):
         """
-        Test that the Order totals is updated when the OrderLineItems
+        Test that the Order totals are updated when the OrderLineItems
         are added.
         """
         self.assertEqual(self.order_two.order_total, 20.00)
