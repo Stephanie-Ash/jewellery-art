@@ -80,6 +80,20 @@ class TestViews(TestCase):
         session = self.client.session
         self.assertNotIn('basket', session.keys())
 
+    def test_login_or_guest_page_redirects_logged_in_users(self):
+        """
+        Test the login or guest page redirects logged in users
+        to the chekout page.
+        """
+        self.client.login(username='john', password='johnpassword')
+        session = self.client.session
+        session['basket'] = {
+            self.product_two.id: 1,
+        }
+        session.save()
+        response = self.client.get('/checkout/login_or_guest/')
+        self.assertRedirects(response, '/checkout/')
+
     def test_profile_information_saved_in_checkout_success_view(self):
         """
         Test that the default delivery informaion is saved to the user
