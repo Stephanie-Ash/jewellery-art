@@ -30,3 +30,14 @@ class TestForms(TestCase):
             form.errors['address1'][0], 'This field is required.')
         self.assertEqual(
             form.errors['town_or_city'][0], 'This field is required.')
+
+    def test_unrequired_fields_not_required_order_form(self):
+        """
+        Test that the fields not required in the Order model
+        objects are not required on the form.
+        """
+        form = OrderForm(
+            {'full_name': 'Name', 'email': 'email@email.com',
+             'phone_number': '01234567890', 'country': 'GB',
+             'address1': '1 Street', 'town_or_city': 'Town'})
+        self.assertTrue(form.is_valid())
