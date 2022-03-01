@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4 mb-2 text-center text-sm-left txt-drk">
+            <h1 class="mb-0">500 Error</h1>
+        </div>
+        <div class="col-12">
+            <hr class="divide-rule">
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-12 txt-drk">
+            <h2 class="detail-h2 mb-4">We Seem to be Having a Few Technical Issues</h2>
+            <p class="txt-lrger">If the problem persists you can <a class="content-link txt-link"
+                    href="{% url 'contact' %}" aria-label="Go to the contact us form">contact us here</a> Alternatively
+                hit the button below to find great artistic jewellery.</p>
+            <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"
+                href="{% url 'products' %}">Shop Now
+            </a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
