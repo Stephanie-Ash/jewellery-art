@@ -690,15 +690,15 @@ textarea.form-control {
 }
 
 .basket-grand-total {
-    margin-left: 19px;
+    width: 120px;
 }
 
 .basket-delivery {
-    margin-left: 47px;
+    width: 120px;
 }
 
 .basket-total {
-    margin-left: 15px;
+    width: 120px;
 }
 
 .update-link, .remove-item {
