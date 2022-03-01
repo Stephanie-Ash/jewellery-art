@@ -2,6 +2,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from profiles.models import UserProfile
+from checkout.models import Order, OrderLineItem
 from .models import Product, Review
 
 
@@ -21,6 +22,16 @@ class TestViews(TestCase):
         )
 
         self.profile = UserProfile.objects.get(user=self.user)
+
+        self.order = Order.objects.create(
+            user_profile=self.profile, full_name='John Doe',
+            email='john@email.com', phone_number='01234567890', county='GB',
+            address1='1 Road', town_or_city='Town'
+        )
+
+        self.order_line_item = OrderLineItem.objects.create(
+            order=self.order, product=self.product, quantity=1
+        )
 
         self.review = Review.objects.create(
             product=self.product, user_profile=self.profile, name='Some Name',
