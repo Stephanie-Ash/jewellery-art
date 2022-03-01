@@ -21,6 +21,10 @@ class TestViews(TestCase):
             name='Test Product', description='Test description.', price=50.00
         )
 
+        self.product_one = Product.objects.create(
+            name='Other Product', description='Test description.', price=50.00
+        )
+
         self.profile = UserProfile.objects.get(user=self.user)
 
         self.order = Order.objects.create(
@@ -102,6 +106,22 @@ class TestViews(TestCase):
         self.assertEqual(
             edit_message.message,
             'Failed to update review. Please try again.')
+
+    def test_error_message_when_adding_reviw_of_unpurchased_product(self):
+        """
+        Test add review post view redirects and generages error message when
+        user adds a review of an unpurchased product.
+        """
+        self.client.login(username='john', password='johnpassword')
+        response = self.client.post(
+            f'/products/add_review/{self.product_one.id}/',
+            {'name': 'Some person',
+             'body': 'A review.'}, follow=True)
+        self.assertRedirects(response, f'/products/{self.product_one.id}/')
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(
+            message.message, 'Sorry you can only review products you have \
+                    purchased!')
 
     def test_error_messages_for_get_on_post_only_views(self):
         """

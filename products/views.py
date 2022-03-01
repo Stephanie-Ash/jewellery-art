@@ -136,7 +136,7 @@ def add_review(request, product_id):
         review_form = ReviewForm(request.POST)
         if not purchased:
             messages.error(
-                request, 'Sorry you can only revie products you have \
+                request, 'Sorry you can only review products you have \
                     purchased!'
             )
             return redirect(reverse('product_detail', args=[product_id]))
