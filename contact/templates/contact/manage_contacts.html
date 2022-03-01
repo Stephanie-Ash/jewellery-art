@@ -12,6 +12,7 @@
     </div>
     <div class="row">
         <div class="col-12 mb-4 txt-drk">
+            {% if contact_messages %}
             {% for message in contact_messages %}
             {% if not message.responded %}
             <p class="mb-1"><i class="fas fa-exclamation-circle mr-2 txt-red"></i>Awaiting Response</p>
@@ -40,6 +41,11 @@
             <hr class="review-divider">
             {% endif %}
             {% endfor %}
+            {% else %}
+            <p class="txt-lrger">There are currently no customer messages to see.</p>
+            <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the Jewellery Art home page"
+                href="{% url 'home' %}">Go to the Homepage</a>
+            {% endif %}
         </div>
     </div>
 </div>

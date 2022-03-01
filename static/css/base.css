@@ -39,6 +39,10 @@ main {
     font-weight: bold;
 }
 
+.txt-lrger {
+    font-size: 18px;
+}
+
 h1 {
     font-size: 32px;
 }
@@ -699,10 +703,6 @@ textarea.form-control {
 
 .update-link, .remove-item {
     cursor: pointer;
-}
-
-.basket-empty {
-    font-size: 18px;
 }
 
 /* ------------------------checkout.html------------------------ */
