@@ -126,19 +126,32 @@ def add_review(request, product_id):
     """
     product = get_object_or_404(Product, pk=product_id)
     profile = get_object_or_404(UserProfile, user=request.user)
+    purchased = False
+    orders = profile.orders.all()
+    for order in orders:
+        for item in order.lineitems.all():
+            if item.product.id == product_id:
+                purchased = True
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
-        if review_form.is_valid():
-            customer_review = review_form.save(commit=False)
-            customer_review.product = product
-            customer_review.user_profile = profile
-            customer_review.save()
-            messages.success(request, 'Review successfully added.')
+        if not purchased:
+            messages.error(
+                request, 'Sorry you can only revie products you have \
+                    purchased!'
+            )
             return redirect(reverse('product_detail', args=[product_id]))
         else:
-            messages.error(
-               request, 'Failed to add review. Please try again.')
-            return redirect(reverse('product_detail', args=[product_id]))
+            if review_form.is_valid():
+                customer_review = review_form.save(commit=False)
+                customer_review.product = product
+                customer_review.user_profile = profile
+                customer_review.save()
+                messages.success(request, 'Review successfully added.')
+                return redirect(reverse('product_detail', args=[product_id]))
+            else:
+                messages.error(
+                    request, 'Failed to add review. Please try again.')
+                return redirect(reverse('product_detail', args=[product_id]))
     else:
         messages.error(request, 'Sorry a form is required to do that.')
         return redirect(reverse('product_detail', args=[product_id]))
