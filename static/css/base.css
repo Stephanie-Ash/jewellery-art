@@ -646,11 +646,6 @@ textarea.form-control {
     font-weight: bold;
 }
 
-.review-body {
-    max-height: 600px;
-    overflow-y: auto;
-}
-
 /* ------------------------designers.html------------------------ */
 
 /* circular images */
