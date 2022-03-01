@@ -16,6 +16,12 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home/index.html')
 
+    def test_get_privacy_policy_page(self):
+        """ Test the privacy policy page loads. """
+        response = self.client.get('/privacy_policy/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'home/privacy_policy.html')
+
     def test_featured_products_length(self):
         """
         Test that the homepage featured products context always exists,
