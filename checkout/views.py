@@ -23,6 +23,8 @@ def login_or_guest(request):
     """
     Display sign in or guest page pre checkout.
     """
+    if request.user.is_authenticated:
+        return redirect(reverse('checkout'))
 
     return render(request, 'checkout/login_or_guest.html')
 
