@@ -54,7 +54,7 @@
         </div>
         <div class="col-12 col-sm-5 col-md-6 col-lg-5 col-xl-4 my-sm-auto txt-drk text-center text-md-left">
             <!-- Designer name -->
-            <h1 class="detail-h1 d-lg-inline-block mr-lg-2">{{ designer.name }}</h1>
+            <h1 class="h1-sm d-lg-inline-block mr-lg-2">{{ designer.name }}</h1>
             <!-- Designer social media links displayed with the name on all but medium screens -->
             <ul class="list-inline d-md-none d-lg-inline">
                 {% if designer.facebook_link %}
@@ -134,7 +134,7 @@
             <hr class="divide-rule-dets">
         </div>
         <div class="col-12 mb-3">
-            <h2 class="detail-h2">Pieces by {{ designer.name }}</h2>
+            <h2>Pieces by {{ designer.name }}</h2>
         </div>
     </div>
     <div class="row mx-2">
@@ -147,10 +147,10 @@
                     href="{% url 'product_detail' product.id %}">
                     <div class="product-image-cont">
                     {% if product.image %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
+                    <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
                     {% else %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                    <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                         alt="{{ product.name }}">
                     {% endif %}
                     {% if product.inventory == 0 %}
@@ -183,10 +183,10 @@
                     href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
                     <div class="product-image-cont">
-                    <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
+                    <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
                     {% else %}
-                    <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                    <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                         alt="{{ product.name }}">
                     {% endif %}
                     {% if product.inventory == 0 %}

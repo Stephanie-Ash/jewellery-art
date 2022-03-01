@@ -9,9 +9,9 @@
         <div class="text-center col-12 col-sm-5 offset-sm-1 offset-md-0 col-md-auto">
             <div class="detail-img-cont mx-auto">
                 {% if product.image %}
-                <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                <img class="img-fluid img-drk product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                <img class="img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                <img class="img-fluid img-drk product-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                 {% endif %}
                 {% if product.inventory == 0 %}
                 <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="det-product-info col-12 col-sm-6 col-md-auto mt-4 my-sm-auto">
-            <h1 class="det-product-name detail-h1">{{ product.name }}</h1>
+            <h1 class="det-product-name h1-sm">{{ product.name }}</h1>
             {% if product.collection %}
             <p class="mb-0">from {{ product.collection.name }}</p>
             {% endif %}
@@ -163,7 +163,7 @@
     <div class="row">
         <div class="col-12">
             <hr class="divide-rule-dets">
-            <h2 class="mb-4 detail-h2">Also by the Designer</h2>
+            <h2 class="mb-4">Also by the Designer</h2>
         </div>
         {% for product in other_products %}
         <div class="d-none d-md-flex col-md-3 col-xl-2">
@@ -172,10 +172,10 @@
                     href="{% url 'product_detail' product.id %}">
                     <div class="product-image-cont">
                         {% if product.image %}
-                        <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
+                        <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
                             alt="{{ product.name }}">
                         {% else %}
-                        <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                        <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                             alt="{{ product.name }}">
                         {% endif %}
                         {% if product.inventory == 0 %}
@@ -202,14 +202,14 @@
         <div class="scrolling-wrapper d-md-none">
             {% for product in other_products %}
             <div
-                class="scroll-card scroll-drk {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
+                class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
                     <div class="product-image-cont">
                         {% if product.image %}
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        <img class="product-img img-drk" src="{{ product.image.url }}" alt="{{ product.name }}">
                         {% else %}
-                        <img src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                        <img class="product-img img-drk" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                         {% endif %}
                         {% if product.inventory == 0 %}
                         <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>

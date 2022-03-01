@@ -90,10 +90,10 @@
                             href="{% url 'product_detail' product.id %}">
                             <div class="product-image-cont">
                                 {% if product.image %}
-                                <img class="card-img-top product-card-img img-fluid" src="{{ product.image.url }}"
+                                <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
                                     alt="{{ product.name }}">
                                 {% else %}
-                                <img class="card-img-top product-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                                <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                                     alt="{{ product.name }}">
                                 {% endif %}
                                 {% if product.inventory == 0 %}

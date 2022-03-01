@@ -10,7 +10,7 @@ main {
     flex: 1 0 auto;
 }
 
-/* Text */
+/* Text Colours */
 .txt-lgt {
     color: #dce4e8;
 }
@@ -31,16 +31,17 @@ main {
     color: #C20000;
 }
 
+/* General Text Size and Weight */
 .txt-sm {
     font-size: 12px;
 }
 
-.list-heading {
-    font-weight: bold;
+.txt-lrg {
+    font-size: 18px;
 }
 
-.txt-lrger {
-    font-size: 18px;
+.list-heading {
+    font-weight: bold;
 }
 
 .banner-txt {
@@ -48,6 +49,7 @@ main {
     font-weight: 500;
 }
 
+/* Headings */
 h1 {
     font-size: 32px;
 }
@@ -60,11 +62,7 @@ h1 {
     font-size: 18px;
 }
 
-.detail-h1 {
-    font-size: 20px;
-}
-
-h3, .detail-h2 {
+h3, h2, .h1-sm {
     font-size: 20px;
 }
 
@@ -176,17 +174,6 @@ h3, .detail-h2 {
     text-decoration: underline;
 }
 
-.inv-btn {
-    color: #005ec2;
-    border: none;
-    background-color: transparent;
-    padding: 0;
-}
-
-.inv-btn:hover {
-    text-decoration: underline;
-}
-
 button[aria-disabled="true"] {
     background-color: #515c63;
     pointer-events: none;
@@ -234,6 +221,30 @@ a[aria-disabled="true"]:hover {
     border-radius: 0;
 }
 
+/* Images */
+.product-img {
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
+
+.img-sm {
+    border-radius: 0;
+    outline: 2px solid #242d33;
+    outline-offset: 2px;
+}
+
+.img-lgt {
+    border-radius: 0;
+    outline: 3px solid #eef2f4;
+    outline-offset: 2px;
+}
+
+.img-drk {
+    border-radius: 0;
+    outline: 3px solid #242d33;
+    outline-offset: 2px;
+}
+
 /* ------------------------base.html------------------------ */
 
 /* Message Toasts */
@@ -260,13 +271,6 @@ a[aria-disabled="true"]:hover {
 
 .toast-divider {
     border-color: #242d33;
-}
-
-.toast-img {
-    outline: 2px solid #242d33;
-    outline-offset: 1px;
-    aspect-ratio: 3/4;
-    object-fit: cover;
 }
 
 .toast-basket {
@@ -442,14 +446,6 @@ footer {
     max-width: 250px;
 }
 
-.home-card-img {
-    border-radius: 0;
-    outline: 3px solid #eef2f4;
-    outline-offset: 2px;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-}
-
 .scrolling-wrapper {
     display: flex;
     flex-wrap: nowrap;
@@ -472,11 +468,6 @@ footer {
 
 .scroll-card img {
     width: 100%;
-    outline: 3px solid #eef2f4;
-    outline-offset: 2px;
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
 }
 
 .home-prod-title {
@@ -556,15 +547,6 @@ footer {
     background-color: #242d33;
 }
 
-.product-card-img {
-    border-radius: 0;
-    outline: 3px solid #242d33;
-    outline-offset: 2px;
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-}
-
 .card, .card-footer {
     background-color: transparent;
     border: none;
@@ -599,14 +581,6 @@ footer {
     max-width: 300px;
 }
 
-.detail-img-cont > img {
-    outline: 3px solid #242d33;
-    outline-offset: 2px;
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-}
-
 .det-acc-head {
     border-bottom: 2px solid #242d33;
 }
@@ -616,12 +590,6 @@ footer {
     border-width: 3px;
     margin-top: 0;
     margin-bottom: 20px;
-}
-
-.scroll-drk img {
-    width: 100%;
-    outline: 3px solid #242d33;
-    outline-offset: 2px;
 }
 
 .det-product-info {
@@ -686,13 +654,6 @@ textarea.form-control {
     width: 20%;
 }
 
-.basket-img {
-    outline: 2px solid #242d33;
-    outline-offset: 2px;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-}
-
 .basket-grand-total {
     width: 120px;
 }
@@ -733,8 +694,6 @@ textarea.form-control {
 .checkout-img {
     outline: 1px solid #242d33;
     outline-offset: 1px;
-    aspect-ratio: 3/4;
-    object-fit: cover;
 }
 
 #div_id_country {
@@ -913,11 +872,7 @@ select:invalid, select option[value=""] {
         font-size: 18px;
     }
 
-    h3, .detail-h2 {
-        font-size: 24px;
-    }
-
-    .detail-h1 {
+    h3, h2, .h1-sm {
         font-size: 24px;
     }
 

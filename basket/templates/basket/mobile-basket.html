@@ -7,9 +7,9 @@
     </div>
     <div class="col-6 mobile-basket-cols">
         {% if item.product.image %}
-        <img class="basket-img img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+        <img class="img-sm product-img img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
         {% else %}
-        <img class="basket-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+        <img class="img-sm product-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
         {% endif %}
     </div>
     <div class="col-6 my-auto pl-1 mobile-basket-cols">

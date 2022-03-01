@@ -24,9 +24,9 @@
             <div class="row">
                 <div class="col-4 mb-3">
                     {% if item.product.image %}
-                    <img class="img-fluid toast-img m-1" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    <img class="img-fluid img-sm product-img m-1" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                     {% else %}
-                    <img class="img-fluid toast-img m-1" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                    <img class="img-fluid img-sm product-img m-1" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
                     {% endif %}
                 </div>
                 <div class="col-8 mb-3">

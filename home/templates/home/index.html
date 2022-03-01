@@ -99,10 +99,10 @@
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
-                    <img class="card-img-top home-card-img img-fluid" src="{{ product.image.url }}"
+                    <img class="card-img-top img-lgt product-img img-fluid" src="{{ product.image.url }}"
                         alt="{{ product.name }}">
                     {% else %}
-                    <img class="card-img-top home-card-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                    <img class="card-img-top img-lgt product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
                         alt="{{ product.name }}">
                     {% endif %}
                 </a>
@@ -130,9 +130,9 @@
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="product-img img-lgt" src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% else %}
-                    <img src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    <img class="product-img img-lgt" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                     {% endif %}
                 </a>
                 <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
