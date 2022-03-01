@@ -23,3 +23,11 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def privacy_policy(request):
+    """
+    Display the privacy policy for the site.
+    """
+
+    return render(request, 'home/privacy_policy.html')
