@@ -399,129 +399,6 @@ footer {
     color: #dce4e8 !important;
 }
 
-/* ------------------------index.html------------------------ */
-
-/* Page Heading */
-.home-hero {
-    padding: 0;
-    position: relative;
-}
-
-.home-hero-img {
-    width: 100%;
-}
-
-.home-heading {
-    background: url('/media/paint-on-canvas.jpg') no-repeat center center;
-    background-size: cover;
-    padding: 50% 0 0 0;
-    position: relative;
-}
-
-.home-heading-box {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-}
-
-.home-heading-txt {
-    background-color: rgba(220, 228, 232, 0.7);
-    padding: 5px;
-    margin-bottom: 10px;
-}
-
-/* Home page information sections */
-.home-info {
-    font-size: 16px;
-}
-
-.image-divider {
-    height: 300px;
-    background: url('/media/jewellery-making.jpg') center center / cover no-repeat fixed;
-}
-
-/* Home page featured products section */
-.home-card {
-    max-width: 250px;
-}
-
-.scrolling-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-}
-
-.scroll-card {
-    flex: 0 0 auto;
-    width: 200px;
-    margin-left: 25px;
-}
-
-.scroll-card-1st {
-    margin-left: 30px;
-}
-
-.scroll-card-lst {
-    margin-right: 30px;
-}
-
-.scroll-card img {
-    width: 100%;
-}
-
-.home-prod-title {
-    padding-top: 20px;
-    font-weight: bold;
-}
-
-.home-prod-price {
-    padding-bottom: 20px;
-}
-
-.newsletter-signup {
-    background: url('/media/selection-of-jewellery-art-jewellery.jpg') left top / cover no-repeat;
-    min-height: 350px;
-}
-
-/* Mailchimp form */
-#mc_embed_signup {
-    background-color: rgba(36, 45, 51, 0.4);
-    padding: 5px;
-    margin: 5px;
-}
-
-#mc_embed_signup form {
-    padding: 0;
-}
-
-#mc_embed_signup .mc-field-group {
-    width: 100%;
-}
-
-#mc_embed_signup input {
-    border-radius: 0;
-}
-
-#mc_embed_signup .foot {
-    width: 100%;
-}
-
-#mc_embed_signup .button {
-    background-color: #242d33;
-    color: #dce4e8;
-    border-radius: 0;
-}
-
-#mc_embed_signup div#mce-responses {
-    width: 100%;
-}
-
-#mc_embed_signup div.response {
-    margin: 0;
-    padding: 0 0 10px 0;
-}
-
 /* ------------------------products.html------------------------ */
 
 .divide-rule {
@@ -808,14 +685,6 @@ select:invalid, select option[value=""] {
         display: inline !important;
     }
 
-    .home-link {
-        display: none;
-    }
-
-    .home-heading-box {
-        left: 15px;
-    }
-
     .det-product-info {
         padding-left: 10%;
     }
@@ -859,19 +728,6 @@ select:invalid, select option[value=""] {
 
 /* For screens 576px and up */
 @media screen and (min-width: 576px) {
-    .home-heading-box {
-        position: absolute;
-        left: 8px;
-    }
-
-    .home-heading-txt {
-        background-color: rgba(109, 122, 130, 0.4);
-    }
-
-    .home-info {
-        font-size: 18px;
-    }
-
     h3, h2, .h1-sm {
         font-size: 24px;
     }
@@ -888,18 +744,6 @@ select:invalid, select option[value=""] {
 
 /* For screens 768px and up */
 @media screen and (min-width: 768px) {
-    .home-h1 {
-        font-size: 28px;
-    }
-
-    .home-h2 {
-        font-size: 24px;
-    }
-
-    .home-heading-box {
-        left: 15px;
-    }
-
     .det-product-name {
         max-width: 24rem;
     }
@@ -916,14 +760,6 @@ select:invalid, select option[value=""] {
         height: 50px;
     }
 
-    .home-h1 {
-        font-size: 34px;
-    }
-
-    .home-h2 {
-        font-size: 28px;
-    }
-
     .base-basket-items {
         font-size: 16px;
         position: static;
@@ -934,22 +770,7 @@ select:invalid, select option[value=""] {
 
 /* For screens 1200px and up */
 @media screen and (min-width: 1200px) {
-    .home-heading-box {
-        left: 40px;
-    }
-
     .det-product-name {
         max-width: 45rem;
-    }
-}
-
-/* For screens 1400px and up */
-@media screen and (min-width: 1400px) {
-    .home-h1 {
-        font-size: 38px;
-    }
-
-    .home-h2 {
-        font-size: 32px;
     }
 }
