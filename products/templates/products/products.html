@@ -53,13 +53,7 @@
                     </select>
                 </div>
                 <div class="col-12 col-sm-8 order-sm-1 text-center text-sm-left">
-                    {% if current_category or current_collection or current_designer or current_sorting != 'None_None' %}
-                    <!-- Link to all jewellery if products filtered or sorted. -->
-                    <p class="mb-0 pt-2">
-                        <a class="content-link txt-link" aria-label="Go to the all jewellery products page"
-                            href="{% url 'products' %}">All Jewellery</a>
-                    </p>
-                    {% else %}
+                    {% if current_category == None and current_collection == None and current_designer == None %}
                     <p class="mb-0 pt-2">
                         <!-- Link to popular categories if all products shown. -->
                         {% for category in categories|slice:":6" %}
@@ -68,6 +62,12 @@
                             {{ category.name }}{% if not forloop.last %} | {% endif %}
                         </a>
                         {% endfor %}
+                    </p>
+                    {% else %}
+                    <!-- Link to all jewellery if products filtered or sorted. -->
+                    <p class="mb-0 pt-2">
+                        <a class="content-link txt-link" aria-label="Go to the all jewellery products page"
+                            href="{% url 'products' %}">Go to All Jewellery</a>
                     </p>
                     {% endif %}
                 </div>
