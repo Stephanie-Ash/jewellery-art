@@ -78,13 +78,13 @@
                     <img class="checkout-img product-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
                     {% endif %}
                 </div>
-                <div class="col-5">
-                    <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
-                    <p class="mb-0">Price: £{{ item.product.price }}</p>
-                    <p class="mb-0">Qty: {{ item.quantity }}</p>
+                <div class="col-7 col-md-6">
+                    <p class="mb-0 checkout-basket-name"><strong>{{ item.product.name }}</strong></p>
+                    <p class="mb-0 checkout-basket-info">Price: £{{ item.product.price }}</p>
+                    <p class="mb-0 checkout-basket-info">Qty: {{ item.quantity }}</p>
                 </div>
-                <div class="col-5 mt-auto text-right">
-                    <p class="mb-0">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                <div class="col-3 col-md-4 mt-auto text-right">
+                    <p class="mb-0 checkout-basket-info">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>
                 </div>
                 <div class="col-12">
                     <hr>

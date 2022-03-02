@@ -118,7 +118,7 @@
                             {% if request.user.is_superuser %}
                             <small>
                                 <input data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured"
-                                    type="checkbox" id="home-featured{{ product.id }}"
+                                    type="checkbox" id="home-featured{{ product.id }}" title="Featured on homepage"
                                     {% if product.homepage_featured%}checked{% endif %}>
                                 <label data-url="{% url 'toggle_homepage_featured' product.id %}"
                                     class="home-featured-label mb-0"

@@ -14,6 +14,14 @@
     border-color: #6d7a82 !important;
 }
 
+.checkout-basket-name {
+    font-size: 15px;
+}
+
+.checkout-basket-info {
+    font-size: 14px;
+}
+
 /* Stripe */
 .StripeElement {
   box-sizing: border-box;
