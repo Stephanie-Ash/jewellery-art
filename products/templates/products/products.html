@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-10 mx-auto">
             <div class="row">
-                <div class="col my-4 text-center text-sm-left txt-drk">
+                <div class="col my-4 txt-drk">
                     <!-- Heading based on current filtering. -->
                     {% if current_category %}
                     <h1 class="d-inline-block mb-0">{{ current_category.first.name }}</h1>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-4 order-sm-2 text-center text-sm-right">
+                <div class="col-12 col-sm-4 order-sm-2 text-sm-right">
                     <!-- Sorting options. -->
                     <select class="txt-drk" id="sorting-sel">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort By
@@ -63,7 +63,7 @@
                         {% endif %}
                     </select>
                 </div>
-                <div class="col-12 col-sm-8 order-sm-1 text-center text-sm-left">
+                <div class="col-12 col-sm-8 order-sm-1">
                     {% if current_category or current_collection or current_designer or search_term %}
                     <!-- Link to all jewellery if products filtered or sorted. -->
                     <p class="mb-0 pt-2">
