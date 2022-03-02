@@ -1,0 +1,66 @@
+/* ------------------CSS for the checkout app------------------ */
+/* ------------------------checkout.html------------------------ */
+.checkout-img {
+    outline: 1px solid #242d33;
+    outline-offset: 1px;
+}
+
+#div_id_country {
+    margin-bottom: 10px;
+}
+
+.checkout-country-dis, .checkout-country-dis option {
+    color: #6d7a82 !important;
+    border-color: #6d7a82 !important;
+}
+
+/* Stripe */
+.StripeElement {
+  box-sizing: border-box;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 10px 12px;
+}
+
+.StripeElement--focus {
+  box-shadow: none;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #eef2f4 !important;
+}
+
+/* Loading overlay */
+#loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(109, 122, 130, 0.8);
+    z-index: 9999;
+}
+
+.loading-spinner {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+}
+
+/* ---------------------checkout_success.html--------------------- */
+.order-number {
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+/* ------------------------Media Queries------------------------ */
+/* For screens 360px and up */
+@media screen and (min-width: 360px) {
+    .order-number {
+        word-wrap: normal;
+        font-size: 16px;
+    }
+}

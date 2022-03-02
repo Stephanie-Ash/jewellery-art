@@ -2,6 +2,10 @@
 {% load static %}
 {% load basket_tools %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
 {% block extra_title %}Checkout{% endblock %}
 
 {% block content %}
@@ -89,11 +93,26 @@
             {% endfor %}
             <div class="row">
                 <div class="col-12 col-sm-6 txt-drk">
-                    <p class="mb-0">Basket Total:<span class="basket-total">£{{ total|floatformat:2 }}</span></p>
-                    <p class="mb-2">Delivery:<span class="basket-delivery">£{{ delivery|floatformat:2 }}</span></p>
-                    <p class="mb-0"><strong>Grand Total:<span
-                                class="basket-grand-total">£{{ grand_total|floatformat:2 }}</span></strong>
-                    </p>
+                    <div>
+                    <div class="basket-total d-inline-block">
+                        <p class="mb-0">Basket Total:</p>
+                    </div>
+                    <span>£{{ total|floatformat:2 }}</span>
+                </div>
+                <div>
+                    <div class="basket-delivery d-inline-block">
+                        <p class="mb-2">Delivery:</p>
+                    </div>
+                    <span>£{{ delivery|floatformat:2 }}</span>
+                </div>
+                <div>
+                    <strong>
+                        <div class="basket-grand-total d-inline-block">
+                            <p>Grand Total:</p>
+                        </div>
+                        <span>£{{ grand_total|floatformat:2 }}</span>
+                    </strong>
+                </div>
                 </div>
                 <div class="col-12 col-sm-6 mt-1 mt-sm-auto text-right">
                     <a class="btn btn-sm btn-drk btn-sqr txt-lgt" aria-label="Go to your shopping basket"
