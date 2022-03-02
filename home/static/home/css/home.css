@@ -40,44 +40,6 @@
     background: url('/media/jewellery-making.jpg') center center / cover no-repeat fixed;
 }
 
-/* Home page featured products section */
-.home-card {
-    max-width: 250px;
-}
-
-.scrolling-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-}
-
-.scroll-card {
-    flex: 0 0 auto;
-    width: 200px;
-    margin-left: 25px;
-}
-
-.scroll-card-1st {
-    margin-left: 30px;
-}
-
-.scroll-card-lst {
-    margin-right: 30px;
-}
-
-.scroll-card img {
-    width: 100%;
-}
-
-.home-prod-title {
-    padding-top: 20px;
-    font-weight: bold;
-}
-
-.home-prod-price {
-    padding-bottom: 20px;
-}
-
 .newsletter-signup {
     background: url('/media/selection-of-jewellery-art-jewellery.jpg') left top / cover no-repeat;
     min-height: 350px;

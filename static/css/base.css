@@ -245,6 +245,104 @@ a[aria-disabled="true"]:hover {
     outline-offset: 2px;
 }
 
+/* Dividing hr elements */
+.divide-rule {
+    border-color: #242d33;
+    border-width: 3px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+}
+
+.divide-rule-dets {
+    border-color: #242d33;
+    border-width: 3px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.divide-rule-grey {
+    border-color: #6d7a82;
+}
+
+/* Product Cards */
+.product-image-cont {
+    position: relative;
+}
+
+.out-of-stock {
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    background-color: #242d33;
+}
+
+.card, .card-footer {
+    background-color: transparent;
+    border: none;
+}
+
+.product-card {
+    max-width: 280px;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+/* Scrollable product cards */
+.alt-card {
+    max-width: 250px;
+}
+
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.scroll-card {
+    flex: 0 0 auto;
+    width: 200px;
+    margin-left: 25px;
+}
+
+.scroll-card-1st {
+    margin-left: 30px;
+}
+
+.scroll-card-lst {
+    margin-right: 30px;
+}
+
+.scroll-card img {
+    width: 100%;
+}
+
+.scroll-prod-title {
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+.scroll-prod-price {
+    padding-bottom: 20px;
+}
+
+/* Add to or update basket quantity selector */
+.qty-input {
+    width: 65px;
+    border: 2px solid #242d33;
+}
+
+/* Review form */
+textarea.form-control {
+    height: 100px;
+}
+
+.review-legend {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
 /* ------------------------base.html------------------------ */
 
 /* Message Toasts */
@@ -397,98 +495,6 @@ footer {
 .account-buttons {
     background-color: #242d33 !important;
     color: #dce4e8 !important;
-}
-
-/* ------------------------products.html------------------------ */
-
-.divide-rule {
-    border-color: #242d33;
-    border-width: 3px;
-    margin-top: 16px;
-    margin-bottom: 40px;
-}
-
-#sorting-sel {
-    width: 100%;
-}
-
-/* Product Cards */
-.product-image-cont {
-    position: relative;
-}
-
-.out-of-stock {
-    position: absolute;
-    bottom: 10px;
-    left: 5px;
-    background-color: #242d33;
-}
-
-.card, .card-footer {
-    background-color: transparent;
-    border: none;
-}
-
-.product-card {
-    max-width: 280px;
-}
-
-.card-title {
-    font-weight: bold;
-}
-
-.home-featured:hover,
-.home-featured-label:hover {
-    cursor: pointer;
-}
-
-.inv-input {
-    width: 35% !important;
-    height: 30px !important;
-}
-
-.inv-form {
-    border-top: 1px solid #515c63;
-}
-
-/* ------------------------product_detail.html------------------------ */
-
-.detail-img-cont {
-    position: relative;
-    max-width: 300px;
-}
-
-.det-acc-head {
-    border-bottom: 2px solid #242d33;
-}
-
-.divide-rule-dets {
-    border-color: #242d33;
-    border-width: 3px;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-.det-product-info {
-    padding-left: 5%;
-}
-
-.qty-input {
-    width: 65px;
-    border: 2px solid #242d33;
-}
-
-.review-divider {
-    border-color: #6d7a82;
-}
-
-textarea.form-control {
-    height: 100px;
-}
-
-.review-legend {
-    font-size: 16px !important;
-    font-weight: bold;
 }
 
 /* ------------------------designers.html------------------------ */
@@ -684,10 +690,6 @@ select:invalid, select option[value=""] {
     .logo-cont {
         display: inline !important;
     }
-
-    .det-product-info {
-        padding-left: 10%;
-    }
 }
 
 /* For screens 360px and up */
@@ -712,28 +714,10 @@ select:invalid, select option[value=""] {
     }
 }
 
-/* For screens 400px and up */
-@media screen and (min-width: 400px) {
-    .det-product-info {
-        padding-left: 18%;
-    }
-}
-
-/* For screens 500px and up */
-@media screen and (min-width: 500px) {
-    .det-product-info {
-        padding-left: 22%;
-    }
-}
-
 /* For screens 576px and up */
 @media screen and (min-width: 576px) {
     h3, h2, .h1-sm {
         font-size: 24px;
-    }
-
-    .det-product-info {
-        padding-left: 15px;
     }
 
     .mobile-basket-cols {
@@ -744,10 +728,6 @@ select:invalid, select option[value=""] {
 
 /* For screens 768px and up */
 @media screen and (min-width: 768px) {
-    .det-product-name {
-        max-width: 24rem;
-    }
-
     .new-col, .guest-col {
         border-left: 2px solid #242d33;
     }
@@ -765,12 +745,5 @@ select:invalid, select option[value=""] {
         position: static;
         top: 0;
         left: 0;
-    }
-}
-
-/* For screens 1200px and up */
-@media screen and (min-width: 1200px) {
-    .det-product-name {
-        max-width: 45rem;
     }
 }

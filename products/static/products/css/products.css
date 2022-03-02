@@ -1,0 +1,78 @@
+/* -------------------CSS for the products app------------------- */
+/* ------------------------products.html------------------------ */
+#sorting-sel {
+    width: 100%;
+}
+
+.home-featured:hover,
+.home-featured-label:hover {
+    cursor: pointer;
+}
+
+.inv-input {
+    width: 35% !important;
+    height: 30px !important;
+}
+
+.inv-form {
+    border-top: 1px solid #515c63;
+}
+
+/* ------------------------product_detail.html------------------------ */
+
+.detail-img-cont {
+    position: relative;
+    max-width: 300px;
+}
+
+.det-acc-head {
+    border-bottom: 2px solid #242d33;
+}
+
+.det-product-info {
+    padding-left: 5%;
+}
+
+/* ------------------------Media Queries------------------------ */
+
+/* For screens 320px and up */
+@media screen and (min-width: 320px) {
+    .det-product-info {
+        padding-left: 10%;
+    }
+}
+
+/* For screens 400px and up */
+@media screen and (min-width: 400px) {
+    .det-product-info {
+        padding-left: 18%;
+    }
+}
+
+/* For screens 500px and up */
+@media screen and (min-width: 500px) {
+    .det-product-info {
+        padding-left: 22%;
+    }
+}
+
+/* For screens 576px and up */
+@media screen and (min-width: 576px) {
+    .det-product-info {
+        padding-left: 15px;
+    }
+}
+
+/* For screens 768px and up */
+@media screen and (min-width: 768px) {
+    .det-product-name {
+        max-width: 24rem;
+    }
+}
+
+/* For screens 1200px and up */
+@media screen and (min-width: 1200px) {
+    .det-product-name {
+        max-width: 45rem;
+    }
+}

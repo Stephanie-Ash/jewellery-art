@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
 
 {% block extra_title %}{{ product.name }}{% endblock %}
 
@@ -134,7 +139,7 @@
                                 </fieldset>
                                 <button class="btn btn-sm btn-drk btn-sqr txt-lgt" type="submit">Add review</button>
                             </form>
-                            <hr class="review-divider">
+                            <hr class="divide-rule-grey">
                             {% endif %}
                             {% if not reviews %}
                             <p class="mb-0">
@@ -146,7 +151,7 @@
                                     {{ review.created_on|date:"j F Y" }}:</strong></p>
                             <p class="mb-0">{{ review.body }}</p>
                             {% if not forloop.last %}
-                            <hr class="review-divider">
+                            <hr class="divide-rule-grey">
                             {% endif %}
                             {% endfor %}
                             {% endif %}
@@ -167,7 +172,7 @@
         </div>
         {% for product in other_products %}
         <div class="d-none d-md-flex col-md-3 col-xl-2">
-            <div class="card home-card h-100 pb-4 mx-auto txt-lgt">
+            <div class="card alt-card h-100 pb-4 mx-auto txt-lgt">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
                     <div class="product-image-cont">
@@ -218,11 +223,11 @@
                 </a>
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
-                    <p class="mb-0 home-prod-title text-center">{{ product.name }}</p>
+                    <p class="mb-0 scroll-prod-title text-center">{{ product.name }}</p>
                 </a>
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
-                    <p class="mb-0 home-prod-price text-center">£{{ product.price }}</p>
+                    <p class="mb-0 scroll-prod-price text-center">£{{ product.price }}</p>
                 </a>
             </div>
             {% endfor %}

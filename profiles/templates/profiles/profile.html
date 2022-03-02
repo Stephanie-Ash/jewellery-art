@@ -114,7 +114,7 @@
                 <button class="delete-btn ml-1 {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" type="button"
                     data-delete-url="{% url 'delete_review' review.id%}">Delete</button>
                 {% if not forloop.last %}
-                <hr class="review-divider">
+                <hr class="divide-rule-grey">
                 {% endif %}
             </div>
             {% endfor %}
