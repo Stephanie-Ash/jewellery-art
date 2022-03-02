@@ -21,36 +21,37 @@
         </div>
     </div>
     <div class="row mb-5">
+        <!-- FAQ question and answer accordians separated into different categories -->
         <div class="col-12 {% if 'OR' not in categories %}d-none{% endif %} txt-drk">
             <h2 class="mb-0">Orders</h2>
             <div class="accordion mb-4" id="faq-order-accordion">
             {% for faq in faqs %}
-            {% if faq.category == 'OR' %}
-                <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
-                        <p class="mb-0">
-                            <button class="btn btn-block accord-btn text-left rounded-0" type="button"
-                                data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
-                                aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
-                            {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
-                                aria-label="Edit FAQ.">Edit</a> |
-                            <button class="delete-btn" type="button"
-                                data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div id="faq-{{ faq.id }}"
-                        class="collapse"
-                        aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-order-accordion">
-                        <div class="card-body faq-acc-body">
-                            <p class="mb-0 text-justify">
-                                {{ faq.answer }}
+                {% if faq.category == 'OR' %}
+                    <div class="card rounded-0 txt-drk">
+                        <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                            <p class="mb-0">
+                                <button class="btn btn-block accord-btn text-left rounded-0" type="button"
+                                    data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
+                                    aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
+                                {% if request.user.is_superuser %}
+                                    <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                        aria-label="Edit FAQ.">Edit</a> |
+                                    <button class="delete-btn" type="button"
+                                        data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
+                                {% endif %}
                             </p>
                         </div>
+                        <div id="faq-{{ faq.id }}"
+                            class="collapse"
+                            aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-order-accordion">
+                            <div class="card-body faq-acc-body">
+                                <p class="mb-0 text-justify">
+                                    {{ faq.answer }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
             </div>
         </div>
@@ -58,32 +59,32 @@
             <h2 class="mb-0">Delivery</h2>
             <div class="accordion mb-4" id="faq-delivery-accordion">
             {% for faq in faqs %}
-            {% if faq.category == 'DE' %}
-                <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
-                        <p class="mb-0">
-                            <button class="btn btn-block accord-btn text-left rounded-0" type="button"
-                                data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
-                                aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
-                            {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
-                                aria-label="Edit FAQ.">Edit</a> |
-                            <button class="delete-btn" type="button"
-                                data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div id="faq-{{ faq.id }}"
-                        class="collapse"
-                        aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-delivery-accordion">
-                        <div class="card-body faq-acc-body">
-                            <p class="mb-0 text-justify">
-                                {{ faq.answer }}
+                {% if faq.category == 'DE' %}
+                    <div class="card rounded-0 txt-drk">
+                        <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                            <p class="mb-0">
+                                <button class="btn btn-block accord-btn text-left rounded-0" type="button"
+                                    data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
+                                    aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
+                                {% if request.user.is_superuser %}
+                                    <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                        aria-label="Edit FAQ.">Edit</a> |
+                                    <button class="delete-btn" type="button"
+                                        data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
+                                {% endif %}
                             </p>
                         </div>
+                        <div id="faq-{{ faq.id }}"
+                            class="collapse"
+                            aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-delivery-accordion">
+                            <div class="card-body faq-acc-body">
+                                <p class="mb-0 text-justify">
+                                    {{ faq.answer }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
             </div>
         </div>
@@ -91,32 +92,32 @@
             <h2 class="mb-0">Account</h2>
             <div class="accordion mb-4" id="faq-account-accordion">
             {% for faq in faqs %}
-            {% if faq.category == 'WB' %}
-                <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
-                        <p class="mb-0">
-                            <button class="btn btn-block accord-btn text-left rounded-0" type="button"
-                                data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
-                                aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
-                            {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
-                                aria-label="Edit FAQ.">Edit</a> |
-                            <button class="delete-btn" type="button"
-                                data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div id="faq-{{ faq.id }}"
-                        class="collapse"
-                        aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-account-accordion">
-                        <div class="card-body faq-acc-body">
-                            <p class="mb-0 text-justify">
-                                {{ faq.answer }}
+                {% if faq.category == 'WB' %}
+                    <div class="card rounded-0 txt-drk">
+                        <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                            <p class="mb-0">
+                                <button class="btn btn-block accord-btn text-left rounded-0" type="button"
+                                    data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
+                                    aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
+                                {% if request.user.is_superuser %}
+                                    <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                        aria-label="Edit FAQ.">Edit</a> |
+                                    <button class="delete-btn" type="button"
+                                        data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
+                                {% endif %}
                             </p>
                         </div>
+                        <div id="faq-{{ faq.id }}"
+                            class="collapse"
+                            aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-account-accordion">
+                            <div class="card-body faq-acc-body">
+                                <p class="mb-0 text-justify">
+                                    {{ faq.answer }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
             </div>
         </div>
@@ -124,32 +125,32 @@
             <h2 class="mb-0">Jewellery</h2>
             <div class="accordion mb-4" id="faq-jewellery-accordion">
             {% for faq in faqs %}
-            {% if faq.category == 'PR' %}
-                <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
-                        <p class="mb-0">
-                            <button class="btn btn-block accord-btn text-left rounded-0" type="button"
-                                data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
-                                aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
-                            {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
-                                aria-label="Edit FAQ.">Edit</a> |
-                            <button class="delete-btn" type="button"
-                                data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div id="faq-{{ faq.id }}"
-                        class="collapse"
-                        aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-jewellery-accordion">
-                        <div class="card-body faq-acc-body">
-                            <p class="mb-0 text-justify">
-                                {{ faq.answer }}
+                {% if faq.category == 'PR' %}
+                    <div class="card rounded-0 txt-drk">
+                        <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                            <p class="mb-0">
+                                <button class="btn btn-block accord-btn text-left rounded-0" type="button"
+                                    data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
+                                    aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
+                                {% if request.user.is_superuser %}
+                                    <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                        aria-label="Edit FAQ.">Edit</a> |
+                                    <button class="delete-btn" type="button"
+                                        data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
+                                {% endif %}
                             </p>
                         </div>
+                        <div id="faq-{{ faq.id }}"
+                            class="collapse"
+                            aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-jewellery-accordion">
+                            <div class="card-body faq-acc-body">
+                                <p class="mb-0 text-justify">
+                                    {{ faq.answer }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
             </div>
         </div>
@@ -157,32 +158,32 @@
             <h2 class="mb-0">Designers</h2>
             <div class="accordion mb-4" id="faq-designer-accordion">
             {% for faq in faqs %}
-            {% if faq.category == 'DS' %}
-                <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
-                        <p class="mb-0">
-                            <button class="btn btn-block accord-btn text-left rounded-0" type="button"
-                                data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
-                                aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
-                            {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
-                                aria-label="Edit FAQ.">Edit</a> |
-                            <button class="delete-btn" type="button"
-                                data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div id="faq-{{ faq.id }}"
-                        class="collapse"
-                        aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-designer-accordion">
-                        <div class="card-body faq-acc-body">
-                            <p class="mb-0 text-justify">
-                                {{ faq.answer }}
+                {% if faq.category == 'DS' %}
+                    <div class="card rounded-0 txt-drk">
+                        <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                            <p class="mb-0">
+                                <button class="btn btn-block accord-btn text-left rounded-0" type="button"
+                                    data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
+                                    aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
+                                {% if request.user.is_superuser %}
+                                    <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                        aria-label="Edit FAQ.">Edit</a> |
+                                    <button class="delete-btn" type="button"
+                                        data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
+                                {% endif %}
                             </p>
                         </div>
+                        <div id="faq-{{ faq.id }}"
+                            class="collapse"
+                            aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-designer-accordion">
+                            <div class="card-body faq-acc-body">
+                                <p class="mb-0 text-justify">
+                                    {{ faq.answer }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
             </div>
         </div>
@@ -190,32 +191,32 @@
             <h2 class="mb-0">Other</h2>
             <div class="accordion mb-4" id="faq-other-accordion">
             {% for faq in faqs %}
-            {% if faq.category == 'OT' %}
-                <div class="card rounded-0 txt-drk">
-                    <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
-                        <p class="mb-0">
-                            <button class="btn btn-block accord-btn text-left rounded-0" type="button"
-                                data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
-                                aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
-                            {% if request.user.is_superuser %}
-                            <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
-                                aria-label="Edit FAQ.">Edit</a> |
-                            <button class="delete-btn" type="button"
-                                data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div id="faq-{{ faq.id }}"
-                        class="collapse"
-                        aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-other-accordion">
-                        <div class="card-body faq-acc-body">
-                            <p class="mb-0 text-justify">
-                                {{ faq.answer }}
+                {% if faq.category == 'OT' %}
+                    <div class="card rounded-0 txt-drk">
+                        <div class="card-header mb-0 faq-acc-head bg-color-lgt" id="faq-head-{{ faq.id }}">
+                            <p class="mb-0">
+                                <button class="btn btn-block accord-btn text-left rounded-0" type="button"
+                                    data-toggle="collapse" data-target="#faq-{{ faq.id }}" aria-expanded="true"
+                                    aria-controls="faq-{{ faq.id }}">{{ faq.question }}</button>
+                                {% if request.user.is_superuser %}
+                                    <a class="txt-blue" href="{% url 'edit_faq' faq.id %}"
+                                        aria-label="Edit FAQ.">Edit</a> |
+                                    <button class="delete-btn" type="button"
+                                        data-delete-url="{% url 'delete_faq' faq.id %}">Delete</button>
+                                {% endif %}
                             </p>
                         </div>
+                        <div id="faq-{{ faq.id }}"
+                            class="collapse"
+                            aria-labelledby="faq-head-{{ faq.id }}" data-parent="#faq-other-accordion">
+                            <div class="card-body faq-acc-body">
+                                <p class="mb-0 text-justify">
+                                    {{ faq.answer }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
             </div>
         </div>

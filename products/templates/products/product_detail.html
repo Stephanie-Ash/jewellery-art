@@ -14,35 +14,35 @@
         <div class="text-center col-12 col-sm-5 offset-sm-1 offset-md-0 col-md-auto">
             <div class="detail-img-cont mx-auto">
                 {% if product.image %}
-                <img class="img-fluid img-drk product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="img-fluid img-drk product-img" src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                <img class="img-fluid img-drk product-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                    <img class="img-fluid img-drk product-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
                 {% endif %}
                 {% if product.inventory == 0 %}
-                <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
                 {% endif %}
             </div>
         </div>
         <div class="det-product-info col-12 col-sm-6 col-md-auto mt-4 my-sm-auto">
             <h1 class="det-product-name h1-sm">{{ product.name }}</h1>
             {% if product.collection %}
-            <p class="mb-0">from {{ product.collection.name }}</p>
+                <p class="mb-0">from {{ product.collection.name }}</p>
             {% endif %}
             {% if product.designer %}
-            <p class="mb-2">by {{ product.designer.name }}</p>
+                <p class="mb-2">by {{ product.designer.name }}</p>
             {% endif %}
             <p class="mb-3 mr-2 d-inline-block"><strong>£{{ product.price }}</strong></p>
             {% if request.user.is_superuser %}
-            <small>
-                <input data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured" type="checkbox"
-                    id="home-featured{{ product.id }}" title="Featured on homepage" {% if product.homepage_featured%}checked{% endif %}>
-                <label data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured-label mb-0"
-                    for="home-featured{{ product.id }}">Featured</label> |
-                <a class="txt-blue" href="{% url 'edit_product' product.id %}"
-                    aria-label="Edit product details.">Edit</a> |
-                <button class="delete-btn" type="button"
-                    data-delete-url="{% url 'delete_product' product.id%}">Delete</button>
-            </small>
+                <small>
+                    <input data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured" type="checkbox"
+                        id="home-featured{{ product.id }}" title="Featured on homepage" {% if product.homepage_featured%}checked{% endif %}>
+                    <label data-url="{% url 'toggle_homepage_featured' product.id %}" class="home-featured-label mb-0"
+                        for="home-featured{{ product.id }}">Featured</label> |
+                    <a class="txt-blue" href="{% url 'edit_product' product.id %}"
+                        aria-label="Edit product details.">Edit</a> |
+                    <button class="delete-btn" type="button"
+                        data-delete-url="{% url 'delete_product' product.id%}">Delete</button>
+                </small>
             {% endif %}
             <!-- Add to basket form. -->
             <form action="{% url 'add_to_basket' product.id %}" method="POST">
@@ -99,20 +99,20 @@
                     <div id="details" class="collapse" aria-labelledby="details-head" data-parent="#prod-det-accordion">
                         <div class="card-body pb-0">
                             {% if not product.sizing and not product.material %}
-                            <p class="mb-0">
-                                None
-                            </p>
+                                <p class="mb-0">
+                                    None
+                                </p>
                             {% else %}
-                            {% if product.sizing %}
-                            <p class="{% if product.sizing and product.material %}mb-2{% else %}mb-0{% endif %}">
-                                {{ product.sizing }}
-                            </p>
-                            {% endif %}
-                            {% if product.material %}
-                            <p class="mb-0">
-                                {{ product.material }}
-                            </p>
-                            {% endif %}
+                                {% if product.sizing %}
+                                    <p class="{% if product.sizing and product.material %}mb-2{% else %}mb-0{% endif %}">
+                                        {{ product.sizing }}
+                                    </p>
+                                {% endif %}
+                                {% if product.material %}
+                                    <p class="mb-0">
+                                        {{ product.material }}
+                                    </p>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
@@ -130,30 +130,31 @@
                     <div id="reviews" class="collapse" aria-labelledby="details-head" data-parent="#prod-det-accordion">
                         <div class="card-body review-body pb-0">
                             {% if user.is_authenticated and purchased %}
-                            <form action="{% url 'add_review' product.id %}" method="POST" id="review-form">
-                                {% csrf_token %}
-                                <fieldset class="order-fieldset">
-                                    <legend class="review-legend">Leave a Review</legend>
-                                    {{ review_form.name | as_crispy_field }}
-                                    {{ review_form.body | as_crispy_field }}
-                                </fieldset>
-                                <button class="btn btn-sm btn-drk btn-sqr txt-lgt" type="submit">Add review</button>
-                            </form>
-                            <hr class="divide-rule-grey">
+                                <!-- Review form displayed if user is logged in and has purchased product in the past -->
+                                <form action="{% url 'add_review' product.id %}" method="POST" id="review-form">
+                                    {% csrf_token %}
+                                    <fieldset class="order-fieldset">
+                                        <legend class="review-legend">Leave a Review</legend>
+                                        {{ review_form.name | as_crispy_field }}
+                                        {{ review_form.body | as_crispy_field }}
+                                    </fieldset>
+                                    <button class="btn btn-sm btn-drk btn-sqr txt-lgt" type="submit">Add review</button>
+                                </form>
+                                <hr class="divide-rule-grey">
                             {% endif %}
                             {% if not reviews %}
-                            <p class="mb-0">
-                                There are currently no customer reviews.
-                            </p>
+                                <p class="mb-0">
+                                    There are currently no customer reviews.
+                                </p>
                             {% else %}
-                            {% for review in reviews %}
-                            <p class="mb-1"><strong>Review by {{ review.name }} on
-                                    {{ review.created_on|date:"j F Y" }}:</strong></p>
-                            <p class="mb-0">{{ review.body }}</p>
-                            {% if not forloop.last %}
-                            <hr class="divide-rule-grey">
-                            {% endif %}
-                            {% endfor %}
+                                {% for review in reviews %}
+                                    <p class="mb-1"><strong>Review by {{ review.name }} on
+                                            {{ review.created_on|date:"j F Y" }}:</strong></p>
+                                    <p class="mb-0">{{ review.body }}</p>
+                                    {% if not forloop.last %}
+                                        <hr class="divide-rule-grey">
+                                    {% endif %}
+                                {% endfor %}
                             {% endif %}
                         </div>
                     </div>
@@ -162,77 +163,77 @@
         </div>
     </div>
 </section>
-<!-- Other products by designer section. Displayed side by side on large screens -->
 <section class="container-fluid">
     {% if other_products %}
-    <div class="row">
-        <div class="col-12">
-            <hr class="divide-rule-dets">
-            <h2 class="mb-4">Also by the Designer</h2>
-        </div>
-        {% for product in other_products %}
-        <div class="d-none d-md-flex col-md-3 col-xl-2">
-            <div class="card product-card h-100 pb-4 mx-auto txt-lgt">
-                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    <div class="product-image-cont">
-                        {% if product.image %}
-                        <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
-                            alt="{{ product.name }}">
-                        {% else %}
-                        <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
-                            alt="{{ product.name }}">
-                        {% endif %}
-                        {% if product.inventory == 0 %}
-                        <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
-                        {% endif %}
-                    </div>
-                </a>
-                <div class="card-body pb-0">
-                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                        href="{% url 'product_detail' product.id %}">
-                        <p class="mb-0 card-title text-center">{{ product.name }}</p>
-                    </a>
-                </div>
-                <div class="card-footer pt-1 text-center">
-                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                        href="{% url 'product_detail' product.id %}">
-                        <p class="mb-0">£{{ product.price }}</p>
-                    </a>
-                </div>
+        <div class="row">
+            <div class="col-12">
+                <hr class="divide-rule-dets">
+                <h2 class="mb-4">Also by the Designer</h2>
             </div>
-        </div>
-        {% endfor %}
-        <!-- Other products horizontally scrolled on small screens -->
-        <div class="scrolling-wrapper d-md-none">
             {% for product in other_products %}
-            <div
-                class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
-                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    <div class="product-image-cont">
-                        {% if product.image %}
-                        <img class="product-img img-drk" src="{{ product.image.url }}" alt="{{ product.name }}">
-                        {% else %}
-                        <img class="product-img img-drk" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
-                        {% endif %}
-                        {% if product.inventory == 0 %}
-                        <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
-                        {% endif %}
+                <!-- Other products by designer section. Displayed side by side on large screens -->
+                <div class="d-none d-md-flex col-md-3 col-xl-2">
+                    <div class="card product-card h-100 pb-4 mx-auto txt-lgt">
+                        <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <div class="product-image-cont">
+                                {% if product.image %}
+                                    <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
+                                        alt="{{ product.name }}">
+                                {% else %}
+                                    <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                                        alt="{{ product.name }}">
+                                {% endif %}
+                                {% if product.inventory == 0 %}
+                                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class="card-body pb-0">
+                            <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                                href="{% url 'product_detail' product.id %}">
+                                <p class="mb-0 card-title text-center">{{ product.name }}</p>
+                            </a>
+                        </div>
+                        <div class="card-footer pt-1 text-center">
+                            <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                                href="{% url 'product_detail' product.id %}">
+                                <p class="mb-0">£{{ product.price }}</p>
+                            </a>
+                        </div>
                     </div>
-                </a>
-                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    <p class="mb-0 scroll-prod-title text-center">{{ product.name }}</p>
-                </a>
-                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    <p class="mb-0 scroll-prod-price text-center">£{{ product.price }}</p>
-                </a>
-            </div>
+                </div>
             {% endfor %}
+            <div class="scrolling-wrapper d-md-none">
+                {% for product in other_products %}
+                    <!-- Other products horizontally scrolled on small screens -->
+                    <div
+                        class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
+                        <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <div class="product-image-cont">
+                                {% if product.image %}
+                                    <img class="product-img img-drk" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                    <img class="product-img img-drk" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                                {% endif %}
+                                {% if product.inventory == 0 %}
+                                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                                {% endif %}
+                            </div>
+                        </a>
+                        <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <p class="mb-0 scroll-prod-title text-center">{{ product.name }}</p>
+                        </a>
+                        <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <p class="mb-0 scroll-prod-price text-center">£{{ product.price }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
     {% endif %}
 </section>
 {% endblock %}

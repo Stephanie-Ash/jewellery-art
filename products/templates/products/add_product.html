@@ -16,11 +16,11 @@
             <form class="order-fieldset" method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
-                {% if field.name != 'image' %}
-                {{ field | as_crispy_field }}
-                {% else %}
-                {{ field }}
-                {% endif %}
+                    {% if field.name != 'image' %}
+                        {{ field | as_crispy_field }}
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
                 {% endfor %}
                 <button class="btn btn-sm btn-drk btn-sqr txt-lgt mr-2" type="submit">Add Product</button>
                 <a class="btn btn-sm btn-grey btn-sqr txt-lgter" aria-label="Go to the all jewellery products page." href="{% url 'products' %}">Cancel</a>

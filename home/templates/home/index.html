@@ -98,57 +98,57 @@
     </div>
     <div class="row justify-content-center">
         {% for product in featured_products %}
-        <!-- Displayed medium screens and up. Four products to a row. -->
-        <div class="d-none d-md-flex col-md-3 col-xl-auto">
-            <div class="card product-card h-100 pb-4 mx-auto txt-lgt">
-                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    {% if product.image %}
-                    <img class="card-img-top img-lgt product-img img-fluid" src="{{ product.image.url }}"
-                        alt="{{ product.name }}">
-                    {% else %}
-                    <img class="card-img-top img-lgt product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
-                        alt="{{ product.name }}">
-                    {% endif %}
-                </a>
-                <div class="card-body pb-0">
-                    <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+            <!-- Displayed medium screens and up. Four products to a row. -->
+            <div class="d-none d-md-flex col-md-3 col-xl-auto">
+                <div class="card product-card h-100 pb-4 mx-auto txt-lgt">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                         href="{% url 'product_detail' product.id %}">
-                        <p class="mb-0 card-title text-center">{{ product.name }}</p>
+                        {% if product.image %}
+                            <img class="card-img-top img-lgt product-img img-fluid" src="{{ product.image.url }}"
+                                alt="{{ product.name }}">
+                        {% else %}
+                            <img class="card-img-top img-lgt product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                                alt="{{ product.name }}">
+                        {% endif %}
                     </a>
-                </div>
-                <div class="card-footer pt-1 text-center">
-                    <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
-                        href="{% url 'product_detail' product.id %}">
-                        <p class="mb-0">£{{ product.price }}</p>
-                    </a>
+                    <div class="card-body pb-0">
+                        <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <p class="mb-0 card-title text-center">{{ product.name }}</p>
+                        </a>
+                    </div>
+                    <div class="card-footer pt-1 text-center">
+                        <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <p class="mb-0">£{{ product.price }}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
 
         <div class="d-md-none scrolling-wrapper">
             <!-- Displayed on small and below screens. Products horizontally scrolled. -->
             {% for product in featured_products %}
-            <div
-                class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
-                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    {% if product.image %}
-                    <img class="product-img img-lgt" src="{{ product.image.url }}" alt="{{ product.name }}">
-                    {% else %}
-                    <img class="product-img img-lgt" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
-                    {% endif %}
-                </a>
-                <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    <p class="mb-0 scroll-prod-title text-center">{{ product.name }}</p>
-                </a>
-                <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    <p class="mb-0 scroll-prod-price text-center">£{{ product.price }}</p>
-                </a>
-            </div>
+                <div
+                    class="scroll-card {% if forloop.first %}scroll-card-1st{% endif %} {% if forloop.last %}scroll-card-lst{% endif %} mt-2">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
+                        {% if product.image %}
+                            <img class="product-img img-lgt" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img class="product-img img-lgt" src="{{ MEDIA_URL }}no-image.png" alt="{{ product.name }}">
+                        {% endif %}
+                    </a>
+                    <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
+                        <p class="mb-0 scroll-prod-title text-center">{{ product.name }}</p>
+                    </a>
+                    <a class="content-link-lgter" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
+                        <p class="mb-0 scroll-prod-price text-center">£{{ product.price }}</p>
+                    </a>
+                </div>
             {% endfor %}
         </div>
     </div>

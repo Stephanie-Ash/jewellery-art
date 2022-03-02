@@ -16,44 +16,44 @@
             class="col-10 offset-1 col-sm-5 offset-sm-1 col-md-6 offset-md-0 col-lg-5 offset-lg-1 col-xl-4 offset-xl-2 text-center des-img-col">
             <div class="designer-img-cont mb-4">
                 {% if designer.image %}
-                <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
+                    <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
                 {% else %}
-                <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
+                    <img class="designer-img" src="{{ MEDIA_URL }}no-image.png" alt="{{ designer.name }}">
                 {% endif %}
             </div>
             <!-- Designer social media links displayed below the image on medium screens only -->
             <ul class="list-inline d-none d-md-block d-lg-none mb-0">
                 {% if designer.facebook_link %}
-                <li class="list-inline-item">
-                    <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.facebook_link }}"
-                        aria-label="Visit {{ designer.name }}'s Facebook Page (opens in a new tab)">
-                        <i class="fab fa-facebook-square social" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li class="list-inline-item">
+                        <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.facebook_link }}"
+                            aria-label="Visit {{ designer.name }}'s Facebook Page (opens in a new tab)">
+                            <i class="fab fa-facebook-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 {% endif %}
                 {% if designer.twitter_link %}
-                <li class="list-inline-item">
-                    <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.twitter_link }}"
-                        aria-label="Visit {{ designer.name }}'s Twitter Page (opens in a new tab)">
-                        <i class="fab fa-twitter-square social" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li class="list-inline-item">
+                        <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.twitter_link }}"
+                            aria-label="Visit {{ designer.name }}'s Twitter Page (opens in a new tab)">
+                            <i class="fab fa-twitter-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 {% endif %}
                 {% if designer.instagram_link %}
-                <li class="list-inline-item">
-                    <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.instagram_link }}"
-                        aria-label="Visit {{ designer.name }}'s Instagram Page (opens in a new tab)">
-                        <i class="fab fa-instagram-square social" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li class="list-inline-item">
+                        <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.instagram_link }}"
+                            aria-label="Visit {{ designer.name }}'s Instagram Page (opens in a new tab)">
+                            <i class="fab fa-instagram-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 {% endif %}
                 {% if designer.website_link %}
-                <li class="list-inline-item">
-                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.website_link }}"
-                        aria-label="Visit {{ designer.name }}'s Website (opens in a new tab)">
-                        <i class="fas fa-globe social" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li class="list-inline-item">
+                        <a class="content-link" target="_blank" rel="noopener" href="{{ designer.website_link }}"
+                            aria-label="Visit {{ designer.name }}'s Website (opens in a new tab)">
+                            <i class="fas fa-globe social" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
         </div>
@@ -63,36 +63,36 @@
             <!-- Designer social media links displayed with the name on all but medium screens -->
             <ul class="list-inline d-md-none d-lg-inline">
                 {% if designer.facebook_link %}
-                <li class="list-inline-item">
-                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.facebook_link }}"
-                        aria-label="Visit {{ designer.name }}'s Facebook Page (opens in a new tab)">
-                        <i class="fab fa-facebook-square social" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li class="list-inline-item">
+                        <a class="content-link" target="_blank" rel="noopener" href="{{ designer.facebook_link }}"
+                            aria-label="Visit {{ designer.name }}'s Facebook Page (opens in a new tab)">
+                            <i class="fab fa-facebook-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 {% endif %}
                 {% if designer.twitter_link %}
-                <li class="list-inline-item">
-                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.twitter_link }}"
-                        aria-label="Visit {{ designer.name }}'s Twitter Page (opens in a new tab)">
-                        <i class="fab fa-twitter-square social" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li class="list-inline-item">
+                        <a class="content-link" target="_blank" rel="noopener" href="{{ designer.twitter_link }}"
+                            aria-label="Visit {{ designer.name }}'s Twitter Page (opens in a new tab)">
+                            <i class="fab fa-twitter-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 {% endif %}
                 {% if designer.instagram_link %}
-                <li class="list-inline-item">
-                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.instagram_link }}"
-                        aria-label="Visit {{ designer.name }}'s Instagram Page (opens in a new tab)">
-                        <i class="fab fa-instagram-square social" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li class="list-inline-item">
+                        <a class="content-link" target="_blank" rel="noopener" href="{{ designer.instagram_link }}"
+                            aria-label="Visit {{ designer.name }}'s Instagram Page (opens in a new tab)">
+                            <i class="fab fa-instagram-square social" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 {% endif %}
                 {% if designer.website_link %}
-                <li class="list-inline-item">
-                    <a class="content-link" target="_blank" rel="noopener" href="{{ designer.website_link }}"
-                        aria-label="Visit {{ designer.name }}'s Website (opens in a new tab)">
-                        <i class="fas fa-globe social" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li class="list-inline-item">
+                        <a class="content-link" target="_blank" rel="noopener" href="{{ designer.website_link }}"
+                            aria-label="Visit {{ designer.name }}'s Website (opens in a new tab)">
+                            <i class="fas fa-globe social" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
             <!-- Designer information and buttons displayed under name and next to photo from medium screens up. -->
@@ -103,12 +103,12 @@
                 <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
                     class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
                 {% if request.user.is_superuser %}
-                <small class="ml-1">
-                    <a class="txt-blue" href="{% url 'edit_designer' designer.id %}"
-                        aria-label="Edit designer details.">Edit</a> |
-                    <button class="delete-btn" type="button"
-                        data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
-                </small>
+                    <small class="ml-1">
+                        <a class="txt-blue" href="{% url 'edit_designer' designer.id %}"
+                            aria-label="Edit designer details.">Edit</a> |
+                        <button class="delete-btn" type="button"
+                            data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
+                    </small>
                 {% endif %}
             </div>
         </div>
@@ -123,14 +123,14 @@
                 class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
         </div>
         {% if request.user.is_superuser %}
-        <div class="col-12 d-md-none">
-            <small>
-                <a class="txt-blue" href="{% url 'edit_designer' designer.id %}"
-                    aria-label="Edit designer details.">Edit</a> |
-                <button class="delete-btn" type="button"
-                    data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
-            </small>
-        </div>
+            <div class="col-12 d-md-none">
+                <small>
+                    <a class="txt-blue" href="{% url 'edit_designer' designer.id %}"
+                        aria-label="Edit designer details.">Edit</a> |
+                    <button class="delete-btn" type="button"
+                        data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
+                </small>
+            </div>
         {% endif %}
     </div>
 </section>
@@ -147,74 +147,74 @@
     <div class="row mx-sm-2">
         <!-- Product cards displayed grouped into collections. -->
         {% for collection in collections %}
-        {% for product in collection.products.all %}
-        <div class="col-sm-6 col-md-4 col-lg-3 des-product-cols">
-            <div class="card product-card h-100 pb-4 mx-auto">
-                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    <div class="product-image-cont">
-                        {% if product.image %}
-                        <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
-                            alt="{{ product.name }}">
-                        {% else %}
-                        <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
-                            alt="{{ product.name }}">
-                        {% endif %}
-                        {% if product.inventory == 0 %}
-                        <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
-                        {% endif %}
+            {% for product in collection.products.all %}
+                <div class="col-sm-6 col-md-4 col-lg-3 des-product-cols">
+                    <div class="card product-card h-100 pb-4 mx-auto">
+                        <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <div class="product-image-cont">
+                                {% if product.image %}
+                                    <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
+                                        alt="{{ product.name }}">
+                                {% else %}
+                                    <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                                        alt="{{ product.name }}">
+                                {% endif %}
+                                {% if product.inventory == 0 %}
+                                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class="card-body pb-0">
+                            <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                                href="{% url 'product_detail' product.id %}">
+                                <p class="mb-0 card-title text-center">{{ product.name }}</p>
+                            </a>
+                        </div>
+                        <div class="card-footer pt-1 text-center">
+                            <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                                href="{% url 'product_detail' product.id %}">
+                                <p class="mb-0">{{ collection.name }}</p>
+                                <p class="mb-0">£{{ product.price }}</p>
+                            </a>
+                        </div>
                     </div>
-                </a>
-                <div class="card-body pb-0">
-                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                        href="{% url 'product_detail' product.id %}">
-                        <p class="mb-0 card-title text-center">{{ product.name }}</p>
-                    </a>
                 </div>
-                <div class="card-footer pt-1 text-center">
-                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                        href="{% url 'product_detail' product.id %}">
-                        <p class="mb-0">{{ collection.name }}</p>
-                        <p class="mb-0">£{{ product.price }}</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
         {% endfor %}
         <!-- Product cards for products not in any collection. -->
         {% for product in products %}
-        <div class="col-sm-6 col-md-4 col-lg-3 des-product-cols">
-            <div class="card product-card h-100 pb-4 mx-auto">
-                <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                    href="{% url 'product_detail' product.id %}">
-                    {% if product.image %}
-                    <div class="product-image-cont">
-                        <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
-                            alt="{{ product.name }}">
-                        {% else %}
-                        <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
-                            alt="{{ product.name }}">
-                        {% endif %}
-                        {% if product.inventory == 0 %}
-                        <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
-                        {% endif %}
+            <div class="col-sm-6 col-md-4 col-lg-3 des-product-cols">
+                <div class="card product-card h-100 pb-4 mx-auto">
+                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                        href="{% url 'product_detail' product.id %}">
+                        <div class="product-image-cont">
+                            {% if product.image %}
+                                <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
+                                    alt="{{ product.name }}">
+                            {% else %}
+                                <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                                    alt="{{ product.name }}">
+                            {% endif %}
+                            {% if product.inventory == 0 %}
+                                <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                            {% endif %}
+                        </div>
+                    </a>
+                    <div class="card-body pb-0">
+                        <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <p class="mb-0 card-title text-center">{{ product.name }}</p>
+                        </a>
                     </div>
-                </a>
-                <div class="card-body pb-0">
-                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                        href="{% url 'product_detail' product.id %}">
-                        <p class="mb-0 card-title text-center">{{ product.name }}</p>
-                    </a>
-                </div>
-                <div class="card-footer pt-1 text-center">
-                    <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
-                        href="{% url 'product_detail' product.id %}">
-                        <p class="mb-0">£{{ product.price }}</p>
-                    </a>
+                    <div class="card-footer pt-1 text-center">
+                        <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                            href="{% url 'product_detail' product.id %}">
+                            <p class="mb-0">£{{ product.price }}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
     </div>
     <!-- Back to top button. -->

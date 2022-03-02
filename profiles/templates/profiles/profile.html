@@ -40,24 +40,24 @@
                     </thead>
                     <tbody>
                         {% for order in orders %}
-                        <tr>
-                            <td>
-                                <a href="{% url 'order_history' order.order_number %}"
-                                    aria-label="Go to the order confirmation page for {{ order.order_number }}"
-                                    title="{{ order.order_number }}">{{ order.order_number|truncatechars:5 }}</a>
-                            </td>
-                            <td>
-                                <p class="mb-0">{{ order.date|date:"d/m/Y" }}</p>
-                            </td>
-                            <td>
-                                {% for item in order.lineitems.all %}
-                                <p class="mb-0 profile-items">{{ item.product.name}} x{{ item.quantity }}</p>
-                                {% endfor %}
-                            </td>
-                            <td>
-                                <p class="mb-0">£{{ order.grand_total }}</p>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <a href="{% url 'order_history' order.order_number %}"
+                                        aria-label="Go to the order confirmation page for {{ order.order_number }}"
+                                        title="{{ order.order_number }}">{{ order.order_number|truncatechars:5 }}</a>
+                                </td>
+                                <td>
+                                    <p class="mb-0">{{ order.date|date:"d/m/Y" }}</p>
+                                </td>
+                                <td>
+                                    {% for item in order.lineitems.all %}
+                                        <p class="mb-0 profile-items">{{ item.product.name}} x{{ item.quantity }}</p>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <p class="mb-0">£{{ order.grand_total }}</p>
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -65,62 +65,69 @@
         </div>
     </div>
     <div class="row">
+        <!-- Reviews created by the user -->
         <div class="col-12">
             <h2 class="mb-4">Product Reviews</h2>
             <div class="mb-4">
-                <select class="txt-drk mr-2 mb-3" id="review-sel">
+                <!-- Product selector to select product to review, only purchased products listed -->
+                <select class="txt-drk mr-2 mb-3" id="review-sel" aria-labelledby="review-legend">
                     <option value="">Select Product</option>
                     {% for product in purchased_products %}
-                    <option value="{{ product.id }}">{{ product.name }}</option>
+                        <option value="{{ product.id }}">{{ product.name }}</option>
                     {% endfor %}
                 </select>
+                <!-- Add review form -->
                 <form action="#" method="POST" id="add-review-form">
                     {% csrf_token %}
                     <fieldset class="order-fieldset">
-                        <legend class="review-legend">Select Product to Leave a Review</legend>
+                        <legend id="review-legend" class="review-legend">Select Product to Leave a Review</legend>
                         {{ review_form.name | as_crispy_field }}
                         {{ review_form.body | as_crispy_field }}
                     </fieldset>
+                    <!-- Add review button, only displayed when product selected -->
                     <button id="add-review-button" class="btn btn-sm btn-drk btn-sqr txt-lgt" type="submit">Add review</button>
                 </form>
             </div>
             {% for review in reviews %}
-            <div>
-                <p class="d-inline-block mb-0 mr-2"><strong>Date:</strong> {{ review.created_on|date:"j F Y" }}</p>
-                <p class="d-inline-block mb-0 mb-2"><strong>Product:</strong> {{ review.product.name }}</p>
-                <form class="edit-review-form" action="{% url 'edit_review' review.id %}" method="POST"
-                    id="review-form">
-                    {% csrf_token %}
-                    <fieldset class="order-fieldset">
-                        <legend class="review-legend">Update Review</legend>
-                        <div id="div_id_name" class="form-group">
-                            <div>
-                                <input type="text" name="name" maxlength="50" value="{{ review.name }}"
-                                    class="textinput textInput form-control" required id="id_name">
+                <!-- Reviews written by user -->
+                <div>
+                    <p class="d-inline-block mb-0 mr-2"><strong>Date:</strong> {{ review.created_on|date:"j F Y" }}</p>
+                    <p class="d-inline-block mb-0 mb-2"><strong>Product:</strong> {{ review.product.name }}</p>
+                    <!-- Edit review form displayed when edit button clicked. Populated with review to edit -->
+                    <form class="edit-review-form" action="{% url 'edit_review' review.id %}" method="POST"
+                        id="review-form">
+                        {% csrf_token %}
+                        <fieldset class="order-fieldset">
+                            <legend class="review-legend">Update Review</legend>
+                            <div id="div_id_name" class="form-group">
+                                <div>
+                                    <input type="text" name="name" maxlength="50" value="{{ review.name }}"
+                                        class="textinput textInput form-control" required id="id_name">
+                                </div>
                             </div>
-                        </div>
-                        <div id="div_id_body" class="form-group">
-                            <div>
-                                <textarea name="body" cols="40" rows="10" placeholder="Write your review here."
-                                    class="textarea form-control" required id="id_body">{{ review.body }}</textarea>
+                            <div id="div_id_body" class="form-group">
+                                <div>
+                                    <textarea name="body" cols="40" rows="10" placeholder="Write your review here."
+                                        class="textarea form-control" required id="id_body">{{ review.body }}</textarea>
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
-                    <button
-                        class="btn btn-sm btn-drk btn-sqr txt-lgt {% if forloop.last %}mb-4{% else %}mb-2{% endif %}"
-                        type="submit">Update review</button>
-                    <a class="btn btn-sm btn-drk btn-sqr txt-lgt {% if forloop.last %}mb-4{% else %}mb-2{% endif %}"
-                        href="{% url 'profile' %}">Cancel</a>
-                </form>
-                <p class="mb-1">{{ review.body }}</p>
-                <a class="review-edit txt-blue {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" href="#"
-                    aria-label="Edit review.">Edit</a>
-                <button class="delete-btn ml-1 {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" type="button"
-                    data-delete-url="{% url 'delete_review' review.id%}">Delete</button>
-                {% if not forloop.last %}
-                <hr class="divide-rule-grey">
-                {% endif %}
-            </div>
+                        </fieldset>
+                        <button
+                            class="btn btn-sm btn-drk btn-sqr txt-lgt {% if forloop.last %}mb-4{% else %}mb-2{% endif %}"
+                            type="submit">Update review</button>
+                        <a class="btn btn-sm btn-drk btn-sqr txt-lgt {% if forloop.last %}mb-4{% else %}mb-2{% endif %}"
+                            href="{% url 'profile' %}">Cancel</a>
+                    </form>
+                    <!-- Review body, not displayed when edit form is displayed -->
+                    <p class="mb-1">{{ review.body }}</p>
+                    <a class="review-edit txt-blue {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" href="#"
+                        aria-label="Edit review.">Edit</a>
+                    <button class="delete-btn ml-1 {% if forloop.last %}mb-4{% else %}mb-2{% endif %}" type="button"
+                        data-delete-url="{% url 'delete_review' review.id%}">Delete</button>
+                    {% if not forloop.last %}
+                        <hr class="divide-rule-grey">
+                    {% endif %}
+                </div>
             {% endfor %}
         </div>
     </div>

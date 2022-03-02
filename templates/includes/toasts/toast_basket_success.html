@@ -1,5 +1,6 @@
+<!-- Success toast displayed when products are added, updated or removed from basket -->
 <div class="toast custom-toast bg-color-grey txt-drk rounded-0" role="status" aria-live="polite" aria-atomic="true"
-    data-delay="5000">
+    data-delay="10000">
     <div class="toast-header bg-color-grey txt-lgter rounded-0">
         <strong class="mr-auto"><i class="fas fa-check-circle"></i> Success!</strong>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -12,41 +13,39 @@
                 {{ message }}
             </div>
         </div>
+        <!-- Basket summary -->
         {% if grand_total %}
-        <div class="row">
-            <div class="col-12">
-                <hr class="toast-divider my-2">
-                <p>Basket Items ({{ product_count }})</p>
-            </div>
-        </div>
-        <div class="toast-basket">
-            {% for item in basket_items %}
             <div class="row">
-                <div class="col-4 mb-3">
-                    {% if item.product.image %}
-                    <img class="img-fluid img-sm product-img m-1" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                    {% else %}
-                    <img class="img-fluid img-sm product-img m-1" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
-                    {% endif %}
-                </div>
-                <div class="col-8 mb-3">
-                    <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
-                    <p class="mb-0">£{{ item.product.price }}</p>
-                    <p class="mb-0">Qty: {{ item.quantity }}</p>
+                <div class="col-12">
+                    <hr class="toast-divider my-2">
+                    <p>Basket Items ({{ product_count }})</p>
                 </div>
             </div>
-            {% endfor %}
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <hr class="toast-divider my-2">
-                <p class="mb-0"><strong>Total:<span class="ml-2">£{{ total }}</span></strong></p>
-                <a class="w-100 btn btn-sm btn-drk btn-sqr txt-lgt mt-2 mb-3" aria-label="Go to your shopping basket" href="{% url 'view_basket' %}">View Basket</a>
+            <div class="toast-basket">
+                {% for item in basket_items %}
+                    <div class="row">
+                        <div class="col-4 mb-3">
+                            {% if item.product.image %}
+                                <img class="img-fluid img-sm product-img m-1" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            {% else %}
+                                <img class="img-fluid img-sm product-img m-1" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="col-8 mb-3">
+                            <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
+                            <p class="mb-0">£{{ item.product.price }}</p>
+                            <p class="mb-0">Qty: {{ item.quantity }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        </div>
-        
-
+            <div class="row">
+                <div class="col-12">
+                    <hr class="toast-divider my-2">
+                    <p class="mb-0"><strong>Total:<span class="ml-2">£{{ total }}</span></strong></p>
+                    <a class="w-100 btn btn-sm btn-drk btn-sqr txt-lgt mt-2 mb-3" aria-label="Go to your shopping basket" href="{% url 'view_basket' %}">View Basket</a>
+                </div>
+            </div>
         {% endif %}
-
     </div>
 </div>
