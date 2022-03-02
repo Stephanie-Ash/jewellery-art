@@ -172,7 +172,7 @@
         </div>
         {% for product in other_products %}
         <div class="d-none d-md-flex col-md-3 col-xl-2">
-            <div class="card alt-card h-100 pb-4 mx-auto txt-lgt">
+            <div class="card product-card h-100 pb-4 mx-auto txt-lgt">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
                     <div class="product-image-cont">

@@ -76,3 +76,10 @@
         max-width: 45rem;
     }
 }
+
+/* For screens 1450px and up */
+@media screen and (min-width: 1450px) {
+    .products-cont {
+        max-width: 1200px;
+    }
+}

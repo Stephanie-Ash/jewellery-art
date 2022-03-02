@@ -282,7 +282,7 @@ a[aria-disabled="true"]:hover {
 }
 
 .product-card {
-    max-width: 280px;
+    max-width: 250px;
 }
 
 .card-title {
@@ -290,10 +290,6 @@ a[aria-disabled="true"]:hover {
 }
 
 /* Scrollable product cards */
-.alt-card {
-    max-width: 250px;
-}
-
 .scrolling-wrapper {
     display: flex;
     flex-wrap: nowrap;

@@ -31,3 +31,13 @@
 .designer-title {
     font-weight: bold;
 }
+
+/* ------------------------Media Queries------------------------ */
+
+/* For screens 1420px and up */
+@media screen and (min-width: 1420px) {
+    .des-product-cols {
+        flex: 0 0 16.666667%;
+        max-width: 16.666667%;
+    }
+}

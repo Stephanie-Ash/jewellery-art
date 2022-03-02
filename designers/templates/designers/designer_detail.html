@@ -142,11 +142,11 @@
             <h2>Pieces by {{ designer.name }}</h2>
         </div>
     </div>
-    <div class="row mx-2">
+    <div class="row mx-sm-2">
         <!-- Product cards displayed grouped into collections. -->
         {% for collection in collections %}
         {% for product in collection.products.all %}
-        <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="col-sm-6 col-md-4 col-lg-3 des-product-cols">
             <div class="card product-card h-100 pb-4 mx-auto">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
@@ -182,7 +182,7 @@
         {% endfor %}
         <!-- Product cards for products not in any collection. -->
         {% for product in products %}
-        <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="col-sm-6 col-md-4 col-lg-3 des-product-cols">
             <div class="card product-card h-100 pb-4 mx-auto">
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
