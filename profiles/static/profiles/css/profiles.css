@@ -1,0 +1,30 @@
+/* ------------------------profile.html------------------------ */
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #242d33;
+}
+
+#id_default_country option:first-child {
+    color: #6d7a82;
+}
+
+.profile-history {
+    max-height: 550px;
+    overflow-y: auto;
+}
+
+.profile-table {
+    font-size: 14px;
+}
+
+.profile-items {
+    font-size: 12.5px;
+}
+
+#add-review-button {
+    display: none;
+}
+
+.edit-review-form {
+    display: none;
+}
