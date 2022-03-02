@@ -27,7 +27,7 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'contact/contact.html')
 
     def test_get_manage_contacts_page(self):
-        """ Test the add faq page loads. """
+        """ Test the manage contacts page loads. """
         self.client.login(username='admin', password='adminpassword')
         response = self.client.get('/contact/manage/')
         self.assertEqual(response.status_code, 200)

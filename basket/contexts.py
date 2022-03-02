@@ -17,6 +17,8 @@ def basket_contents(request):
     basket = request.session.get('basket', {})
     country = request.session.get('country', '')
 
+    # Iterate through the session basket get the product
+    # Then use the information to add to the basket_contents
     for item_id, quantity in basket.items():
         product = get_object_or_404(Product, pk=item_id)
         total += quantity * product.price
@@ -28,6 +30,7 @@ def basket_contents(request):
         })
 
     if total:
+        # Set the delivery price based on delivery country saved in session
         if country:
             if country == 'GB':
                 delivery = 0
@@ -36,6 +39,7 @@ def basket_contents(request):
         else:
             delivery = settings.STANDARD_DELIVERY
     else:
+        # If no basket total set the delivery cost to zero
         delivery = 0
 
     grand_total = delivery + total

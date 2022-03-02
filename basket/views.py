@@ -13,6 +13,7 @@ def view_basket(request):
     """
     Display the shopping basket and its contents.
     """
+    # Check the inventory of basket items on loading the basket page
     out_of_stock = check_inventory(request)
     if out_of_stock:
         messages.warning(
@@ -20,6 +21,8 @@ def view_basket(request):
                 stock and they have been removed from your basket: \
                     {", ".join([str(x) for x in [*out_of_stock]])}.')
 
+    # Identify whether basket accessed from different page or just refreshed
+    # Reset delivery country when accessed from different page
     referring_page = request.META.get('HTTP_REFERER')
     if referring_page:
         if 'basket' not in referring_page:
@@ -64,24 +67,28 @@ def add_to_basket(request, item_id):
 
     if item_id in list(basket.keys()):
         current_quantity = basket[item_id]
+        # Check whether there's enough product inventory to add more to basket
         if current_quantity + quantity <= product.inventory:
             basket[item_id] += quantity
             messages.success(
                 request, f'Updated the quantity of {product.name} in your \
                     basket.', extra_tags='basket')
         else:
+            # Alert if not enough stock
             messages.error(
                 request, f'There are not enough in stock to add more of \
                     this item to your basket. Quantity in basket: \
                     {current_quantity}, \
                     Quantity in stock: {product.inventory}.')
     else:
+        # Check whether there's enough product inventory to add to basket
         if quantity <= product.inventory:
             basket[item_id] = quantity
             messages.success(
                 request, f'Added {product.name} to your basket.',
                 extra_tags='basket')
         else:
+            # Alert if not enough stock
             messages.error(
                 request, f'There are only {product.inventory} of {product.name} \
                     in stock and so not enough to add this item \
@@ -100,6 +107,7 @@ def adjust_basket(request, item_id):
     basket = request.session.get('basket', {})
 
     if quantity > 0:
+        # Check product inventory before adjusting
         if quantity <= product.inventory:
             basket[item_id] = quantity
             messages.success(

@@ -7,6 +7,7 @@ class FAQ(models.Model):
     Frequently asked question model to provide
     information to customers.
     """
+    # Set options for the category field
     ORDER = 'OR'
     DELIVERY = 'DE'
     PRODUCT = 'PR'

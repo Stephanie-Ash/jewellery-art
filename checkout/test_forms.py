@@ -7,7 +7,7 @@ class TestForms(TestCase):
     """ Tests for the forms. """
     def test_user_editable_fields_are_required_on_order_form(self):
         """
-        Test that the Prder full name, email, phone number, country
+        Test that the Order full name, email, phone number, country
         address1 and town or city fields are required on the Order form.
         """
         form = OrderForm(

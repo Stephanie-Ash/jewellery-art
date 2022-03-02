@@ -8,10 +8,6 @@ class TestViews(TestCase):
 
     def test_get_index_page(self):
         """ Test the index page loads. """
-        Product.objects.create(
-            name='Test Name', description='Test description',
-            price=10.00
-        )
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home/index.html')
@@ -50,6 +46,7 @@ class TestViews(TestCase):
         )
 
         response = self.client.get('/')
+        # No more thank 4 products included
         self.assertEqual(len(response.context['featured_products']), 4)
 
         product1.homepage_featured = False
@@ -58,6 +55,7 @@ class TestViews(TestCase):
         product2.save()
 
         response = self.client.get('/')
+        # All featured included if less than 4
         self.assertEqual(len(response.context['featured_products']), 3)
 
         product3.homepage_featured = False
@@ -68,4 +66,5 @@ class TestViews(TestCase):
         product5.save()
 
         response = self.client.get('/')
+        # First 4 products included if no featured products selected
         self.assertEqual(len(response.context['featured_products']), 4)

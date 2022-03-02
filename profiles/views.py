@@ -33,8 +33,10 @@ def profile(request):
     review_form = ReviewForm()
 
     for order in orders:
+        # Select previously purchased products
         for item in order.lineitems.all():
             products.append(item.product)
+    # Ensure products only appear once
     purchased_products = list(dict.fromkeys(products))
 
     template = 'profiles/profile.html'

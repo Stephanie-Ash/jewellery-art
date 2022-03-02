@@ -20,7 +20,7 @@ class TestForms(TestCase):
         self.assertEqual(form.errors['question'][0], 'This field is required.')
 
     def test_faq_answer_is_required(self):
-        """ Test that the FAQ question field is required in the form. """
+        """ Test that the FAQ answer field is required in the form. """
         form = FAQForm({'category': 'OR', 'question': 'Q', 'answer': ''})
         self.assertFalse(form.is_valid())
         self.assertIn('answer', form.errors.keys())

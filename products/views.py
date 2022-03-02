@@ -27,6 +27,7 @@ def all_products(request):
     query = None
 
     if request.GET:
+        # Filter products based on search query
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -36,6 +37,7 @@ def all_products(request):
                 name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+        # Sort products based on sort option
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -54,16 +56,19 @@ def all_products(request):
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
 
+        # Filter products based on selected category
         if 'category' in request.GET:
             category = request.GET['category']
             products = products.filter(category__programmatic_name=category)
             category = Category.objects.filter(programmatic_name=category)
 
+        # Filter products based on selected designer
         if 'designer' in request.GET:
             designer = request.GET['designer']
             products = products.filter(designer__programmatic_name=designer)
             designer = Designer.objects.filter(programmatic_name=designer)
 
+        # Filter products based on selected collection
         if 'collection' in request.GET:
             collection = request.GET['collection']
             products = products.filter(
@@ -99,6 +104,7 @@ def product_detail(request, product_id):
     purchased = False
 
     if request.user.is_authenticated:
+        # Check to see if the user has previously purchased the product
         profile = get_object_or_404(UserProfile, user=request.user)
         orders = profile.orders.all()
         for order in orders:
@@ -128,6 +134,7 @@ def add_review(request, product_id):
     profile = get_object_or_404(UserProfile, user=request.user)
     purchased = False
     orders = profile.orders.all()
+    # Check to see if the user has previously purchased the product
     for order in orders:
         for item in order.lineitems.all():
             if item.product.id == product_id:
@@ -165,6 +172,7 @@ def edit_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
+        # Check to make sure the user is editing their own review
         if review.user_profile != profile:
             messages.error(
                 request, 'Sorry you can only edit your own reviews!'
@@ -300,6 +308,7 @@ def toggle_homepage_featured(request, product_id):
     product.save()
 
     if current_page:
+        # Redirect back to same page if current_page available
         return HttpResponseRedirect(current_page)
     else:
         return redirect(reverse('products'))

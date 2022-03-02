@@ -6,6 +6,7 @@ class ContactMessage(models.Model):
     """
     Contact Message model for messages left by customers.
     """
+    # Set topic options
     ORDER = 'OR'
     PRODUCT = 'PR'
     DESIGNER = 'DS'

@@ -11,11 +11,13 @@ def index(request):
     """
     all_featured = list(Product.objects.filter(homepage_featured=True))
     if all_featured:
+        # If more than 4 featured products select a random selection of 4
         if len(all_featured) > 4:
             featured_products = random.sample(all_featured, 4)
         else:
             featured_products = all_featured
     else:
+        # If no featured products select the first 4 products
         featured_products = Product.objects.all()[:4]
 
     context = {

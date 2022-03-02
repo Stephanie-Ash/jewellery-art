@@ -32,6 +32,8 @@ class OrderForm(forms.ModelForm):
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
+        # Disable the country field
+        # Country will be selected on basket page
         self.fields['country'].widget.attrs['disabled'] = True
         self.fields['country'].widget.attrs['class'] = 'checkout-country-dis'
         for field in self.fields:

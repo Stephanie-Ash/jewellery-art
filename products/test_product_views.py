@@ -144,18 +144,23 @@ class TestViews(TestCase):
         self.product_one.collection = self.collection_two
         self.product_one.save()
 
+        # When sorted on price
         response_p = self.client.get('/products/?sort=price&direction=desc')
         self.assertEqual(self.product_one, response_p.context['products'][0])
 
+        # When sorted on name
         response_n = self.client.get('/products/?sort=name&direction=asc')
         self.assertEqual(self.product_one, response_n.context['products'][0])
 
+        # When soryed on category
         response_c = self.client.get('/products/?sort=category&direction=asc')
         self.assertEqual(self.product_two, response_c.context['products'][0])
 
+        # When sorted on designer
         response_d = self.client.get('/products/?sort=designer&direction=asc')
         self.assertEqual(self.product_two, response_d.context['products'][0])
 
+        # When sorted on collection
         response_cn = self.client.get(
             '/products/?sort=collection&direction=asc')
         self.assertEqual(self.product_two, response_cn.context['products'][0])
@@ -189,7 +194,7 @@ class TestViews(TestCase):
 
     def test_product_detail_purchased_is_correct_value(self):
         """
-        Test that the purchased context of the product detail page us true
+        Test that the purchased context of the product detail page is true
         if the user has previously bought the product.
         """
         self.client.login(username='john', password='johnpassword')

@@ -77,6 +77,7 @@ class TestViews(TestCase):
             message.message, f'Good news, your order was successful. \
         Your order number is: {order.order_number}. A confirmation has been \
         sent to {order.email}')
+        # Test the basket is deleted from the session
         session = self.client.session
         self.assertNotIn('basket', session.keys())
 
@@ -121,8 +122,8 @@ class TestViews(TestCase):
 
     def test_warning_message_in_checkout_when_basket_item_out_of_stock(self):
         """
-        Test that the checout view redirects and an error message is genetated
-        when basket items are out of stock.
+        Test that the checkout view redirects and an error message is
+        generated when basket items are out of stock.
         """
         session = self.client.session
         session['basket'] = {
@@ -172,8 +173,8 @@ class TestViews(TestCase):
         }
         session['country'] = ''
         session.save()
-
         response = self.client.get('/checkout/')
+        # Value GB when no session variable and no profile default value
         self.assertEqual(
             response.context['order_form']['country'].value(), 'GB')
 
@@ -183,23 +184,27 @@ class TestViews(TestCase):
         profile.default_country = 'US'
         profile.save()
         response_2 = self.client.get('/checkout/')
+        # Value default profile value when no session variable
         self.assertEqual(
             response_2.context['order_form']['country'].value(), 'US')
 
         session['country'] = 'AL'
         session.save()
         response_3 = self.client.get('/checkout/')
+        # Value session variable even if default profile value available
         self.assertEqual(
             response_3.context['order_form']['country'].value(), 'AL')
 
         profile.delete()
         response_4 = self.client.get('/checkout/')
+        # Value session variable when no profile
         self.assertEqual(
             response_4.context['order_form']['country'].value(), 'AL')
 
         session['country'] = ''
         session.save()
         response_5 = self.client.get('/checkout/')
+        # Value GB when no session variable and no profile
         self.assertEqual(
             response_5.context['order_form']['country'].value(), 'GB')
 

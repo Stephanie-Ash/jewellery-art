@@ -80,6 +80,7 @@ class StripeWH_Handler:
         order_exists = False
         attempt = 1
         while attempt <= 5:
+            # Check to make sure an order has been created
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -108,6 +109,7 @@ class StripeWH_Handler:
                 status=200)
         else:
             order = None
+            # If no order created then create one with the intent data
             try:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
@@ -149,6 +151,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         basket = intent.metadata.basket
+        # If payment fails reset product inventory
         for item_id, quantity in json.loads(basket).items():
             product = Product.objects.get(id=item_id)
             product.inventory += quantity

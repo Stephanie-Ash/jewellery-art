@@ -39,18 +39,21 @@ def update_inventory(request):
     original_inventory = {}
     products = {}
     for item_id, quantity in basket.items():
+        # Get the product for all basket items and save original inventory
         product = Product.objects.get(id=item_id)
         original_inventory[item_id] = product.inventory
         products[item_id] = product
 
     try:
         with transaction.atomic():
+            # Try updating the inventory of the basket items
             for item_id, quantity in basket.items():
                 product = products[item_id]
                 product.inventory -= quantity
                 product.save()
             return HttpResponse(status=200)
     except IntegrityError as e:
+        # If error reset the product inventory to the original values
         for item_id, quantity in basket.items():
             product = products[item_id]
             product.inventory = original_inventory[item_id]
@@ -106,11 +109,13 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            # Create the order
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_basket = json.dumps(basket)
             order.save()
+            # Add the lineitems to the order
             for item_id, quantity in basket.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -138,6 +143,7 @@ def checkout(request):
             messages.error(request, "Your basket is currently empty.")
             return redirect(reverse('products'))
 
+        # Chek inventory on page load and remove out of stock products
         out_of_stock = check_inventory(request)
         if out_of_stock:
             messages.warning(
@@ -158,6 +164,8 @@ def checkout(request):
         if country_code:
             if request.user.is_authenticated:
                 try:
+                    # Populate form with default profile values but leave
+                    # Country as session country value
                     profile = UserProfile.objects.get(user=request.user)
                     order_form = OrderForm(initial={
                         'full_name': profile.user.get_full_name(),
@@ -183,6 +191,8 @@ def checkout(request):
                 try:
                     profile = UserProfile.objects.get(user=request.user)
                     if profile.default_country:
+                        # Populate form with default profile values
+                        # including Country
                         order_form = OrderForm(initial={
                             'full_name': profile.user.get_full_name(),
                             'email': profile.user.email,
@@ -194,9 +204,12 @@ def checkout(request):
                             'address2': profile.default_address2,
                             'county': profile.default_county,
                         })
+                        # Set country session value to default country for
+                        # delivery cost calculation
                         country_code = f'{profile.default_country}'
                         request.session['country'] = country_code
                     else:
+                        # If no profile default country set value to GB
                         country_code = 'GB'
                         request.session['country'] = country_code
                         order_form = OrderForm(initial={

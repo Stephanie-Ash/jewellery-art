@@ -51,6 +51,7 @@ class Order(models.Model):
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total:
+            # Set delivery price based on delivery country
             if self.country != 'GB':
                 self.delivery_cost = settings.STANDARD_DELIVERY
         else:

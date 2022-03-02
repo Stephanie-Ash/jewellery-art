@@ -116,7 +116,7 @@ class TestViews(TestCase):
 
     def test_error_message_when_adding_review_of_unpurchased_product(self):
         """
-        Test add review post view redirects and generages error message when
+        Test add review post view redirects and generates error message when
         user adds a review of an unpurchased product.
         """
         self.client.login(username='john', password='johnpassword')
@@ -132,7 +132,7 @@ class TestViews(TestCase):
 
     def test_error_message_when_editing_someone_elses_review(self):
         """
-        Test edit review post view redirects and generages error message when
+        Test edit review post view redirects and generates error message when
         user edits a review created by someone else.
         """
         self.client.login(username='john', password='johnpassword')

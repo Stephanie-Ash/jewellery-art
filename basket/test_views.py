@@ -92,6 +92,9 @@ class TestViews(TestCase):
         }
         session.save()
         response = self.client.get('/basket/')
+        session = self.client.session
+        basket = session['basket']
+        self.assertNotIn(self.product_one.id, basket.keys())
         message = list(response.context.get('messages'))[0]
         self.assertEqual(message.message, f'There are no longer enough of the following item(s) in \
                 stock and they have been removed from your basket: \
@@ -143,6 +146,7 @@ class TestViews(TestCase):
             self.product_two.id: 2,
         }
         session.save()
+        # When updating a basket item
         response = self.client.post(
             f'/basket/add/{self.product_two.id}/',
             {'quantity': 1,
@@ -154,6 +158,7 @@ class TestViews(TestCase):
                     2, \
                     Quantity in stock: 2.')
 
+        # When adding a new item to the basket
         response = self.client.post(
             f'/basket/add/{self.product_one.id}/',
             {'quantity': 1,
