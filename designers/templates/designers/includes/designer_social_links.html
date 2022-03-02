@@ -1,0 +1,32 @@
+{% if designer.facebook_link %}
+    <li class="list-inline-item">
+        <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.facebook_link }}"
+            aria-label="Visit {{ designer.name }}'s Facebook Page (opens in a new tab)">
+            <i class="fab fa-facebook-square social" aria-hidden="true"></i>
+        </a>
+    </li>
+{% endif %}
+{% if designer.twitter_link %}
+    <li class="list-inline-item">
+        <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.twitter_link }}"
+            aria-label="Visit {{ designer.name }}'s Twitter Page (opens in a new tab)">
+            <i class="fab fa-twitter-square social" aria-hidden="true"></i>
+        </a>
+    </li>
+{% endif %}
+{% if designer.instagram_link %}
+    <li class="list-inline-item">
+        <a class="content-link" target="_blank" rel="noopener nofollow" href="{{ designer.instagram_link }}"
+            aria-label="Visit {{ designer.name }}'s Instagram Page (opens in a new tab)">
+            <i class="fab fa-instagram-square social" aria-hidden="true"></i>
+        </a>
+    </li>
+{% endif %}
+{% if designer.website_link %}
+    <li class="list-inline-item">
+        <a class="content-link" target="_blank" rel="noopener" href="{{ designer.website_link }}"
+            aria-label="Visit {{ designer.name }}'s Website (opens in a new tab)">
+            <i class="fas fa-globe social" aria-hidden="true"></i>
+        </a>
+    </li>
+{% endif %}

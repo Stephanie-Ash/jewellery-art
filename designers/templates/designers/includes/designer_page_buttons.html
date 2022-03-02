@@ -1,0 +1,16 @@
+<div class="text-left">
+    <a href="{% url 'designers' %}" aria-label="Go to the all jewellery designers page"
+        class="btn btn-sm btn-drk btn-sqr txt-lgt mb-1">Back to Designers</a>
+    <a href="{% url 'products' %}" aria-label="Go to the all jewellery products page"
+        class="btn btn-sm btn-drk btn-sqr txt-lgt mb-1">Shop Now</a>
+    {% if request.user.is_superuser %}
+        <div class="d-md-inline-block">
+            <small class="ml-1">
+                <a class="txt-blue" href="{% url 'edit_designer' designer.id %}"
+                    aria-label="Edit designer details.">Edit</a> |
+                <button class="delete-btn" type="button"
+                    data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
+            </small>
+        </div>
+    {% endif %}
+</div>

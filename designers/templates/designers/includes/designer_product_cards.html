@@ -1,0 +1,34 @@
+<div class="col-sm-6 col-md-4 col-lg-3 des-product-cols">
+    <div class="card product-card h-100 pb-4 mx-auto">
+        <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+            href="{% url 'product_detail' product.id %}">
+            <div class="product-image-cont">
+                {% if product.image %}
+                    <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
+                {% else %}
+                    <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                        alt="{{ product.name }}">
+                {% endif %}
+                {% if product.inventory == 0 %}
+                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                {% endif %}
+            </div>
+        </a>
+        <div class="card-body pb-0">
+            <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                href="{% url 'product_detail' product.id %}">
+                <p class="mb-0 card-title text-center">{{ product.name }}</p>
+            </a>
+        </div>
+        <div class="card-footer pt-1 text-center">
+            <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
+                href="{% url 'product_detail' product.id %}">
+                {% if product.collection %}
+                    <p class="mb-0">{{ product.collection.name }}</p>
+                {% endif %}
+                <p class="mb-0">£{{ product.price }}</p>
+            </a>
+        </div>
+    </div>
+</div>
