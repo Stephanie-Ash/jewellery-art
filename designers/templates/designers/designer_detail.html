@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'designers/css/designers.css' %}">
+<link rel="stylesheet" href="{% static 'designers/css/designers.css' %}">
 {% endblock %}
 
 {% block extra_title %}Jewellery Designer {{ designer.name }}{% endblock %}
@@ -13,7 +13,7 @@
     <div class="row my-5">
         <!-- Designer Image -->
         <div
-            class="col-10 offset-1 col-sm-5 offset-sm-1 col-md-6 offset-md-0 col-lg-5 offset-lg-1 col-xl-4 offset-xl-2 text-center">
+            class="col-10 offset-1 col-sm-5 offset-sm-1 col-md-6 offset-md-0 col-lg-5 offset-lg-1 col-xl-4 offset-xl-2 text-center des-img-col">
             <div class="designer-img-cont mb-4">
                 {% if designer.image %}
                 <img class="designer-img" src="{{ designer.image.url }}" alt="{{ designer.name }}">
@@ -57,7 +57,7 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="col-12 col-sm-5 col-md-6 col-lg-5 col-xl-4 my-sm-auto txt-drk text-center text-md-left">
+        <div class="col-12 col-sm-5 col-md-6 col-lg-5 col-xl-4 my-sm-auto txt-drk text-center text-md-left des-txt-col">
             <!-- Designer name -->
             <h1 class="h1-sm d-lg-inline-block mr-lg-2">{{ designer.name }}</h1>
             <!-- Designer social media links displayed with the name on all but medium screens -->
@@ -104,7 +104,8 @@
                     class="btn btn-sm btn-drk btn-sqr txt-lgt">Shop Now</a>
                 {% if request.user.is_superuser %}
                 <small class="ml-1">
-                    <a class="txt-blue" href="{% url 'edit_designer' designer.id %}" aria-label="Edit designer details.">Edit</a> |
+                    <a class="txt-blue" href="{% url 'edit_designer' designer.id %}"
+                        aria-label="Edit designer details.">Edit</a> |
                     <button class="delete-btn" type="button"
                         data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
                 </small>
@@ -124,7 +125,8 @@
         {% if request.user.is_superuser %}
         <div class="col-12 d-md-none">
             <small>
-                <a class="txt-blue" href="{% url 'edit_designer' designer.id %}" aria-label="Edit designer details.">Edit</a> |
+                <a class="txt-blue" href="{% url 'edit_designer' designer.id %}"
+                    aria-label="Edit designer details.">Edit</a> |
                 <button class="delete-btn" type="button"
                     data-delete-url="{% url 'delete_designer' designer.id %}">Delete</button>
             </small>
@@ -151,16 +153,16 @@
                 <a class="content-link" aria-label="Go to the product information page for {{ product.name }}"
                     href="{% url 'product_detail' product.id %}">
                     <div class="product-image-cont">
-                    {% if product.image %}
-                    <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
-                        alt="{{ product.name }}">
-                    {% else %}
-                    <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
-                        alt="{{ product.name }}">
-                    {% endif %}
-                    {% if product.inventory == 0 %}
-                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
-                    {% endif %}
+                        {% if product.image %}
+                        <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
+                            alt="{{ product.name }}">
+                        {% else %}
+                        <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                            alt="{{ product.name }}">
+                        {% endif %}
+                        {% if product.inventory == 0 %}
+                        <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                        {% endif %}
                     </div>
                 </a>
                 <div class="card-body pb-0">
@@ -188,15 +190,15 @@
                     href="{% url 'product_detail' product.id %}">
                     {% if product.image %}
                     <div class="product-image-cont">
-                    <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
-                        alt="{{ product.name }}">
-                    {% else %}
-                    <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
-                        alt="{{ product.name }}">
-                    {% endif %}
-                    {% if product.inventory == 0 %}
-                    <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
-                    {% endif %}
+                        <img class="card-img-top img-drk product-img img-fluid" src="{{ product.image.url }}"
+                            alt="{{ product.name }}">
+                        {% else %}
+                        <img class="card-img-top img-drk product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                            alt="{{ product.name }}">
+                        {% endif %}
+                        {% if product.inventory == 0 %}
+                        <p class="mb-0 px-1 out-of-stock txt-lgt">Out of Stock</p>
+                        {% endif %}
                     </div>
                 </a>
                 <div class="card-body pb-0">
