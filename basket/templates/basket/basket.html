@@ -8,6 +8,7 @@
     <div class="row">
         <div class="col-12 mt-4 mb-2 txt-drk">
             <h1 class="d-none d-sm-block mb-0">Shopping Basket</h1>
+            <!-- Shorter title for extra small screens -->
             <h1 class="d-sm-none mb-0">Basket</h1>
         </div>
         <div class="col-12">
@@ -16,110 +17,113 @@
     </div>
     <div class="row">
         {% if basket_items %}
-        <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 txt-drk">
-            <!-- Include html from mobile-basket file for xs screens -->
-            {% include "basket/mobile-basket.html" %}
-            <!-- Table of basket items dispalyed on small screens and up. -->
-            <table class="d-none d-sm-block table table-sm txt-drk mb-2">
-                <thead>
-                    <tr>
-                        <th colspan="2" scope="col">Basket Items</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in basket_items %}
-                    <tr>
-                        <td class="basket-img-col pb-3">
-                            {% if item.product.image %}
-                            <img class="img-sm product-img img-fluid" src="{{ item.product.image.url }}"
-                                alt="{{ item.product.name }}">
-                            {% else %}
-                            <img class="img-sm product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
-                                alt="{{ item.product.name }}">
-                            {% endif %}
-                        </td>
-                        <td class="pb-3 pt-4">
-                            <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="mb-0">Price: £{{ item.product.price }}</p>
-                            <p class="mb-0">{{ item.product.inventory }} in stock</p>
-                        </td>
-                        <td class="pb-3">
-                            <p class="d-none">{{ item.product.inventory }}</p>
-                            <a class="txt-sm update-link txt-blue"
-                                aria-label="Update the product quantity in your basket">Update</a>
-                            <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}"
-                                method="POST">
-                                <!-- Adjust quantity form. -->
-                                {% csrf_token %}
-                                <div class="form-group mb-0">
-                                    <input class="form-control form-control-sm rounded-0 qty-input" type="number"
-                                        name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                        data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                </div>
-                            </form>
-                            <a class="txt-sm txt-red remove-item" aria-label="Remove the product from your basket"
-                                id="remove_{{ item.item_id }}">Remove</a>
-                        </td>
-                        <td class="pb-3 pt-4">
-                            <p class="mb-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="d-none d-sm-block col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
-            <hr>
-        </div>
-        <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 mobile-basket-cols txt-drk">
-            <p class="mb-2">
-                Select delivery country to calculate delivery cost and proceed to checkout.
-            </p>
-            <div class="order-fieldset mb-4 basket-select">
-                {{ form.country | as_crispy_field }}
+            <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 txt-drk">
+                <!-- Include html from mobile-basket file for xs screens -->
+                <!-- Include contains product information with quantity box and total -->
+                {% include "basket/mobile-basket.html" %}
+                <!-- Table of basket items dispalyed on small screens and up. -->
+                <table class="d-none d-sm-block table table-sm txt-drk mb-2">
+                    <thead>
+                        <tr>
+                            <th colspan="2" scope="col">Basket Items</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in basket_items %}
+                            <tr>
+                                <td class="basket-img-col pb-3">
+                                    {% if item.product.image %}
+                                        <img class="img-sm product-img img-fluid" src="{{ item.product.image.url }}"
+                                            alt="{{ item.product.name }}">
+                                    {% else %}
+                                        <img class="img-sm product-img img-fluid" src="{{ MEDIA_URL }}no-image.png"
+                                            alt="{{ item.product.name }}">
+                                    {% endif %}
+                                </td>
+                                <td class="pb-3 pt-4">
+                                    <p class="mb-0"><strong>{{ item.product.name }}</strong></p>
+                                    <p class="mb-0">Price: £{{ item.product.price }}</p>
+                                    <p class="mb-0">{{ item.product.inventory }} in stock</p>
+                                </td>
+                                <td class="pb-3">
+                                    <p class="d-none">{{ item.product.inventory }}</p>
+                                    <a class="txt-sm update-link txt-blue"
+                                        aria-label="Update the product quantity in your basket">Update</a>
+                                    <form class="form update-form" action="{% url 'adjust_basket' item.item_id %}"
+                                        method="POST">
+                                        <!-- Adjust quantity form. -->
+                                        {% csrf_token %}
+                                        <div class="form-group mb-0">
+                                            <input class="form-control form-control-sm rounded-0 qty-input" type="number"
+                                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                        </div>
+                                    </form>
+                                    <a class="txt-sm txt-red remove-item" aria-label="Remove the product from your basket"
+                                        id="remove_{{ item.item_id }}">Remove</a>
+                                </td>
+                                <td class="pb-3 pt-4">
+                                    <p class="mb-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
-            <!-- Basket totals and checkout button. -->
-            <div class="txt-drk">
-                <div>
-                    <div class="basket-total d-inline-block">
-                        <p class="mb-0">Basket Total:</p>
-                    </div>
-                    <span>£{{ total|floatformat:2 }}</span>
+            <div class="d-none d-sm-block col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                <hr>
+            </div>
+            <div class="col-12 col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 mobile-basket-cols txt-drk">
+                <!-- Delivery country selection. On selection delivery price will be set and page reloaded -->
+                <p class="mb-2">
+                    Select delivery country to calculate delivery cost and proceed to checkout.
+                </p>
+                <div class="order-fieldset mb-4 basket-select">
+                    {{ form.country | as_crispy_field }}
                 </div>
-                <div>
-                    <div class="basket-delivery d-inline-block">
-                        <p class="mb-2">Delivery:</p>
-                    </div>
-                    <span>{% if country_code %}£{{ delivery|floatformat:2 }}{% else %}TBC{% endif %}</span>
-                </div>
-                <div>
-                    <strong>
-                        <div class="basket-grand-total d-inline-block">
-                            <p>Grand Total:</p>
+                <!-- Basket totals and checkout button. -->
+                <div class="txt-drk">
+                    <div>
+                        <div class="basket-total d-inline-block">
+                            <p class="mb-0">Basket Total:</p>
                         </div>
-                        <span>£{{ grand_total|floatformat:2 }}</span>
-                    </strong>
+                        <span>£{{ total|floatformat:2 }}</span>
+                    </div>
+                    <div>
+                        <div class="basket-delivery d-inline-block">
+                            <p class="mb-2">Delivery:</p>
+                        </div>
+                        <span>{% if country_code %}£{{ delivery|floatformat:2 }}{% else %}TBC{% endif %}</span>
+                    </div>
+                    <div>
+                        <strong>
+                            <div class="basket-grand-total d-inline-block">
+                                <p>Grand Total:</p>
+                            </div>
+                            <span>£{{ grand_total|floatformat:2 }}</span>
+                        </strong>
+                    </div>
+                    <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4"
+                        aria-label="Go to the all jewellery products page" href="{% url 'products' %}">Keep Shopping</a>
+                    {% if user.is_authenticated %}
+                        <!-- Button to checkout page if signed in and login or guest page otherwise -->
+                        <a class="{% if not country_code %}d-none{% endif %} btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4"
+                            aria-label="Proceed to checkout" href="{% url 'checkout' %}">Checkout</a>
+                    {% else %}
+                        <a class="{% if not country_code %}d-none{% endif %} btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4"
+                            aria-label="Proceed to checkout" href="{% url 'login_or_guest' %}">Checkout</a>
+                    {% endif %}
                 </div>
-                <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4"
-                    aria-label="Go to the all jewellery products page" href="{% url 'products' %}">Keep Shopping</a>
-                {% if user.is_authenticated %}
-                <a class="{% if not country_code %}d-none{% endif %} btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4"
-                    aria-label="Proceed to checkout" href="{% url 'checkout' %}">Checkout</a>
-                {% else %}
-                <a class="{% if not country_code %}d-none{% endif %} btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4"
-                    aria-label="Proceed to checkout" href="{% url 'login_or_guest' %}">Checkout</a>
-                {% endif %}
             </div>
-        </div>
         {% else %}
-        <div class="col-12 txt-drk">
-            <!-- Empty basket message -->
-            <p class="basket-empty">Your basket is currently empty.</p>
-            <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"
-                href="{% url 'products' %}">Shop Now!</a>
-        </div>
+            <div class="col-12 txt-drk">
+                <!-- Empty basket message -->
+                <p class="basket-empty">Your basket is currently empty.</p>
+                <a class="btn btn-drk btn-sqr txt-lgt mt-1 mb-4" aria-label="Go to the all jewellery products page"
+                    href="{% url 'products' %}">Shop Now!</a>
+            </div>
         {% endif %}
     </div>
     <!-- Back to top button. -->

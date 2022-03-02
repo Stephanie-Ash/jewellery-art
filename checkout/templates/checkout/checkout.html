@@ -35,19 +35,21 @@
                     {{ order_form.county | as_crispy_field }}
                     {{ order_form.postcode | as_crispy_field }}
                     <div class="row">
+                        <!-- Country selector disabled so delivery country and price cannot be reset -->
                         <div class="col-10">
                             {{ order_form.country | as_crispy_field }}
                         </div>
                         <div class="col-2 pl-0 my-auto">
-                            <a class="txt-blue" href="{% url 'view_basket' %}" aria-label="Go to the basket page to select a different country">Edit</a>
+                            <a class="txt-blue" href="{% url 'view_basket' %}"
+                            aria-label="Go to the basket page to select a different delivery country current country is {{ country_code }}">Edit</a>
                         </div>
                     </div>
                     <div class="form-check form-check-inline mb-3 mr-0 txt-drk">
                         {% if user.is_authenticated %}
-                        <input class="form-check-input mr-2" type="checkbox" id="id-save-info" name="save-info" checked>
-                        <label class="form-check-label" for="id-save-info">
-                            Save delivery information to my profile.
-                        </label>
+                            <input class="form-check-input mr-2" type="checkbox" id="id-save-info" name="save-info" checked>
+                            <label class="form-check-label" for="id-save-info">
+                                Save delivery information to my profile.
+                            </label>
                         {% endif %}
                     </div>
                 </fieldset>
@@ -69,27 +71,27 @@
             <!-- Basket summary -->
             <p>Order Summary</p>
             {% for item in basket_items %}
-            <div class="row">
-                <div class="col-2">
-                    {% if item.product.image %}
-                    <img class="checkout-img product-img img-fluid" src="{{ item.product.image.url }}"
-                        alt="{{ item.product.name }}">
-                    {% else %}
-                    <img class="checkout-img product-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
-                    {% endif %}
+                <div class="row">
+                    <div class="col-2">
+                        {% if item.product.image %}
+                            <img class="checkout-img product-img img-fluid" src="{{ item.product.image.url }}"
+                                alt="{{ item.product.name }}">
+                        {% else %}
+                            <img class="checkout-img product-img img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.product.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-7 col-md-6">
+                        <p class="mb-0 checkout-basket-name"><strong>{{ item.product.name }}</strong></p>
+                        <p class="mb-0 checkout-basket-info">Price: £{{ item.product.price }}</p>
+                        <p class="mb-0 checkout-basket-info">Qty: {{ item.quantity }}</p>
+                    </div>
+                    <div class="col-3 col-md-4 mt-auto text-right">
+                        <p class="mb-0 checkout-basket-info">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                    </div>
+                    <div class="col-12">
+                        <hr>
+                    </div>
                 </div>
-                <div class="col-7 col-md-6">
-                    <p class="mb-0 checkout-basket-name"><strong>{{ item.product.name }}</strong></p>
-                    <p class="mb-0 checkout-basket-info">Price: £{{ item.product.price }}</p>
-                    <p class="mb-0 checkout-basket-info">Qty: {{ item.quantity }}</p>
-                </div>
-                <div class="col-3 col-md-4 mt-auto text-right">
-                    <p class="mb-0 checkout-basket-info">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                </div>
-                <div class="col-12">
-                    <hr>
-                </div>
-            </div>
             {% endfor %}
             <div class="row">
                 <div class="col-12 col-sm-6 txt-drk">
@@ -129,7 +131,6 @@
         One moment please...
     </p>
 </div>
-
 {% endblock %}
 
 {% block postloadjs %}

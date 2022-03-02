@@ -11,20 +11,21 @@
 <div class="container txt-drk">
     <div class="row">
         <div class="col-12 mt-4">
+            <!-- Set different page title and introductory if viewing from the profile page -->
             {% if from_profile %}
-            <h1 class="mb-0">Order Details</h1>
+                <h1 class="mb-0">Order Details</h1>
             {% else %}
-            <h1 class="mb-0">Order Confirmed</h1>
+                <h1 class="mb-0">Order Confirmed</h1>
             {% endif %}
             <hr class="divide-rule">
         </div>
         <div class="col-12 col-md-10 offset-md-1 mb-3">
             {% if from_profile %}
-            <p>A confirmation email was sent to <strong>{{ order.email }}</strong></p>
-            <p class="mb-0">Please find your order details below:</p>
+                <p>A confirmation email was sent to <strong>{{ order.email }}</strong></p>
+                <p class="mb-0">Please find your order details below:</p>
             {% else %}
-            <p>Thank you for your order. We have sent a confirmation email to <strong>{{ order.email }}</strong></p>
-            <p class="mb-0">Please find your order details below:</p>
+                <p>Thank you for your order. We have sent a confirmation email to <strong>{{ order.email }}</strong></p>
+                <p class="mb-0">Please find your order details below:</p>
             {% endif %}
         </div>
     </div>
@@ -51,7 +52,7 @@
                 </div>
                 <div class="col-12 col-sm-8 col-lg-5 mb-4">
                     {% for item in order.lineitems.all %}
-                    <p class="mb-0">{{ item.product.name }} - {{ item.quantity }} at £{{ item.product.price }}</p>
+                        <p class="mb-0">{{ item.product.name }} - {{ item.quantity }} at £{{ item.product.price }}</p>
                     {% endfor %}
                 </div>
             </div>
@@ -87,14 +88,14 @@
                         <div class="col-12 col-sm-8 col-lg-12 mb-4">
                             <p class="mb-0">{{ order.address1 }}</p>
                             {% if order.address2 %}
-                            <p class="mb-0">{{ order.address2 }}</p>
+                                <p class="mb-0">{{ order.address2 }}</p>
                             {% endif %}
-                            <p class="mb-0">{{ order.town_or_city }}</p>
+                                <p class="mb-0">{{ order.town_or_city }}</p>
                             {% if order.county %}
-                            <p class="mb-0">{{ order.county }}</p>
+                                <p class="mb-0">{{ order.county }}</p>
                             {% endif %}
                             {% if order.postcode %}
-                            <p class="mb-0">{{ order.postcode }}</p>
+                                <p class="mb-0">{{ order.postcode }}</p>
                             {% endif %}
                             <p class="mb-0">{{ order.country.name }}</p>
                         </div>
@@ -123,16 +124,16 @@
                 <div class="col-6 col-sm-8 col-lg-9 mb-5">
                     <p class="mb-0">£{{ order.grand_total }}</p>
                 </div>
+                <!-- Back to profile button displayed if viewing from profile -->
                 {% if from_profile %}
-                <div class="col-12">
-                    <a class="btn btn-sm btn-drk btn-sqr txt-lgt" aria-label="Go to profile page" href="{% url 'profile' %}">
-                        Back to Proile
-                    </a>
-                </div>
+                    <div class="col-12">
+                        <a class="btn btn-sm btn-drk btn-sqr txt-lgt" aria-label="Go to profile page" href="{% url 'profile' %}">
+                            Back to Proile
+                        </a>
+                    </div>
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
