@@ -1,0 +1,33 @@
+/* ------------------CSS for the designers app------------------ */
+
+/* circular images */
+/* adapted from https://jonathannicol.com/blog/2014/06/16/centre-crop-thumbnails-with-css/ */
+.designer-img-cont {
+    outline: 3px solid #242d33;
+    outline-offset: 2px;
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+.designer-img-cont img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+    }
+
+.designer-img-cont img.portrait {
+    width: 100%;
+    height: auto;
+}
+
+.designer-title {
+    font-weight: bold;
+}
