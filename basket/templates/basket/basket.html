@@ -102,7 +102,6 @@
                         <span>£{{ grand_total|floatformat:2 }}</span>
                     </strong>
                 </div>
-
                 <a class="btn btn-sm btn-drk btn-sqr txt-lgt mt-1 mb-4"
                     aria-label="Go to the all jewellery products page" href="{% url 'products' %}">Keep Shopping</a>
                 {% if user.is_authenticated %}
@@ -123,12 +122,26 @@
         </div>
         {% endif %}
     </div>
+    <!-- Back to top button. -->
+    <div class="d-md-none to-top-btn">
+        <a id="to-top-link" aria-label="Go to the top of the page">
+            <i class="fas fa-arrow-up fa-2x txt-lgt bg-color-drk"></i>
+        </a>
+    </div>
 </div>
 
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
+<script>
+    // Scroll to top of page on back to top button click event.
+    let toTopButton = document.getElementById("to-top-link");
+    toTopButton.addEventListener("click", function () {
+        window.scrollTo(0, 0)
+    });
+</script>
+
 <script>
     // Update the quantity of product in the basket
     $('.update-link').click(function (e) {
