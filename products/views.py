@@ -17,7 +17,7 @@ def all_products(request):
     Display all products.
     This will include filtering, sorting and searching.
     """
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('id')
     all_categories = Category.objects.all()
     category = None
     designer = None
@@ -96,11 +96,12 @@ def product_detail(request, product_id):
     Display the details of an individual product.
     """
     product = get_object_or_404(Product, id=product_id)
-    reviews = product.reviews.all()
+    reviews = product.reviews.all().order_by('-created_on')
     other_products = None
     if product.designer:
         other_products = Product.objects.filter(
-            designer__id=product.designer.id).exclude(id=product_id)
+            designer__id=product.designer.id).exclude(
+                id=product_id).order_by('id')
     purchased = False
 
     if request.user.is_authenticated:

@@ -27,8 +27,8 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
 
-    orders = profile.orders.all()
-    reviews = profile.reviews.all()
+    orders = profile.orders.all().order_by('-date')
+    reviews = profile.reviews.all().order_by('-created_on')
     products = []
     review_form = ReviewForm()
 

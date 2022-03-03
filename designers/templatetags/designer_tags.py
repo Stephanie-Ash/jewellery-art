@@ -12,7 +12,7 @@ def all_designers():
     Make the Designer objects available in the
     base.html template.
     """
-    return Designer.objects.all()
+    return Designer.objects.all().order_by('id')
 
 
 @register.simple_tag()
@@ -21,4 +21,4 @@ def all_collections():
     Make the Collection objects available in the
     base.html template.
     """
-    return Collection.objects.all()
+    return Collection.objects.all().order_by('id')

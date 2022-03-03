@@ -12,4 +12,4 @@ def all_categories():
     Make the Category objects available in the
     base.html template.
     """
-    return Category.objects.all()
+    return Category.objects.all().order_by('id')

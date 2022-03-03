@@ -31,11 +31,13 @@ def view_basket(request):
 
     country_code = request.session.get('country', '')
 
+    # Set the country on the country form to the session country value
     if country_code:
         order_form = OrderForm(initial={
             'country': country_code,
         })
     elif request.user.is_authenticated:
+        # Otherwise set the country to the profile default country
         try:
             profile = UserProfile.objects.get(user=request.user)
             order_form = OrderForm(initial={

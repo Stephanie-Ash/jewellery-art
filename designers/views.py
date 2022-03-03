@@ -12,7 +12,7 @@ def all_designers(request):
     """
     Display all designers.
     """
-    designers = Designer.objects.all()
+    designers = Designer.objects.all().order_by('id')
 
     context = {
         'designers': designers,
@@ -26,9 +26,12 @@ def designer_detail(request, designer_id):
     Display the details of an individual designer.
     """
     designer = get_object_or_404(Designer, id=designer_id)
+    # Get products not in a collection
     products = Product.objects.filter(
-        designer__id=designer_id).filter(collection=None)
-    collections = Collection.objects.filter(designer__id=designer_id)
+        designer__id=designer_id).filter(collection=None).order_by('id')
+    # Get all the collections
+    collections = Collection.objects.filter(
+        designer__id=designer_id).order_by('name')
 
     context = {
         'designer': designer,
