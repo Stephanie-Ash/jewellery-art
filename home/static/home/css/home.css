@@ -87,10 +87,6 @@
 
 /* For screens 320px and up */
 @media screen and (min-width: 320px) {
-    .logo-cont {
-        display: inline !important;
-    }
-
     .home-link {
         display: none;
     }

@@ -559,8 +559,8 @@ footer {
 
 /* ------------------------Media Queries------------------------ */
 
-/* For screens 320px and up */
-@media screen and (min-width: 320px) {
+/* For screens 335px and up */
+@media screen and (min-width: 335px) {
     .logo-cont {
         display: inline !important;
     }
