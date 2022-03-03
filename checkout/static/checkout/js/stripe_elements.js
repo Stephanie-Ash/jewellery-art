@@ -57,7 +57,9 @@ form.addEventListener('submit', function(ev) {
         'csrfmiddlewaretoken': csrfToken,
     }
 
+    // First run an inventory check
     $.post(invUrl, invPostData).done(function() {
+        // If inventory successfully run checkout flow
         let saveInfo = $('#id-save-info').is(':checked');
         // From the {% csrf_token %} in the form
         let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();

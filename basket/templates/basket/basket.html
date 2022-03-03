@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load basket_tools %}
 
 {% block extra_title %}Your Basket{% endblock %}
@@ -138,88 +139,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script>
-    // Scroll to top of page on back to top button click event.
-    let toTopButton = document.getElementById("to-top-link");
-    toTopButton.addEventListener("click", function () {
-        window.scrollTo(0, 0)
-    });
-</script>
-
-<script>
-    // Update the quantity of product in the basket
-    $('.update-link').click(function (e) {
-        let form = $(this).next('.update-form');
-        form.submit();
-    })
-
-    // Remove product form basket
-    $('.remove-item').click(function (e) {
-        let csrfToken = "{{ csrf_token }}"
-        let itemId = $(this).attr('id').split('remove_')[1];
-        let url = `/basket/remove/${itemId}/`;
-        let data = {
-            'csrfmiddlewaretoken': csrfToken
-        };
-
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
-    })
-
-    // Check stock on quantity update
-    let quantityInputs = document.getElementsByClassName("qty-input")
-    for (let input of quantityInputs) {
-        input.addEventListener('change', function () {
-            let form = this.parentNode.parentNode;
-            let updateLink = form.previousElementSibling;
-            let inventory = parseInt(updateLink.previousElementSibling.innerHTML);
-            if (this.value > inventory) {
-                updateLink.setAttribute("aria-disabled", "true");
-            } else {
-                updateLink.removeAttribute("aria-disabled");
-            }
-        })
-
-        input.addEventListener('keydown', function (event) {
-            if (event.key === "Enter") {
-                let form = this.parentNode.parentNode;
-                let updateLink = form.previousElementSibling;
-                let inventory = parseInt(updateLink.previousElementSibling.innerHTML);
-                if (updateLink.hasAttribute("aria-disabled")) {
-                    event.preventDefault();
-                } else if (this.value > inventory) {
-                    event.preventDefault();
-                }
-            }
-        })
-    }
-
-    // Select delivery country
-    let country = document.getElementById('id_country');
-    if (country) {
-        country.removeAttribute('disabled');
-        country.classList.remove('checkout-country-dis');
-
-        country.addEventListener('change', function () {
-            let csrfToken = "{{ csrf_token }}";
-            let countryCode = this.value.trim();
-            let data = {
-                'csrfmiddlewaretoken': csrfToken
-            };
-            if (countryCode) {
-                let url = `/basket/set_delivery_country/${countryCode}/`;
-                $.post(url, data).done(function () {
-                    location.reload();
-                });
-            } else {
-                let url = '/basket/set_delivery_country/no_country/';
-                $.post(url, data).done(function () {
-                    location.reload();
-                });
-            }
-        })
-    }
-</script>
+<script src="{% static 'basket/js/basket.js' %}"></script>
 {% endblock %}

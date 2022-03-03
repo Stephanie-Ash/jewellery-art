@@ -159,44 +159,6 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script>
-    // Scroll to top of page on back to top button click event.
-    let toTopButton = document.getElementById("to-top-link");
-    toTopButton.addEventListener("click", function () {
-        window.scrollTo(0, 0)
-    });
-</script>
-
-<script>
-    // Set the sorting url on the sort box change event.
-    $('#sorting-sel').change(function () {
-        let selector = $(this);
-        let currentUrl = new URL(window.location);
-
-        let selectedVal = selector.val();
-        if (selectedVal != "reset") {
-            let sort = selectedVal.split("_")[0];
-            let direction = selectedVal.split("_")[1];
-
-            currentUrl.searchParams.set("sort", sort);
-            currentUrl.searchParams.set("direction", direction);
-
-            window.location.replace(currentUrl);
-        } else {
-            currentUrl.searchParams.delete("sort");
-            currentUrl.searchParams.delete("direction");
-
-            window.location.replace(currentUrl);
-        }
-    });
-</script>
-<script>
-    let checks = document.getElementsByClassName("home-featured")
-    for (let check of checks) {
-        check.addEventListener("click", function () {
-            let url = this.getAttribute("data-url")
-            window.location.href = url
-        })
-    }
-</script>
+<script src="{% static 'products/js/products.js' %}"></script>
+<script src="{% static 'products/js/home_featured.js' %}"></script>
 {% endblock %}

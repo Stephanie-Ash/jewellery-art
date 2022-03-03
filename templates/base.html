@@ -302,32 +302,9 @@
     {% include 'includes/modals/faq_delete_modal.html' %}
     
 
-    <!-- Toast launch. -->
     {% block postloadjs %}
-    <script>
-        $('.toast').toast('show');
-    </script>
-
-    <!-- Modal launch -->
-    <script>
-        $('.delete-btn').click(function () {
-            let del_url = $(this).data('delete-url');
-            console.log(del_url)
-            if (del_url.includes('review')) {
-                $('#review-delete').attr('href', del_url);
-                $('#review-delete-modal').modal();
-            } else if (del_url.includes('designer')) {
-                $('#designer-delete').attr('href', del_url);
-                $('#designer-delete-modal').modal();
-            } else if (del_url.includes('product')) {
-                $('#product-delete').attr('href', del_url);
-                $('#product-delete-modal').modal();
-            } else if (del_url.includes('faq')) {
-                $('#faq-delete').attr('href', del_url);
-                $('#faq-delete-modal').modal();
-            }
-        })
-    </script>
+    <!-- Additional post load javascript -->
+    <script src="{% static 'js/script.js' %}"></script>
     {% endblock %}
 
 </body>

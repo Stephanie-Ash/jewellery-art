@@ -1,3 +1,4 @@
+// Set the coulour of the country box based on value selected
 let countrySelected = $('#id_default_country').val();
 if(!countrySelected) {
     $('#id_default_country').css('color', '#6d7a82');
