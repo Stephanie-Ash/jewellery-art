@@ -125,6 +125,7 @@ class StripeWH_Handler:
                     original_basket=basket,
                     stripe_pid=pid,
                 )
+                # Iterate through basket items to add lineitems
                 for item_id, quantity in json.loads(basket).items():
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderLineItem(

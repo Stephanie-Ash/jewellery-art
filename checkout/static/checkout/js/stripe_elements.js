@@ -70,7 +70,9 @@ form.addEventListener('submit', function(ev) {
         }
         let url = '/checkout/cache_checkout_data/'
 
+        // Cache checkout data to add basket, user and save infor to intent
         $.post(url, postData).done(function() {
+            // Submit to stripe
             stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card,
@@ -100,6 +102,7 @@ form.addEventListener('submit', function(ev) {
                     }
                 },
             }).then(function(result) {
+                // If unsuccessful display errors
                 if (result.error) {
                     let errorDiv = document.getElementById('card-errors');
                     let html = `
@@ -113,6 +116,7 @@ form.addEventListener('submit', function(ev) {
                     card.update({'disabled': false});
                     $('#submit-button').attr('disabled', false);
                 } else {
+                    // If successful, submit form
                     if (result.paymentIntent.status === 'succeeded') {
                         form.submit();
                     }
