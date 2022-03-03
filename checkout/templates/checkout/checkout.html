@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+    <!-- Stripe payment processing -->
+    <script defer src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{% endblock %}
+
 {% block extra_title %}Checkout{% endblock %}
 
 {% block content %}
@@ -138,6 +143,4 @@
 <!-- Provide variables to stripe_elements.js file -->
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
-<!-- Stripe payment processing -->
-<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
