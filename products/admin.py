@@ -8,8 +8,9 @@ class CategoryAdmin(admin.ModelAdmin):
     """
     Admin options for the Category model.
     """
-    list_display = ('name', 'programmatic_name')
+    list_display = ('name',)
     ordering = ('name',)
+    search_fields = ('name',)
 
 
 @admin.register(Product)
@@ -18,8 +19,9 @@ class ProductAdmin(admin.ModelAdmin):
     Admin options for the Product model.
     """
     list_display = (
-        'sku', 'name', 'category', 'collection', 'designer', 'price', 'image')
+        'sku', 'name', 'category', 'collection', 'designer', 'price')
     ordering = ('sku',)
+    search_fields = ('name', 'description')
 
 
 @admin.register(Review)

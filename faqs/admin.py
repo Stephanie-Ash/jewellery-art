@@ -8,4 +8,5 @@ class FAQAdmin(admin.ModelAdmin):
     """
     Admin options for the FAQ model.
     """
-    list_display = ('question', 'answer')
+    list_display = ('category', 'question', 'answer')
+    ordering = ('category',)

@@ -8,8 +8,9 @@ class DesignerAdmin(admin.ModelAdmin):
     """
     Admin options for the Designer model.
     """
-    list_display = ('name', 'phone_number', 'email', 'image')
+    list_display = ('name', 'phone_number', 'email')
     ordering = ('name',)
+    search_fields = ('name',)
 
 
 @admin.register(Collection)
@@ -17,5 +18,6 @@ class CollectionAdmin(admin.ModelAdmin):
     """
     Admin options for the Collection model.
     """
-    list_display = ('name', 'programmatic_name', 'designer')
+    list_display = ('name', 'designer')
     ordering = ('name',)
+    search_fields = ('name',)
