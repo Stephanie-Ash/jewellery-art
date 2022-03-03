@@ -22,28 +22,29 @@ $(".collapse").on('hidden.bs.collapse', function () {
 let productInventory = $('#id_product_inventory').text();
 let productId = $('#id_product_id').text();
 let addQuantity = document.getElementById(`id_qty_${productId}`);
-    let addButton = document.getElementById("add-to-basket-btn");
-    let stock = parseInt(productInventory);
-    addQuantity.addEventListener('change', function () {
-        // Disable the add to basket button when quantity greater than inventory
-        // Already disabled in the html when inventory 0
-        if (stock > 0 && this.value > stock) {
-            addButton.setAttribute("aria-disabled", "true");
-            document.getElementById("stock-notification").innerHTML = `Only ${stock} left in stock.`;
-        } else if (stock > 0 && this.value <= stock) {
-            // Reenable button when quantity less or equal to stock
-            addButton.removeAttribute("aria-disabled");
-            document.getElementById("stock-notification").innerHTML = ''
-        }
-    })
+let addButton = document.getElementById("add-to-basket-btn");
+let stock = parseInt(productInventory);
+addQuantity.addEventListener('change', function () {
+    // Disable the add to basket button when quantity greater than inventory
+    // Already disabled in the html when inventory 0
+    if (stock > 0 && this.value > stock) {
+        addButton.setAttribute("aria-disabled", "true");
+        document.getElementById("stock-notification").innerHTML = `Only ${stock} left in stock.`;
+    } else if (stock > 0 && this.value <= stock) {
+        // Reenable button when quantity less or equal to stock
+        addButton.removeAttribute("aria-disabled");
+        document.getElementById("stock-notification").innerHTML = ''
+    }
+})
 
-    // Prevent low stock product from being added to basket on pressing enter
-    addQuantity.addEventListener('keydown', function (event) {
-        if (event.key === "Enter") {
-            if (addButton.hasAttribute("aria-disabled")) {
-                event.preventDefault();
-            } else if (stock > 0 && this.value > stock) {
-                event.preventDefault();
-            }
+// Prevent low stock product from being added to basket on pressing enter
+addQuantity.addEventListener('keydown', function (event) {
+    if (event.key === "Enter") {
+        if (addButton.hasAttribute("aria-disabled")) {
+            event.preventDefault();
+        } else if (stock > 0 && this.value > stock) {
+            document.getElementById("stock-notification").innerHTML = `Only ${stock} left in stock.`;
+            event.preventDefault();
         }
-    })
+    }
+})
