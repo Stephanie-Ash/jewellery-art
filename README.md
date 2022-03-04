@@ -183,3 +183,48 @@ Two additional models providing general information for the site user or store o
 
 * **ContactMessage** - stores a site user message submitted through the contact form.
 * **FAQ** - stores FAQ questions and answers that the store owner has added to the site.
+
+## Features
+
+### Existing Features
+
+#### Navigation Bar
+
+* The navigation bar is found on all pages and allows the user to easily navigate to the important parts of the site without using the browser navigation buttons.
+* It is identical on all pages making it easy for the user to locate.
+* The jewellery dropdown menu lists categorised filter options making it easy for the user to navigate to the jewellery they are most interested in.
+* The My Account dropdown contains different options depending on user status quickly alerting the user as to whether or not they are logged in. It also contains extra options only visible to the store owner.
+* The basket icon indicates how many items it contains making it easy for the user to keep track of what they have added
+* The menu collapses to a toggler on smaller screens whilst leaving the account, search and basket links in the navbar allowing for easy navigation across all devices.
+
+![Navigation Bar](docs/screenshots/navigation-bar.jpg)
+
+#### Footer
+
+* The footer provides links to the social media sites of the store, offering other ways to engage with the store. These links could help attract more customers through shares from existing customers.
+* The footer also provides navigation to all the important parts of the site including the Contact Form, FAQ page and privacy policy.
+
+![The Footer](docs/screenshots/footer.jpg)
+
+#### Homepage Header
+
+* The top of the home page shows an image of one of the most striking products attracting the users attention and straight away alerting them that the site stocks more unusual artisting jewellery. 
+* On larger screens the heading text is displayed on a background of paint brush strokes again evoking the idea of jewellery as an art form.
+* A prominent Shop Now button is found below the heading making it easy for the user to quickly browse the products available.
+
+![Homepage header](docs/screenshots/homepage-header.jpg)
+
+#### Homepage Information sections
+
+* The homepage information sections provide users with an idea of the ethos of the store and its focus on artistic jewellery design and designer collaboration.
+* The dividing image of jewellery making also enforces the idea of small scale handmade jewellery production.
+
+![Homepage Information Sections](docs/screenshots/homepage-information-sections.jpg)
+
+#### Homepage Top Picks
+
+* The homepage top picks section is populated by the Products with the homepage_featured field set to true.
+* Up to four featured products are displayed with a random selection chosen if more than four homepage_featured products have been selected.
+* It allows the store owen to promote their most interesting products and try to entice users to browse further.
+
+![Homepage Top Picks](docs/screenshots/homepage-top-picks.jpg)
