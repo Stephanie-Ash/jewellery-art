@@ -249,3 +249,19 @@ Two additional models providing general information for the site user or store o
 * A review form is displayed in the review section for registered users who have purchased the product making it easy for the user to leave a review.
 
 ![Product Detail Page](docs/screenshots/product-detail-page.jpg)
+
+#### Designers and Designer Detail Pages
+
+* The designers and designer detail pages allow the store owner to promote the designers who create the jewellery products.
+* These pages backup the idea that the store supports unique independent design.
+* The designer detail page showcases products by that specific designer encouraging the user to purchase more pieces by their favourite designer.
+
+![Designer Detail Page](docs/screenshots/designer-detail-page.jpg)
+
+#### Basket Page
+
+* The basket page provides a summary of the items in the basket and the total prices.
+* The user has the ability to update or remove items in the basket making it easy for them to make their final purchasing decisions.
+* The country box allows the user to select their delivery country and so calculate the delivery cost. This allows the store owner to offer free delivery to the UK.
+
+![Basket Page](docs/screenshots/basket-page.jpg)
