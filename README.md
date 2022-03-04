@@ -298,3 +298,16 @@ Two additional models providing general information for the site user or store o
 * The manage contact messages page makes it easy for the store owner to keep track of the messages from their customers with the response required flag quickly alerting them to those which have not yet been dealt with.
 
 ![Manage Contact Messages Page](docs/screenshots/manage-contact-messages-page.jpg)
+
+#### The Admin Panel
+
+* The admin panel gives the store owner further control over the site and allows them to access to model objects not available elsewhere, particularly the orders.
+
+### Possible Future Features
+
+* The ability for the site owner to add new jewellery collections on the designer pages or when adding or editing a designer.
+* A way for the store owner to quickly update the inventory of multiple products at a time.
+* Store owner approval on product reviews.
+* The ability for the site owner to link products such as matching earrings and necklaces etc to populate a 'Pairs With' section on the product detail page.
+* Dedicated order tracking page with the orders possibly linked to additional shipping models so that the site user can keep track of when orders have been processed and shipped.
+* Jewellery making workshop pages where customers can book places on jewellery making classes run by the designers and add them to their basket for payment.
