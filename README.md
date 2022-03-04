@@ -135,3 +135,14 @@ The site is designed to attract the users attention and be simple to use thus al
 
 * The Wireframes can be viewed using the links below:
     * [Homepage](docs/wireframes/homepage-wireframes.pdf)
+    * [Products Page](docs/wireframes/products-page-wireframes.pdf)
+    * [Product Detail Page](docs/wireframes/product-detail-page-wireframes.pdf)
+    * [Designers Page](docs/wireframes/designers-page-wireframes.pdf)
+    * [Designer Detail Page](docs/wireframes/designer-detail-page-wireframes.pdf)
+    * [Basket Page](docs/wireframes/basket-page-wireframes.pdf)
+    * [Checkout Page](docs/wireframes/checkout-page-wireframes.pdf)
+    * [Checkout Success Page](docs/wireframes/checkout-success-page-wireframes.pdf)
+    * [Profile Page](docs/wireframes/profile-page-wireframes.pdf)
+    * [Contact Page](docs/wireframes/contact-page-wireframes.pdf)
+
+In the course of creating the site some of the layout was tweaked to better fit the different screen sizes. This is particularly true of the footer and checkout success page. The method of selecting the delivery country for price calculation was established during the creation of the site and so an extra country select box was added to the basket page. An FAQ page is also included in the site however a wireframe was not created for this page.
