@@ -317,3 +317,30 @@ Although this approach was useful when it came to ensuring all functionality was
 * The ability for the site owner to link products such as matching earrings and necklaces etc to populate a 'Pairs With' section on the product detail page.
 * Dedicated order tracking page with the orders possibly linked to additional shipping models so that the site user can keep track of when orders have been processed and shipped.
 * Jewellery making workshop pages where customers can book places on jewellery making classes run by the designers and add them to their basket for payment.
+
+## Technologies Used
+
+### Languages Used
+* [HTML5](https://en.wikipedia.org/wiki/HTML5), [CSS3](https://en.wikipedia.org/wiki/CSS), [JavaScript](https://en.wikipedia.org/wiki/JavaScript), [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+### Frameworks, Libraries & Programs Used
+
+* [Django](https://www.djangoproject.com/) is the MVC framework used to create the site.
+* [Django Allauth](https://django-allauth.readthedocs.io/en/latest/index.html) has been used to set up user authentication on the site.
+* [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) has been used to add bootstrap styling to the forms used.
+* [Django Countries](https://pypi.org/project/django-countries/) has been used for the delivery country CountryField.
+* [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/) has been used to assist with the styling of the site and particularly the responsiveness.
+* [Hover.css](https://ianlunn.github.io/Hover/) has been used to apply colour change to links and buttons when hovered over.
+* [jQuery](https://jquery.com/) has been used for some of the Bootstrap components and also in some of the custom JS used throughout the site.
+* [Google Fonts](https://fonts.google.com/) has been used for the Open Sans font used throughout the site.
+* [Font Awesome](https://fontawesome.com/) has been used for all the icons on the site.
+* [TinyPNG](https://tinypng.com/) and [Compressor](https://compressor.io/) have been used to compress the images used on the site with Microsoft PowerPoint used to cut them to size.
+* [Mailchimp](https://mailchimp.com/) has been used to create the newsletter signup form.
+* [Facebook Pages](https://www.facebook.com/pages/) has been used to create the Facebook Business Page linked to from the site.
+* [Stripe](https://stripe.com/gb) has been used for the processing of payments.
+* [Heroku](https://www.heroku.com) has been used to deploy the site.
+* [Gunicorn](https://gunicorn.org/) has been used as the server to run Django on Heroku.
+* [Amazon AWS](https://aws.amazon.com/) has been used to store the static and media files for the site.
+* [PostgresSQL](https://www.postgresql.org/) has been used as the database for the site.
+* [Git](https://git-scm.com/) has been used for version control by using the Gitpod terminal to commit and push code to GitHub.
+* [Github](https://github.com/) has been used to store the project's code.
