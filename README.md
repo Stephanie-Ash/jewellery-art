@@ -194,6 +194,7 @@ Two additional models providing general information for the site user or store o
 * It is identical on all pages making it easy for the user to locate.
 * The jewellery dropdown menu lists categorised filter options making it easy for the user to navigate to the jewellery they are most interested in.
 * The My Account dropdown contains different options depending on user status quickly alerting the user as to whether or not they are logged in. It also contains extra options only visible to the store owner.
+* Only anonymous users can access the sign up or login pages and only logged in users can acces the profile or logout pages.
 * The basket icon indicates how many items it contains making it easy for the user to keep track of what they have added
 * The menu collapses to a toggler on smaller screens whilst leaving the account, search and basket links in the navbar allowing for easy navigation across all devices.
 
@@ -265,3 +266,35 @@ Two additional models providing general information for the site user or store o
 * The country box allows the user to select their delivery country and so calculate the delivery cost. This allows the store owner to offer free delivery to the UK.
 
 ![Basket Page](docs/screenshots/basket-page.jpg)
+
+#### Checkout Page
+
+* It is possible to purchase from the store as a guest or registered user.
+* Before an anonymous user is taken to the checkout page, they are taken to the login or guest page. This gives them the option of guest checkout and also provides reasons for why they may wish to register for an account.
+* The checkout page consists of a simple form making it quick and easy for the user to checkout.
+* The page shows a summary of the basket items and totals ensuring that the user knows exactly what they are purchasing.
+* An inventory check is carried out before any payment is processed ensuring that the customer does not purchase out of stock items.
+
+![Checkout Page](docs/screenshots/checkout-page.jpg)
+
+#### Checkout Success Page
+
+* A checkout success page is loaded when the order has been processed ensuring that the user is informed if their purchase was successful.
+* An email of the order confirmation is also sent to the user.
+* The emailed order confirmation is sent event if the user closes the page before the checkout success page can load to ensure that the user is aware that they have made a purchase.
+
+#### Profile Page
+
+* The profile page provides an easy way for a registered user to keep track of their order history and update their default delivery details.
+* Product reviews that the user has created are also listed and it is easy for them to edit or delete these or add further reviews.
+
+![Profile Page](docs/screenshots/profile-page.jpg)
+
+#### Contact Messages and FAQs
+
+* The contact form and FAQs page provide the store owner with additional ways to provide information to their customers.
+* The store user can easily add an FAQ via the add FAQ page and these will straight away be displayed for the customers on the site.
+* The contact form provides a way for a site user to communicate directly with the store owner.
+* The manage contact messages page makes it easy for the store owner to keep track of the messages from their customers with the response required flag quickly alerting them to those which have not yet been dealt with.
+
+![Manage Contact Messages Page](docs/screenshots/manage-contact-messages-page.jpg)
