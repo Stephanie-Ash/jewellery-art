@@ -228,3 +228,24 @@ Two additional models providing general information for the site user or store o
 * It allows the store owen to promote their most interesting products and try to entice users to browse further.
 
 ![Homepage Top Picks](docs/screenshots/homepage-top-picks.jpg)
+
+#### Products Page
+
+* The products page displays a list of product cards for the user, the products displayed depends upon the filters or search the user may have selected.
+* The black border around the images gives the impression of framed art work tying in with the store ethos of jewellery as art.
+* Out of stock labels are displayed on out of stock products and the add to basket functionality is disabled ensuring tha users do not try to purchase unavailable products.
+* The page heading indicates the filter or search that has been applied and how many products are displayed making it easy for the user to know what they are looking at.
+* The sort box makes it easy for the user to sort the products to their liking.
+* Links are provided at the top to the all products or different category pages making navigation for the user even easier.
+* Additional Edit, Delete, Homepage Featured Select and Inventory Update options are displayed on this page when the superuser is logged in.
+
+![Products Page](docs/screenshots/products-page.jpg)
+
+#### Product Detail Page
+
+* The product detail page provides additional information about the products.
+* The details accordion allows the user to pick and chose the information they want to display and keeps the page from getting too long.
+* The also by designer section entices the user by suggesting other products by the same designer.
+* A review form is displayed in the review section for registered users who have purchased the product making it easy for the user to leave a review.
+
+![Product Detail Page](docs/screenshots/product-detail-page.jpg)
