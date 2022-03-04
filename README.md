@@ -146,3 +146,14 @@ The site is designed to attract the users attention and be simple to use thus al
     * [Contact Page](docs/wireframes/contact-page-wireframes.pdf)
 
 In the course of creating the site some of the layout was tweaked to better fit the different screen sizes. This is particularly true of the footer and checkout success page. The method of selecting the delivery country for price calculation was established during the creation of the site and so an extra country select box was added to the basket page. An FAQ page is also included in the site however a wireframe was not created for this page.
+
+#### Colour Scheme
+
+A monochromatic colour scheme of various shades of grey was chosen for the site in order to not distract from the jewellery products which should be the main source of attention. [Coolor](https://coolors.co/) was used to assist with the colour selection.
+
+![Colour Scheme](docs/screenshots/colour-scheme.png)
+
+### Models and Database Schema
+
+![Database Schema](docs/screenshots/database-schema.jpg)
+
