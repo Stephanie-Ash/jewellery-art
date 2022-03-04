@@ -39,7 +39,7 @@ Email marketing will also be a useful way to market the site and turn interested
 
 ### Search Engine Optimisation
 
-Research has been carried out on keywords associated with sites such as this with the aim of improving SEO. An initial search using Google and Wordtracker of general keywords such as 'Jewelllery' or categories such as 'Necklaces' has lead to the conclusion that although these words get a lot of hits, there is also a lot of competition. The sites that they bring up in a search engine are also for the more traditional gold and precious stone jewellery which are not the focus of this site. Further searches found that a more targeted approach combining jewellery with words such as Art and similar reduced the competition and resulted in sites similar to this such as Tatty Devine coming up in the search engines. Specifying the specific materials of the jewellery i.e. 'Acrylic Jewelley' also appears to be a successful approach. From this research a list of keywords including jewelley art, artistic jewellery, jewellery for artists, contemporary handmade jewellery, unusual or unique jewellery, UK jewellery designers have been selected.
+Research has been carried out on keywords associated with sites such as this with the aim of improving SEO. An initial search using Google and Wordtracker of general keywords such as 'Jewellery' or categories such as 'Necklaces' has lead to the conclusion that although these words get a lot of hits, there is also a lot of competition. The sites that they bring up in a search engine are also for the more traditional gold and precious stone jewellery which are not the focus of this site. Further searches found that a more targeted approach combining jewellery with words such as Art and similar reduced the competition and resulted in sites similar to this such as Tatty Devine coming up in the search engines. Specifying the specific materials of the jewellery i.e. 'Acrylic Jewelley' also appears to be a successful approach. From this research a list of keywords including jewelley art, artistic jewellery, jewellery for artists, contemporary handmade jewellery, unusual or unique jewellery, original handmade jewellery, UK jewellery designers have been selected.
 
 The researched keywords have been included in the meta keywords and description in the base.html page and have been used to select the name of the site. The Jewellery Art name has also been included in the site title with important keywords also included in this title on key pages such as the index and products pages.
 
@@ -55,7 +55,7 @@ All these considerations would hopefully improve the SEO of the site however as 
 
 ### User Stories
 
-* ### As a site user:
+* #### As a site user:
 
     **General**
     * I can quickly understand what the site is offering so that I can decide if it meets my needs.
@@ -70,7 +70,7 @@ All these considerations would hopefully improve the SEO of the site however as 
     **Account Registration and Login**
     * I can easily register for an account so that I can have a personal account to store my information.
 
-* ### As a registered user:
+* #### As a registered user:
 
     **Account Registration and Login**
     * I can receive a confirmation email after registering so that I can confirm that my account email address is correct.
@@ -81,7 +81,7 @@ All these considerations would hopefully improve the SEO of the site however as 
     * I can save my delivery details to my profile so that I can quickly checkout in future.
     * I can add reviews on the products I have purchased so that I can let the store owner and other customers know what I think of the products.
 
-* ### As a Shopper:
+* #### As a Shopper:
 
     **Viewing Products**
     * I can quickly view a list of products so that I can browse what is available.
@@ -114,7 +114,7 @@ All these considerations would hopefully improve the SEO of the site however as 
     * I can view an order confirmation after checkout so that I can ensure that the purchase is as expected.
     * I can receive a confirmation email of my purchase so that I can keep it for my records.
 
-* ### As a store owner:
+* #### As a store owner:
 
     **Admin and Store Management**
     * I can add questions to the frequently asked question section of my site so that I can answer common questions from my customers.
@@ -126,4 +126,12 @@ All these considerations would hopefully improve the SEO of the site however as 
     * I can edit a designer so that I can change the information about them.
     * I can delete a designer so that remove designers that are no longer featured in the store.
     * I can view customer contact forms so that I can respond to them.
-    
+
+### Design
+
+#### Wireframes
+
+The site is designed to attract the users attention and be simple to use thus allowing a customer to quickly find and purchase products of interest. Wireframes for desktop, tablet and mobile views were created to help plan the layout of the site:
+
+* The Wireframes can be viewed using the links below:
+    * [Homepage](docs/wireframes/homepage-wireframes.pdf)
