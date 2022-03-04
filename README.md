@@ -47,4 +47,83 @@ The homepage has also been designed with SEO in mind. The site title and some of
 
 ![Homepage Headings](docs/screenshots/homepage-headings.jpg)
 
-The text sections on the homepage also contain some of the keywords with the important ones within strong tags. Links have been provided to other authoritative sites such as the Association for Contemporary Jewellery and Jewellery Focus. All these considerations would hopefully improve the SEO of the site however as acknowledged previously it is catering to a fairly niche market and a marketing strategy as described above will all be key in bringing customers to the site.
+The text sections on the homepage also contain some of the keywords with the important ones within strong tags. Links have been provided to other authoritative sites such as the Association for Contemporary Jewellery and Jewellery Focus. One further thing to note when in comes to SEO is the spelling of jewellery which is different in the USA (jewelry). Research has suggested that the spelling used should not affect the SEO but it is recommended that the spelling most appropriate to the customer base should be selected. In this case, with a UK based company it is jewellery.
+
+All these considerations would hopefully improve the SEO of the site however as acknowledged previously it is catering to a fairly niche market and a marketing strategy as described above will all be key in bringing customers to the site.
+
+## Planning
+
+### User Stories
+
+* ### As a site user:
+
+    **General**
+    * I can quickly understand what the site is offering so that I can decide if it meets my needs.
+    * I can sign up for a newsletter so I can be kept informed of new products and offers.
+    * I can browse frequently asked questions so that I can get answers to my queries.
+    * I can fill in a contact form so that I can send a query to the store owner.
+
+    **Viewing Designers**
+    * I can view a list of the featured designers so that I can see who makes the jewellery.
+    * I can view details of the individual designers so that I can learn more about them and see which products they have designed.
+
+    **Account Registration and Login**
+    * I can easily register for an account so that I can have a personal account to store my information.
+
+* ### As a registered user:
+
+    **Account Registration and Login**
+    * I can receive a confirmation email after registering so that I can confirm that my account email address is correct.
+    * I can easily login or logout or my account so that I can quickly access my account information.
+
+    **User Profiles**
+    * I can have a personalised user profile so that I can keep track of my order history.
+    * I can save my delivery details to my profile so that I can quickly checkout in future.
+    * I can add reviews on the products I have purchased so that I can let the store owner and other customers know what I think of the products.
+
+* ### As a Shopper:
+
+    **Viewing Products**
+    * I can quickly view a list of products so that I can browse what is available.
+    * I can view details of the individual products so that I can find out more information about them.
+    * I can be informed if a product is out of stock so that I do not purchase unavailable products.
+
+    **Product Filtering**
+    * I can select products to view based on categories so that I can narrow down on the products I am interested in.
+    * I can select products to view based on designers so that I can find products from my favourite designer.
+    * I can select products to view based on collections so that I can see which products go together.
+    * I can easily see the category selected so that I know what products I am looking at.
+    * I can easily see the number of products in a particular filter so that I know how many are available.
+
+    **Product Sorting and Searching**
+    * I can sort the products I am viewing so that I can order them in a way most useful to me.
+    * I can search the available products based on name or description so that I can quickly find what I am looking for.
+    * I can easily see the search made so that I know which products I am looking at.
+    * I can easily see the number of products in a particular search so that I know how many are available.
+
+    **Basket**
+    * I can easily add a product to the shopping basket so that I can purchase it.
+    * I can easily select the quantity of the product I am purchasing so that I can be sure I am buying the right amount.
+    * I can see how many products are in my basket whilst browsing so that I can keep track of what I am purchasing.
+    * I can view the items in my basket so that I can see what I am purchasing and the total cost.
+    * I can adjust or remove items in the basket so that I can easily make changes before checkout.
+
+    **Checkout**
+    * I can easily enter my delivery and payment information so that I can checkout quickly with little difficulty.
+    * I can be informed if a purchase is successful or unsuccessful so that I can be sure that I will receive my items and do not accidentally make a purchase twice.
+    * I can view an order confirmation after checkout so that I can ensure that the purchase is as expected.
+    * I can receive a confirmation email of my purchase so that I can keep it for my records.
+
+* ### As a store owner:
+
+    **Admin and Store Management**
+    * I can add questions to the frequently asked question section of my site so that I can answer common questions from my customers.
+    * I can add a product so that I can add new items to my store.
+    * I can edit a product so that I can change the information about it.
+    * I can delete a product so that I can remove items that are no longer for sale.
+    * I can set or update the inventory of a product so that I can only sell products that are available.
+    * I can add a designer so that I can add new designers and their products to my store.
+    * I can edit a designer so that I can change the information about them.
+    * I can delete a designer so that remove designers that are no longer featured in the store.
+    * I can view customer contact forms so that I can respond to them.
+    
