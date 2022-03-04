@@ -184,6 +184,12 @@ Two additional models providing general information for the site user or store o
 * **ContactMessage** - stores a site user message submitted through the contact form.
 * **FAQ** - stores FAQ questions and answers that the store owner has added to the site.
 
+### Agile Workflow
+
+A basic agile strategy has been used when planning and implementing the functionality of this project. The project user stories have been added to github as issues and selected user stories moved to milestones for two week iterations which have been tracked on a projet Kanban board. The user stories for each iteration have been separated into Must Have, Should Have and Could Have categories.
+
+Although this approach was useful when it came to ensuring all functionality was implemented, for this project the time required to complete the user stories was somewhat overestimated. The Must Have stories were often completed in the first week with all Should Have and Could Have stories completed by the end of the iteration. More time spent accurately estimating story points for each user story would be beneficial in the future.
+
 ## Features
 
 ### Existing Features
