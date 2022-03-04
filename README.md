@@ -149,11 +149,37 @@ In the course of creating the site some of the layout was tweaked to better fit 
 
 #### Colour Scheme
 
-A monochromatic colour scheme of various shades of grey was chosen for the site in order to not distract from the jewellery products which should be the main source of attention. [Coolor](https://coolors.co/) was used to assist with the colour selection.
-
 ![Colour Scheme](docs/screenshots/colour-scheme.png)
+
+A monochromatic colour scheme of various shades of grey was chosen for the site in order to not distract from the jewellery products which should be the main source of attention. [Coolor](https://coolors.co/) was used to assist with the colour selection.
 
 ### Models and Database Schema
 
 ![Database Schema](docs/screenshots/database-schema.jpg)
 
+Two relational databases were used to create the site. The built in Django SQLite database was used for development and then Postgres for the deployed version. The site is based around a number of models separated into the following four main groups.
+
+#### User Models
+
+* **User** - the Django Allauth user model containing information such as username and password.
+* **UserProfile** - stores a users default delivery information and is connected to the User via a one to one relationship.
+
+#### Designer Models
+
+* **Designer** - stores the details of a jewellery designer including social media links.
+* **Collection** - stores details of a collection of a designers jewellery and is connected to the Designer via a foreign key relationship.
+
+#### Product Models
+
+* **Category** - strores the details of a product category.
+* **Product** - stores all the details about a product for sale. Connected to the Designer, Collection and Category objects via foreign key relationships.
+* **Review** - stores a user review of a product and is connected to the Product and UserProfiles by foreign key relationships.
+
+#### Order Models
+* **Order** - stores the full order information and is connected to the UserProfile via a foreign key relationship.
+* **OrderLineItem** - stores the product information for a single product purchased on an order. Connected to the Product and Order via foreign key relationships.
+
+Two additional models providing general information for the site user or store owner have also been used.
+
+* **ContactMessage** - stores a site user message submitted through the contact form.
+* **FAQ** - stores FAQ questions and answers that the store owner has added to the site.
