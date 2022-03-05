@@ -8,6 +8,57 @@ This is an example project not built for real credit card transactions. To test 
 
 ![Site Mockup](docs/screenshots/site-mockup.jpg)
 
+## Table of Contents
+
+- [Business Strategy](#business-strategy)
+  * [Site Goals](#site-goals)
+    + [Site Owners Goals:](#site-owners-goals)
+    + [External Users Goals:](#external-users-goals)
+  * [Business Model](#business-model)
+  * [Web Marketing](#web-marketing)
+  * [Search Engine Optimisation](#search-engine-optimisation)
+- [Planning](#planning)
+  * [User Stories](#user-stories)
+    + [As a site user:](#as-a-site-user)
+    + [As a registered user:](#as-a-registered-user)
+    + [As a Shopper:](#as-a-shopper)
+    + [As a store owner:](#as-a-store-owner)
+  * [Design](#design)
+    + [Wireframes](#wireframes)
+    + [Colour Scheme](#colour-scheme)
+  * [Models and Database Schema](#models-and-database-schema)
+    + [User Models](#user-models)
+    + [Designer Models](#designer-models)
+    + [Product Models](#product-models)
+    + [Order Models](#order-models)
+  * [Agile Workflow](#agile-workflow)
+- [Features](#features)
+  * [Existing Features](#existing-features)
+    + [Navigation Bar](#navigation-bar)
+    + [Footer](#footer)
+    + [Homepage Header](#homepage-header)
+    + [Homepage Information sections](#homepage-information-sections)
+    + [Homepage Top Picks](#homepage-top-picks)
+    + [Products Page](#products-page)
+    + [Product Detail Page](#product-detail-page)
+    + [Designers and Designer Detail Pages](#designers-and-designer-detail-pages)
+    + [Basket Page](#basket-page)
+    + [Checkout Page](#checkout-page)
+    + [Checkout Success Page](#checkout-success-page)
+    + [Profile Page](#profile-page)
+    + [Contact Messages and FAQs](#contact-messages-and-faqs)
+    + [The Admin Panel](#the-admin-panel)
+  * [Possible Future Features](#possible-future-features)
+- [Technologies Used](#technologies-used)
+  * [Languages Used](#languages-used)
+  * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
+  * [Code](#code)
+  * [Media](#media)
+  * [Other](#other)
+
 ## Business Strategy
 
 ### Site Goals
@@ -396,3 +447,4 @@ The project has been deployed to Heroku. Detail of the steps taken to deploy the
 * The wireframes for the project were created using [Balsamiq](https://balsamiq.com/wireframes/desktop/).
 * The database schema was created using [Quick Database Diagrams](https://www.quickdatabasediagrams.com/).
 * The mockup of the website in the README.md was created using [Am I Responsive?](http://ami.responsivedesign.is/).
+* The README.md table of contents was created using [Markdown TOC](https://ecotrust-canada.github.io/markdown-toc/).
