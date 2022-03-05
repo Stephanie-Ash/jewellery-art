@@ -210,9 +210,9 @@
 * In the terminal add, commit and push all changes.
 
 #### Deploying the App
-    * In Heroku select the deploy tab from the menu at the top.
-    * Select GitHub as the deployment method and browse and connect to the correct repository.
-    * Under manual deploy select the main branch and the select deploy branch.
+* In Heroku select the deploy tab from the menu at the top.
+* Select GitHub as the deployment method and browse and connect to the correct repository.
+* Under manual deploy select the main branch and the select deploy branch.
 
 ### Forking the GitHub Repository
 
@@ -221,4 +221,17 @@ The following steps can be used to fork the GitHub repository:
 * The 'Fork' button can be found on the top righthand side of the screen.
 * Click the button to create a copy of the original repository.
 
-### Add cloning section?
+### Making a Local Clone
+
+The following steps can be used to run the project locally:
+* On GitHub navigate to the main page of the repository.
+* Above the list of folders and files select Code and in the HTTPS section copy the URL.
+* Open Git Bash.
+* Using the cd command change the current working directory to the location required for the cloned directory.
+* Type git clone and paste in the copied url and press Enter to create the local clone.
+* All the packages listed in the requirements will need to bw installed:
+    ```
+    pip install -r requirements.txt
+    ```
+* An env.py file listing the required environment variables (see above) will also be required.
+
