@@ -1,6 +1,6 @@
 # Jewellery Art
 
-Jewellery Art is an online store that allows users to buy contemporary handmade jewellery. It has a focus towards comtemporary artistic jewellery design and also provides information about and promotes the designers who create the jewellery.
+Jewellery Art is an online store that allows users to buy contemporary handmade jewellery. It has a focus towards unusual artistic jewellery design and also provides information about and promotes the designers who create the jewellery.
 
 This is an example project not built for real credit card transactions. To test the functionalilty use the test card number 4242 4242 4242 4242 with any expiry date in the future, any 3 number CVC and a 5 number zip code.
 
@@ -25,13 +25,13 @@ The general goal of the site is to allow users to find and easily purchase jewel
 
 ### Business Model
 
-Jewellery Art is based around a traditional B2C (Business to Customer) model and sells jewellery products to the customer using a single payment system. The products are sourced from various jewellery designers partnered with the site. The focus of the site on jewellery design and designers means that there is also the potential to expand into providing services such as jewellery making classes or perhaps bespoke jewellery design services. These would still likely be single payment purchase rather than subscription services.
+Jewellery Art is based around a traditional B2C (Business to Customer) model and sells jewellery products to the customer using a single payment system. The products are sourced from various jewellery designers partnered with the site. The focus of the site on jewellery design and designers means that there is also the potential to expand into providing services such as jewellery making classes or perhaps bespoke jewellery design services. These would still likely be single payment purchases rather than subscription services.
 
 ### Web Marketing
 
 There is quite a lot of competition in the jewellery market with a high volume of sites focusing on more traditional jewellery, often made of gold or including precious stones. Jewellery Art focuses on the more unusual artistic pieces often found in art gallery shops. There is less competition in this area but it is also more of a niche market with a smaller customer base. Marketing and particularly web marketing would therefore be essential to increase traffic to the site.
 
-Social media marketing is likely to be key in attracting people and building a customer base. An organic approach is likely to be the best starting point when building up interest as the marketing budget would likely be low at the beginning. Potential customers are likely to be artistic themselves or interested in art. This type of person is often active on Instagram and so marketing on this platform would be a must. The image focussed site is likely the suit the business due to the striking products being sold. Most of the designers featured on the site are also likely to be active on social media and so a collaborative social medial marketing approach would be possible increasing the audience. Competitors in this area such as Tatty Devine or Wolf and Moon also target, Facebook and Twitter and these sites should also be utilised. With marketing in mind a Facebook business page has been created and linked to in the site footer. It can be viewed [here](https://www.facebook.com/Jewellery-Art-104568275512777/). If the site is no longer available an image can be found [here](docs/screenshots/facebook-page.jpg).
+Social media marketing is likely to be key in attracting people and building a customer base. An organic approach is likely to be the best starting point when building up interest as the marketing budget would likely be low at the beginning. Potential customers are likely to be artistic themselves or interested in art. This type of person is often active on Instagram and so marketing on this platform would be a must. The image focussed site is likely the suit the business due to the striking products being sold. Most of the designers featured on the site are also likely to be active on social media and so a collaborative social medial marketing approach would be possible increasing the audience. Competitors in this area such as Tatty Devine or Wolf and Moon also target, Facebook, Twitter and Pinterest and these sites could also be utilised. With marketing in mind a Facebook business page has been created and linked to in the site footer. It can be viewed [here](https://www.facebook.com/Jewellery-Art-104568275512777/). If the site is no longer available an image can be found [here](docs/screenshots/facebook-page.jpg).
 
 As sites like this tend to attract artistic people it is not unusual for them to also provide creative jewellery making classes and this would be a great way to attact more customers and make some extra money. These could be promoted on social media and YouTube with videos giving a taster of what is on offer.
 
@@ -39,17 +39,19 @@ Email marketing will also be a useful way to market the site and turn interested
 
 ### Search Engine Optimisation
 
-Research has been carried out on keywords associated with sites such as this with the aim of improving SEO. An initial search using Google and Wordtracker of general keywords such as 'Jewellery' or categories such as 'Necklaces' has lead to the conclusion that although these words get a lot of hits, there is also a lot of competition. The sites that they bring up in a search engine are also for the more traditional gold and precious stone jewellery which are not the focus of this site. Further searches found that a more targeted approach combining jewellery with words such as Art and similar reduced the competition and resulted in sites similar to this such as Tatty Devine coming up in the search engines. Specifying the specific materials of the jewellery i.e. 'Acrylic Jewelley' also appears to be a successful approach. From this research a list of keywords including jewelley art, artistic jewellery, jewellery for artists, contemporary handmade jewellery, unusual or unique jewellery, original handmade jewellery, UK jewellery designers have been selected.
+Research has been carried out on keywords associated with sites such as this with the aim of improving SEO. An initial search using Google and Wordtracker of general keywords such as 'Jewellery' or categories such as 'Necklaces' has lead to the conclusion that although these words get a lot of hits, there is also a lot of competition. The sites that they bring up in a search engine are also for the more traditional gold and precious stone jewellery which are not the focus of this site. Further searches found that a more targeted approach combining jewellery with words such as Art and similar reduced the competition and resulted in sites similar to this such as Tatty Devine coming up in the search engines. Specifying the specific materials of the jewellery i.e. 'Acrylic Jewelley' also appears to be a successful approach. In addition to this Google research suggests that people searching for jewellery also specify a location such as UK and so mentioning the UK based designers could be of benefit. From this research a list of keywords including jewelley art, artistic jewellery, jewellery for artists, contemporary handmade jewellery, unusual or unique jewellery, original handmade jewellery, acrylic jewellery, silver jewellery and UK jewellery designers have been selected.
 
-The researched keywords have been included in the meta keywords and description in the base.html page and have been used to select the name of the site. The Jewellery Art name has also been included in the site title with important keywords also included in this title on key pages such as the index and products pages.
+The researched keywords have been included in the meta keywords and description in the base.html page and have been used to select the name of the site. The Jewellery Art name has been included in the site title with important keywords also included in this title on key pages such as the index and products pages.
 
 The homepage has also been designed with SEO in mind. The site title and some of the selected keywords have been included in the most important h1 and h2 headings.
 
 ![Homepage Headings](docs/screenshots/homepage-headings.jpg)
 
-The text sections on the homepage also contain some of the keywords with the important ones within strong tags. Links have been provided to other authoritative sites such as the Association for Contemporary Jewellery and Jewellery Focus. One further thing to note when in comes to SEO is the spelling of jewellery which is different in the USA (jewelry). Research has suggested that the spelling used should not affect the SEO but it is recommended that the spelling most appropriate to the customer base should be selected. In this case, with a UK based company it is jewellery.
+The text sections on the homepage also contain some of the keywords with the important ones within strong tags. Links have been provided to other authoritative sites such as the Association for Contemporary Jewellery and Jewellery Focus. A sitemap.xml and robots.txt file have also been included for SEO purposes.
 
-All these considerations would hopefully improve the SEO of the site however as acknowledged previously it is catering to a fairly niche market and a marketing strategy as described above will all be key in bringing customers to the site.
+One further thing to note when it comes to SEO is the spelling of jewellery which is different in the USA (jewelry). Research has suggested that the spelling used should not affect the SEO but it is recommended that the spelling most appropriate to the customer base should be selected. In this case, with a UK based company it is jewellery.
+
+All these considerations would hopefully improve the SEO of the site however as acknowledged previously it is catering to a fairly niche market and a marketing strategy as described above will also be key in bringing customers to the site.
 
 ## Planning
 
@@ -74,7 +76,7 @@ All these considerations would hopefully improve the SEO of the site however as 
 
     **Account Registration and Login**
     * I can receive a confirmation email after registering so that I can confirm that my account email address is correct.
-    * I can easily login or logout or my account so that I can quickly access my account information.
+    * I can easily login or logout of my account so that I can quickly access my account information.
 
     **User Profiles**
     * I can have a personalised user profile so that I can keep track of my order history.
@@ -145,7 +147,7 @@ The site is designed to attract the users attention and be simple to use thus al
     * [Profile Page](docs/wireframes/profile-page-wireframes.pdf)
     * [Contact Page](docs/wireframes/contact-page-wireframes.pdf)
 
-In the course of creating the site some of the layout was tweaked to better fit the different screen sizes. This is particularly true of the footer and checkout success page. The method of selecting the delivery country for price calculation was established during the creation of the site and so an extra country select box was added to the basket page. An FAQ page is also included in the site however a wireframe was not created for this page.
+In the course of creating the site some of the layout was tweaked to better fit the different screen sizes. This is particularly true of the footer and checkout success page. The method of selecting the delivery country for delivery price calculation was established during the creation of the site and so an extra country select box was added to the basket page. An FAQ page is also included in the site however a wireframe was not created for this page.
 
 #### Colour Scheme
 
@@ -173,7 +175,7 @@ Two relational databases were used to create the site. The built in Django SQLit
 
 * **Category** - strores the details of a product category.
 * **Product** - stores all the details about a product for sale. Connected to the Designer, Collection and Category objects via foreign key relationships.
-* **Review** - stores a user review of a product and is connected to the Product and UserProfiles by foreign key relationships.
+* **Review** - stores a user review of a product and is connected to the Product and UserProfile by foreign key relationships.
 
 #### Order Models
 * **Order** - stores the full order information and is connected to the UserProfile via a foreign key relationship.
@@ -201,7 +203,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * The jewellery dropdown menu lists categorised filter options making it easy for the user to navigate to the jewellery they are most interested in.
 * The My Account dropdown contains different options depending on user status quickly alerting the user as to whether or not they are logged in. It also contains extra options only visible to the store owner.
 * Only anonymous users can access the sign up or login pages and only logged in users can acces the profile or logout pages.
-* The basket icon indicates how many items it contains making it easy for the user to keep track of what they have added
+* The basket icon indicates how many items it contains making it easy for the user to keep track of what they have added.
 * The menu collapses to a toggler on smaller screens whilst leaving the account, search and basket links in the navbar allowing for easy navigation across all devices.
 
 ![Navigation Bar](docs/screenshots/navigation-bar.jpg)
@@ -215,7 +217,7 @@ Although this approach was useful when it came to ensuring all functionality was
 
 #### Homepage Header
 
-* The top of the home page shows an image of one of the most striking products attracting the users attention and straight away alerting them that the site stocks more unusual artisting jewellery. 
+* The top of the home page shows an image of one of the most striking products attracting the users attention and straight away alerting them to the fact that the site stocks more unusual artistic jewellery. 
 * On larger screens the heading text is displayed on a background of paint brush strokes again evoking the idea of jewellery as an art form.
 * A prominent Shop Now button is found below the heading making it easy for the user to quickly browse the products available.
 
@@ -232,15 +234,15 @@ Although this approach was useful when it came to ensuring all functionality was
 
 * The homepage top picks section is populated by the Products with the homepage_featured field set to true.
 * Up to four featured products are displayed with a random selection chosen if more than four homepage_featured products have been selected.
-* It allows the store owen to promote their most interesting products and try to entice users to browse further.
+* It allows the store owner to promote their most interesting products and try to entice users to browse further.
 
 ![Homepage Top Picks](docs/screenshots/homepage-top-picks.jpg)
 
 #### Products Page
 
 * The products page displays a list of product cards for the user, the products displayed depends upon the filters or search the user may have selected.
-* The black border around the images gives the impression of framed art work tying in with the store ethos of jewellery as art.
-* Out of stock labels are displayed on out of stock products and the add to basket functionality is disabled ensuring tha users do not try to purchase unavailable products.
+* The black border around the images gives the impression of framed art works tying in with the store ethos of jewellery as art.
+* Out of stock labels are displayed on out of stock products ensuring that users do not try to purchase unavailable products.
 * The page heading indicates the filter or search that has been applied and how many products are displayed making it easy for the user to know what they are looking at.
 * The sort box makes it easy for the user to sort the products to their liking.
 * Links are provided at the top to the all products or different category pages making navigation for the user even easier.
@@ -251,6 +253,7 @@ Although this approach was useful when it came to ensuring all functionality was
 #### Product Detail Page
 
 * The product detail page provides additional information about the products.
+* Out of stock labels are displayed on the product if out of stock and the add to basket functionality is disabled ensuring that users do not try to purchase unavailable products.
 * The details accordion allows the user to pick and chose the information they want to display and keeps the page from getting too long.
 * The also by designer section entices the user by suggesting other products by the same designer.
 * A review form is displayed in the review section for registered users who have purchased the product making it easy for the user to leave a review.
@@ -287,7 +290,7 @@ Although this approach was useful when it came to ensuring all functionality was
 
 * A checkout success page is loaded when the order has been processed ensuring that the user is informed if their purchase was successful.
 * An email of the order confirmation is also sent to the user.
-* The emailed order confirmation is sent event if the user closes the page before the checkout success page can load to ensure that the user is aware that they have made a purchase.
+* The emailed order confirmation is sent even if the user closes the page before the checkout success page can load to ensure that the user is aware that they have made a purchase.
 
 #### Profile Page
 
@@ -314,8 +317,8 @@ Although this approach was useful when it came to ensuring all functionality was
 * The ability for the site owner to add new jewellery collections on the designer pages or when adding or editing a designer.
 * A way for the store owner to quickly update the inventory of multiple products at a time.
 * Store owner approval on product reviews.
-* The ability for the site owner to link products such as matching earrings and necklaces etc to populate a 'Pairs With' section on the product detail page.
-* Dedicated order tracking page with the orders possibly linked to additional shipping models so that the site user can keep track of when orders have been processed and shipped.
+* The ability for the site owner to link products such as matching earrings and necklaces etc. to populate a 'Pairs With' section on the product detail page.
+* Dedicated order tracking page with the orders possibly linked to additional shipping models so that the site user can keep track of when orders have been made, processed and shipped.
 * Jewellery making workshop pages where customers can book places on jewellery making classes run by the designers and add them to their basket for payment.
 
 ## Technologies Used
@@ -351,222 +354,5 @@ The project has been thoroughly tested through both manual and automated testing
 
 ## Deployment
 
-The project has been deployed to Heroku. The following steps are used to deploy the site:
+The project has been deployed to Heroku. Detail of the steps taken to deploy the site can be found [here](DEPLOYMENT.md).
 
-### Deploying the Site
-
-#### Creating the Heroku App
-* On the Heroku dashboard at the top righthand side select the New button and then Create new app.
-* Give the app a name and select the most appropriate location then select create app.
-
-#### Configuring the Heroku App
-* From the menu at the top of the page select the Resources tab.
-* In the Add-ons box on the resources tab search for Postgres and select Heroku Postgres selecting the free plan before confirming.
-* From the menu at the top of the page select the settings tab.
-* Under Config Vars select Reveal Config Vars. The DATABASE_URL should already be listed.
-* Add any other required environment variables. Below is a list of those required for this project and if appropriate where they can be found.
-    * AWS_ACCESS_KEY_ID - AWS CSV file (see below)
-    * AWS_SECRET_ACCESS_KEY - AWS CSV file (see below)
-    * EMAIL_HOST_PASS - password provided by email client
-    * EMAIL_HOST_USER - sites email address
-    * SECRET_KEY - random key, can be generated online
-    * STRIPE_PUBLIC_KEY - on the Stripe dashboard developers tab under API keys
-    * STRIPE_SECRET_KEY - on the Stripe dashboard developers tab under API keys
-    * STRIPE_WH_SECRET - on the Stripe dashboard developers tab under Webhooks, the signing secret can be views when the specific endpoint is selected.
-    * USE_AWS - set to true when using AWS (see below)
-
-#### Setting up AWS
-
-**Creating the Bucket**
-* At the top of tha AWS Management Console search for and select 'S3'.
-* Click 'Create Bucket', give it a name associated with the Heroku app name and select the most appropriate location.
-* Under Object Ownership select 'ACLs enabled' and 'Bucket owner preferred'
-*  Untick 'Block all public access' and acknowledge this choice.
-* Then select 'Create Bucket'
-
-**Bucket Settings**
-* On the properties tab in the 'Static Website Hosting' option at the bottom select 'Use this bucket to host a website' and fill in some default index and error document values.
-* On the permissions tab in the Cross-origin resource sharing section paste in the following:
-    ```
-    [
-        {
-            "AllowedHeaders": [
-                "Authorization"
-            ],
-            "AllowedMethods": [
-                "GET"
-            ],
-            "AllowedOrigins": [
-                "*"
-            ],
-                "ExposeHeaders": []
-        }
-    ]
-
-    ```
-* In the bucket policy section on the permissions tab select 'Policy Generator' and select the following options in the generator page:
-    * Policy type - S3 Bucket Policy
-    * Add Statement(s) - Pricipal: *, Actions: GetObject, ARN: copy from bucket policy section.
-    * Select 'Add Statement' then 'Generate Policy' copy the policy and paste into the bucket policy editor adding /* to the end of the resource key.
-* In the 'Access Control List' section on the permissions tab click edit and enable 'List' for 'Everyone'.
-
-**Identity and Access Management (IAM)**
-* In the services search box search for and select IAM.
-* On the sidebar select User Groups and Create Group. Choose a name associated with the S3 Bucket name and select Create Group.
-* On the sidebar select Policies and Create Policy.
-* Go to the JSON tab and select import managed policy and select and import AmazonS3FullAccess.
-* Paste the bucket policy ARN from the s3 Bucket policy page into a list in the resource option (see below):
-    ```
-    "Resource": [
-        "{PASTED ARN}",
-        "{PASTED ARN}/*"
-    [
-    ```
-* Click Next them Review policy giving it a name and description before selecting create policy.
-* In the sidebar select User Groups. Select the group just created.
-* On the permissions tab open the Add permissions dropdown and click Attach policies.
-* Select the policy and click Add permissions at the bottom.
-* On the sidebar select Users then Add user give it a name and select 'Programmatic access' for the 'Access Type' option.
-* Select next and add the user to the recently created group.
-* Click through to the end and select Create User.
-* Download and save the CSV file.
-
-#### Configuring the Django Settings
-* In the workspace terminal install the Gunicorn web server:
-    ```
-    pip3 install gunicorn
-    ```
-* In the workspace terminal install the libraries required by the database:
-    ```
-    pip3 install dj_database_url psycopg2
-    ```
-* In the workspace terminal install boto3 for the AWS configuration:
-    ```
-    pip3 install boto3
-    ```
-* In the workspace terminal install django storages for the AWS configuration:
-    ```
-    pip3 install django-storages
-    ```
-* Add the installs to the requirements.txt file
-    ```
-    pip3 freeze --local > requirements.txt
-    ```
-* Add storages to the INSTALLED_APPS in the Django settings file.
-* Create an env.py file in the top level of the directory and add the environment variables to the file.
-* At the top of the django settings file import os and import dj_database_url.
-* At the top of the django settings file add the following if statement to use the env.py file in the development environment:
-    ```
-    if os.path.isfile('env.py'):
-    import env
-    ````
-* Add the database to databases section in the Django settings file keeping the original database details for development:
-    ```
-    if 'DATABASE_URL' in os.environ:
-        DATABASES = {
-            'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-        }
-    else:
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': BASE_DIR / 'db.sqlite3',
-            }
-        }
-    ```
-* Replace the SECRET_KEY setting in the Django settings file with:
-    ```
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    ```
-* Migrate the models to the database ensuring that the 'DATABASE_URL' variable is in the env file for the migrations:
-    ```
-    python3 manage.py makemigrations
-    ```
-    ```
-    python3 manage.py migrate
-    ```
-* To create model objects from JSON fixtures files in the workspace terminal:
-    ```
-    python3 manage.py loaddata filename.json
-    ```
-* Create a superuser for the app:
-    ```
-    python3 manage.py createsuperuser
-    ```
-* Add the Heroku Hostname to the ALLOWED_HOSTS setting in the Django settings file:
-    ```
-    ALLOWED_HOSTS = ['the-pizza-oven.herokuapp.com', 'localhost']
-    ```
-* Set DEBUG to False except for in development in the settings file:
-    ```
-        DEBUG = 'DEVELOPMENT' in os.environ
-    ```
-* Add a Procfile containing the following code in the top level of the directory:
-    ```
-    web: gunicorn jewellery_art.wsgi
-    ```
-* For AWS add the following settings to the settings file:
-    ```
-    if 'USE_AWS' in os.environ:
-        # Bucket Config
-        AWS_STORAGE_BUCKET_NAME = 'jewellery-art'
-        AWS_S3_REGION_NAME = 'eu-west-2'
-        AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-        AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-        AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-
-        # Static and media files
-        STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-        STATICFILES_LOCATION = 'static'
-        DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-        MEDIAFILES_LOCATION = 'media'
-
-        # Override static and media URLs in production
-        STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-        MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-    ```
-* Add a custom_storages.py file to the top level of the directory with the following code:
-    ```
-    """ Custom storages for AWS file storage. """
-    from django.conf import settings
-    from storages.backends.s3boto3 import S3Boto3Storage
-
-
-    class StaticStorage(S3Boto3Storage):
-        """ Custom static file storage location. """
-        location = settings.STATICFILES_LOCATION
-
-
-    class MediaStorage(S3Boto3Storage):
-        """ Custom media file storage location. """
-        location = settings.MEDIAFILES_LOCATION
-    ```
-* To set-up the site to send email add the following settings to the settings file (settings based on gmail acocunt):
-    ```
-    if 'DEVELOPMENT' in os.environ:
-        EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-        DEFAULT_FROM_EMAIL = 'jewellery-art@example.com'
-    else:
-        EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-        EMAIL_USE_TLS = True
-        EMAIL_PORT = 587
-        EMAIL_HOST = 'smtp.gmail.com'
-        EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-        EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
-        DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-    ```
-* In the terminal add, commit and push all changes.
-
-#### Deploying the App
-    * In Heroku select the deploy tab from the menu at the top.
-    * Select GitHub as the deployment method and browse and connect to the correct repository.
-    * Under manual deploy select the main branch and the select deploy branch.
-
-### Forking the GitHub Repository
-
-The following steps can be used to fork the GitHub repository:
-* On GitHub navigate to the main page of the repository.
-* The 'Fork' button can be found on the top righthand side of the screen.
-* Click the button to create a copy of the original repository.
-
-### Add cloning section?
