@@ -356,3 +356,43 @@ The project has been thoroughly tested through both manual and automated testing
 
 The project has been deployed to Heroku. Detail of the steps taken to deploy the site can be found [here](DEPLOYMENT.md).
 
+## Credits
+
+### Code
+
+* A lot of the initial functionalilty for the site was taken from the Code Institute **Boutique Ado** walkthrough project and adapted and added to as required.
+* The code institute **Hello Django** and **I Think Therefore I Blog** walkthroughs were also consulted.
+* The following stack overflow threads were used for assistance:
+    * Assistance with creating a full width Navbar dropdown menu was found [here](https://stackoverflow.com/questions/49659305/).
+    * Information in centering an absolutely positioned div inside another div was found [here](https://stackoverflow.com/questions/34741593/).
+    * Assistance with Django custom template tags was found [here](https://stackoverflow.com/questions/7954011/).
+    * Assistance with establishing the original size of a displayed image was found [here](https://stackoverflow.com/questions/1944280/).
+    * Information on how to set the HTTP_REFERER value in Django testing was found [here](https://stackoverflow.com/questions/11801946/).
+    * Information on an alternative way to get messages in testing was found [here](https://stackoverflow.com/questions/16143149/).
+    * Information on how to get the request object in Django testing was found [here](https://stackoverflow.com/questions/10277748/).
+    * Information on how to solve a transaction management error whilst testing was found [here](https://stackoverflow.com/questions/21458387/)
+* Further assistance and information was taken from the following:
+    * Information on how to remove duplicates from a Python list was found [here](https://www.w3schools.com/python/python_howto_remove_duplicates.asp).
+    * Assistance with setting the aspect ratio for displayed images was found [here](https://css-irl.info/aspect-ratio-is-great/).
+    * This [guide](https://realpython.com/django-redirects/) was used for assistance with Django redirects.
+    * This Code Institute [Slack post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605222094452700) was used to fix a bug with the checkout Save Info checkbox.
+
+### Media
+
+* The image of designer Lucas Finch was taken by Christian Buehner and found on [Unsplash](https://unsplash.com/photos/DItYlc26zVI).
+* The image of designer Emily Richardson was taken by Rachel McDermott and found on [Unsplash](https://unsplash.com/photos/0fN7Fxv1eWA).
+* The image of designer Meredith Chambers was taken by RF._.studio and found on [Pexels](https://www.pexels.com/photo/pensive-elderly-woman-in-eyeglasses-and-trendy-bomber-3867213/).
+* The image of designer Monique Godfrey was taken by Prince Akachi and found on [Unsplash](https://unsplash.com/photos/J1OScm_uHUQ).
+* The image of designer Antonne Brooks was taken by Ant Miner and found on [Unsplash](https://unsplash.com/photos/VK48kub0ibk).
+* The image of designer Gabriela Lopez was taken by Raamin Ka and found on [Unsplash](https://unsplash.com/photos/0qJBEzudn5E).
+* The brush strokes homepage background image was taken by Steve Johnson and found on [Unsplash](https://unsplash.com/).
+* The homepage jewellery making image was taken by firemystery and found on [Pixabay](https://pixabay.com/).
+* The image of Rachel Clark and all of the images of her jewellery were used with the permission of Rachel. In a ideal world she would have photographed all the jewellery for a much more stylish feel!
+* All other jewellery images were taken by myself using my mother's jewellery from various sources including the [Tate](https://shop.tate.org.uk/jewellery) and [Love Dazzle](https://www.lovedazzle.com/).
+
+### Other
+
+* The Code Institute [template](https://github.com/Code-Institute-Org/gitpod-full-template) was used to make the project repository on GitHub.
+* The wireframes for the project were created using [Balsamiq](https://balsamiq.com/wireframes/desktop/).
+* The database schema was created using [Quick Database Diagrams](https://www.quickdatabasediagrams.com/).
+* The mockup of the website in the README.md was created using [Am I Responsive?](http://ami.responsivedesign.is/).
