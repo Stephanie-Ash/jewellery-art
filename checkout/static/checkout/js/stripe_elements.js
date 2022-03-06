@@ -51,11 +51,11 @@ form.addEventListener('submit', function(ev) {
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
 
-    let invUrl = '/checkout/update_inventory/'
+    let invUrl = '/checkout/update_inventory/';
     let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     let invPostData = {
         'csrfmiddlewaretoken': csrfToken,
-    }
+    };
 
     // First run an inventory check
     $.post(invUrl, invPostData).done(function() {
@@ -67,8 +67,8 @@ form.addEventListener('submit', function(ev) {
             'csrfmiddlewaretoken': csrfToken,
             'client_secret': clientSecret,
             'save_info': saveInfo,
-        }
-        let url = '/checkout/cache_checkout_data/'
+        };
+        let url = '/checkout/cache_checkout_data/';
 
         // Cache checkout data to add basket, user and save infor to intent
         $.post(url, postData).done(function() {
@@ -125,9 +125,9 @@ form.addEventListener('submit', function(ev) {
         }).fail(function() {
             // just reload the page, the error will be in django messages
             location.reload();
-        })
+        });
     }).fail(function() {
         // just reload the page, the error will be in django messages
         location.reload();
-    })    
+    });
 });

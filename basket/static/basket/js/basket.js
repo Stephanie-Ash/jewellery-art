@@ -1,14 +1,14 @@
 // Scroll to top of page on back to top button click event.
 let toTopButton = document.getElementById("to-top-link");
 toTopButton.addEventListener("click", function () {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
 });
 
 // Update the quantity of product in the basket
 $('.update-link').click(function (e) {
     let form = $(this).next('.update-form');
     form.submit();
-})
+});
 
 // Remove product from basket
 $('.remove-item').click(function (e) {
@@ -23,10 +23,10 @@ $('.remove-item').click(function (e) {
         .done(function () {
             location.reload();
         });
-})
+});
 
 // Check stock on quantity update
-let quantityInputs = document.getElementsByClassName("qty-input")
+let quantityInputs = document.getElementsByClassName("qty-input");
 for (let input of quantityInputs) {
     input.addEventListener('change', function () {
         let form = this.parentNode.parentNode;
@@ -39,7 +39,7 @@ for (let input of quantityInputs) {
             // Enable update link if enough stock enabled
             updateLink.removeAttribute("aria-disabled");
         }
-    })
+    });
 
     // Prevent pressing enter from updating basket if not enough inventory
     input.addEventListener('keydown', function (event) {
@@ -53,7 +53,7 @@ for (let input of quantityInputs) {
                 event.preventDefault();
             }
         }
-    })
+    });
 }
 
 // Select delivery country
@@ -83,5 +83,5 @@ if (country) {
                 location.reload();
             });
         }
-    })
+    });
 }

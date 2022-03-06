@@ -3,7 +3,7 @@
 // Scroll to top of page on back to top button click event.
 let toTopButton = document.getElementById("to-top-link");
 toTopButton.addEventListener("click", function () {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
 });
 
 // Set the sorting url on the sort box change event.

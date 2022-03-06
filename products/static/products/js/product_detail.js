@@ -33,9 +33,9 @@ addQuantity.addEventListener('change', function () {
     } else if (stock > 0 && this.value <= stock) {
         // Reenable button when quantity less or equal to stock
         addButton.removeAttribute("aria-disabled");
-        document.getElementById("stock-notification").innerHTML = ''
+        document.getElementById("stock-notification").innerHTML = '';
     }
-})
+});
 
 // Prevent low stock product from being added to basket on pressing enter
 addQuantity.addEventListener('keydown', function (event) {
@@ -47,4 +47,4 @@ addQuantity.addEventListener('keydown', function (event) {
             event.preventDefault();
         }
     }
-})
+});
