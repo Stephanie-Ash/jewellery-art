@@ -73,7 +73,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- Dropdown search box -->
-                <li class="list-inline-item order-lg-2">
+                <div class="list-inline-item order-lg-2">
                     <a class="nav-link px-2" href="#" id="search" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <div class="text-center">
@@ -96,13 +96,14 @@
                             </div>
                         </form>
                     </div>
+                </div>
                 <!-- Logo home link displayed from 320px up in the centre on smaller screens and to the left on larger. -->
-                <li class="list-inline-item order-lg-1 logo-cont d-none">
+                <div class="list-inline-item order-lg-1 logo-cont d-none">
                     <a class="logo my-2" aria-label="Go to the Jewellery Art homepage" href="{% url 'home' %}"></a>
-                </li>
-                </li>
+                </div>
+                
                 <!-- Account link dropdown. -->
-                <li class="list-inline-item order-lg-4 dropdown account-dropdown">
+                <div class="list-inline-item order-lg-4 dropdown account-dropdown">
                     <a class="nav-link px-2" href="#" id="account-options" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <div class="text-center">
@@ -125,9 +126,9 @@
                             <a class="dropdown-item" href="{% url 'account_login' %}" aria-label="Login to your account">Login</a>
                         {% endif %}
                     </div>
-                </li>
+                </div>
                 <!-- Shopping basket link. -->
-                <li class="list-inline-item order-lg-5">
+                <div class="list-inline-item order-lg-5">
                     <a class="nav-link px-2" aria-label="Go to your shopping basket" href="{% url 'view_basket' %}">
                         <div class="text-center base-basket-parent">
                             <i class="fas fa-shopping-basket fa-lg"></i>
@@ -140,7 +141,7 @@
                             </p>
                         </div>
                     </a>
-                </li>
+                </div>
                 <!-- Main navigation, collapses to toggled menu on smaller screens. -->
                 <div class="collapse navbar-collapse order-lg-3" id="navbar-main">
                     <ul class="navbar-nav w-auto mx-auto">
