@@ -94,21 +94,20 @@
                     <p class="d-inline-block mb-0 mr-2"><strong>Date:</strong> {{ review.created_on|date:"j F Y" }}</p>
                     <p class="d-inline-block mb-0 mb-2"><strong>Product:</strong> {{ review.product.name }}</p>
                     <!-- Edit review form displayed when edit button clicked. Populated with review to edit -->
-                    <form class="edit-review-form" action="{% url 'edit_review' review.id %}" method="POST"
-                        id="review-form">
+                    <form class="edit-review-form" action="{% url 'edit_review' review.id %}" method="POST">
                         {% csrf_token %}
                         <fieldset class="order-fieldset">
                             <legend class="review-legend">Update Review</legend>
-                            <div id="div_id_name" class="form-group">
+                            <div id="div_id_name_{{ review.id }}" class="form-group">
                                 <div>
                                     <input type="text" name="name" maxlength="50" value="{{ review.name }}"
-                                        class="textinput textInput form-control" required id="id_name">
+                                        class="textinput textInput form-control" required id="id_name_{{ review.id }}">
                                 </div>
                             </div>
-                            <div id="div_id_body" class="form-group">
+                            <div id="div_id_body_{{ review.id }}" class="form-group">
                                 <div>
                                     <textarea name="body" cols="40" rows="10" placeholder="Write your review here."
-                                        class="textarea form-control" required id="id_body">{{ review.body }}</textarea>
+                                        class="textarea form-control" required id="id_body_{{ review.id }}">{{ review.body }}</textarea>
                                 </div>
                             </div>
                         </fieldset>
