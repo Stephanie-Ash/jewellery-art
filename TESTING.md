@@ -147,6 +147,171 @@ The site provides value to the user as a place that they can find different and 
 * The following warning was given on the designers.js file image check. This has been solved by moving the image check function out of the for loop.  
     * Functions declared within loops referencing an outer scoped variable may lead to confusing semantics.
 * No other errors have been found.
-* Python
-    * All Python files have been passed through the [PEP8 online](http://pep8online.com/) check with no errors flagged.
-    * The Gitpod built in linter has also been used throughout development to improve the Python code through the shortening of lines and addition of docstrings.
+
+#### Python
+
+* All non Django populated Python files have been passed through the [PEP8 online](http://pep8online.com/) check with no errors flagged.
+* The Gitpod built in linter has also been used throughout development to improve the Python code through the shortening of lines and addition of docstrings.
+
+### Python Automated Testing
+
+Automated testing on original Python code from all apps has been carried out using the Django testing framework. The following tests have been carried out:
+
+**Home App - Views**
+* The get index page and get privacy policy page views return a successful HTTP response and use the correct template.
+* The homepage featured products context always contains products up to a maximum of 4 products.
+
+**Home App - Results**
+* All tests passed.
+
+![Home App test results](docs/screenshots/home-test-results.jpg)
+
+**Products App - Models**
+* The Category, Product and Review models string methods return the expected strings.
+* The Category model programmatic_name field is generated and is as expected.
+* The Product homepage_featured field defaults to false.
+
+**Products App  - Forms**
+* The model required fields are required on the Product and Review form.
+* Unrequired fields are not required on the Product form.
+
+**Products App - Product Views**
+* The various get views return a successful HTTP response and use the correct templates.
+* The all_products view category, designer and collection filters and search option return the correct products.
+* The all_products view sort option orders the products correctly.
+* The product_detail view other products context contains the correct products and the purchased context contains the correct value.
+* The add_product, edit_product and delete_product views successfully add, edit and delete products and redirect to the correct page.
+* The toggle_homepage_feature view correctly changes the value of the homepage_featured field and redirects as expected.
+* The update_inventory review updates a product inventory and redirects as expected.
+* The superuser only areas correctly redirect other users.
+* Error messages are generated when the product form is not valid and when a get request is sent to the update_inventory view.
+
+**Products App - Review Views**
+* The add_review, edit_review and delete_review views successfully add, edit and delete reviews and redirect to the correct page.
+* Error messages are generated when the review form is not valid, when the user reviews a product they have not purchased or edits another user's review.
+* Error messages are generated when get requests are sent to post only views.
+
+**Products App - Results**
+* All tests passed.
+
+![Products App test results](docs/screenshots/products-test-results.jpg)
+
+**Designers App - Models**
+* The Designer and Collection models string methods return the expected strings.
+* The Designer and Collection model programmatic_name field is generated and is as expected.
+
+**Designers App  - Forms**
+* The model required fields are required on the Designer form.
+* Unrequired fields are not required on the Designer form.
+* The Designer model uneditable fields are not included in the Designer form field metaclass.
+
+**Designers App - Views**
+* The various get views return a successful HTTP response and use the correct templates.
+* The add_designer, edit_designer and delete_designer views successfully add, edit and delete designers and redirect to the correct page.
+* The superuser only areas correctly redirect other users.
+* Error messages are generated when the Designer form is not valid.
+
+**Designers App - Results**
+* All tests passed.
+
+![Designers App test results](docs/screenshots/designers-test-results.jpg)
+
+**Basket App - Views**
+* Get view basket page return a successful HTTP response and use the correct template.
+* The Country session variable is deleted on arrival at the basket page from a different page but preserved when reloading the basket page.
+* The Country session variable is set to the profile default country when available.
+* An error message is generated and items removed when arriving on the basket page with out of stock items in the basket.
+* the add_to_basket view adds items or updates items in the basket and redirects correctly.
+* The adjust_basket view adjusts items or deletes items in the basket.
+* The remove_from_basket view removes items from the basket.
+* The set_delivery_country view sets the delivery country in the session and the delivery price is updated accordingly.
+* Error messages are generated when out of stock items are added or adjusted in the basket.
+
+**Basket App - Results**
+* All tests passed.
+
+![Basket App test results](docs/screenshots/basket-test-results.jpg)
+
+**Checkout App - Models**
+* The Order and OrderLineItem models string methods return the expected strings.
+* The Order model order_number field is generated.
+* The various Order and OrderLineItem totals are generated.
+* The Order delivery cost is zero when there is no order total.
+
+**Checkout App  - Forms**
+* The model required fields are required on the Order form.
+* Unrequired fields are not required on the Order form.
+* Only Order model user editable fields are included in the form metaclass.
+
+**Checkout App - Views**
+* The various get views return a successful HTTP response and use the correct templates.
+* The login_or_guest view redirects logged in users.
+* Delivery information is saved to the profile when the save info box is ticked.
+* An error message is generated and the checkout view redirects when the basket is empty.
+* A warning message is generated on arriving at the checkout page if basket items are out of stock.
+* The correct Country value is selected on the order form for both registered and unregistered users.
+* An order can be created by the checkout view.
+* The update_inventory view updates the product inventory when the products are in stock and sends an error response when not.
+
+**Checkout App - Results**
+* All tests passed.
+
+![Checkout App test results](docs/screenshots/checkout-test-results.jpg)
+
+**Profiles App - Models**
+* The UserProfile model string methods return the expected string.
+
+**Profiles App  - Forms**
+* No fields are required on the UserProfileForm
+
+**Profiles App - Views**
+* The get profile page and get order history page views return a successful HTTP response and use the correct template.
+* The default delivery information can be updated in the profile view.
+* The is only one of each purchased product in the profile view purchased products context.
+* An error message is generated then the user profile form is not valid.
+
+**Profiles App - Results**
+* All tests passed.
+
+![Profiles App test results](docs/screenshots/profiles-test-results.jpg)
+
+**Contact App - Models**
+* The ContactMessage model string methods return the expected string.
+* The ContactMessage responded field defaults to false.
+
+**Contact App  - Forms**
+* The model required fields are required on the Contact form.
+* Unrequired fields are not required on the Contact form.
+* Only the Contact model user editable fields are included in the Contact form metaclass.
+
+**Contact App - Views**
+* The get contact page and manage contacts page views return a successful HTTP response and use the correct template.
+* A contact message can be added in the contact view.
+* The value of the responded field is changed in the toggle_responded view.
+* An error message is generated then the Contact form is not valid.
+* The superuser only area redirects other users.
+
+**Contact App - Results**
+* All tests passed.
+
+![Contact App test results](docs/screenshots/contact-test-results.jpg)
+
+**Faqs App - Models**
+* The FAQ model string methods return the expected string.
+
+**Faqs App  - Forms**
+* The model required fields are required on the FAQ form.
+
+**Faqs App - Views**
+* The get faq page, add faq page and edit faq page views return a successful HTTP response and use the correct template.
+* The add_faq, edit_faq and delete_faq views successfully add, edit and delete faqs and redirect to the correct page.
+* The superuser only areas correctly redirect other users.
+* Error messages are generated when the FAQ form is not valid.
+
+**Faqs App - Results**
+* All tests passed.
+
+![Faqs App test results](docs/screenshots/faqs-test-results.jpg)
+
+A coverage report of the tests for the whole project can be viewed [here](docs/coverage/coverage-report.pdf). Most of the site has been thoroughly tested in these automated tests however there is coverage lacking in the checkout app particularly for the webhook handler. As much as possible this area has been tested using manual tests.
+
