@@ -134,7 +134,7 @@ All these considerations would hopefully improve the SEO of the site however as 
     * I can save my delivery details to my profile so that I can quickly checkout in future.
     * I can add reviews on the products I have purchased so that I can let the store owner and other customers know what I think of the products.
 
-* #### As a Shopper:
+* #### As a shopper:
 
     **Viewing Products**
     * I can quickly view a list of products so that I can browse what is available.
