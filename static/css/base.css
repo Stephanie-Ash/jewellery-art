@@ -40,6 +40,10 @@ main {
     font-size: 18px;
 }
 
+.txt-small {
+    font-size: smaller;
+}
+
 .list-heading {
     font-weight: bold;
 }
