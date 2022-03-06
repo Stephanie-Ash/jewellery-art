@@ -315,3 +315,107 @@ Automated testing on original Python code from all apps has been carried out usi
 
 A coverage report of the tests for the whole project can be viewed [here](docs/coverage/coverage-report.pdf). Most of the site has been thoroughly tested in these automated tests however there is coverage lacking in the checkout app particularly for the webhook handler. As much as possible this area has been tested using manual tests.
 
+### Manual Testing
+
+Continuous manual testing was carried out throughout the development process with display or functionality errors corrected as they appeared. Detail of some of the manual testing is listed below. The testing has been carried out on both desktop and mobiles:
+
+**Navigation Bar**
+* All navigation bar links work correctly.
+* The navigation dropdown menus display correctly when selected and the dropdown links work correctly.
+* The registered user and superuser links only display when the correct users are logged in.
+
+**Footer**
+* The social media links take the user to the correct page and open in a new tab.
+* The in site links take the user to the correct page and are updated based on whether the user is logged in.
+
+**Homepage**
+* The Shop Now button takes the user to the correct page.
+* The text links take the user to the correct page and open in a new tab for external sites.
+* The Top Picks cards link to the correct product pages and are horizontally scrolled on mobiles.
+* The mailchimp form successfully signs the user up.
+
+**Products Page**
+* The popular category links at the top of the page filter the products correctly.
+* The sort box works correctly and the options update based on filtering.
+* The products card links take the user to the correct product page.
+* Out of stock badges are displayed when the products are out of stock.
+* The title updates based on the filter or search applied.
+* The back to top button works as expected.
+* The Edit and delete buttons are only visible to superusers and work as expected including modal launch on delete.
+* The featured box and update inventory forms are only visible to superusers and update the featured field or inventory as expected.
+
+**Product Detail Page**
+* The add to basket button adds a product to the basket and the keep shopping button directs the user to the products page.
+* The add to basket functionality is disabled for out of stock products or when the quantity is increased above the inventory.
+* The product information accordian works as expected with the arrows updating as appropriate.
+* The also by designer card links take the user to the appropriate product page and horizontally scroll on mobiles.
+* The featured edit and delete options are only visible to superusers and work as expected including modal launch for delete.
+
+**Designers Page**
+* The designer image links take the user to the correct designer page.
+* The back to top button works as expected.
+* The edit and delete options are only visible to superusers and work as expected including modal launch for delete.
+* A portrait designer image is displayed correctly.
+
+**Designer Detail Page**
+* The back to designers and shop now  buttons take the user to the correct pages.
+* The social media links take the user to the correct pages and open in a new tab.
+* The back to top button works as expected.
+* The pieces by product cards take the user to the correct product page.
+* The edit and delete buttons are only visible to superusers and work as expected including modal launch.
+* A review form is visible to registered users who have bought the product and adds a review when submitted.
+
+**Contact Page**
+* A message can be submitted using the form and an email summary of the message is sent to the user.
+
+**FAQs Page**
+* The answers are displayed undisplayed when the question is clicked.
+* The edit and delete buttons are only displayed to superusers and work as expected including modal launch.
+
+**Basket Page**
+* A message is generated and items are removed on arrival if items in the basket have not enough stock.
+* The basket item quantity can be updated or the item removed.
+* The update functionality is disabled for a quantity bigger than the inventory.
+* The delivery price is updated on selection of a delivery country.
+* The keep shopping and checkout buttons send the user to the correct page.
+
+**Login or Guest Page**
+* Displays when unlogged in users click the checkout button.
+* Login, Register or Continue buttons take the user to the correct pages.
+
+**Checkout Page**
+* A message is generated and items are remove on page arrival if items in the basket have not enough stock.
+* The edit basket button takes the user to the correct page.
+* The edit country button takes the user to the correct page.
+* The country select box is disabled.
+* Form validation notifications appear if fields are not completed.
+* On successful purchase the page redirects to the checkout success page and an email summary is sent.
+* The payment intent succeeded webhook responds correctly.
+* Default delivery details are saved to the profile when the save info box is ticked.
+* The payment does not complete and a warning message is generated when items with not enough stock are in the basket.
+* The order is created by the webhook if the window is closed before the form is submited
+
+**Profile Page**
+* The default address details are updated when the form is submitted.
+* The select product box only includes purchased products.
+* The add review button appears when a product is selected.
+* A review is created on form submit.
+* Reviews can be successfully edited and deleted.
+* The order number links take the user to the order confirmation.
+
+**Store Management Pages**
+* Products, designers and FAQs can all be successfully added to the site.
+* The responded flag can be successfully toggled on the contact message management page.
+
+**Accounts Pages**
+* Users are correctly registered, logged in or logged out on confirmation.
+* A confirmation email is sent to the user on registration.
+* Logged in users are redirected when entering the register or login url.
+
+**Message Toasts**
+* The basket items are only displayed on the success toast when products are added, updated or deleted from the basket.
+* Messages are generated for all major actions on the site.
+
+**Device and Browser Testing**
+* The site has been tested on the Google Chrome and Microsoft Edge browsers.
+* The sites responsiveness has been tested by friends and family members on various devices and also using the Chrome Developer tools.
