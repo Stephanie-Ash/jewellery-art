@@ -21,14 +21,6 @@ def view_basket(request):
                 stock and they have been removed from your basket: \
                     {", ".join([str(x) for x in [*out_of_stock]])}.')
 
-    # Identify whether basket accessed from different page or just refreshed
-    # Reset delivery country when accessed from different page
-    referring_page = request.META.get('HTTP_REFERER')
-    if referring_page:
-        if 'basket' not in referring_page:
-            if 'country' in request.session:
-                del request.session['country']
-
     country_code = request.session.get('country', '')
 
     # Set the country on the country form to the session country value

@@ -1,6 +1,5 @@
 """ Testcases for the basket app views. """
 from django.test import TestCase
-from django.test.client import Client
 from django.test.client import RequestFactory
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
@@ -12,8 +11,6 @@ from .contexts import basket_contents
 class TestViews(TestCase):
     """ Tests for the views. """
     def setUp(self):
-        self.client = Client(HTTP_REFERER='/products/')
-
         self.factory = RequestFactory()
 
         self.user = User.objects.create_user(
@@ -38,29 +35,15 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'basket/basket.html')
 
-    def test_country_deleted_from_session_on_basket_page(self):
+    def test_form_populated_by_session_country(self):
         """
-        Test that the country session variable is deleted on arriving at the
-        basket page from another page.
+        Test that the basket page delivery country select box is populated
+        by the session country value.
         """
-        session = self.client.session
-        session['country'] = 'GB'
-        session.save()
-        self.client.get('/basket/')
-        session = self.client.session
-        self.assertNotIn('country', session.keys())
-
-    def test_session_country_preserved_when_reloading_basket(self):
-        """
-        Test that the country session variable is preserved when reloading
-        the basket page.
-        """
-        self.client = Client(HTTP_REFERER='/basket/')
         session = self.client.session
         session['country'] = 'GB'
         session.save()
         response = self.client.get('/basket/')
-        self.assertEqual(session['country'], 'GB')
         self.assertEqual(response.context['form']['country'].value(), 'GB')
 
     def test_country_set_as_profile_default_country(self):
@@ -76,6 +59,9 @@ class TestViews(TestCase):
         self.assertEqual(country, 'GB')
 
         self.profile.delete()
+        session = self.client.session
+        del session['country']
+        session.save()
         self.client.get('/basket/')
         session = self.client.session
         self.assertNotIn('country', session.keys())
@@ -272,7 +258,6 @@ class TestViews(TestCase):
         Test that the delivery cost is set to zero when the country selected
         is GB and standard delivery otherwise.
         """
-        self.client = Client(HTTP_REFERER='/basket/')
         session = self.client.session
         session['basket'] = {
             self.product_two.id: 2,
