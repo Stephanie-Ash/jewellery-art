@@ -145,6 +145,7 @@ h3, h2, .h1-sm {
     border: 2px solid #dce4e8;
     padding: 5px;
     cursor: pointer;
+    z-index: 999;
 }
 
 .to-top-btn i:hover {
