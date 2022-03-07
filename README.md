@@ -6,7 +6,7 @@ This is an example project not built for real credit card transactions. To test 
 
 [The live site can be found here.](https://jewellery-art.herokuapp.com/)
 
-![Site Mockup](docs/screenshots/site-mockup.jpg)
+![Site Mockup](docs/screenshots/others/site-mockup.jpg)
 
 ## Table of Contents
 
@@ -82,7 +82,7 @@ Jewellery Art is based around a traditional B2C (Business to Customer) model and
 
 There is quite a lot of competition in the jewellery market with a high volume of sites focusing on more traditional jewellery, often made of gold or including precious stones. Jewellery Art focuses on the more unusual artistic pieces often found in art gallery shops. There is less competition in this area but it is also more of a niche market with a smaller customer base. Marketing and particularly web marketing would therefore be essential to increase traffic to the site.
 
-Social media marketing is likely to be key in attracting people and building a customer base. An organic approach is likely to be the best starting point when building up interest as the marketing budget would likely be low at the beginning. Potential customers are likely to be artistic themselves or interested in art. This type of person is often active on Instagram and so marketing on this platform would be a must. The image focussed site is likely the suit the business due to the striking products being sold. Most of the designers featured on the site are also likely to be active on social media and so a collaborative social medial marketing approach would be possible increasing the audience. Competitors in this area such as Tatty Devine or Wolf and Moon also target, Facebook, Twitter and Pinterest and these sites could also be utilised. With marketing in mind a Facebook business page has been created and linked to in the site footer. It can be viewed [here](https://www.facebook.com/jewelleryartuk/). If the site is no longer available an image can be found [here](docs/screenshots/facebook-page.jpg).
+Social media marketing is likely to be key in attracting people and building a customer base. An organic approach is likely to be the best starting point when building up interest as the marketing budget would likely be low at the beginning. Potential customers are likely to be artistic themselves or interested in art. This type of person is often active on Instagram and so marketing on this platform would be a must. The image focussed site is likely the suit the business due to the striking products being sold. Most of the designers featured on the site are also likely to be active on social media and so a collaborative social medial marketing approach would be possible increasing the audience. Competitors in this area such as Tatty Devine or Wolf and Moon also target, Facebook, Twitter and Pinterest and these sites could also be utilised. With marketing in mind a Facebook business page has been created and linked to in the site footer. It can be viewed [here](https://www.facebook.com/jewelleryartuk/). If the site is no longer available an image can be found [here](docs/screenshots/others/facebook-page.jpg).
 
 As sites like this tend to attract artistic people it is not unusual for them to also provide creative jewellery making classes and this would be a great way to attact more customers and make some extra money. These could be promoted on social media and YouTube with videos giving a taster of what is on offer.
 
@@ -96,7 +96,7 @@ The researched keywords have been included in the meta keywords and description 
 
 The homepage has also been designed with SEO in mind. The site title and some of the selected keywords have been included in the most important h1 and h2 headings.
 
-![Homepage Headings](docs/screenshots/homepage-headings.jpg)
+![Homepage Headings](docs/screenshots/others/homepage-headings.jpg)
 
 The text sections on the homepage also contain some of the keywords with the important ones within strong tags. Links have been provided to other authoritative sites such as the Association for Contemporary Jewellery and Jewellery Focus. A sitemap.xml and robots.txt file have also been included for SEO purposes.
 
@@ -202,13 +202,13 @@ In the course of creating the site some of the layout was tweaked to better fit 
 
 #### Colour Scheme
 
-![Colour Scheme](docs/screenshots/colour-scheme.png)
+![Colour Scheme](docs/screenshots/others/colour-scheme.png)
 
 A monochromatic colour scheme of various shades of grey was chosen for the site in order to not distract from the jewellery products which should be the main source of attention. [Coolor](https://coolors.co/) was used to assist with the colour selection.
 
 ### Models and Database Schema
 
-![Database Schema](docs/screenshots/database-schema.jpg)
+![Database Schema](docs/screenshots/others/database-schema.jpg)
 
 Two relational databases were used to create the site. The built in Django SQLite database was used for development and then Postgres for the deployed version. The site is based around a number of models separated into the following four main groups.
 
@@ -257,14 +257,14 @@ Although this approach was useful when it came to ensuring all functionality was
 * The basket icon indicates how many items it contains making it easy for the user to keep track of what they have added.
 * The menu collapses to a toggler on smaller screens whilst leaving the account, search and basket links in the navbar allowing for easy navigation across all devices.
 
-![Navigation Bar](docs/screenshots/navigation-bar.jpg)
+![Navigation Bar](docs/screenshots/features/navigation-bar.jpg)
 
 #### Footer
 
 * The footer provides links to the social media sites of the store, offering other ways to engage with the store. These links could help attract more customers through shares from existing customers.
 * The footer also provides navigation to all the important parts of the site including the Contact Form, FAQ page and privacy policy.
 
-![The Footer](docs/screenshots/footer.jpg)
+![The Footer](docs/screenshots/features/footer.jpg)
 
 #### Homepage Header
 
@@ -272,14 +272,14 @@ Although this approach was useful when it came to ensuring all functionality was
 * On larger screens the heading text is displayed on a background of paint brush strokes again evoking the idea of jewellery as an art form.
 * A prominent Shop Now button is found below the heading making it easy for the user to quickly browse the products available.
 
-![Homepage header](docs/screenshots/homepage-header.jpg)
+![Homepage header](docs/screenshots/features/homepage-header.jpg)
 
 #### Homepage Information sections
 
 * The homepage information sections provide users with an idea of the ethos of the store and its focus on artistic jewellery design and designer collaboration.
 * The dividing image of jewellery making also enforces the idea of small scale handmade jewellery production.
 
-![Homepage Information Sections](docs/screenshots/homepage-information-sections.jpg)
+![Homepage Information Sections](docs/screenshots/features/homepage-information-sections.jpg)
 
 #### Homepage Top Picks
 
@@ -287,7 +287,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * Up to four featured products are displayed with a random selection chosen if more than four homepage_featured products have been selected.
 * It allows the store owner to promote their most interesting products and try to entice users to browse further.
 
-![Homepage Top Picks](docs/screenshots/homepage-top-picks.jpg)
+![Homepage Top Picks](docs/screenshots/features/homepage-top-picks.jpg)
 
 #### Products Page
 
@@ -299,7 +299,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * Links are provided at the top to the all products or different category pages making navigation for the user even easier.
 * Additional Edit, Delete, Homepage Featured Select and Inventory Update options are displayed on this page when the superuser is logged in.
 
-![Products Page](docs/screenshots/products-page.jpg)
+![Products Page](docs/screenshots/features/products-page.jpg)
 
 #### Product Detail Page
 
@@ -309,7 +309,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * The also by designer section entices the user by suggesting other products by the same designer.
 * A review form is displayed in the review section for registered users who have purchased the product making it easy for the user to leave a review.
 
-![Product Detail Page](docs/screenshots/product-detail-page.jpg)
+![Product Detail Page](docs/screenshots/features/product-detail-page.jpg)
 
 #### Designers and Designer Detail Pages
 
@@ -317,7 +317,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * These pages backup the idea that the store supports unique independent design.
 * The designer detail page showcases products by that specific designer encouraging the user to purchase more pieces by their favourite designer.
 
-![Designer Detail Page](docs/screenshots/designer-detail-page.jpg)
+![Designer Detail Page](docs/screenshots/features/designer-detail-page.jpg)
 
 #### Basket Page
 
@@ -325,7 +325,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * The user has the ability to update or remove items in the basket making it easy for them to make their final purchasing decisions.
 * The country box allows the user to select their delivery country and so calculate the delivery cost. This allows the store owner to offer free delivery to the UK.
 
-![Basket Page](docs/screenshots/basket-page.jpg)
+![Basket Page](docs/screenshots/features/basket-page.jpg)
 
 #### Checkout Page
 
@@ -335,7 +335,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * The page shows a summary of the basket items and totals ensuring that the user knows exactly what they are purchasing.
 * An inventory check is carried out before any payment is processed ensuring that the customer does not purchase out of stock items.
 
-![Checkout Page](docs/screenshots/checkout-page.jpg)
+![Checkout Page](docs/screenshots/features/checkout-page.jpg)
 
 #### Checkout Success Page
 
@@ -348,7 +348,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * The profile page provides an easy way for a registered user to keep track of their order history and update their default delivery details.
 * Product reviews that the user has created are also listed and it is easy for them to edit or delete these or add further reviews.
 
-![Profile Page](docs/screenshots/profile-page.jpg)
+![Profile Page](docs/screenshots/features/profile-page.jpg)
 
 #### Contact Messages and FAQs
 
@@ -357,7 +357,7 @@ Although this approach was useful when it came to ensuring all functionality was
 * The contact form provides a way for a site user to communicate directly with the store owner.
 * The manage contact messages page makes it easy for the store owner to keep track of the messages from their customers with the response required flag quickly alerting them to those which have not yet been dealt with.
 
-![Manage Contact Messages Page](docs/screenshots/manage-contact-messages-page.jpg)
+![Manage Contact Messages Page](docs/screenshots/features/manage-contact-messages-page.jpg)
 
 #### The Admin Panel
 

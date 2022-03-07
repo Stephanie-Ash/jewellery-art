@@ -181,7 +181,7 @@ Automated testing on original Python code from all apps has been carried out usi
 **Home App - Results**
 * All tests passed.
 
-![Home App test results](docs/screenshots/home-test-results.jpg)
+![Home App test results](docs/screenshots/test-results/home-test-results.jpg)
 
 **Products App - Models**
 * The Category, Product and Review models string methods return the expected strings.
@@ -211,7 +211,7 @@ Automated testing on original Python code from all apps has been carried out usi
 **Products App - Results**
 * All tests passed.
 
-![Products App test results](docs/screenshots/products-test-results.jpg)
+![Products App test results](docs/screenshots/test-results/products-test-results.jpg)
 
 **Designers App - Models**
 * The Designer and Collection models string methods return the expected strings.
@@ -231,11 +231,11 @@ Automated testing on original Python code from all apps has been carried out usi
 **Designers App - Results**
 * All tests passed.
 
-![Designers App test results](docs/screenshots/designers-test-results.jpg)
+![Designers App test results](docs/screenshots/test-results/designers-test-results.jpg)
 
 **Basket App - Views**
 * Get view basket page return a successful HTTP response and use the correct template.
-* The Country session variable is deleted on arrival at the basket page from a different page but preserved when reloading the basket page.
+* The country select box is populated by the country session variable.
 * The Country session variable is set to the profile default country when available.
 * An error message is generated and items removed when arriving on the basket page with out of stock items in the basket.
 * the add_to_basket view adds items or updates items in the basket and redirects correctly.
@@ -247,7 +247,7 @@ Automated testing on original Python code from all apps has been carried out usi
 **Basket App - Results**
 * All tests passed.
 
-![Basket App test results](docs/screenshots/basket-test-results.jpg)
+![Basket App test results](docs/screenshots/test-results/basket-test-results.jpg)
 
 **Checkout App - Models**
 * The Order and OrderLineItem models string methods return the expected strings.
@@ -273,7 +273,7 @@ Automated testing on original Python code from all apps has been carried out usi
 **Checkout App - Results**
 * All tests passed.
 
-![Checkout App test results](docs/screenshots/checkout-test-results.jpg)
+![Checkout App test results](docs/screenshots/test-results/checkout-test-results.jpg)
 
 **Profiles App - Models**
 * The UserProfile model string methods return the expected string.
@@ -290,7 +290,7 @@ Automated testing on original Python code from all apps has been carried out usi
 **Profiles App - Results**
 * All tests passed.
 
-![Profiles App test results](docs/screenshots/profiles-test-results.jpg)
+![Profiles App test results](docs/screenshots/test-results/profiles-test-results.jpg)
 
 **Contact App - Models**
 * The ContactMessage model string methods return the expected string.
@@ -311,7 +311,7 @@ Automated testing on original Python code from all apps has been carried out usi
 **Contact App - Results**
 * All tests passed.
 
-![Contact App test results](docs/screenshots/contact-test-results.jpg)
+![Contact App test results](docs/screenshots/test-results/contact-test-results.jpg)
 
 **Faqs App - Models**
 * The FAQ model string methods return the expected string.
@@ -328,7 +328,7 @@ Automated testing on original Python code from all apps has been carried out usi
 **Faqs App - Results**
 * All tests passed.
 
-![Faqs App test results](docs/screenshots/faqs-test-results.jpg)
+![Faqs App test results](docs/screenshots/test-results/faqs-test-results.jpg)
 
 A coverage report of the tests for the whole project can be viewed [here](docs/coverage/coverage-report.pdf). Most of the site has been thoroughly tested in these automated tests however there is coverage lacking in the checkout app particularly for the webhook handler. As much as possible this area has been tested using manual tests.
 
