@@ -359,6 +359,7 @@ Continuous manual testing was carried out throughout the development process wit
 * The title updates based on the filter or search applied.
 * The Edit and delete buttons are only visible to superusers and work as expected including modal launch on delete.
 * The featured box and update inventory forms are only visible to superusers and update the featured field or inventory as expected.
+* The to top button works as expected.
 
 **Product Detail Page**
 * The add to basket button adds a product to the basket and the keep shopping button directs the user to the products page.
@@ -371,6 +372,7 @@ Continuous manual testing was carried out throughout the development process wit
 * The designer image links take the user to the correct designer page.
 * The edit and delete options are only visible to superusers and work as expected including modal launch for delete.
 * A portrait designer image is displayed correctly.
+* The to top button works as expected.
 
 **Designer Detail Page**
 * The back to designers and shop now  buttons take the user to the correct pages.
@@ -378,6 +380,7 @@ Continuous manual testing was carried out throughout the development process wit
 * The pieces by product cards take the user to the correct product page.
 * The edit and delete buttons are only visible to superusers and work as expected including modal launch.
 * A review form is visible to registered users who have bought the product and adds a review when submitted.
+* The to top button works as expected.
 
 **Contact Page**
 * A message can be submitted using the form and an email summary of the message is sent to the user.
@@ -392,6 +395,7 @@ Continuous manual testing was carried out throughout the development process wit
 * The update functionality is disabled for a quantity bigger than the inventory.
 * The delivery price is updated on selection of a delivery country.
 * The keep shopping and checkout buttons send the user to the correct page.
+* The to top button works as expected.
 
 **Login or Guest Page**
 * Displays when unlogged in users click the checkout button.
@@ -445,3 +449,4 @@ Continuous manual testing was carried out throughout the development process wit
 * Errors were seen in the JavaScript console on an empty basket page as a result of the select country functionality. This was therefore updated to run only if the country box was  available.
 * Whilst testing the checkout flow it was noticed that the delivery details were saved to the user profile whether or not the save info box was ticked. Research found a [Slack post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605222094452700) with three suggested fixes, firstly changing the saveInfo variable in the stripe_elements.js to be set by an .is(':checked') statement, secondly changing the if checking for the save info value in the webhook value to look for a "true" string and finally moving the script link to the stripe_elements.js file to the extra_js block and setting a defer tag on it. All these fixes were implemented and the functionality now works as expected.
 * It was noted that the order of the products displayed on the deployed site altered when any of the product model objects were updated. In order to keep a more consistent ordering order_by options were added to the queries on various views.
+* The back to top button did not always work as intended when it was in the footer. This was fixed by adding a z-index in the css for this button.
