@@ -1,3 +1,16 @@
+## Deployment
+
+### Table of Contents
+
+- [Deploying the Site](#deploying-the-site)
+  * [Creating the Heroku App](#creating-the-heroku-app)
+  * [Configuring the Heroku App](#configuring-the-heroku-app)
+  * [Setting up AWS](#setting-up-aws)
+  * [Configuring the Django Settings](#configuring-the-django-settings)
+  * [Deploying the App](#deploying-the-app)
+- [Forking the GitHub Repository](#forking-the-github-repository)
+- [Making a Local Clone](#making-a-local-clone)
+
 ### Deploying the Site
 
 #### Creating the Heroku App

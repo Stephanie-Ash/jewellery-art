@@ -1,5 +1,22 @@
 ## Testing
 
+### Table of Contents
+
+- [User Story Testing](#user-story-testing)
+  * [As a Site user:](#as-a-site-user)
+  * [As a registered user:](#as-a-registered-user)
+  * [As a shopper:](#as-a-shopper)
+  * [As a store owner:](#as-a-store-owner)
+  * [General Goals](#general-goals)
+- [Validator Testing](#validator-testing)
+  * [HTML](#html)
+  * [CSS](#css)
+  * [JS](#js)
+  * [Python](#python)
+- [Python Automated Testing](#python-automated-testing)
+- [Manual Testing](#manual-testing)
+- [Fixed Bugs](#fixed-bugs)
+
 ### User Story Testing
 
 #### As a Site user:
