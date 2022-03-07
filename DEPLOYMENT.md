@@ -36,7 +36,7 @@
 #### Setting up AWS
 
 **Creating the Bucket**
-* At the top of tha AWS Management Console search for and select 'S3'.
+* At the top of the AWS Management Console search for and select 'S3'.
 * Click 'Create Bucket', give it a name associated with the Heroku app name and select the most appropriate location.
 * Under Object Ownership select 'ACLs enabled' and 'Bucket owner preferred'
 *  Untick 'Block all public access' and acknowledge this choice.
@@ -64,7 +64,7 @@
     ```
 * In the bucket policy section on the permissions tab select 'Policy Generator' and select the following options in the generator page:
     * Policy type - S3 Bucket Policy
-    * Add Statement(s) - Pricipal: *, Actions: GetObject, ARN: copy from bucket policy section.
+    * Add Statement(s): Pricipal: *, Actions: GetObject, ARN: copy from bucket policy section.
     * Select 'Add Statement' then 'Generate Policy' copy the policy and paste into the bucket policy editor adding /* to the end of the resource key.
 * In the 'Access Control List' section on the permissions tab click edit and enable 'List' for 'Everyone'.
 
@@ -124,7 +124,7 @@
     if os.path.isfile('env.py'):
         import env
     ````
-* Add the database to databases section in the Django settings file keeping the original database details for development:
+* Add the database to the databases section in the Django settings file keeping the original database details for development:
     ```
     if 'DATABASE_URL' in os.environ:
         DATABASES = {
@@ -142,11 +142,11 @@
     ```
     SECRET_KEY = os.environ.get('SECRET_KEY')
     ```
-* When ready to deploy, save required model objects to JSON fixtures files:
+* When ready to deploy, save the required model objects to JSON fixtures files:
     ```
     python3 manage.py dumpdata app_name > filename.json
     ```
-* Migrate the models to the database first ensuring that the 'DATABASE_URL' variable in the env file is uncommented for the migrations:
+* Migrate the models to the database after first ensuring that the 'DATABASE_URL' variable in the env file is uncommented for the migrations:
     ```
     python3 manage.py migrate
     ```
@@ -242,9 +242,8 @@ The following steps can be used to run the project locally:
 * Open Git Bash.
 * Using the cd command change the current working directory to the location required for the cloned directory.
 * Type git clone and paste in the copied url and press Enter to create the local clone.
-* All the packages listed in the requirements will need to bw installed:
+* All the packages listed in the requirements will need to be installed:
     ```
     pip install -r requirements.txt
     ```
 * An env.py file listing the required environment variables (see above) will also be required.
-

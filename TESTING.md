@@ -24,7 +24,7 @@
 **General**
 * I can quickly understand what the site is offering so that I can decide if it meets my needs.
     * The homepage headings pared with the Shop Now button succinctly describe the purpose of the site.
-    * The striking image give a stylish representation of the types of products on offer.
+    * The striking image gives a stylish representation of the types of products on offer.
 * I can sign up for a newsletter so I can be kept informed of new products and offers.
     * A newsletter signup form is provided on the homepage.
 * I can browse frequently asked questions so that I can get answers to my queries.
@@ -37,12 +37,12 @@
     * The Designers page provides a list of the jewellery designers with links to their detail pages.
 * I can view details of the individual designers so that I can learn more about them and see which products they have designed.
     * The Designer Detail page provides information about each of the designers including their social media links.
-    * The Pices By section also gives the user the opportunity to browse through the products they have designed.
+    * The Pieces By section also gives the user the opportunity to browse through the products they have designed.
 
 **Account Registration and Login**
 * I can easily register for an account so that I can have a personal account to store my information.
     * The navigation bar provides easily locatable My Account menus with a link for registration.
-    * The registration form is clear and simple to use makeing registration quick and easy.
+    * The registration form is clear and simple to use making registration quick and easy.
 
 #### As a registered user:
 
@@ -54,7 +54,7 @@
 
 **User Profiles**
 * I can have a personalised user profile so that I can keep track of my order history.
-    * A link to the users profile is found in the My Account menu, it provides a list of all the orders the user has made.
+    * A user profile is created when the user registers. A link to the users profile is found in the My Account menu, it provides a list of all the orders the user has made.
 * I can save my delivery details to my profile so that I can quickly checkout in future.
     * A delivery details form is provided on the Profile page allowing the user to update their delivery details.
     * The user can also update their delivery details directly from the checkout.
@@ -71,7 +71,7 @@
 * I can view details of the individual products so that I can find out more information about them.
     * The Products page provides links to the individual Product Detail pages which provide clear information about the product and show others by the designer.
 * I can be informed if a product is out of stock so that I do not purchase unavailable products.
-    * The Out of Stock badge on the products provides a clear indication that the product is out of stock. The disabled add to basket functionality means tha the user cannot add out of stock items to the basket.
+    * The Out of Stock badge on the products provides a clear indication that the product is out of stock. The disabled add to basket functionality means that the user cannot add out of stock items to the basket.
 
 **Product Filtering**
 * I can select products to view based on categories so that I can narrow down on the products I am interested in.
@@ -121,7 +121,7 @@
 
 **Admin and Store Management**
 * I can add questions to the frequently asked question section of my site so that I can answer common questions from my customers.
-    * The Add FAQ page is easily access in the My Account menu in the navigation bar. Once a FAQ is added on this page it will straight away populate the FAQs page.
+    * The Add FAQ page is easily accessed in the My Account menu in the navigation bar. Once an FAQ is added on this page it will straight away populate the FAQs page.
 * I can add a product so that I can add new items to my store.
     * The Add a Product page is easily accessible from the My Account menu in the navigation bar making it easy to add a product to the store.
 * I can edit a product so that I can change the information about it.
@@ -141,7 +141,7 @@
 
 #### General Goals
 
-The site provides value to the user as a place that they can find different and unusual jewellery. It is easy to use making it easy for them to purchase the products on offer. The site owner has a place to add and sell their products online. The designer section allows them to promote their interest in good designe and promote the designers which would likely result in some reciprical marketing as the designers promote the site on social media. The homepage featured option allows the store owner to keep the site fresh by updating the list of top products on the homepage.
+The site provides value to the user as a place that they can find different and unusual jewellery. It is easy to use making it easy for them to purchase the products on offer. The site owner has a place to add and sell their products online. The designer section allows them to promote their interest in good design and promote the designers which would likely result in some reciprical marketing as the designers promote the site on social media. The homepage featured option allows the store owner to keep the site fresh by updating the list of top products on the homepage.
 
 ### Validator Testing
 
@@ -160,7 +160,7 @@ The site provides value to the user as a place that they can find different and 
 #### JS
 
 * The Javascript snippets have been passed through the [JSHint](https://jshint.com/) validator.
-* Missing semicolons were flagged and have been added to the file.
+* Missing semicolons were flagged and have been added to the files.
 * The following warning was given on the designers.js file image check. This has been solved by moving the image check function out of the for loop.  
     * Functions declared within loops referencing an outer scoped variable may lead to confusing semantics.
 * No other errors have been found.
@@ -198,8 +198,8 @@ Automated testing on original Python code from all apps has been carried out usi
 * The all_products view sort option orders the products correctly.
 * The product_detail view other products context contains the correct products and the purchased context contains the correct value.
 * The add_product, edit_product and delete_product views successfully add, edit and delete products and redirect to the correct page.
-* The toggle_homepage_feature view correctly changes the value of the homepage_featured field and redirects as expected.
-* The update_inventory review updates a product inventory and redirects as expected.
+* The toggle_homepage_featured view correctly changes the value of the homepage_featured field and redirects as expected.
+* The update_inventory view updates a product inventory and redirects as expected.
 * The superuser only areas correctly redirect other users.
 * Error messages are generated when the product form is not valid and when a get request is sent to the update_inventory view.
 
@@ -220,7 +220,7 @@ Automated testing on original Python code from all apps has been carried out usi
 **Designers App  - Forms**
 * The model required fields are required on the Designer form.
 * Unrequired fields are not required on the Designer form.
-* The Designer model uneditable fields are not included in the Designer form field metaclass.
+* The Designer model uneditable fields are not included in the Designer form metaclass.
 
 **Designers App - Views**
 * The various get views return a successful HTTP response and use the correct templates.
@@ -234,7 +234,7 @@ Automated testing on original Python code from all apps has been carried out usi
 ![Designers App test results](docs/screenshots/test-results/designers-test-results.jpg)
 
 **Basket App - Views**
-* Get view basket page return a successful HTTP response and use the correct template.
+* The get view basket page view return a successful HTTP response and uses the correct template.
 * The country select box is populated by the country session variable.
 * The Country session variable is set to the profile default country when available.
 * An error message is generated and items removed when arriving on the basket page with out of stock items in the basket.
@@ -276,7 +276,7 @@ Automated testing on original Python code from all apps has been carried out usi
 ![Checkout App test results](docs/screenshots/test-results/checkout-test-results.jpg)
 
 **Profiles App - Models**
-* The UserProfile model string methods return the expected string.
+* The UserProfile model string method returns the expected string.
 
 **Profiles App  - Forms**
 * No fields are required on the UserProfileForm
@@ -293,7 +293,7 @@ Automated testing on original Python code from all apps has been carried out usi
 ![Profiles App test results](docs/screenshots/test-results/profiles-test-results.jpg)
 
 **Contact App - Models**
-* The ContactMessage model string methods return the expected string.
+* The ContactMessage model string method returns the expected string.
 * The ContactMessage responded field defaults to false.
 
 **Contact App  - Forms**
@@ -314,7 +314,7 @@ Automated testing on original Python code from all apps has been carried out usi
 ![Contact App test results](docs/screenshots/test-results/contact-test-results.jpg)
 
 **Faqs App - Models**
-* The FAQ model string methods return the expected string.
+* The FAQ model string method returns the expected string.
 
 **Faqs App  - Forms**
 * The model required fields are required on the FAQ form.
@@ -402,7 +402,7 @@ Continuous manual testing was carried out throughout the development process wit
 * Login, Register or Continue buttons take the user to the correct pages.
 
 **Checkout Page**
-* A message is generated and items are remove on page arrival if items in the basket have not enough stock.
+* A message is generated and items are removed on page arrival if items in the basket have not enough stock.
 * The edit basket button takes the user to the correct page.
 * The edit country button takes the user to the correct page.
 * The country select box is disabled.
@@ -411,7 +411,7 @@ Continuous manual testing was carried out throughout the development process wit
 * The payment intent succeeded webhook responds correctly.
 * Default delivery details are saved to the profile when the save info box is ticked.
 * The payment does not complete and a warning message is generated when items with not enough stock are in the basket.
-* The order is created by the webhook if the window is closed before the form is submited
+* The order is created by the webhook handler if the window is closed before the form is submited.
 
 **Profile Page**
 * The default address details are updated when the form is submitted.
@@ -439,14 +439,14 @@ Continuous manual testing was carried out throughout the development process wit
 * The sites responsiveness has been tested by friends and family members on various devices and also using the Chrome Developer tools.
 
 ### Fixed Bugs
-* During the development process it was noted that orders still had a delivery charge even when there were no lineitems and so no total price. Although an order should never be made without items, an extra if statement was added to the bag contexts to ensure that if there is no total there is no delivery charge.
-* Due to the length of some of the items in the My Account navigation dropdown menu it was extending off screen on mobile devices. This was fixed by setting the possition value of the menu as static and setting its width as 100% for the smallest screens.
-* The diabled country box resulted in errors with the post method on the checkout view. This was fixed by setting this value in the post method from the session country code.
-* After the Country selection functionality was added to define the delivery price it was noted that the webhook handler was created extra orders as it did not recognise the order as identical the to payment intent information. This was eventually found to be due to the final order totals being calculated in an order model method which had not been updated to check for the delivery country.
-* Switching between mobile view and desktop view on the basket page on a mobile initially resulted in a 500 server error. This was found to be due to a lack of HTTP_REFERER value for the referring page. This was fixed by adding an if statement to the basket view stating that it should only use that value if available.
-* When further testing the basket page on Firefox it was dicovered that the country selection functionality was not working. This was as the referring page was not recognised as the basket page so the country code was continuously deleted. It was decided that it was not essential to reset the selected country when arriving on the basket page and the referring page functionality was removed from the basket view.
-* The inventory check when arriving on the basket page resulted in an error if no basket value was in the session. This was fixed by creating an empty session basket value if none was available in the check_inventory function.
-* Errors were seen in the JavaScript console on an empty basket page as a result of the select country functionality. This was therefore updated to run only if the country box was  available.
-* Whilst testing the checkout flow it was noticed that the delivery details were saved to the user profile whether or not the save info box was ticked. Research found a [Slack post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605222094452700) with three suggested fixes, firstly changing the saveInfo variable in the stripe_elements.js to be set by an .is(':checked') statement, secondly changing the if checking for the save info value in the webhook value to look for a "true" string and finally moving the script link to the stripe_elements.js file to the extra_js block and setting a defer tag on it. All these fixes were implemented and the functionality now works as expected.
-* It was noted that the order of the products displayed on the deployed site altered when any of the product model objects were updated. In order to keep a more consistent ordering order_by options were added to the queries on various views.
-* The back to top button did not always work as intended when it was in the footer. This was fixed by adding a z-index in the css for this button.
+* During the development process it was noted that orders still had a delivery charge even when there were no lineitems and so no total price. Although an order should never be made without items, an extra if statement has been added to the bag contexts to ensure that if there is no total there is also no delivery charge.
+* Due to the length of some of the items in the My Account navigation dropdown menu it was extending off screen on mobile devices. This has been fixed by setting the possition value of the menu as static and setting its width as 100% for the smallest screens.
+* The diabled country box resulted in errors with the post method on the checkout view. This has been fixed by setting this value in the post method from the session country code.
+* After the Country selection functionality was added to define the delivery price it was noted that the webhook handler was creating extra orders as it did not recognise the order as identical the to payment intent information. This was eventually found to be due to the final order totals being calculated in an order model method which had not been updated to check for the delivery country. This has now been updated.
+* Switching between mobile view and desktop view on the basket page on a mobile initially resulted in a 500 server error. This was found to be due to a lack of HTTP_REFERER value for the referring page. This was fixed by adding an if statement to the basket view stating that it should only use this value if available.
+* When further testing the basket page on Firefox it was dicovered that the country selection functionality was not working. This was as the referring page was not recognised as the basket page so the country code was continuously deleted. It has been decided that it is not essential to reset the selected country when arriving on the basket page and the referring page functionality has been removed from the basket view.
+* The inventory check when arriving on the basket page resulted in an error if no basket value was in the session. This has been fixed by creating an empty session basket value in the check_inventory function if none is available.
+* Errors were seen in the JavaScript console on an empty basket page as a result of the select country functionality. This has therefore been updated to run only if the country box is available.
+* Whilst testing the checkout flow it was noticed that the delivery details were saved to the user profile whether or not the save info box was ticked. Research found a [Slack post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605222094452700) with three suggested fixes, firstly changing the saveInfo variable in the stripe_elements.js to be set by an .is(':checked') statement, secondly changing the if statement checking for the save info value in the webhook to look for a "true" string and finally moving the script link to the stripe_elements.js file to the extra_js block at the top of the page and setting a defer tag on it. All these fixes have been implemented and the functionality now works as expected.
+* It was noted that the order of the products displayed on the deployed site altered when any of the product model objects were updated. In order to keep a more consistent ordering order_by options have been added to the queries on various views.
+* The back to top button did not always work as intended when it was in the footer on smaller screens. This has been fixed by adding a z-index in the css for this button.

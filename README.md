@@ -112,7 +112,7 @@ All these considerations would hopefully improve the SEO of the site however as 
 
     **General**
     * I can quickly understand what the site is offering so that I can decide if it meets my needs.
-    * I can sign up for a newsletter so I can be kept informed of new products and offers.
+    * I can sign up for a newsletter so that I can be kept informed of new products and offers.
     * I can browse frequently asked questions so that I can get answers to my queries.
     * I can fill in a contact form so that I can send a query to the store owner.
 
@@ -177,7 +177,7 @@ All these considerations would hopefully improve the SEO of the site however as 
     * I can set or update the inventory of a product so that I can only sell products that are available.
     * I can add a designer so that I can add new designers and their products to my store.
     * I can edit a designer so that I can change the information about them.
-    * I can delete a designer so that remove designers that are no longer featured in the store.
+    * I can delete a designer so that I can remove designers that are no longer featured in the store.
     * I can view customer contact forms so that I can respond to them.
 
 ### Design
@@ -239,9 +239,11 @@ Two additional models providing general information for the site user or store o
 
 ### Agile Workflow
 
-A basic agile strategy has been used when planning and implementing the functionality of this project. The project user stories have been added to github as issues and selected user stories moved to milestones for two week iterations which have been tracked on a projet Kanban board. The user stories for each iteration have been separated into Must Have, Should Have and Could Have categories.
+A basic agile strategy has been used when planning and implementing the functionality of this project. The project user stories have been added to Github as issues and selected user stories moved to milestones for two week iterations which have been tracked on a projet Kanban board. The user stories for each iteration have been separated into Must Have, Should Have and Could Have categories.
 
 Although this approach was useful when it came to ensuring all functionality was implemented, for this project the time required to complete the user stories was somewhat overestimated. The Must Have stories were often completed in the first week with all Should Have and Could Have stories completed by the end of the iteration. More time spent accurately estimating story points for each user story would be beneficial in the future.
+
+Additional user stories for possible future functionality, specifically the providing of jewellery making classes, have also been added to the project as Github issues.
 
 ## Features
 
@@ -361,7 +363,7 @@ Although this approach was useful when it came to ensuring all functionality was
 
 #### The Admin Panel
 
-* The admin panel gives the store owner further control over the site and allows them to access to model objects not available elsewhere, particularly the orders.
+* The admin panel gives the store owner further control over the site and allows them access to model objects not available elsewhere, particularly the orders.
 
 ### Possible Future Features
 
