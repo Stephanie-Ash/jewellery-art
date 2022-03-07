@@ -431,7 +431,7 @@ Continuous manual testing was carried out throughout the development process wit
 * Messages are generated for all major actions on the site.
 
 **Device and Browser Testing**
-* The site has been tested on the Google Chrome and Microsoft Edge browsers.
+* The site has been tested on the Google Chrome, Firefox and Microsoft Edge browsers.
 * The sites responsiveness has been tested by friends and family members on various devices and also using the Chrome Developer tools.
 
 ### Fixed Bugs
@@ -440,6 +440,7 @@ Continuous manual testing was carried out throughout the development process wit
 * The diabled country box resulted in errors with the post method on the checkout view. This was fixed by setting this value in the post method from the session country code.
 * After the Country selection functionality was added to define the delivery price it was noted that the webhook handler was created extra orders as it did not recognise the order as identical the to payment intent information. This was eventually found to be due to the final order totals being calculated in an order model method which had not been updated to check for the delivery country.
 * Switching between mobile view and desktop view on the basket page on a mobile initially resulted in a 500 server error. This was found to be due to a lack of HTTP_REFERER value for the referring page. This was fixed by adding an if statement to the basket view stating that it should only use that value if available.
+* When further testing the basket page on Firefox it was dicovered that the country selection functionality was not working. This was as the referring page was not recognised as the basket page so the country code was continuously deleted. It was decided that it was not essential to reset the selected country when arriving on the basket page and the referring page functionality was removed from the basket view.
 * The inventory check when arriving on the basket page resulted in an error if no basket value was in the session. This was fixed by creating an empty session basket value if none was available in the check_inventory function.
 * Errors were seen in the JavaScript console on an empty basket page as a result of the select country functionality. This was therefore updated to run only if the country box was  available.
 * Whilst testing the checkout flow it was noticed that the delivery details were saved to the user profile whether or not the save info box was ticked. Research found a [Slack post](https://code-institute-room.slack.com/archives/C7HS3U3AP/p1605222094452700) with three suggested fixes, firstly changing the saveInfo variable in the stripe_elements.js to be set by an .is(':checked') statement, secondly changing the if checking for the save info value in the webhook value to look for a "true" string and finally moving the script link to the stripe_elements.js file to the extra_js block and setting a defer tag on it. All these fixes were implemented and the functionality now works as expected.
