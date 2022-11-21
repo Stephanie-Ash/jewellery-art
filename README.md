@@ -4,7 +4,7 @@ Jewellery Art is an online store that allows users to buy contemporary handmade 
 
 This is an example project not built for real credit card transactions. To test the functionalilty use the test card number 4242 4242 4242 4242 with any expiry date in the future, any 3 number CVC and a 5 number zip code.
 
-[The live site can be found here.](https://jewellery-art.herokuapp.com/)
+[The live site can be found here.](https://jewellery-art.onrender.com)
 
 ![Site Mockup](docs/screenshots/others/site-mockup.jpg)
 
