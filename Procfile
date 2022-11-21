@@ -1,1 +1,0 @@
-web: gunicorn jewellery_art.wsgi
